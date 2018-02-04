@@ -7,7 +7,20 @@
 		<key>Hacker News Zero.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>C950C1E6201553EE00917A44</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C950C1FF201553EE00917A44</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

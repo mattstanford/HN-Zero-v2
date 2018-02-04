@@ -8,11 +8,14 @@
 
 import UIKit
 import CoreData
+import RxSwift
 
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
+    
+    let disposeBag = DisposeBag()
 
 
     override func viewDidLoad() {
@@ -26,6 +29,24 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        NetworkManager.getArticleList().subscribe(onNext: { arrayOfStoryIds in
+            print("got articles!!")
+            
+            let temp = arrayOfStoryIds[0]
+            
+            NetworkManager.getItemData(itemId: temp).subscribe(onNext: { article in
+                print("got article!!")
+                
+            }, onError: { (error) in
+                print("got error getting article!")
+            }).disposed(by: self.disposeBag)
+           
+            
+        }, onError: { (error) in
+            print("got error!")
+        }).disposed(by: disposeBag)
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
