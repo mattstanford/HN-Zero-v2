@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import RxSwift
 
-class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class ArticleViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var detailViewController: DetailViewController? = nil
     

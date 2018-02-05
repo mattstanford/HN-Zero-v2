@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2745A270B5F6ECDC4C84C045 /* Pods_Hacker_News_ZeroTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E696CCF0BA1424271967A1 /* Pods_Hacker_News_ZeroTests.framework */; };
 		C950C1EB201553EE00917A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EA201553EE00917A44 /* AppDelegate.swift */; };
-		C950C1F0201553EE00917A44 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EF201553EE00917A44 /* MasterViewController.swift */; };
+		C950C1F0201553EE00917A44 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EF201553EE00917A44 /* ArticleViewController.swift */; };
 		C950C1F2201553EE00917A44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1F1201553EE00917A44 /* DetailViewController.swift */; };
 		C950C1F5201553EE00917A44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C950C1F3201553EE00917A44 /* Main.storyboard */; };
 		C950C1F7201553EE00917A44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C950C1F6201553EE00917A44 /* Assets.xcassets */; };
@@ -37,7 +37,7 @@
 		82470E07FF30D9D94022DEB6 /* Pods-Hacker News Zero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News Zero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News Zero/Pods-Hacker News Zero.debug.xcconfig"; sourceTree = "<group>"; };
 		C950C1E7201553EE00917A44 /* Hacker News Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hacker News Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C950C1EA201553EE00917A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C950C1EF201553EE00917A44 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		C950C1EF201553EE00917A44 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		C950C1F1201553EE00917A44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C950C1F4201553EE00917A44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C950C1F6201553EE00917A44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				C950C1F1201553EE00917A44 /* DetailViewController.swift */,
-				C950C1EF201553EE00917A44 /* MasterViewController.swift */,
+				C950C1EF201553EE00917A44 /* ArticleViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 				C950C1EB201553EE00917A44 /* AppDelegate.swift in Sources */,
 				C950C217201AE50E00917A44 /* Article.swift in Sources */,
 				C950C215201ADB8300917A44 /* NetworkManager.swift in Sources */,
-				C950C1F0201553EE00917A44 /* MasterViewController.swift in Sources */,
+				C950C1F0201553EE00917A44 /* ArticleViewController.swift in Sources */,
 				C950C1F2201553EE00917A44 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
