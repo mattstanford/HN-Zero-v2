@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2745A270B5F6ECDC4C84C045 /* Pods_Hacker_News_ZeroTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E696CCF0BA1424271967A1 /* Pods_Hacker_News_ZeroTests.framework */; };
 		C950C1EB201553EE00917A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EA201553EE00917A44 /* AppDelegate.swift */; };
-		C950C1EE201553EE00917A44 /* Hacker_News_Zero.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EC201553EE00917A44 /* Hacker_News_Zero.xcdatamodeld */; };
 		C950C1F0201553EE00917A44 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EF201553EE00917A44 /* MasterViewController.swift */; };
 		C950C1F2201553EE00917A44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1F1201553EE00917A44 /* DetailViewController.swift */; };
 		C950C1F5201553EE00917A44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C950C1F3201553EE00917A44 /* Main.storyboard */; };
@@ -38,7 +37,6 @@
 		82470E07FF30D9D94022DEB6 /* Pods-Hacker News Zero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News Zero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News Zero/Pods-Hacker News Zero.debug.xcconfig"; sourceTree = "<group>"; };
 		C950C1E7201553EE00917A44 /* Hacker News Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hacker News Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C950C1EA201553EE00917A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C950C1ED201553EE00917A44 /* Hacker_News_Zero.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hacker_News_Zero.xcdatamodel; sourceTree = "<group>"; };
 		C950C1EF201553EE00917A44 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		C950C1F1201553EE00917A44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C950C1F4201553EE00917A44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				C950C1FB201553EE00917A44 /* Info.plist */,
-				C950C1EC201553EE00917A44 /* Hacker_News_Zero.xcdatamodeld */,
 				C950C1F8201553EE00917A44 /* LaunchScreen.storyboard */,
 				C950C1F3201553EE00917A44 /* Main.storyboard */,
 				C950C1F6201553EE00917A44 /* Assets.xcassets */,
@@ -395,7 +392,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C950C1EE201553EE00917A44 /* Hacker_News_Zero.xcdatamodeld in Sources */,
 				C950C1EB201553EE00917A44 /* AppDelegate.swift in Sources */,
 				C950C217201AE50E00917A44 /* Article.swift in Sources */,
 				C950C215201ADB8300917A44 /* NetworkManager.swift in Sources */,
@@ -648,19 +644,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		C950C1EC201553EE00917A44 /* Hacker_News_Zero.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C950C1ED201553EE00917A44 /* Hacker_News_Zero.xcdatamodel */,
-			);
-			currentVersion = C950C1ED201553EE00917A44 /* Hacker_News_Zero.xcdatamodel */;
-			path = Hacker_News_Zero.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C950C1DF201553EE00917A44 /* Project object */;
 }

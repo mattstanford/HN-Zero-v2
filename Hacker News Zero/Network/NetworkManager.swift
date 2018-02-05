@@ -46,6 +46,7 @@ class NetworkManager
             })
     }
 }
+
 //MARK: Private helper functions
 extension NetworkManager {
     
