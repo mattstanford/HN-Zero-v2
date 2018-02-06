@@ -26,9 +26,9 @@ class ArticleViewModel
         return article != nil
     }
     
-    func getArticleData() -> Completable
+    func getArticleData() -> Single<Article?>
     {
         return repository.getArticle(articleId: self.articleId)
-            .ignoreElements()
+            .asSingle()
     }
 }

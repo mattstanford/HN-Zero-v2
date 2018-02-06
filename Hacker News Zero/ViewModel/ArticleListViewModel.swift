@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RxSwift
 
 class ArticleListViewModel
 {
-    let articleViewModels = [ArticleViewModel]()
+    var articleViewModels = [ArticleViewModel]()
     let repository : HackerNewsRepository
     
     init(repository: HackerNewsRepository)
@@ -18,5 +19,21 @@ class ArticleListViewModel
         self.repository = repository
     }
     
-    
+    func getArticleListObservable() -> Completable
+    {
+        return repository.getArticleList()
+            .map({ articleIds -> Bool in
+                
+                self.articleViewModels.removeAll()
+                
+                for articleId in articleIds
+                {
+                    let viewModel = ArticleViewModel(articleId: articleId, repository: self.repository)
+                    self.articleViewModels.append(viewModel)
+                }
+                
+                return true
+            })
+            .ignoreElements()
+    }
 }

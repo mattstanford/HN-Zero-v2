@@ -15,7 +15,7 @@ let jsonSuffix = ".json"
 let topStoriesEndpoint = "topstories"
 let itemEndpoint = "item/"
 
-class HackerNewsApiClient
+class HackerNewsApiClient : ApiClient
 {
     func getArticleList() -> Observable<[Int]>
     {

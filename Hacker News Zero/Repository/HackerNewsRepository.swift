@@ -37,4 +37,9 @@ class HackerNewsRepository {
             })
     }
     
+    func getArticleList() -> Observable<[Int]>
+    {
+        return self.apiClient.getArticleList()
+    }
+    
 }
