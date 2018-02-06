@@ -15,9 +15,9 @@ let jsonSuffix = ".json"
 let topStoriesEndpoint = "topstories"
 let itemEndpoint = "item/"
 
-class NetworkManager
+class HackerNewsApiClient
 {
-    static func getArticleList() -> Observable<[Int]>
+    func getArticleList() -> Observable<[Int]>
     {
         let endpoint = baseUrl + topStoriesEndpoint + jsonSuffix
         return RxAlamofire.requestJSON(.get, endpoint)
@@ -32,9 +32,9 @@ class NetworkManager
             })
     }
     
-    static func getArticleData(articleId : Int) -> Observable<Article?>
+    func getArticleData(articleId : Int) -> Observable<Article?>
     {
-        let endpoint = getItemEndpoint(itemId: articleId)
+        let endpoint = self.getItemEndpoint(itemId: articleId)
         
         return RxAlamofire.requestData(.get, endpoint)
             .map({ (response, jsonString) -> Article? in
@@ -48,9 +48,9 @@ class NetworkManager
 }
 
 //MARK: Private helper functions
-extension NetworkManager {
+extension HackerNewsApiClient {
     
-    static func getItemEndpoint(itemId: Int) -> String
+    func getItemEndpoint(itemId: Int) -> String
     {
         return baseUrl + itemEndpoint + String(itemId) + jsonSuffix
     }

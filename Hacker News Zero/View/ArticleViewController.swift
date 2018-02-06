@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import RxSwift
 
-class ArticleViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class ArticleViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     
@@ -26,22 +26,22 @@ class ArticleViewController: UITableViewController, NSFetchedResultsControllerDe
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        NetworkManager.getArticleList().subscribe(onNext: { arrayOfStoryIds in
-            print("got articles!!")
-            
-            let temp = arrayOfStoryIds[0]
-            
-            NetworkManager.getArticleData(articleId: temp).subscribe(onNext: { article in
-                print("got article!!")
-                
-            }, onError: { (error) in
-                print("got error getting article!")
-            }).disposed(by: self.disposeBag)
-           
-            
-        }, onError: { (error) in
-            print("got error!")
-        }).disposed(by: disposeBag)
+//        HackerNewsApiClient.getArticleList().subscribe(onNext: { arrayOfStoryIds in
+//            print("got articles!!")
+//            
+//            let temp = arrayOfStoryIds[0]
+//            
+//            HackerNewsApiClient.getArticleData(articleId: temp).subscribe(onNext: { article in
+//                print("got article!!")
+//                
+//            }, onError: { (error) in
+//                print("got error getting article!")
+//            }).disposed(by: self.disposeBag)
+//           
+//            
+//        }, onError: { (error) in
+//            print("got error!")
+//        }).disposed(by: disposeBag)
         
     }
 
