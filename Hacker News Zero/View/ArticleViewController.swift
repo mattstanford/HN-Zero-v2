@@ -31,12 +31,6 @@ class ArticleViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        
-        if let split = splitViewController {
-          //  let controllers = split.viewControllers
-//            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
         
         getArticleData()
         
@@ -50,10 +44,9 @@ class ArticleViewController: UITableViewController {
                 
                 print("finished getting articles!")
                 print("got viemodels: " + String(self.viewModel.articleViewModels.count))
+                self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
-        
-        self.tableView.reloadData()
     }
 
 

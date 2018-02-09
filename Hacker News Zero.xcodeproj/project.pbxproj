@@ -14,6 +14,7 @@
 		C90BBFFC20280F190014E498 /* ArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BBFFB20280F190014E498 /* ArticleListViewModel.swift */; };
 		C90BBFFE20280F5D0014E498 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BBFFD20280F5D0014E498 /* ArticleViewModel.swift */; };
 		C90BC002202964740014E498 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BC001202964740014E498 /* ArticleTableViewCell.swift */; };
+		C90BC004202D563A0014E498 /* MainNavigationSplitViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BC003202D563A0014E498 /* MainNavigationSplitViewDelegate.swift */; };
 		C950C1EB201553EE00917A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EA201553EE00917A44 /* AppDelegate.swift */; };
 		C950C1F0201553EE00917A44 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EF201553EE00917A44 /* ArticleViewController.swift */; };
 		C950C1F2201553EE00917A44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1F1201553EE00917A44 /* DetailViewController.swift */; };
@@ -47,6 +48,7 @@
 		C90BBFFB20280F190014E498 /* ArticleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewModel.swift; sourceTree = "<group>"; };
 		C90BBFFD20280F5D0014E498 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		C90BC001202964740014E498 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		C90BC003202D563A0014E498 /* MainNavigationSplitViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSplitViewDelegate.swift; sourceTree = "<group>"; };
 		C950C1E7201553EE00917A44 /* Hacker News Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hacker News Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C950C1EA201553EE00917A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C950C1EF201553EE00917A44 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				C950C1F1201553EE00917A44 /* DetailViewController.swift */,
 				C950C1EF201553EE00917A44 /* ArticleViewController.swift */,
 				C90BC001202964740014E498 /* ArticleTableViewCell.swift */,
+				C90BC003202D563A0014E498 /* MainNavigationSplitViewDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				C90BBFFC20280F190014E498 /* ArticleListViewModel.swift in Sources */,
 				C950C1F2201553EE00917A44 /* DetailViewController.swift in Sources */,
 				C908EAE120280AF6007FC681 /* ApiCache.swift in Sources */,
+				C90BC004202D563A0014E498 /* MainNavigationSplitViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

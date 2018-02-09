@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="166" y="1155"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Article List View Controller-->
         <scene sceneID="D3e-dw-ld0">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="8wB-Kh-08Z" customClass="ArticleViewController" customModule="Hacker_News_Zero" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="8wB-Kh-08Z" userLabel="Article List View Controller" customClass="ArticleViewController" customModule="Hacker_News_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="K4o-9A-gfm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="1116" y="492"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Article List Navigation Controller-->
         <scene sceneID="szv-CQ-Dc8">
             <objects>
-                <navigationController id="3mE-5Y-sG7" sceneMemberID="viewController">
+                <navigationController id="3mE-5Y-sG7" userLabel="Article List Navigation Controller" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="o01-f0-9ws">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -75,11 +75,13 @@
             <objects>
                 <splitViewController id="QHi-fu-sbH" sceneMemberID="viewController">
                     <connections>
+                        <outlet property="delegate" destination="6dF-6w-sN2" id="R2r-Qy-9ST"/>
                         <segue destination="3mE-5Y-sG7" kind="relationship" relationship="masterViewController" id="jjA-ig-tQ3"/>
                         <segue destination="fK1-Jk-FMn" kind="relationship" relationship="detailViewController" id="HS6-p6-aVU"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Azj-6Y-6DH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="6dF-6w-sN2" customClass="MainNavigationSplitViewDelegate" customModule="Hacker_News_Zero" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-788" y="824"/>
         </scene>
