@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MainNavigationSplitViewDelegate : NSObject, UISplitViewControllerDelegate
+class MainNavigationSplitViewDelegate : UISplitViewControllerDelegate
 {
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController:UIViewController,
@@ -19,7 +19,6 @@ class MainNavigationSplitViewDelegate : NSObject, UISplitViewControllerDelegate
         //        guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false
         //
         //        }
-        print("hi!!")
         
         return true
     }
