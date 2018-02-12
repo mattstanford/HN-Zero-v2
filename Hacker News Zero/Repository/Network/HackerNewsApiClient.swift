@@ -17,7 +17,7 @@ let itemEndpoint = "item/"
 
 class HackerNewsApiClient : ApiClient
 {
-    func getArticleList() -> Observable<[Int]>
+    func getArticleIds() -> Observable<[Int]>
     {
         let endpoint = baseUrl + topStoriesEndpoint + jsonSuffix
         return RxAlamofire.requestJSON(.get, endpoint)

@@ -11,6 +11,7 @@ import RxSwift
 
 class ArticleListViewModel
 {
+    let pageSize = 25
     var articleViewModels = [ArticleViewModel]()
     let repository : HackerNewsRepository
     
@@ -19,21 +20,31 @@ class ArticleListViewModel
         self.repository = repository
     }
     
-    func getArticleListObservable() -> Completable
+    func refreshArticles() -> Completable
     {
-        return repository.getArticleList()
-            .map({ articleIds -> Bool in
+        return repository.refreshArticleList()
+            .andThen(getPageOfArticles(pageNum: 0))
+    }
+    
+    func getPageOfArticles(pageNum: Int) -> Completable
+    {
+        return repository.getArticles(for: pageNum, pageSize: pageSize)
+            .map { articles -> Bool in
                 
-                self.articleViewModels.removeAll()
+                //TODO: Map this to a better data structure
+                self.articleViewModels = [ArticleViewModel]()
                 
-                for articleId in articleIds
-                {
-                    let viewModel = ArticleViewModel(articleId: articleId, repository: self.repository)
-                    self.articleViewModels.append(viewModel)
+                for article in articles {
+                    
+                    if let article = article {
+                        let viewModel = ArticleViewModel(article: article)
+                        self.articleViewModels.append(viewModel)
+                    }
                 }
                 
                 return true
-            })
+            }
+            .asObservable()
             .ignoreElements()
     }
 }

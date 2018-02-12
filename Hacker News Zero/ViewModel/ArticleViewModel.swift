@@ -11,24 +11,10 @@ import RxSwift
 
 class ArticleViewModel
 {
-    let articleId : Int
-    var article : Article? = nil
-    let repository : HackerNewsRepository
+    let article : Article
     
-    init(articleId: Int, repository: HackerNewsRepository)
+    init(article: Article)
     {
-        self.articleId = articleId
-        self.repository = repository
-    }
-    
-    func hasArticleData() -> Bool
-    {
-        return article != nil
-    }
-    
-    func getArticleData() -> Single<Article?>
-    {
-        return repository.getArticle(articleId: self.articleId)
-            .asSingle()
+        self.article = article
     }
 }

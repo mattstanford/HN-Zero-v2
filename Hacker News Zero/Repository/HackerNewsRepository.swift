@@ -20,26 +20,28 @@ class HackerNewsRepository {
         self.cache = cache
     }
     
-    func getArticle(articleId: Int) -> Observable<Article?>
+    func refreshArticleList() -> Completable
     {
-        return cache.getArticle(articleId: articleId)
-            .flatMap({ (cachedArticle) -> Observable<Article?> in
-                
-                if (cachedArticle == nil)
-                {
-                    return self.apiClient.getArticleData(articleId: articleId)
-                }
-                else
-                {
-                    return Observable.just(cachedArticle)
-                }
-
-            })
+        return apiClient.getArticleIds()
+            .flatMap { articleIds in
+                return self.cache.saveArticleIds(articleIds: articleIds)
+            }
+            .ignoreElements()
     }
     
-    func getArticleList() -> Observable<[Int]>
+    func getArticles(for page:Int, pageSize:Int) -> Single<[Article?]>
     {
-        return self.apiClient.getArticleList()
+        let startIndex = page * pageSize
+        let endIndex = startIndex + pageSize
+        
+        return cache.getArticleIds(startIndex: startIndex, endIndex: endIndex)
+            .flatMap { articleId in
+                
+                return self.apiClient.getArticleData(articleId: articleId)
+            }
+            .toArray()
+            .asSingle()
     }
+    
     
 }

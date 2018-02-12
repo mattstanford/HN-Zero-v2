@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MainNavigationSplitViewDelegate : UISplitViewControllerDelegate
+class MainNavigationSplitViewDelegate : NSObject, UISplitViewControllerDelegate
 {
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController:UIViewController,

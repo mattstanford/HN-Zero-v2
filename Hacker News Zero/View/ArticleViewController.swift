@@ -32,6 +32,9 @@ class ArticleViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 60
+        
         getArticleData()
         
     }
@@ -39,7 +42,7 @@ class ArticleViewController: UITableViewController {
     
     func getArticleData()
     {
-        viewModel.getArticleListObservable()
+        viewModel.refreshArticles()
             .subscribe({ (event) in
                 
                 print("finished getting articles!")
@@ -69,31 +72,23 @@ class ArticleViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCellIdentifier, for: indexPath) as! ArticleTableViewCell
         
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
-        
-        articleViewModel.getArticleData()
-            .subscribe { result in
-                
-                switch result {
-                case .success(let article):
-                    print("success!")
-                    cell.textLabel?.text = article?.title
-                    
-                case .error(let error):
-                    print("error!")
-                    
-                }
-                
-                
-        }
-        .disposed(by: disposeBag)
-        
-        
-        cell.textLabel?.text = "hi"
+        configureArticle(cell: cell, for: articleViewModel.article)
        
         return cell
+    }
+    
+    func configureArticle(cell: ArticleTableViewCell, for article: Article?)
+    {
+        cell.titleLabel.text = article?.title
+        // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
+        cell.numCommentsLabel.text = "44"
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
     }
 
 

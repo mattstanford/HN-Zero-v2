@@ -11,10 +11,51 @@ import RxSwift
 
 class ApiCache
 {
-    let articleDict = [Int: Article]()
+    var articleIds = [Int]()
+    var articleDict = [Int: Article]()
     
-    func getArticle(articleId: Int) -> Observable<Article?>
+    func saveArticleIds(articleIds: [Int]) -> Completable
     {
-        return Observable.just(articleDict[articleId]);
+        return Completable.create{ completable in
+            
+            self.articleIds = articleIds
+            
+            completable(.completed)
+            return Disposables.create {}
+        }
+    }
+    
+    func saveArticleData(article: Article) -> Completable
+    {
+        return Completable.create { completable in
+            
+            self.articleDict[article.id] = article
+            
+            completable(.completed)
+            return Disposables.create {}
+        }
+    }
+    
+    func getArticleIds(startIndex: Int, endIndex: Int) -> Observable<Int>
+    {
+        return Observable.create { observer in
+        
+            for index in startIndex...endIndex {
+        
+                if index < self.articleIds.count{
+                    
+                    let articleId = self.articleIds[index]
+                    observer.onNext(articleId)
+                }
+            }
+            
+            observer.onCompleted()
+            return Disposables.create {}
+        }
+    }
+    
+    func getArticle(articleId: Int) -> Single<Article?>
+    {
+        return Single.just(articleDict[articleId]);
     }
 }

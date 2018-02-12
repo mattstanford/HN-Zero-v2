@@ -34,13 +34,65 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleTableViewCellIdentifier" id="JQe-Js-IFh">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleTableViewCellIdentifier" rowHeight="60" id="JQe-Js-IFh" customClass="ArticleTableViewCell" customModule="Hacker_News_Zero" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JQe-Js-IFh" id="gVx-PH-7FQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxp-B0-7Sz">
+                                            <rect key="frame" x="62" y="10" width="247" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="9HN-8r-l1L"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_icon" translatesAutoresizingMaskIntoConstraints="NO" id="TuZ-4d-PxH">
+                                            <rect key="frame" x="16" y="10" width="33" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="33" id="IiF-Pr-PRI"/>
+                                                <constraint firstAttribute="height" constant="28" id="YcI-bf-CI0"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfy-lc-W5J" userLabel="numComments">
+                                            <rect key="frame" x="317" y="29" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="JmX-qc-OuE"/>
+                                                <constraint firstAttribute="width" constant="42" id="ruC-qY-ZJL"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat" translatesAutoresizingMaskIntoConstraints="NO" id="VW5-Ce-DSE" userLabel="chatIcon">
+                                            <rect key="frame" x="326" y="5" width="24" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="Mtk-tf-FWo"/>
+                                                <constraint firstAttribute="width" constant="24" id="V9J-Xg-PFe"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pxp-B0-7Sz" firstAttribute="leading" secondItem="TuZ-4d-PxH" secondAttribute="trailing" constant="13" id="60I-xQ-d8F"/>
+                                        <constraint firstItem="TuZ-4d-PxH" firstAttribute="leading" secondItem="gVx-PH-7FQ" secondAttribute="leading" constant="16" id="COF-5f-jaY"/>
+                                        <constraint firstItem="TuZ-4d-PxH" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="10" id="Fim-pH-ooK"/>
+                                        <constraint firstAttribute="trailing" secondItem="nfy-lc-W5J" secondAttribute="trailing" constant="16" id="Qrr-iu-Wnc"/>
+                                        <constraint firstItem="VW5-Ce-DSE" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="5" id="WkZ-iY-Pzm"/>
+                                        <constraint firstAttribute="bottom" secondItem="pxp-B0-7Sz" secondAttribute="bottom" constant="29.5" id="Y7x-UM-zn3"/>
+                                        <constraint firstItem="VW5-Ce-DSE" firstAttribute="leading" secondItem="pxp-B0-7Sz" secondAttribute="trailing" constant="17" id="Ykh-HT-T7U"/>
+                                        <constraint firstItem="nfy-lc-W5J" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="29" id="du0-yg-mc6"/>
+                                        <constraint firstItem="pxp-B0-7Sz" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="10" id="hCF-3J-R0X"/>
+                                        <constraint firstAttribute="trailing" secondItem="VW5-Ce-DSE" secondAttribute="trailing" constant="25" id="sEh-0M-Ydm"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconImage" destination="TuZ-4d-PxH" id="BHb-Rt-f0v"/>
+                                    <outlet property="numCommentsLabel" destination="nfy-lc-W5J" id="Oe8-6F-1vz"/>
+                                    <outlet property="titleLabel" destination="pxp-B0-7Sz" id="123-ze-NOB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -52,7 +104,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lJM-5b-2XM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="492"/>
+            <point key="canvasLocation" x="1116" y="491.60419790104953"/>
         </scene>
         <!--Article List Navigation Controller-->
         <scene sceneID="szv-CQ-Dc8">
@@ -86,4 +138,8 @@
             <point key="canvasLocation" x="-788" y="824"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chat" width="24" height="22"/>
+        <image name="default_icon" width="16" height="16"/>
+    </resources>
 </document>
