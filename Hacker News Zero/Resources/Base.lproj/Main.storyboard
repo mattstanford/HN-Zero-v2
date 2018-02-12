@@ -42,7 +42,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxp-B0-7Sz">
-                                            <rect key="frame" x="62" y="10" width="247" height="20"/>
+                                            <rect key="frame" x="51" y="10" width="280" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="9HN-8r-l1L"/>
                                             </constraints>
@@ -51,44 +51,57 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_icon" translatesAutoresizingMaskIntoConstraints="NO" id="TuZ-4d-PxH">
-                                            <rect key="frame" x="16" y="10" width="33" height="28"/>
+                                            <rect key="frame" x="16" y="10" width="27" height="26"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="33" id="IiF-Pr-PRI"/>
-                                                <constraint firstAttribute="height" constant="28" id="YcI-bf-CI0"/>
+                                                <constraint firstAttribute="width" constant="27" id="IiF-Pr-PRI"/>
+                                                <constraint firstAttribute="height" constant="26" id="YcI-bf-CI0"/>
                                             </constraints>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat" translatesAutoresizingMaskIntoConstraints="NO" id="VW5-Ce-DSE" userLabel="chatIcon">
+                                            <rect key="frame" x="339" y="10" width="20" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="Mtk-tf-FWo"/>
+                                                <constraint firstAttribute="width" constant="20" id="V9J-Xg-PFe"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehc-53-ZU6">
+                                            <rect key="frame" x="51" y="36" width="280" height="15"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="Cqx-Gh-mvL"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfy-lc-W5J" userLabel="numComments">
-                                            <rect key="frame" x="317" y="29" width="42" height="21"/>
+                                            <rect key="frame" x="328" y="33" width="42" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="JmX-qc-OuE"/>
                                                 <constraint firstAttribute="width" constant="42" id="ruC-qY-ZJL"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat" translatesAutoresizingMaskIntoConstraints="NO" id="VW5-Ce-DSE" userLabel="chatIcon">
-                                            <rect key="frame" x="326" y="5" width="24" height="25"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="Mtk-tf-FWo"/>
-                                                <constraint firstAttribute="width" constant="24" id="V9J-Xg-PFe"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="pxp-B0-7Sz" firstAttribute="leading" secondItem="TuZ-4d-PxH" secondAttribute="trailing" constant="13" id="60I-xQ-d8F"/>
+                                        <constraint firstItem="nfy-lc-W5J" firstAttribute="leading" secondItem="Ehc-53-ZU6" secondAttribute="trailing" constant="-3" id="4dC-XL-QCg"/>
+                                        <constraint firstItem="pxp-B0-7Sz" firstAttribute="leading" secondItem="TuZ-4d-PxH" secondAttribute="trailing" constant="8" id="60I-xQ-d8F"/>
                                         <constraint firstItem="TuZ-4d-PxH" firstAttribute="leading" secondItem="gVx-PH-7FQ" secondAttribute="leading" constant="16" id="COF-5f-jaY"/>
                                         <constraint firstItem="TuZ-4d-PxH" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="10" id="Fim-pH-ooK"/>
-                                        <constraint firstAttribute="trailing" secondItem="nfy-lc-W5J" secondAttribute="trailing" constant="16" id="Qrr-iu-Wnc"/>
-                                        <constraint firstItem="VW5-Ce-DSE" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="5" id="WkZ-iY-Pzm"/>
-                                        <constraint firstAttribute="bottom" secondItem="pxp-B0-7Sz" secondAttribute="bottom" constant="29.5" id="Y7x-UM-zn3"/>
-                                        <constraint firstItem="VW5-Ce-DSE" firstAttribute="leading" secondItem="pxp-B0-7Sz" secondAttribute="trailing" constant="17" id="Ykh-HT-T7U"/>
-                                        <constraint firstItem="nfy-lc-W5J" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="29" id="du0-yg-mc6"/>
+                                        <constraint firstAttribute="trailing" secondItem="nfy-lc-W5J" secondAttribute="trailing" constant="5" id="Qrr-iu-Wnc"/>
+                                        <constraint firstItem="VW5-Ce-DSE" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="10" id="WkZ-iY-Pzm"/>
+                                        <constraint firstItem="VW5-Ce-DSE" firstAttribute="leading" secondItem="pxp-B0-7Sz" secondAttribute="trailing" constant="8" id="Ykh-HT-T7U"/>
+                                        <constraint firstItem="nfy-lc-W5J" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="33" id="du0-yg-mc6"/>
+                                        <constraint firstItem="Ehc-53-ZU6" firstAttribute="top" secondItem="pxp-B0-7Sz" secondAttribute="bottom" constant="6" id="guI-Yz-UT2"/>
                                         <constraint firstItem="pxp-B0-7Sz" firstAttribute="top" secondItem="gVx-PH-7FQ" secondAttribute="top" constant="10" id="hCF-3J-R0X"/>
-                                        <constraint firstAttribute="trailing" secondItem="VW5-Ce-DSE" secondAttribute="trailing" constant="25" id="sEh-0M-Ydm"/>
+                                        <constraint firstItem="Ehc-53-ZU6" firstAttribute="leading" secondItem="TuZ-4d-PxH" secondAttribute="trailing" constant="8" id="rOa-cC-f1V"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ehc-53-ZU6" secondAttribute="bottom" constant="8.5" id="rjH-lB-NI2"/>
+                                        <constraint firstAttribute="trailing" secondItem="VW5-Ce-DSE" secondAttribute="trailing" constant="16" id="sEh-0M-Ydm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="detailLabel" destination="Ehc-53-ZU6" id="vkt-Dr-yde"/>
                                     <outlet property="iconImage" destination="TuZ-4d-PxH" id="BHb-Rt-f0v"/>
                                     <outlet property="numCommentsLabel" destination="nfy-lc-W5J" id="Oe8-6F-1vz"/>
                                     <outlet property="titleLabel" destination="pxp-B0-7Sz" id="123-ze-NOB"/>

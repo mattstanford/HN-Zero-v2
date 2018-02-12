@@ -59,38 +59,44 @@ class ArticleViewController: UITableViewController {
         if segue.identifier == "showDetail" {
         }
     }
+  
+    
+    func configureArticle(cell: ArticleTableViewCell, for article: Article?)
+    {
+        if let article = article {
+            
+            cell.titleLabel.text = article.title
+            cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
+            
+            if let numComments = article.numComments
+            {
+                cell.numCommentsLabel.text = String(describing:numComments)
+            }
+        }
+        
+    }
+}
 
-    // MARK: - Table View
-
+//MARK: UITableViewDataSource
+extension ArticleViewController {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return viewModel.articleViewModels.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCellIdentifier, for: indexPath) as! ArticleTableViewCell
         
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
         configureArticle(cell: cell, for: articleViewModel.article)
-       
+        
         return cell
     }
     
-    func configureArticle(cell: ArticleTableViewCell, for article: Article?)
-    {
-        cell.titleLabel.text = article?.title
-        // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
-        cell.numCommentsLabel.text = "44"
-        
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        
-    }
-
-
 }
 

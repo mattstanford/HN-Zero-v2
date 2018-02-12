@@ -32,7 +32,7 @@ class HackerNewsRepository {
     func getArticles(for page:Int, pageSize:Int) -> Single<[Article?]>
     {
         let startIndex = page * pageSize
-        let endIndex = startIndex + pageSize
+        let endIndex = (startIndex + pageSize) - 1
         
         return cache.getArticleIds(startIndex: startIndex, endIndex: endIndex)
             .flatMap { articleId in
