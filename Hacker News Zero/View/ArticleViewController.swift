@@ -61,18 +61,19 @@ class ArticleViewController: UITableViewController {
     }
   
     
-    func configureArticle(cell: ArticleTableViewCell, for article: Article?)
+    func configureArticle(cell: ArticleTableViewCell, for viewModel: ArticleViewModel)
     {
-        if let article = article {
+      
             
-            cell.titleLabel.text = article.title
-            cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
-            
-            if let numComments = article.numComments
-            {
-                cell.numCommentsLabel.text = String(describing:numComments)
-            }
+        cell.titleLabel.text = viewModel.article.title
+       // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
+        cell.detailLabel.text = viewModel.getTimeString()
+        
+        if let numComments = viewModel.article.numComments
+        {
+            cell.numCommentsLabel.text = String(describing:numComments)
         }
+        
         
     }
 }
@@ -93,7 +94,7 @@ extension ArticleViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCellIdentifier, for: indexPath) as! ArticleTableViewCell
         
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
-        configureArticle(cell: cell, for: articleViewModel.article)
+        configureArticle(cell: cell, for: articleViewModel)
         
         return cell
     }

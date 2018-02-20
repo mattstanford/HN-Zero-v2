@@ -37,11 +37,9 @@ class HackerNewsApiClient : ApiClient
         let endpoint = self.getItemEndpoint(itemId: articleId)
         
         return RxAlamofire.requestData(.get, endpoint)
-            .map({ (response, jsonString) -> Article? in
+            .map({ (response, jsonData) -> Article? in
                 
-                let decoder = JSONDecoder()
-                let article = try? decoder.decode(Article.self, from: jsonString)
-
+                let article = Article.decodeArticleFrom(jsonData: jsonData)
                 return article
             })
     }

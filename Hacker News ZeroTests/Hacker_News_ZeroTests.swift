@@ -11,14 +11,28 @@ import XCTest
 
 class Hacker_News_ZeroTests: XCTestCase {
     
+    var articleVC : ArticleViewController!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.articleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ArticleViewController") as! ArticleViewController
+
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
+        self.articleVC = nil
         super.tearDown()
+    }
+    
+    func testUIState()
+    {
+        let viewModel = self.articleVC.viewModel
+            
+        
+        assert(viewModel != nil)
     }
     
     func testExample() {
