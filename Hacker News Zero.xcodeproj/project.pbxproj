@@ -26,6 +26,9 @@
 		C950C205201553EE00917A44 /* Hacker_News_ZeroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C204201553EE00917A44 /* Hacker_News_ZeroTests.swift */; };
 		C950C215201ADB8300917A44 /* HackerNewsApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C214201ADB8300917A44 /* HackerNewsApiClient.swift */; };
 		C950C217201AE50E00917A44 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C216201AE50E00917A44 /* Article.swift */; };
+		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
+		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
+		C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81E204235E8003D6ADF /* WebViewController.swift */; };
 		DA79B3CE3E2F3FDF192FFB12 /* Pods_Hacker_News_Zero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F898E5F09BCFD04EF9C4B8 /* Pods_Hacker_News_Zero.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +69,9 @@
 		C950C206201553EE00917A44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C950C214201ADB8300917A44 /* HackerNewsApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsApiClient.swift; sourceTree = "<group>"; };
 		C950C216201AE50E00917A44 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
+		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		C9DAE81E204235E8003D6ADF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E0A17C38763BB35A824BD307 /* Pods-Hacker News ZeroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News ZeroTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News ZeroTests/Pods-Hacker News ZeroTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB02736F9E465A68EA15B602 /* Pods-Hacker News Zero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News Zero.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News Zero/Pods-Hacker News Zero.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +184,9 @@
 				C950C1EF201553EE00917A44 /* ArticleViewController.swift */,
 				C90BC001202964740014E498 /* ArticleTableViewCell.swift */,
 				C90BC003202D563A0014E498 /* MainNavigationSplitViewDelegate.swift */,
+				C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */,
+				C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */,
+				C9DAE81E204235E8003D6ADF /* WebViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -447,7 +456,10 @@
 				C908EADC20280890007FC681 /* HackerNewsRepository.swift in Sources */,
 				C90BBFFC20280F190014E498 /* ArticleListViewModel.swift in Sources */,
 				C950C1F2201553EE00917A44 /* DetailViewController.swift in Sources */,
+				C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */,
+				C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */,
 				C908EAE120280AF6007FC681 /* ApiCache.swift in Sources */,
+				C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */,
 				C90BC004202D563A0014E498 /* MainNavigationSplitViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -56,7 +56,10 @@ class ArticleViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "toArticleDetail",
+            let detailVC = segue.destination as? ArticleContainerViewController {
+            
+            detailVC.selectedView = .comments
         }
     }
   
@@ -78,7 +81,7 @@ class ArticleViewController: UITableViewController {
     }
 }
 
-//MARK: UITableViewDataSource
+//MARK: - UITableViewDataSource
 extension ArticleViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -99,5 +102,13 @@ extension ArticleViewController {
         return cell
     }
     
+}
+
+//MARK: - UITableViewDelegate
+extension ArticleViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toArticleDetail", sender: self)
+    }
 }
 
