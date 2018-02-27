@@ -16,7 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
+        setupNavigator()
+        
         return false
+    }
+    
+    private func setupNavigator() {
+    
+        guard let splitViewController = window?.rootViewController as? UISplitViewController,
+            let leftNavController = splitViewController.viewControllers.first as? UINavigationController,
+            let masterViewController = leftNavController.topViewController as? ArticleViewController,
+            let rightNavController = splitViewController.viewControllers.last as? UINavigationController,
+            let detailViewController = rightNavController.topViewController as? ArticleContainerViewController
+            else { fatalError() }
+        
+        let navigator = ArticleNavigator(with: splitViewController,
+                                         articleList: masterViewController,
+                                         articleDetail: detailViewController)
+        
+        masterViewController.navigator = navigator
+        detailViewController.navigator = navigator
+    
+    
     }
 
 }

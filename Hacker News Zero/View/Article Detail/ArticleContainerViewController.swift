@@ -10,6 +10,8 @@ import UIKit
 
 class ArticleContainerViewController: UIViewController {
     
+    var navigator: ArticleNavigator?
+    
     enum SelectedView {
         case comments
         case web

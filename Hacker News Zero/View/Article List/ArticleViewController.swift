@@ -14,7 +14,7 @@ let ArticleTableViewCellIdentifier = "ArticleTableViewCellIdentifier"
 
 class ArticleViewController: UITableViewController {
 
-    var detailViewController: DetailViewController? = nil
+    var navigator: ArticleNavigator?
     
     var viewModel : ArticleListViewModel
     let disposeBag = DisposeBag()
@@ -108,7 +108,11 @@ extension ArticleViewController {
 extension ArticleViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toArticleDetail", sender: self)
+//        performSegue(withIdentifier: "toArticleDetail", sender: self)
+        
+        let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
+        navigator?.show(article: articleViewModel.article)
+        
     }
 }
 
