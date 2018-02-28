@@ -14,6 +14,8 @@ class ArticleNavigator {
     var articleList: ArticleViewController!
     var articleDetail: ArticleContainerViewController!
     
+    var currentArticle: Article?
+    
     init(with splitView: UISplitViewController, articleList: ArticleViewController, articleDetail: ArticleContainerViewController) {
         
         self.splitView = splitView
@@ -24,12 +26,15 @@ class ArticleNavigator {
     func show(article: Article) {
         
         print("showing article: " + article.title)
+        currentArticle = article
         
         guard let navController = articleDetail.navigationController else {
             return
         }
         
         splitView.show(navController, sender: nil)
+        articleDetail.showNewArticle()
+        
     }
     
 }

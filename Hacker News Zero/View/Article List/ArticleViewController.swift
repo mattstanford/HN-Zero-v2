@@ -108,7 +108,6 @@ extension ArticleViewController {
 extension ArticleViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "toArticleDetail", sender: self)
         
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
         navigator?.show(article: articleViewModel.article)

@@ -18,6 +18,7 @@ class ArticleContainerViewController: UIViewController {
     }
     
     var selectedView: SelectedView = .comments
+    var currentVC: UIViewController?
 
     @IBOutlet weak var containerView: UIView!
     
@@ -70,6 +71,7 @@ class ArticleContainerViewController: UIViewController {
 
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as! CommentsViewController
+        viewController.navigator = self.navigator
         
         return viewController
     }()
@@ -78,6 +80,7 @@ class ArticleContainerViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
+        viewController.navigator = self.navigator
         
         return viewController
     }()
@@ -91,6 +94,7 @@ class ArticleContainerViewController: UIViewController {
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         viewController.didMove(toParentViewController: self)
+        currentVC = viewController
     }
     
     private func cycle(from oldVC: UIViewController, to newVC: UIViewController) {
@@ -113,7 +117,17 @@ class ArticleContainerViewController: UIViewController {
             
             oldVC.removeFromParentViewController()
             newVC.didMove(toParentViewController: self)
+            
+            self.currentVC = newVC
         }
+    }
+    
+    func showNewArticle() {
+        guard let articleVC = currentVC as? ArticleViewable else {
+            return
+        }
+        
+        articleVC.showCurrentArticle()
     }
 
 }
