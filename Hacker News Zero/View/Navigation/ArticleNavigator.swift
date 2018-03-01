@@ -32,7 +32,7 @@ class ArticleNavigator {
             return
         }
         
-        splitView.show(navController, sender: nil)
+        articleList.showDetailViewController(navController, sender: nil)
         articleDetail.showNewArticle()
         
     }
