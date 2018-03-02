@@ -27,6 +27,7 @@
 		C950C217201AE50E00917A44 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C216201AE50E00917A44 /* Article.swift */; };
 		C98AB984204508F700FB8ECD /* ArticleNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB983204508F700FB8ECD /* ArticleNavigator.swift */; };
 		C98AB98620465DA400FB8ECD /* ArticleViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB98520465DA400FB8ECD /* ArticleViewable.swift */; };
+		C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
 		C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81E204235E8003D6ADF /* WebViewController.swift */; };
@@ -71,6 +72,7 @@
 		C950C216201AE50E00917A44 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		C98AB983204508F700FB8ECD /* ArticleNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleNavigator.swift; sourceTree = "<group>"; };
 		C98AB98520465DA400FB8ECD /* ArticleViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewable.swift; sourceTree = "<group>"; };
+		C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+FlexibleHeader.swift"; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		C9DAE81E204235E8003D6ADF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				C950C1EA201553EE00917A44 /* AppDelegate.swift */,
+				C9B06EA32048CB330048952C /* Extensions */,
 				C950C210201ADA2E00917A44 /* Model */,
 				C908EADA2028085C007FC681 /* Repository */,
 				C950C213201ADA7500917A44 /* Resources */,
@@ -224,6 +227,14 @@
 				C950C1F6201553EE00917A44 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C9B06EA32048CB330048952C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C9DAE8202042682B003D6ADF /* Article List */ = {
@@ -493,6 +504,7 @@
 				C908EADC20280890007FC681 /* HackerNewsRepository.swift in Sources */,
 				C90BBFFC20280F190014E498 /* ArticleListViewModel.swift in Sources */,
 				C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */,
+				C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */,
 				C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */,
 				C908EAE120280AF6007FC681 /* ApiCache.swift in Sources */,
 				C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */,
