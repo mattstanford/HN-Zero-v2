@@ -10,20 +10,7 @@ import Foundation
 
 protocol ArticleViewable: class {
     var navigator: ArticleNavigator? { get set }
-    var currentShowingArticle: Article? { get set }
     
-    func gotNewArticle()
-}
-
-extension ArticleViewable {
-    
-    func showCurrentArticle() {
-        
-        if navigator?.currentArticle?.id != currentShowingArticle?.id {
-            
-            currentShowingArticle = navigator?.currentArticle
-            gotNewArticle()
-        }
-    }
+    func show(article: Article?)
 }
 

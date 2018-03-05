@@ -9,23 +9,24 @@
 import UIKit
 
 class CommentsViewController: UIViewController, ArticleViewable {
-    
-    var navigator: ArticleNavigator?
-    var currentShowingArticle: Article?
+
+    var navigator: ArticleNavigator?    
+    var viewModel = CommentsViewModel()
     
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var infoLabel: UILabel!
-    
     @IBOutlet weak private var tableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        showCurrentArticle()
-   
+
     }
     
     //MARK: ArticleViewable protocol
+    
+    func show(article: Article?) {
+        viewModel.article = article
+    }
     
     func gotNewArticle() {
         

@@ -95,6 +95,7 @@ class ArticleContainerViewController: UIViewController {
         
         viewController.didMove(toParentViewController: self)
         currentVC = viewController
+        showNewArticle()
     }
     
     private func cycle(from oldVC: UIViewController, to newVC: UIViewController) {
@@ -119,6 +120,7 @@ class ArticleContainerViewController: UIViewController {
             newVC.didMove(toParentViewController: self)
             
             self.currentVC = newVC
+            self.showNewArticle()
         }
     }
     
@@ -127,7 +129,7 @@ class ArticleContainerViewController: UIViewController {
             return
         }
         
-        articleVC.showCurrentArticle()
+        articleVC.show(article: navigator?.currentArticle)
     }
 
 }

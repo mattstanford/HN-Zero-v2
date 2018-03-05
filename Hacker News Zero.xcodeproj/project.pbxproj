@@ -28,6 +28,9 @@
 		C98AB984204508F700FB8ECD /* ArticleNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB983204508F700FB8ECD /* ArticleNavigator.swift */; };
 		C98AB98620465DA400FB8ECD /* ArticleViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB98520465DA400FB8ECD /* ArticleViewable.swift */; };
 		C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */; };
+		C9B06EA7204CEF670048952C /* ComentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EA6204CEF670048952C /* ComentsViewModel.swift */; };
+		C9B06EA9204CF0DA0048952C /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EA8204CF0DA0048952C /* String+Localized.swift */; };
+		C9B06EAC204CF67F0048952C /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EAB204CF67F0048952C /* WebViewModel.swift */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
 		C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81E204235E8003D6ADF /* WebViewController.swift */; };
@@ -73,6 +76,9 @@
 		C98AB983204508F700FB8ECD /* ArticleNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleNavigator.swift; sourceTree = "<group>"; };
 		C98AB98520465DA400FB8ECD /* ArticleViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewable.swift; sourceTree = "<group>"; };
 		C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+FlexibleHeader.swift"; sourceTree = "<group>"; };
+		C9B06EA6204CEF670048952C /* ComentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentsViewModel.swift; sourceTree = "<group>"; };
+		C9B06EA8204CF0DA0048952C /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		C9B06EAB204CF67F0048952C /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		C9DAE81E204235E8003D6ADF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 		C950C211201ADA3A00917A44 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C9B06EAA204CF66D0048952C /* Article Detail */,
 				C9DAE8232042685C003D6ADF /* Article List */,
 			);
 			path = ViewModel;
@@ -233,8 +240,18 @@
 			isa = PBXGroup;
 			children = (
 				C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */,
+				C9B06EA8204CF0DA0048952C /* String+Localized.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C9B06EAA204CF66D0048952C /* Article Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C9B06EA6204CEF670048952C /* ComentsViewModel.swift */,
+				C9B06EAB204CF67F0048952C /* WebViewModel.swift */,
+			);
+			path = "Article Detail";
 			sourceTree = "<group>";
 		};
 		C9DAE8202042682B003D6ADF /* Article List */ = {
@@ -497,9 +514,11 @@
 				C908EADE20280A00007FC681 /* ApiClient.swift in Sources */,
 				C98AB98620465DA400FB8ECD /* ArticleViewable.swift in Sources */,
 				C98AB984204508F700FB8ECD /* ArticleNavigator.swift in Sources */,
+				C9B06EAC204CF67F0048952C /* WebViewModel.swift in Sources */,
 				C90BBFFE20280F5D0014E498 /* ArticleViewModel.swift in Sources */,
 				C950C215201ADB8300917A44 /* HackerNewsApiClient.swift in Sources */,
 				C90BC002202964740014E498 /* ArticleTableViewCell.swift in Sources */,
+				C9B06EA7204CEF670048952C /* ComentsViewModel.swift in Sources */,
 				C950C1F0201553EE00917A44 /* ArticleViewController.swift in Sources */,
 				C908EADC20280890007FC681 /* HackerNewsRepository.swift in Sources */,
 				C90BBFFC20280F190014E498 /* ArticleListViewModel.swift in Sources */,
@@ -507,6 +526,7 @@
 				C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */,
 				C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */,
 				C908EAE120280AF6007FC681 /* ApiCache.swift in Sources */,
+				C9B06EA9204CF0DA0048952C /* String+Localized.swift in Sources */,
 				C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */,
 				C90BC004202D563A0014E498 /* MainNavigationSplitViewDelegate.swift in Sources */,
 			);
