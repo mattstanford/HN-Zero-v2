@@ -15,6 +15,12 @@ class WebViewController: UIViewController, ArticleViewable {
     
     var navigator: ArticleNavigator?
     var viewModel = WebViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        webView.navigationDelegate = self
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -25,21 +31,23 @@ class WebViewController: UIViewController, ArticleViewable {
     func showNewArticleIfNecessary() {
         
         if(viewModel.needsReset) {
-            viewModel.needsReset = false
-            
             let blankUrl = URL(string:"about:blank")
             let blankRequest = URLRequest(url:blankUrl!)
             webView.load(blankRequest)
-            
-            guard let urlString = viewModel.article?.url,
-                let url = URL(string: urlString) else {
-                    return
-            }
-            
-            print("showing url: " + url.absoluteString)
-            let urlRequest = URLRequest(url: url)
-            webView.load(urlRequest)
+            //Once this is finished loading, will call showCurrentArticle()
+
         }
+    }
+    
+    func showCurrentArticle() {
+        guard let urlString = viewModel.article?.url,
+            let url = URL(string: urlString) else {
+                return
+        }
+        
+        print("showing url: " + url.absoluteString)
+        let urlRequest = URLRequest(url: url)
+        webView.load(urlRequest)
     }
     
     //MARK: ArticleViewable protocol
@@ -50,6 +58,14 @@ class WebViewController: UIViewController, ArticleViewable {
         showNewArticleIfNecessary()
     }
     
+}
 
-   
+extension WebViewController: WKNavigationDelegate {
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+        if viewModel.needsReset {
+            viewModel.needsReset = false
+            showCurrentArticle()
+        }
+    }
 }
