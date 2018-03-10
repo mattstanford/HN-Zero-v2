@@ -43,6 +43,48 @@ class HackerNewsApiClient : ApiClient
                 return article
             })
     }
+    
+    func getAllComments(for article: Article) -> Observable<[Comment]>
+    {
+        return Observable.from(article.topLevelComments)
+            .flatMap { id in
+                return self.doGetComment(for: id)
+            }
+            .toArray()
+    }
+    
+    func doGetComment(for commentId: Int) -> Observable<Comment> {
+        
+        let endpoint = self.getItemEndpoint(itemId: commentId)
+        
+        let observable: Observable<Comment> = RxAlamofire.requestData(.get, endpoint)
+            .map { (response, jsonData) -> Comment in
+
+                guard let comment = Comment.decodeComment(from: jsonData) else {
+                    throw NetworkError.jsonParsingError
+                }
+
+                return comment
+            }
+            .flatMap { comment in
+
+                return Observable.from(comment.childCommentIds)
+                    .flatMap { id in
+                        return self.doGetComment(for: id)
+                    }
+                    .toArray()
+                    .map { childComments -> Comment in
+
+                        var myComment = comment
+                        myComment.childComments = childComments
+
+                        return myComment
+                    }
+        }
+        
+        
+        return observable
+    }
 }
 
 //MARK: Private helper functions

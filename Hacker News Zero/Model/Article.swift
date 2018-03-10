@@ -19,6 +19,7 @@ struct Article : Codable
     let articleType : String
     let articlePostText : String?
     let numComments: Int?
+    let topLevelComments: [Int]
     
 
     enum CodingKeys : String, CodingKey {
@@ -31,6 +32,7 @@ struct Article : Codable
         case articleType = "type"
         case articlePostText = "text"
         case numComments = "descendants"
+        case topLevelComments = "kids"
     }
     
     static func decodeArticleFrom(jsonData: Data) -> Article?
