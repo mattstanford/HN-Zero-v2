@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import RxSwift
 
 class CommentsViewController: UIViewController, ArticleViewable {
 
-    var navigator: ArticleNavigator?    
-    var viewModel = CommentsViewModel()
+    var navigator: ArticleNavigator?
+    let disposeBag = DisposeBag()
+    
+    lazy var viewModel: CommentsViewModel = {
+        let repository = HackerNewsRepository(client: HackerNewsApiClient(), cache: ApiCache())
+        return CommentsViewModel(with: repository)
+    }()
     
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var infoLabel: UILabel!
@@ -26,6 +32,8 @@ class CommentsViewController: UIViewController, ArticleViewable {
     
     func show(article: Article?) {
         viewModel.article = article
+        
+        loadCommentData()
     }
     
     func gotNewArticle() {
@@ -34,6 +42,16 @@ class CommentsViewController: UIViewController, ArticleViewable {
         infoLabel.text = "Info stuff"
         
         tableView.layoutTableHeaderView()
+        loadCommentData()
+    }
+    
+    func loadCommentData() {
+        viewModel.updateCommentData()
+            .subscribe({ (event) in
+                
+                print("finished getting comment data: " + String(describing: event))
+            })
+            .disposed(by: disposeBag)
     }
 }
 

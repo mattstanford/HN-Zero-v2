@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,9 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
+        setupNetworkLogging()
         setupNavigator()
         
         return false
+    }
+    
+    func setupNetworkLogging() {
+        NetworkActivityLogger.shared.level = .debug
+        NetworkActivityLogger.shared.startLogging()
     }
     
     private func setupNavigator() {

@@ -8,6 +8,7 @@ target 'Hacker News Zero' do
   # Pods for Hacker News Zero
   pod 'Alamofire', '~> 4.5'
   pod 'RxAlamofire'
+  pod 'AlamofireNetworkActivityLogger', '~> 2.2.0'
 
   target 'Hacker News ZeroTests' do
     inherit! :search_paths

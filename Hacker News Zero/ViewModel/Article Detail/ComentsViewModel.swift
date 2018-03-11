@@ -7,12 +7,19 @@
 //
 
 import Foundation
+import RxSwift
 
 class CommentsViewModel {
     
+    let repository: HackerNewsRepository
     var article: Article?
+    var viewModels = [CommentItemViewModel]()
     
     private let infoSeparator: String = "•"
+    
+    init(with repository: HackerNewsRepository) {
+        self.repository = repository
+    }
     
     func getInfoString() -> String {
         //num commments * user * domain * time since
@@ -32,6 +39,27 @@ class CommentsViewModel {
 
         
         return infoString
+    }
+    
+    func updateCommentData() -> Completable {
+        
+        guard let currentArticle = article else {
+            return Completable.empty()
+        }
+        
+        return repository.getComments(for: currentArticle)
+            .flatMap { comments in
+                return Observable.from(comments)
+            }
+            .map { comment in
+                return CommentItemViewModel(with: comment)
+            }
+            .toArray()
+            .map { commentViewModels -> [CommentItemViewModel] in
+                self.viewModels = commentViewModels
+                return commentViewModels
+            }
+            .ignoreElements()
     }
     
 }

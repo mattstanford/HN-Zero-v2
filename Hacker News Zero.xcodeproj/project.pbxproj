@@ -33,6 +33,7 @@
 		C9B06EAC204CF67F0048952C /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EAB204CF67F0048952C /* WebViewModel.swift */; };
 		C9B06EAE205390D50048952C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EAD205390D50048952C /* Comment.swift */; };
 		C9B06EB120539C400048952C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EB020539C400048952C /* NetworkError.swift */; };
+		C9B06EB320546BDD0048952C /* CommentItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EB220546BDD0048952C /* CommentItemViewModel.swift */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
 		C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81E204235E8003D6ADF /* WebViewController.swift */; };
@@ -83,6 +84,7 @@
 		C9B06EAB204CF67F0048952C /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		C9B06EAD205390D50048952C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C9B06EB020539C400048952C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		C9B06EB220546BDD0048952C /* CommentItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemViewModel.swift; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		C9DAE81E204235E8003D6ADF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				C9B06EA6204CEF670048952C /* ComentsViewModel.swift */,
 				C9B06EAB204CF67F0048952C /* WebViewModel.swift */,
+				C9B06EB220546BDD0048952C /* CommentItemViewModel.swift */,
 			);
 			path = "Article Detail";
 			sourceTree = "<group>";
@@ -482,12 +485,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Hacker News Zero/Pods-Hacker News Zero-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
@@ -527,6 +532,7 @@
 				C950C217201AE50E00917A44 /* Article.swift in Sources */,
 				C90BC00A203299E60014E498 /* StoryType.swift in Sources */,
 				C908EADE20280A00007FC681 /* ApiClient.swift in Sources */,
+				C9B06EB320546BDD0048952C /* CommentItemViewModel.swift in Sources */,
 				C98AB98620465DA400FB8ECD /* ArticleViewable.swift in Sources */,
 				C98AB984204508F700FB8ECD /* ArticleNavigator.swift in Sources */,
 				C9B06EAC204CF67F0048952C /* WebViewModel.swift in Sources */,

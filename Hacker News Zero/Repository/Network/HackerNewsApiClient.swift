@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 import RxAlamofire
 import RxSwift
 
@@ -17,6 +18,8 @@ let itemEndpoint = "item/"
 
 class HackerNewsApiClient : ApiClient
 {
+    var session = SessionManager()
+    
     func getArticleIds() -> Observable<[Int]>
     {
         let endpoint = baseUrl + topStoriesEndpoint + jsonSuffix
@@ -47,7 +50,7 @@ class HackerNewsApiClient : ApiClient
     func getAllComments(for article: Article) -> Observable<[Comment]>
     {
         return Observable.from(article.topLevelComments)
-            .flatMap { id in
+            .concatMap { id in
                 return self.doGetComment(for: id)
             }
             .toArray()
@@ -57,7 +60,7 @@ class HackerNewsApiClient : ApiClient
         
         let endpoint = self.getItemEndpoint(itemId: commentId)
         
-        let observable: Observable<Comment> = RxAlamofire.requestData(.get, endpoint)
+        let observable: Observable<Comment> = session.rx.responseData(.get, endpoint)
             .map { (response, jsonData) -> Comment in
 
                 guard let comment = Comment.decodeComment(from: jsonData) else {
@@ -66,10 +69,14 @@ class HackerNewsApiClient : ApiClient
 
                 return comment
             }
-            .flatMap { comment in
+            .flatMap { comment -> Observable<Comment> in
+                
+                guard let childCommentIds = comment.childCommentIds else {
+                    return Observable.just(comment)
+                }
 
-                return Observable.from(comment.childCommentIds)
-                    .flatMap { id in
+                return Observable.from(childCommentIds)
+                    .concatMap { id in
                         return self.doGetComment(for: id)
                     }
                     .toArray()
@@ -79,7 +86,7 @@ class HackerNewsApiClient : ApiClient
                         myComment.childComments = childComments
 
                         return myComment
-                    }
+                }
         }
         
         

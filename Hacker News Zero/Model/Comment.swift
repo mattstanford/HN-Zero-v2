@@ -14,8 +14,9 @@ struct Comment: Codable {
     let parentId: Int
     let author: String
     let text: String
-    let childCommentIds: [Int]
-    var childComments: [Comment]
+    let childCommentIds: [Int]?
+    let isDead: Bool?
+    var childComments: [Comment]?
     //let time: Date
     
     enum CodingKeys : String, CodingKey {
@@ -25,6 +26,7 @@ struct Comment: Codable {
         case text
         case childCommentIds = "kids"
         case childComments
+        case isDead = "dead"
     }
     
     static func decodeComment(from jsonData: Data) -> Comment?
