@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Article : Codable
-{
+struct Article : Codable, CommentContainable
+{    
     let id : Int
     let title : String
     let url : String?
@@ -19,7 +19,9 @@ struct Article : Codable
     let articleType : String
     let articlePostText : String?
     let numComments: Int?
-    let topLevelComments: [Int]
+    let childCommentIds: [Int]?
+    
+    var childComments: [Comment]?
     
 
     enum CodingKeys : String, CodingKey {
@@ -32,7 +34,9 @@ struct Article : Codable
         case articleType = "type"
         case articlePostText = "text"
         case numComments = "descendants"
-        case topLevelComments = "kids"
+        case childCommentIds = "kids"
+        
+        case childComments
     }
     
     static func decodeArticleFrom(jsonData: Data) -> Article?

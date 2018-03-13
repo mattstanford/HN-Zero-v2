@@ -47,50 +47,44 @@ class HackerNewsApiClient : ApiClient
             })
     }
     
-    func getAllComments(for article: Article) -> Observable<[Comment]>
+    func getComments(from container: CommentContainable) -> Observable<[Comment]>
     {
-        return Observable.from(article.topLevelComments)
-            .concatMap { id in
-                return self.doGetComment(for: id)
+        guard let commentIds = container.childCommentIds else {
+            return Observable.just([Comment]())
+        }
+        
+        return Observable.from(commentIds)
+            .flatMap { id -> Observable<(HTTPURLResponse, Data)> in
+
+                let endpoint = self.getItemEndpoint(itemId: id)
+                return self.session.rx.responseData(.get, endpoint)
             }
-            .toArray()
-    }
-    
-    func doGetComment(for commentId: Int) -> Observable<Comment> {
-        
-        let endpoint = self.getItemEndpoint(itemId: commentId)
-        
-        let observable: Observable<Comment> = session.rx.responseData(.get, endpoint)
             .map { (response, jsonData) -> Comment in
-
+                
                 guard let comment = Comment.decodeComment(from: jsonData) else {
-                    throw NetworkError.jsonParsingError
+                    print("json parsing error, creating empty comment!")
+                    return Comment.createEmptyComment()
                 }
-
+                
                 return comment
             }
             .flatMap { comment -> Observable<Comment> in
                 
-                guard let childCommentIds = comment.childCommentIds else {
-                    return Observable.just(comment)
-                }
-
-                return Observable.from(childCommentIds)
-                    .concatMap { id in
-                        return self.doGetComment(for: id)
-                    }
-                    .toArray()
-                    .map { childComments -> Comment in
-
+                return self.getComments(from: comment)
+                    .map { childComments in
+                        
                         var myComment = comment
                         myComment.childComments = childComments
-
                         return myComment
-                }
-        }
+                    }
+            }
+            .toArray()
+            .map { comments in
+                
+                return Comment.setCommentsInProperOrder(idList: commentIds, commentList: comments)
+            }
+
         
-        
-        return observable
     }
 }
 

@@ -34,6 +34,7 @@
 		C9B06EAE205390D50048952C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EAD205390D50048952C /* Comment.swift */; };
 		C9B06EB120539C400048952C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EB020539C400048952C /* NetworkError.swift */; };
 		C9B06EB320546BDD0048952C /* CommentItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EB220546BDD0048952C /* CommentItemViewModel.swift */; };
+		C9B06EB520577DFB0048952C /* CommentContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EB420577DFB0048952C /* CommentContainable.swift */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
 		C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81E204235E8003D6ADF /* WebViewController.swift */; };
@@ -85,6 +86,7 @@
 		C9B06EAD205390D50048952C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C9B06EB020539C400048952C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		C9B06EB220546BDD0048952C /* CommentItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemViewModel.swift; sourceTree = "<group>"; };
+		C9B06EB420577DFB0048952C /* CommentContainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentContainable.swift; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		C9DAE81E204235E8003D6ADF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				C950C216201AE50E00917A44 /* Article.swift */,
 				C9B06EAD205390D50048952C /* Comment.swift */,
+				C9B06EB420577DFB0048952C /* CommentContainable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				C90BBFFC20280F190014E498 /* ArticleListViewModel.swift in Sources */,
 				C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */,
 				C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */,
+				C9B06EB520577DFB0048952C /* CommentContainable.swift in Sources */,
 				C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */,
 				C908EAE120280AF6007FC681 /* ApiCache.swift in Sources */,
 				C9B06EA9204CF0DA0048952C /* String+Localized.swift in Sources */,

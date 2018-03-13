@@ -44,7 +44,7 @@ class HackerNewsRepository {
     }
     
     func getComments(for article:Article) -> Observable<[Comment]> {
-        return apiClient.getAllComments(for: article)
+        return apiClient.getComments(from: article)
     }
     
     
