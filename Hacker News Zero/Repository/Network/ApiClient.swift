@@ -12,5 +12,5 @@ import RxSwift
 protocol ApiClient {
     func getArticleIds() -> Observable<[Int]>
     func getArticleData(articleId : Int) -> Observable<Article?>
-    func getComments(from container: CommentContainable) -> Observable<[Comment]>
+    func getCommentData(itemId: Int) -> Observable<Comment> 
 }

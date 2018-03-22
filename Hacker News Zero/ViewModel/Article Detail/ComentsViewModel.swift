@@ -47,19 +47,29 @@ class CommentsViewModel {
             return Completable.empty()
         }
         
-        return repository.getComments(for: currentArticle)
-            .flatMap { comments in
-                return Observable.from(comments)
-            }
-            .map { comment in
-                return CommentItemViewModel(with: comment)
-            }
-            .toArray()
-            .map { commentViewModels -> [CommentItemViewModel] in
-                self.viewModels = commentViewModels
-                return commentViewModels
+       
+        return repository.getComments(from: currentArticle)
+            .map { comments in
+                self.viewModels = self.flattenToViewModels(comments: comments, level: 0)
             }
             .ignoreElements()
+        
     }
     
+    func flattenToViewModels(comments: [Comment], level: Int) -> [CommentItemViewModel] {
+        var list = [CommentItemViewModel]()
+        for comment in comments {
+            
+            let viewModel = CommentItemViewModel(with: comment, level: level)
+            list.append(viewModel)
+            
+            if let childComments = comment.childComments {
+                list.append(contentsOf: flattenToViewModels(comments: childComments, level: level + 1))
+            }
+        }
+        
+        return list
+    }
+    
+
 }

@@ -11,8 +11,10 @@ import Foundation
 class CommentItemViewModel {
     
     let comment: Comment
+    let level: Int
     
-    init(with comment: Comment) {
+    init(with comment: Comment, level: Int) {
         self.comment = comment
+        self.level = level
     }
 }

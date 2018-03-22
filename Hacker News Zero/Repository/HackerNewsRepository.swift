@@ -43,8 +43,32 @@ class HackerNewsRepository {
             .asSingle()
     }
     
-    func getComments(for article:Article) -> Observable<[Comment]> {
-        return apiClient.getComments(from: article)
+    func getComments(from container: CommentContainable) -> Observable<[Comment]> {
+        
+        guard let commentIds = container.childCommentIds else {
+            return Observable.just([Comment]())
+        }
+        
+        return Observable.from(commentIds)
+            .flatMap { id in
+                return self.apiClient.getCommentData(itemId: id)
+            }
+            .flatMap { comment -> Observable<Comment> in
+                
+                return self.getComments(from: comment)
+                    .map { childComments in
+                        
+                        var myComment = comment
+                        myComment.childComments = childComments
+                        return myComment
+                }
+            }
+            .toArray()
+            .map { comments in
+                
+                return Comment.setCommentsInProperOrder(idList: commentIds, commentList: comments)
+        }
+        
     }
     
     

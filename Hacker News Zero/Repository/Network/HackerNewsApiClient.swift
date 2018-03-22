@@ -47,18 +47,10 @@ class HackerNewsApiClient : ApiClient
             })
     }
     
-    func getComments(from container: CommentContainable) -> Observable<[Comment]>
-    {
-        guard let commentIds = container.childCommentIds else {
-            return Observable.just([Comment]())
-        }
+    func getCommentData(itemId: Int) -> Observable<Comment> {
+        let endpoint = self.getItemEndpoint(itemId: itemId)
         
-        return Observable.from(commentIds)
-            .flatMap { id -> Observable<(HTTPURLResponse, Data)> in
-
-                let endpoint = self.getItemEndpoint(itemId: id)
-                return self.session.rx.responseData(.get, endpoint)
-            }
+        return session.rx.responseData(.get, endpoint)
             .map { (response, jsonData) -> Comment in
                 
                 guard let comment = Comment.decodeComment(from: jsonData) else {
@@ -67,24 +59,7 @@ class HackerNewsApiClient : ApiClient
                 }
                 
                 return comment
-            }
-            .flatMap { comment -> Observable<Comment> in
-                
-                return self.getComments(from: comment)
-                    .map { childComments in
-                        
-                        var myComment = comment
-                        myComment.childComments = childComments
-                        return myComment
-                    }
-            }
-            .toArray()
-            .map { comments in
-                
-                return Comment.setCommentsInProperOrder(idList: commentIds, commentList: comments)
-            }
-
-        
+        }
     }
 }
 

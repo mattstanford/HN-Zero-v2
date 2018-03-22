@@ -46,10 +46,17 @@ class CommentsViewController: UIViewController, ArticleViewable {
     }
     
     func loadCommentData() {
+        
+        let start = Date()
+        
         viewModel.updateCommentData()
             .subscribe({ (event) in
+                let end = Date()
                 
-                print("finished getting comment data: " + String(describing: event))
+                let duration = end.timeIntervalSince(start)
+                print("finished getting comment data: " + String(describing: duration) + " " + String(describing: event))
+                print("num view models: " + String(self.viewModel.viewModels.count))
+                self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
     }
@@ -63,12 +70,19 @@ extension CommentsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 5
+        return self.viewModel.viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath)
+        let cellViewModel = self.viewModel.viewModels[indexPath.row]
         
+        if let text = cellViewModel.comment.text {
+            cell.textLabel?.text = text
+        }
+        else {
+            cell.textLabel?.text = "<Deleted>"
+        }
     
         
         return cell
