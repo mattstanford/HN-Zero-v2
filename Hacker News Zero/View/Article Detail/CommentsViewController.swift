@@ -22,6 +22,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
     }()
     
     @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var postTextLabel: UILabel!
     @IBOutlet weak private var infoLabel: UILabel!
     @IBOutlet weak private var tableView: UITableView!
     
@@ -59,8 +60,26 @@ class CommentsViewController: UIViewController, ArticleViewable {
                 print("finished getting comment data: " + String(describing: duration) + " " + String(describing: event))
                 print("num view models: " + String(self.viewModel.viewModels.count))
                 self.tableView.reloadData()
+                self.setupHeader()
             })
             .disposed(by: disposeBag)
+    }
+    
+    //MARK: Header view
+    func setupHeader() {
+        titleLabel.text = viewModel.article?.title
+        infoLabel.text = viewModel.getInfoString()
+        
+        if let postText = viewModel.article?.articlePostText,
+            postText.count > 0 {
+            postTextLabel.isHidden = false
+            postTextLabel.text = viewModel.article?.articlePostText
+        }
+        else {
+            postTextLabel.isHidden = true
+        }
+        
+        tableView.layoutTableHeaderView()
     }
 }
 
