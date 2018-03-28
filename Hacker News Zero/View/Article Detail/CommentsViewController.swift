@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 
+let CommentCellIdentifier = "ComentCellIdentifier"
+
 class CommentsViewController: UIViewController, ArticleViewable {
 
     var navigator: ArticleNavigator?
@@ -74,15 +76,12 @@ extension CommentsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentCellIdentifier, for: indexPath) as? CommentTableViewCell else {
+            return UITableViewCell()
+        }
         let cellViewModel = self.viewModel.viewModels[indexPath.row]
         
-        if let text = cellViewModel.comment.text {
-            cell.textLabel?.text = text
-        }
-        else {
-            cell.textLabel?.text = "<Deleted>"
-        }
+        cell.configure(with: cellViewModel)
     
         
         return cell
