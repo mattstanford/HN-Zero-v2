@@ -18,7 +18,7 @@ class CommentItemViewModel {
         self.level = level
     }
     
-    func getAuthorText() -> String {
+    func getCommentHeaderText() -> String {
         return self.comment.author ?? "<unknown>"
     }
     

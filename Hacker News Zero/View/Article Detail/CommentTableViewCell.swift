@@ -10,11 +10,11 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
 
-    @IBOutlet weak private var authorLabel: UILabel!
+    @IBOutlet weak private var headerLabel: UILabel!
     @IBOutlet weak private var contentLabel: UILabel!
     
     func configure(with viewModel: CommentItemViewModel) {
-        self.authorLabel.text = viewModel.getAuthorText()
+        self.headerLabel.text = viewModel.getCommentHeaderText()
         self.contentLabel.text = viewModel.getContent()
     }
 

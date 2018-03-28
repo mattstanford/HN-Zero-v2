@@ -268,8 +268,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="authorLabel" destination="mPB-ln-mfk" id="2E4-Ie-Y8r"/>
                                             <outlet property="contentLabel" destination="AIp-V3-IA6" id="yD6-Q2-ghR"/>
+                                            <outlet property="headerLabel" destination="mPB-ln-mfk" id="2E4-Ie-Y8r"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
