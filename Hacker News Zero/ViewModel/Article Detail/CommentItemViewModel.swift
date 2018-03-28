@@ -10,8 +10,10 @@ import Foundation
 
 class CommentItemViewModel {
     
+    let maxLevel = 6
+    
     let comment: Comment
-    let level: Int
+    private let level: Int
     
     init(with comment: Comment, level: Int) {
         self.comment = comment
@@ -19,10 +21,24 @@ class CommentItemViewModel {
     }
     
     func getCommentHeaderText() -> String {
-        return self.comment.author ?? "<unknown>"
+        let numIndentDots = max(self.level - maxLevel, 0)
+        
+        var headerText = ""
+        
+        for _ in 0..<numIndentDots {
+            headerText +=  "• "
+        }
+        
+        headerText += self.comment.author ?? "<unknown>"
+        
+        return headerText
     }
     
     func getContent() -> String {
         return self.comment.text ?? ""
+    }
+    
+    func getDisplayedLevel() -> Int {
+        return min(self.level, maxLevel)
     }
 }

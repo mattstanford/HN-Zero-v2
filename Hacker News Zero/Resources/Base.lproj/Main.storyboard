@@ -278,7 +278,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentLabel" destination="AIp-V3-IA6" id="yD6-Q2-ghR"/>
+                                            <outlet property="contentLeadingMarigin" destination="Dv5-r7-lDj" id="YxW-bJ-vOs"/>
                                             <outlet property="headerLabel" destination="mPB-ln-mfk" id="2E4-Ie-Y8r"/>
+                                            <outlet property="headerLeadingMargin" destination="iVV-qG-Oan" id="NtL-oF-a9b"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
