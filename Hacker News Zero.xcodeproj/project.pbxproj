@@ -36,6 +36,8 @@
 		C9B06EB320546BDD0048952C /* CommentItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EB220546BDD0048952C /* CommentItemViewModel.swift */; };
 		C9B06EB520577DFB0048952C /* CommentContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EB420577DFB0048952C /* CommentContainable.swift */; };
 		C9B06EB7206B2D350048952C /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EB6206B2D350048952C /* CommentTableViewCell.swift */; };
+		C9B06EBA206C91CF0048952C /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EB9206C91CF0048952C /* OptionsViewController.swift */; };
+		C9B06EBC206C93780048952C /* ArticleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EBB206C93780048952C /* ArticleType.swift */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
 		C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81E204235E8003D6ADF /* WebViewController.swift */; };
@@ -89,6 +91,8 @@
 		C9B06EB220546BDD0048952C /* CommentItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemViewModel.swift; sourceTree = "<group>"; };
 		C9B06EB420577DFB0048952C /* CommentContainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentContainable.swift; sourceTree = "<group>"; };
 		C9B06EB6206B2D350048952C /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		C9B06EB9206C91CF0048952C /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		C9B06EBB206C93780048952C /* ArticleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleType.swift; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		C9DAE81E204235E8003D6ADF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -202,9 +206,10 @@
 		C950C20F201AD9FA00917A44 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C9DAE8222042683F003D6ADF /* Navigation */,
 				C9DAE82120426835003D6ADF /* Article Detail */,
 				C9DAE8202042682B003D6ADF /* Article List */,
+				C9DAE8222042683F003D6ADF /* Navigation */,
+				C9B06EB8206C91B90048952C /* Options */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 				C950C216201AE50E00917A44 /* Article.swift */,
 				C9B06EAD205390D50048952C /* Comment.swift */,
 				C9B06EB420577DFB0048952C /* CommentContainable.swift */,
+				C9B06EBB206C93780048952C /* ArticleType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,6 +280,14 @@
 				C9B06EB020539C400048952C /* NetworkError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		C9B06EB8206C91B90048952C /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				C9B06EB9206C91CF0048952C /* OptionsViewController.swift */,
+			);
+			path = Options;
 			sourceTree = "<group>";
 		};
 		C9DAE8202042682B003D6ADF /* Article List */ = {
@@ -542,6 +556,7 @@
 				C98AB98620465DA400FB8ECD /* ArticleViewable.swift in Sources */,
 				C98AB984204508F700FB8ECD /* ArticleNavigator.swift in Sources */,
 				C9B06EAC204CF67F0048952C /* WebViewModel.swift in Sources */,
+				C9B06EBC206C93780048952C /* ArticleType.swift in Sources */,
 				C9B06EB120539C400048952C /* NetworkError.swift in Sources */,
 				C90BBFFE20280F5D0014E498 /* ArticleViewModel.swift in Sources */,
 				C950C215201ADB8300917A44 /* HackerNewsApiClient.swift in Sources */,
@@ -549,6 +564,7 @@
 				C9B06EA7204CEF670048952C /* ComentsViewModel.swift in Sources */,
 				C950C1F0201553EE00917A44 /* ArticleViewController.swift in Sources */,
 				C908EADC20280890007FC681 /* HackerNewsRepository.swift in Sources */,
+				C9B06EBA206C91CF0048952C /* OptionsViewController.swift in Sources */,
 				C90BBFFC20280F190014E498 /* ArticleListViewModel.swift in Sources */,
 				C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */,
 				C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */,
