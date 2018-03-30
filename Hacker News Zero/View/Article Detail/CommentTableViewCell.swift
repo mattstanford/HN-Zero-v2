@@ -19,7 +19,7 @@ class CommentTableViewCell: UITableViewCell {
     
     func configure(with viewModel: CommentItemViewModel) {
         self.headerLabel.text = viewModel.getCommentHeaderText()
-        self.contentLabel.text = viewModel.getContent()
+        self.contentLabel.attributedText = viewModel.getContent().htmlText(fontName: "Helvetica", fontSize: 13)
         
         let indentAmount = CGFloat(viewModel.getDisplayedLevel() * commentPerLevel)
         headerLeadingMargin.constant = indentAmount
