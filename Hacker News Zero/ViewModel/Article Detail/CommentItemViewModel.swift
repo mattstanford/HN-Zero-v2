@@ -35,7 +35,8 @@ class CommentItemViewModel {
     }
     
     func getContent() -> String {
-        return self.comment.text ?? ""
+        let content = self.comment.text ?? ""
+        return "ID: " + String(describing: self.comment.id) + content
     }
     
     func getDisplayedLevel() -> Int {

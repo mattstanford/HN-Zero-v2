@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Inspired by: https://stackoverflow.com/a/42333832/3772113
 @IBDesignable class FixedTextView: UITextView {
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -16,5 +17,13 @@ import UIKit
     func setup() {
         textContainerInset = UIEdgeInsets.zero
         textContainer.lineFragmentPadding = 0
+        
+        var b = bounds
+        let h = sizeThatFits(CGSize(
+            width: bounds.size.width,
+            height: CGFloat.greatestFiniteMagnitude)
+            ).height
+        b.size.height = h
+        bounds = b
     }
 }
