@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import SafariServices
 
 let CommentCellIdentifier = "ComentCellIdentifier"
 
@@ -80,6 +81,16 @@ class CommentsViewController: UIViewController, ArticleViewable {
         }
         
         tableView.layoutTableHeaderView()
+    }
+}
+
+extension CommentsViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        let svc = SFSafariViewController(url: url)
+        self.present(svc, animated: true, completion: nil)
+        
+        return false
     }
 }
 

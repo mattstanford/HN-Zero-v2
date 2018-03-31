@@ -13,13 +13,13 @@ let commentPerLevel = 20
 class CommentTableViewCell: UITableViewCell {
 
     @IBOutlet weak private var headerLabel: UILabel!
-    @IBOutlet weak private var contentLabel: UILabel!
+    @IBOutlet weak private var contentTextView: UITextView!
     @IBOutlet weak private var headerLeadingMargin: NSLayoutConstraint!
     @IBOutlet weak private var contentLeadingMarigin: NSLayoutConstraint!
     
     func configure(with viewModel: CommentItemViewModel) {
         self.headerLabel.text = viewModel.getCommentHeaderText()
-        self.contentLabel.attributedText = viewModel.getContent().htmlText(fontName: "Helvetica", fontSize: 13)
+        self.contentTextView.attributedText = viewModel.getContent().htmlText(fontName: "Helvetica", fontSize: 13)
         
         let indentAmount = CGFloat(viewModel.getDisplayedLevel() * commentPerLevel)
         headerLeadingMargin.constant = indentAmount
