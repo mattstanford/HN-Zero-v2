@@ -21,6 +21,10 @@ class CommentsViewModel {
         self.repository = repository
     }
     
+    func clearData() {
+        self.viewModels = [CommentItemViewModel]()
+    }
+    
     func getInfoString() -> String {
         //num commments * user * domain * time since
         var infoString = ""

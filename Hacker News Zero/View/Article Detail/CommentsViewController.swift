@@ -35,33 +35,30 @@ class CommentsViewController: UIViewController, ArticleViewable {
     //MARK: ArticleViewable protocol
     
     func show(article: Article?) {
-        viewModel.article = article
         
-        loadCommentData()
+        if article?.id != viewModel.article?.id {
+           gotNewArticle(article: article)
+        }
+        
     }
     
-    func gotNewArticle() {
+    func gotNewArticle(article: Article?)
+    {
+        viewModel.article = article
+        setupHeader()
         
-        titleLabel.text = navigator?.currentArticle?.title
-        infoLabel.text = "Info stuff"
+        viewModel.clearData()
+        tableView.reloadData()
         
-        tableView.layoutTableHeaderView()
         loadCommentData()
     }
     
     func loadCommentData() {
         
-        let start = Date()
-        
         viewModel.updateCommentData()
             .subscribe({ (event) in
-                let end = Date()
-                
-                let duration = end.timeIntervalSince(start)
-                print("finished getting comment data: " + String(describing: duration) + " " + String(describing: event))
-                print("num view models: " + String(self.viewModel.viewModels.count))
+            
                 self.tableView.reloadData()
-                self.setupHeader()
             })
             .disposed(by: disposeBag)
     }
