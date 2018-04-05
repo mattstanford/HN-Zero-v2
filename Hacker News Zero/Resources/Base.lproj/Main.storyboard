@@ -305,40 +305,28 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-Gn-Yku" customClass="FixedTextView" customModule="Hacker_News_Zero" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="28" width="344" height="27"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7D-MU-OyB" customClass="AttributedLabel" customModule="Atributika">
+                                                    <rect key="frame" x="15" y="28" width="345" height="24"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="qEI-bp-Lle"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="tP2-Ib-GGq"/>
                                                     </constraints>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Comment text">
-                                                            <attributes>
-                                                                <font key="NSFont" metaFont="system"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="mdL-hK-L4j" id="Ywf-rs-9SN"/>
-                                                    </connections>
-                                                </textView>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="X7D-MU-OyB" firstAttribute="trailing" secondItem="CKY-6u-o2f" secondAttribute="trailingMargin" id="2sc-ck-wrh"/>
                                                 <constraint firstItem="mPB-ln-mfk" firstAttribute="top" secondItem="CKY-6u-o2f" secondAttribute="topMargin" id="8tE-pc-s1i"/>
-                                                <constraint firstAttribute="trailing" secondItem="YhJ-Gn-Yku" secondAttribute="trailing" constant="16" id="Lwz-m1-uIb"/>
+                                                <constraint firstItem="X7D-MU-OyB" firstAttribute="bottom" secondItem="CKY-6u-o2f" secondAttribute="bottomMargin" id="NWr-We-Pl2"/>
                                                 <constraint firstItem="mPB-ln-mfk" firstAttribute="leading" secondItem="CKY-6u-o2f" secondAttribute="leadingMargin" id="iVV-qG-Oan"/>
-                                                <constraint firstAttribute="bottom" secondItem="YhJ-Gn-Yku" secondAttribute="bottom" constant="8" id="jGq-hu-MN2"/>
-                                                <constraint firstItem="YhJ-Gn-Yku" firstAttribute="leading" secondItem="CKY-6u-o2f" secondAttribute="leadingMargin" id="jiB-sg-nkw"/>
-                                                <constraint firstItem="YhJ-Gn-Yku" firstAttribute="top" secondItem="mPB-ln-mfk" secondAttribute="bottom" id="qTh-MX-NND"/>
                                                 <constraint firstItem="mPB-ln-mfk" firstAttribute="trailing" secondItem="CKY-6u-o2f" secondAttribute="trailingMargin" id="tjR-4W-hZa"/>
+                                                <constraint firstItem="X7D-MU-OyB" firstAttribute="leading" secondItem="CKY-6u-o2f" secondAttribute="leadingMargin" id="vg9-W2-sa6"/>
+                                                <constraint firstItem="X7D-MU-OyB" firstAttribute="top" secondItem="mPB-ln-mfk" secondAttribute="bottom" id="wYM-zP-LcA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="contentLeadingMarigin" destination="jiB-sg-nkw" id="Xvo-R6-7ri"/>
-                                            <outlet property="contentTextView" destination="YhJ-Gn-Yku" id="Xxn-oV-7Mg"/>
+                                            <outlet property="contentLabel" destination="X7D-MU-OyB" id="tws-Sf-48t"/>
+                                            <outlet property="contentLeadingMarigin" destination="vg9-W2-sa6" id="FTF-EF-xkK"/>
                                             <outlet property="headerLabel" destination="mPB-ln-mfk" id="2E4-Ie-Y8r"/>
                                             <outlet property="headerLeadingMargin" destination="iVV-qG-Oan" id="NtL-oF-a9b"/>
                                         </connections>

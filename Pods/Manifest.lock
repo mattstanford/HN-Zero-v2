@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.6.0)
   - AlamofireNetworkActivityLogger (2.2.0):
     - Alamofire (~> 4.0)
+  - Atributika (4.3.1)
   - RxAlamofire (4.0.0):
     - RxAlamofire/Core (= 4.0.0)
   - RxAlamofire/Core (4.0.0):
@@ -12,14 +13,16 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AlamofireNetworkActivityLogger (~> 2.2.0)
+  - Atributika
   - RxAlamofire
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireNetworkActivityLogger: a7ae1842988b3f6248a49213268375bd27b515f0
+  Atributika: 87c2d3c0a9ccbab343b43d65ccf1f164f7a9570c
   RxAlamofire: 6ea579ac53bf14cb4bc7049a3866e5a769989b1d
   RxSwift: 4219941c1244c88002901bd87a69d3aea9ae71f0
 
-PODFILE CHECKSUM: e43af595abb6ccc2f081822f3ed877ca75a1e970
+PODFILE CHECKSUM: 7af90c1e13c7f6983681a19c3e293f5199094c57
 
 COCOAPODS: 1.4.0

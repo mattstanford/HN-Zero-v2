@@ -82,15 +82,10 @@ class CommentsViewController: UIViewController, ArticleViewable {
         
         tableView.layoutTableHeaderView()
     }
-}
-
-extension CommentsViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        
+    
+    func linkClicked(url: URL) {
         let svc = SFSafariViewController(url: url)
         self.present(svc, animated: true, completion: nil)
-        
-        return false
     }
 }
 
@@ -111,7 +106,7 @@ extension CommentsViewController: UITableViewDataSource {
         }
         let cellViewModel = self.viewModel.viewModels[indexPath.row]
         
-        cell.configure(with: cellViewModel)
+        cell.configure(with: cellViewModel, linkHandler: self.linkClicked)
     
         
         return cell
