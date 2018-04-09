@@ -10,15 +10,17 @@ import UIKit
 
 class ArticleNavigator {
     
-    var splitView: UISplitViewController!
+    var mainViewController: MainViewController
     var articleList: ArticleViewController!
     var articleDetail: ArticleContainerViewController!
     
     var currentArticle: Article?
     
-    init(with splitView: UISplitViewController, articleList: ArticleViewController, articleDetail: ArticleContainerViewController) {
+    init(with mainView: MainViewController,
+         articleList: ArticleViewController,
+         articleDetail: ArticleContainerViewController) {
         
-        self.splitView = splitView
+        self.mainViewController = mainView
         self.articleList = articleList
         self.articleDetail = articleDetail
     }
@@ -34,7 +36,5 @@ class ArticleNavigator {
         
         articleList.showDetailViewController(navController, sender: nil)
         articleDetail.showNewArticle()
-        
     }
-    
 }

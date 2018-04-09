@@ -17,9 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
-        setupNetworkLogging()
-        setupNavigator()
-        
+        setupNetworkLogging()        
         return false
     }
     
@@ -27,25 +25,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkActivityLogger.shared.level = .debug
         NetworkActivityLogger.shared.startLogging()
     }
-    
-    private func setupNavigator() {
-    
-        guard let splitViewController = window?.rootViewController as? UISplitViewController,
-            let leftNavController = splitViewController.viewControllers.first as? UINavigationController,
-            let masterViewController = leftNavController.topViewController as? ArticleViewController,
-            let rightNavController = splitViewController.viewControllers.last as? UINavigationController,
-            let detailViewController = rightNavController.topViewController as? ArticleContainerViewController
-            else { fatalError() }
-        
-        let navigator = ArticleNavigator(with: splitViewController,
-                                         articleList: masterViewController,
-                                         articleDetail: detailViewController)
-        
-        masterViewController.navigator = navigator
-        detailViewController.navigator = navigator
-    
-    
-    }
-
 }
 

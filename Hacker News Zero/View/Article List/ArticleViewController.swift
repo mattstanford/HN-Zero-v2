@@ -12,12 +12,14 @@ import RxSwift
 
 let ArticleTableViewCellIdentifier = "ArticleTableViewCellIdentifier"
 
-class ArticleViewController: UITableViewController {
+class ArticleViewController: UIViewController {
 
     var navigator: ArticleNavigator?
     
     var viewModel : ArticleListViewModel
     let disposeBag = DisposeBag()
+    
+    @IBOutlet weak private var tableView: UITableView!
 
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +53,10 @@ class ArticleViewController: UITableViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    @IBAction func tappedHamburger() {
+        navigator?.mainViewController.toggleMenu()
+    }
 
 
     // MARK: - Segues
@@ -82,18 +88,18 @@ class ArticleViewController: UITableViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension ArticleViewController {
+extension ArticleViewController: UITableViewDataSource {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return viewModel.articleViewModels.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCellIdentifier, for: indexPath) as! ArticleTableViewCell
         
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
@@ -105,9 +111,9 @@ extension ArticleViewController {
 }
 
 //MARK: - UITableViewDelegate
-extension ArticleViewController {
+extension ArticleViewController: UITableViewDelegate {
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
         navigator?.show(article: articleViewModel.article)
