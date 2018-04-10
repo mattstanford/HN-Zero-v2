@@ -37,13 +37,15 @@ class ArticleViewController: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 60
         
-        getArticleData()
+        refreshData()
         
     }
- 
     
-    func getArticleData()
+    func refreshData()
     {
+        viewModel.clearArticles()
+        tableView.reloadData()
+        
         viewModel.refreshArticles()
             .subscribe({ (event) in
                 
@@ -124,7 +126,9 @@ extension ArticleViewController: UITableViewDelegate {
 //MARK: - OptionsDelegate
 extension ArticleViewController: OptionsDelegate {
     func refreshArticles(type: ArticleType) {
-        print("refresh articles!")
+        
+        viewModel.articleType = type
+        refreshData()
     }
     
     

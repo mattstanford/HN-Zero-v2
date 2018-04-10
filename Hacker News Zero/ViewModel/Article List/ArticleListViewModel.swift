@@ -14,15 +14,20 @@ class ArticleListViewModel
     let pageSize = 25
     var articleViewModels = [ArticleViewModel]()
     let repository : HackerNewsRepository
+    var articleType: ArticleType = .frontpage
     
     init(repository: HackerNewsRepository)
     {
         self.repository = repository
     }
     
+    func clearArticles() {
+        articleViewModels = [ArticleViewModel]()
+    }
+    
     func refreshArticles() -> Completable
     {
-        return repository.refreshArticleList()
+        return repository.refreshArticleList(type: articleType)
             .andThen(getPageOfArticles(pageNum: 0))
     }
     

@@ -14,4 +14,19 @@ enum ArticleType {
     case showhn
     case jobs
     case new
+    
+    var endpointPath: String {
+        switch self {
+        case .frontpage:
+            return topStoriesEndpoint
+        case .askhn:
+            return askHnEndpoint
+        case .showhn:
+            return showHnEndpoint
+        case .jobs:
+            return jobsEndpoint
+        case .new:
+            return newEndpoint
+        }
+    }
 }

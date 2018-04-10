@@ -20,9 +20,9 @@ class HackerNewsRepository {
         self.cache = cache
     }
     
-    func refreshArticleList() -> Completable
+    func refreshArticleList(type: ArticleType) -> Completable
     {
-        return apiClient.getArticleIds()
+        return apiClient.getArticleIds(type: type)
             .flatMap { articleIds in
                 return self.cache.saveArticleIds(articleIds: articleIds)
             }

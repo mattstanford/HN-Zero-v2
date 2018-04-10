@@ -14,15 +14,19 @@ import RxSwift
 let baseUrl = "https://hacker-news.firebaseio.com/v0/"
 let jsonSuffix = ".json"
 let topStoriesEndpoint = "topstories"
+let askHnEndpoint = "askstories"
+let showHnEndpoint = "showstories"
+let jobsEndpoint = "jobstories"
+let newEndpoint = "newstories"
 let itemEndpoint = "item/"
 
 class HackerNewsApiClient : ApiClient
 {
     var session = SessionManager()
     
-    func getArticleIds() -> Observable<[Int]>
+    func getArticleIds(type: ArticleType) -> Observable<[Int]>
     {
-        let endpoint = baseUrl + topStoriesEndpoint + jsonSuffix
+        let endpoint = baseUrl + type.endpointPath + jsonSuffix
         return RxAlamofire.requestJSON(.get, endpoint)
             .map({ (response, json) -> [Int] in
                 

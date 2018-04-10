@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol ApiClient {
-    func getArticleIds() -> Observable<[Int]>
+    func getArticleIds(type: ArticleType) -> Observable<[Int]>
     func getArticleData(articleId : Int) -> Observable<Article?>
     func getCommentData(itemId: Int) -> Observable<Comment> 
 }
