@@ -29,7 +29,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        setupHeader()
     }
     
     //MARK: ArticleViewable protocol
@@ -45,7 +45,6 @@ class CommentsViewController: UIViewController, ArticleViewable {
     func gotNewArticle(article: Article?)
     {
         viewModel.article = article
-        setupHeader()
         
         viewModel.clearData()
         tableView.reloadData()
