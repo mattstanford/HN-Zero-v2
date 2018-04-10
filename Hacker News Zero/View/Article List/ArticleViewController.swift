@@ -14,7 +14,7 @@ let ArticleTableViewCellIdentifier = "ArticleTableViewCellIdentifier"
 
 class ArticleViewController: UIViewController {
 
-    var navigator: ArticleNavigator?
+    var navigator: AppNavigator?
     
     var viewModel : ArticleListViewModel
     let disposeBag = DisposeBag()

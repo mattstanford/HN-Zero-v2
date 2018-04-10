@@ -13,7 +13,7 @@ class WebViewController: UIViewController, ArticleViewable {
    
     @IBOutlet private weak var webView: WKWebView!
     
-    var navigator: ArticleNavigator?
+    var navigator: AppNavigator?
     var viewModel = WebViewModel()
     
     override func viewDidLoad() {

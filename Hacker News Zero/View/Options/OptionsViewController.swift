@@ -11,10 +11,9 @@ import UIKit
 class OptionsViewController: UIViewController {
     
     @IBOutlet weak private var tableView: UITableView!
+    var navigator: AppNavigator?
     
     var articleTypeSelections: [ArticleType] = [.frontpage, .askhn, .showhn, .jobs, .new]
-    
-
 }
 
 extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -56,7 +55,12 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let articleType = articleTypeSelections[indexPath.row]
         
+//        switch articleType {
+//        case .frontpage:
+//
+//        }
         
     }
     

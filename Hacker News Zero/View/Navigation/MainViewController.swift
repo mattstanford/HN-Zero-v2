@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var overlayView: UIView!
     @IBOutlet weak private var screenEdgePan: UIGestureRecognizer!
     
-    var navigator: ArticleNavigator?
+    var navigator: AppNavigator?
     
     private var menuViewController: OptionsViewController? {
         return childViewControllers.last as? OptionsViewController
@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
             let detailViewController = rightNavController.topViewController as? ArticleContainerViewController
             else { fatalError() }
         
-        let navigator = ArticleNavigator(with: self,
+        let navigator = AppNavigator(with: self,
                                          articleList: masterViewController,
                                          articleDetail: detailViewController)
         

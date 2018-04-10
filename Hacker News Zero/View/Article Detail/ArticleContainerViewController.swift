@@ -10,7 +10,7 @@ import UIKit
 
 class ArticleContainerViewController: UIViewController {
     
-    var navigator: ArticleNavigator?
+    var navigator: AppNavigator?
     
     enum SelectedView {
         case comments

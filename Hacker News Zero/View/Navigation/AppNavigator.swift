@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleNavigator {
+class AppNavigator {
     
     var mainViewController: MainViewController
     var articleList: ArticleViewController!

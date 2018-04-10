@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ArticleViewable: class {
-    var navigator: ArticleNavigator? { get set }
+    var navigator: AppNavigator? { get set }
     
     func show(article: Article?)
 }
