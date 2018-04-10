@@ -10,9 +10,9 @@ import UIKit
 
 class AppNavigator {
     
-    var mainViewController: MainViewController
-    var articleList: ArticleViewController!
-    var articleDetail: ArticleContainerViewController!
+    private var mainViewController: MainViewController
+    private var articleList: ArticleViewController!
+    private var articleDetail: ArticleContainerViewController!
     
     var currentArticle: Article?
     
@@ -36,5 +36,9 @@ class AppNavigator {
         
         articleList.showDetailViewController(navController, sender: nil)
         articleDetail.showNewArticle()
+    }
+    
+    func toggleMenu() {
+        mainViewController.toggleMenu()
     }
 }

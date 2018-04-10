@@ -55,7 +55,7 @@ class ArticleViewController: UIViewController {
     }
     
     @IBAction func tappedHamburger() {
-        navigator?.mainViewController.toggleMenu()
+        navigator?.toggleMenu()
     }
 
 
@@ -119,5 +119,14 @@ extension ArticleViewController: UITableViewDelegate {
         navigator?.show(article: articleViewModel.article)
         
     }
+}
+
+//MARK: - OptionsDelegate
+extension ArticleViewController: OptionsDelegate {
+    func refreshArticles(type: ArticleType) {
+        print("refresh articles!")
+    }
+    
+    
 }
 

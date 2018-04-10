@@ -49,6 +49,9 @@ class MainViewController: UIViewController {
                                          articleList: masterViewController,
                                          articleDetail: detailViewController)
         
+        menuViewController?.delegate = masterViewController
+        menuViewController?.navigator = navigator
+        
         masterViewController.navigator = navigator
         detailViewController.navigator = navigator
         

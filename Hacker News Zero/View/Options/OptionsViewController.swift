@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol OptionsDelegate: class {
+    func refreshArticles(type: ArticleType)
+}
+
 class OptionsViewController: UIViewController {
     
     @IBOutlet weak private var tableView: UITableView!
-    var navigator: AppNavigator?
+    weak var delegate: OptionsDelegate?
+    weak var navigator: AppNavigator?
     
     var articleTypeSelections: [ArticleType] = [.frontpage, .askhn, .showhn, .jobs, .new]
 }
@@ -56,12 +61,8 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let articleType = articleTypeSelections[indexPath.row]
-        
-//        switch articleType {
-//        case .frontpage:
-//
-//        }
-        
+        delegate?.refreshArticles(type: articleType)
+        navigator?.toggleMenu()
     }
     
 }
