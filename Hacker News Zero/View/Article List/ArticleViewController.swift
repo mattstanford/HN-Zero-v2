@@ -48,9 +48,6 @@ class ArticleViewController: UIViewController {
         
         viewModel.refreshArticles()
             .subscribe({ (event) in
-                
-                print("finished getting articles!")
-                print("got viemodels: " + String(self.viewModel.articleViewModels.count))
                 self.tableView.reloadData()
             })
             .disposed(by: disposeBag)

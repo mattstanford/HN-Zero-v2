@@ -23,19 +23,16 @@ class CommentTableViewCell: UITableViewCell {
         
         contentLabel.numberOfLines = 0
         
-        if let font =  Font(name: "Helvetica", size: 13) {
+        if let font =  Font(name: AppConstants.defaultFont, size: AppConstants.defaultFontSize) {
             contentLabel.font = font
         }
-        contentLabel.attributedText = viewModel.getContent().htmlText(fontName: "Helvetica", fontSize: 13)
+        contentLabel.attributedText = viewModel.getContent().htmlText()
         
         
         contentLabel.onClick = { label, detection in
             switch detection.type {
             case .tag(let tag):
-                print("tag!!")
                 self.handleLinkClicked(tag: tag, linkHandler: linkHandler)
-                
-                
             default:
                 print("something else!")
             }

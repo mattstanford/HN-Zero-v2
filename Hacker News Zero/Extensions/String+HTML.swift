@@ -27,7 +27,7 @@ private let characterEntities : [ Substring : Character ] = [
 
 extension String{
     
-    func htmlText(fontName: String, fontSize: CGFloat) -> AttributedText {
+    func htmlText(fontName: String = AppConstants.defaultFont, fontSize: CGFloat = AppConstants.defaultFontSize) -> AttributedText {
         
         var styles = [Style]()
         styles.append(Style("b").font(.boldSystemFont(ofSize: fontSize)))

@@ -350,10 +350,10 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CLq-1f-EpN">
-                                            <rect key="frame" x="16" y="8" width="343" height="76"/>
+                                            <rect key="frame" x="16" y="8" width="0.0" height="76"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJK-Yg-1IS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="29.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="29.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="29.5" id="2Vp-0F-Nve"/>
                                                     </constraints>
@@ -362,8 +362,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPR-HK-ckD">
-                                                    <rect key="frame" x="0.0" y="33.5" width="343" height="14.5"/>
-                                                    <color key="backgroundColor" red="0.2153214758" green="0.85804983189999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="0.0" y="33.5" width="0.0" height="14.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14.5" id="PKd-t7-KRj"/>
                                                     </constraints>
@@ -372,7 +371,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRp-WH-tO3">
-                                                    <rect key="frame" x="0.0" y="52" width="343" height="24"/>
+                                                    <rect key="frame" x="0.0" y="52" width="0.0" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="1BE-hX-y63"/>
                                                     </constraints>

@@ -26,6 +26,7 @@
 		C950C215201ADB8300917A44 /* HackerNewsApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C214201ADB8300917A44 /* HackerNewsApiClient.swift */; };
 		C950C217201AE50E00917A44 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C216201AE50E00917A44 /* Article.swift */; };
 		C96135E52077102B00812AF3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96135E42077102B00812AF3 /* MainViewController.swift */; };
+		C96135EA207C614C00812AF3 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96135E9207C614C00812AF3 /* AppConstants.swift */; };
 		C98AB984204508F700FB8ECD /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB983204508F700FB8ECD /* AppNavigator.swift */; };
 		C98AB98620465DA400FB8ECD /* ArticleViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB98520465DA400FB8ECD /* ArticleViewable.swift */; };
 		C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */; };
@@ -84,6 +85,7 @@
 		C950C214201ADB8300917A44 /* HackerNewsApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsApiClient.swift; sourceTree = "<group>"; };
 		C950C216201AE50E00917A44 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		C96135E42077102B00812AF3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C96135E9207C614C00812AF3 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		C98AB983204508F700FB8ECD /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		C98AB98520465DA400FB8ECD /* ArticleViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewable.swift; sourceTree = "<group>"; };
 		C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+FlexibleHeader.swift"; sourceTree = "<group>"; };
@@ -189,9 +191,11 @@
 			isa = PBXGroup;
 			children = (
 				C950C1EA201553EE00917A44 /* AppDelegate.swift */,
+				C96135E6207C612C00812AF3 /* Constants */,
 				C9B06EAF20539C310048952C /* Error */,
 				C9B06EA32048CB330048952C /* Extensions */,
 				C950C210201ADA2E00917A44 /* Model */,
+				C9F3DA74207DA825009B4C2E /* Protocols */,
 				C908EADA2028085C007FC681 /* Repository */,
 				C950C213201ADA7500917A44 /* Resources */,
 				C950C20F201AD9FA00917A44 /* View */,
@@ -226,7 +230,6 @@
 			children = (
 				C950C216201AE50E00917A44 /* Article.swift */,
 				C9B06EAD205390D50048952C /* Comment.swift */,
-				C9B06EB420577DFB0048952C /* CommentContainable.swift */,
 				C9B06EBB206C93780048952C /* ArticleType.swift */,
 			);
 			path = Model;
@@ -260,6 +263,14 @@
 				C950C1F6201553EE00917A44 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C96135E6207C612C00812AF3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C96135E9207C614C00812AF3 /* AppConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		C9B06EA32048CB330048952C /* Extensions */ = {
@@ -344,6 +355,14 @@
 				C90BBFFB20280F190014E498 /* ArticleListViewModel.swift */,
 			);
 			path = "Article List";
+			sourceTree = "<group>";
+		};
+		C9F3DA74207DA825009B4C2E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C9B06EB420577DFB0048952C /* CommentContainable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -590,6 +609,7 @@
 				C9B06EC1206F160F0048952C /* FixedTextView.swift in Sources */,
 				C9B06EBE206DCFD70048952C /* String+HTML.swift in Sources */,
 				C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */,
+				C96135EA207C614C00812AF3 /* AppConstants.swift in Sources */,
 				C9B06EB520577DFB0048952C /* CommentContainable.swift in Sources */,
 				C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */,
 				C9B06EB7206B2D350048952C /* CommentTableViewCell.swift in Sources */,

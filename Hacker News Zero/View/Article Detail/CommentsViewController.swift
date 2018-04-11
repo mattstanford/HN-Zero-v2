@@ -70,7 +70,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
         if let postText = viewModel.article?.articlePostText,
             postText.count > 0 {
             postTextLabel.isHidden = false
-            postTextLabel.text = viewModel.article?.articlePostText
+            postTextLabel.attributedText = viewModel.article?.articlePostText?.htmlText().attributedString
         }
         else {
             postTextLabel.isHidden = true
