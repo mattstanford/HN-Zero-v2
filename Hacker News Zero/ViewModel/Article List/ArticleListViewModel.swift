@@ -28,7 +28,7 @@ class ArticleListViewModel
     func refreshArticles() -> Completable
     {
         return repository.refreshArticleList(type: articleType)
-            .andThen(getPageOfArticles(pageNum: 0))
+            .concat(getPageOfArticles(pageNum: 0))
     }
     
     func getPageOfArticles(pageNum: Int) -> Completable
@@ -41,10 +41,9 @@ class ArticleListViewModel
                 
                 for article in articles {
                     
-                    if let article = article {
-                        let viewModel = ArticleViewModel(article: article)
-                        self.articleViewModels.append(viewModel)
-                    }
+                    let viewModel = ArticleViewModel(article: article)
+                    self.articleViewModels.append(viewModel)
+                    
                 }
                 
                 return true

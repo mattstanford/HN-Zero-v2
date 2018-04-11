@@ -10,6 +10,7 @@ import Foundation
 
 enum NetworkError: Error {
     case jsonParsingError
+    case unknownResponse
 }
 
 extension NetworkError: LocalizedError {
@@ -21,6 +22,8 @@ extension NetworkError: LocalizedError {
         switch self {
         case .jsonParsingError:
             return "Error parsing JSON"
+        case .unknownResponse:
+            return "Unknown response"
         }
     }
 }

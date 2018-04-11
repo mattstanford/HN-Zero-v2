@@ -36,24 +36,28 @@ class ApiCache
         }
     }
     
-    func getArticleIds(startIndex: Int, endIndex: Int) -> Observable<Int>
+    func getArticleIdArray(startIndex: Int, endIndex: Int) -> Observable<[Int]>
     {
         return Observable.create { observer in
-        
-            for index in startIndex...endIndex {
-        
-                if index < self.articleIds.count{
-                    
-                    let articleId = self.articleIds[index]
-                    observer.onNext(articleId)
+            var idArray: [Int] = [Int]()
+            
+            if self.articleIds.count > startIndex {
+                
+                if self.articleIds.count >= endIndex {
+                    idArray = Array(self.articleIds[startIndex...endIndex])
+                } else {
+                    idArray = Array(self.articleIds[startIndex...])
                 }
+                
             }
             
+            observer.onNext(idArray)
             observer.onCompleted()
+            
             return Disposables.create {}
         }
     }
-    
+
     func getArticle(articleId: Int) -> Single<Article?>
     {
         return Single.just(articleDict[articleId]);

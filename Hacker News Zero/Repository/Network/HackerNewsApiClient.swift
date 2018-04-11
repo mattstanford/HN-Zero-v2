@@ -39,14 +39,14 @@ class HackerNewsApiClient : ApiClient
             })
     }
     
-    func getArticleData(articleId : Int) -> Observable<Article?>
+    func getArticleData(articleId : Int) -> Observable<Article>
     {
         let endpoint = self.getItemEndpoint(itemId: articleId)
         
         return RxAlamofire.requestData(.get, endpoint)
-            .map({ (response, jsonData) -> Article? in
+            .map({ (response, jsonData) -> Article in
                 
-                let article = Article.decodeArticleFrom(jsonData: jsonData)
+                let article = try Article.decodeArticleFrom(jsonData: jsonData)
                 return article
             })
     }

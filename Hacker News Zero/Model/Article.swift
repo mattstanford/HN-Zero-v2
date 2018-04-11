@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Article : Codable, CommentContainable
+struct Article : Codable, CommentContainable, HackerNewsItemType
 {    
     let id : Int
     let title : String
@@ -39,11 +39,11 @@ struct Article : Codable, CommentContainable
         case childComments
     }
     
-    static func decodeArticleFrom(jsonData: Data) -> Article?
+    static func decodeArticleFrom(jsonData: Data) throws -> Article
     {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
-        let article = try? decoder.decode(Article.self, from: jsonData)
+        let article = try decoder.decode(Article.self, from: jsonData)
 
         return article
     }

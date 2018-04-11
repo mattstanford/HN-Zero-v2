@@ -29,17 +29,24 @@ class HackerNewsRepository {
             .ignoreElements()
     }
     
-    func getArticles(for page:Int, pageSize:Int) -> Single<[Article?]>
+    func getArticles(for page:Int, pageSize:Int) -> Single<[Article]>
     {
         let startIndex = page * pageSize
         let endIndex = (startIndex + pageSize) - 1
-        
-        return cache.getArticleIds(startIndex: startIndex, endIndex: endIndex)
-            .flatMap { articleId in
                 
-                return self.apiClient.getArticleData(articleId: articleId)
+        return cache.getArticleIdArray(startIndex: startIndex, endIndex: endIndex)
+            .flatMap { articleIds in
+                return Observable.from(articleIds)
+                    .flatMap { articleId in
+                        
+                        return self.apiClient.getArticleData(articleId: articleId)
+                    }
+                    .toArray()
+                    .map { articleArray in
+                        
+                        return self.setItemsInProperOrder(idList: articleIds, itemList: articleArray)
+                }
             }
-            .toArray()
             .asSingle()
     }
     
@@ -66,10 +73,33 @@ class HackerNewsRepository {
             .toArray()
             .map { comments in
                 
-                return Comment.setCommentsInProperOrder(idList: commentIds, commentList: comments)
+                return self.setItemsInProperOrder(idList: commentIds, itemList: comments)
         }
         
     }
     
+}
+
+
+//MARK - Helper functions
+extension HackerNewsRepository {
     
+    func setItemsInProperOrder<T: HackerNewsItemType>(idList: [Int], itemList: [T]) -> [T]
+    {
+        //First place comments in a dictionary for fast access
+        var commentsDict = [Int: T]()
+        for item in itemList {
+            commentsDict[item.id] = item
+        }
+        
+        //Now create an array of the comments in the intended order
+        var orderedArray = [T]()
+        for id in idList {
+            if let comment = commentsDict[id] {
+                orderedArray.append(comment)
+            }
+        }
+        
+        return orderedArray
+    }
 }

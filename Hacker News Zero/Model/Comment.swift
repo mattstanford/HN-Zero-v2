@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Comment: Codable, CommentContainable {
-
+struct Comment: Codable, CommentContainable, HackerNewsItemType
+{
     let id: Int
     let parentId: Int
     let author: String?
