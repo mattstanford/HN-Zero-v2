@@ -22,6 +22,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j29-Y0-y4D">
                                 <rect key="frame" x="0.0" y="64" width="375" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="Rv7-ft-ZMG" userLabel="Footer View">
+                                    <rect key="frame" x="0.0" y="88" width="375" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleTableViewCellIdentifier" rowHeight="60" id="LC6-sF-yXz" customClass="ArticleTableViewCell" customModule="Hacker_News_Zero" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
@@ -161,7 +166,6 @@
         <!--Options View Controller-->
         <scene sceneID="boh-Wa-rHH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UQg-ly-gNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="voN-FW-pr9" customClass="OptionsViewController" customModule="Hacker_News_Zero" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wBb-Xp-b5h">
                         <rect key="frame" x="0.0" y="0.0" width="267" height="647"/>
@@ -199,6 +203,7 @@
                         <outlet property="tableView" destination="OgW-jG-TZE" id="mnM-Nc-EEA"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UQg-ly-gNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="238" y="-149"/>
         </scene>
@@ -350,10 +355,10 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CLq-1f-EpN">
-                                            <rect key="frame" x="16" y="8" width="0.0" height="76"/>
+                                            <rect key="frame" x="16" y="8" width="343" height="76"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJK-Yg-1IS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="29.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="29.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="29.5" id="2Vp-0F-Nve"/>
                                                     </constraints>
@@ -362,7 +367,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPR-HK-ckD">
-                                                    <rect key="frame" x="0.0" y="33.5" width="0.0" height="14.5"/>
+                                                    <rect key="frame" x="0.0" y="33.5" width="343" height="14.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14.5" id="PKd-t7-KRj"/>
                                                     </constraints>
@@ -371,7 +376,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRp-WH-tO3">
-                                                    <rect key="frame" x="0.0" y="52" width="0.0" height="24"/>
+                                                    <rect key="frame" x="0.0" y="52" width="343" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="1BE-hX-y63"/>
                                                     </constraints>
@@ -388,6 +393,11 @@
                                         <constraint firstItem="CLq-1f-EpN" firstAttribute="top" secondItem="Qgx-wo-z0A" secondAttribute="top" constant="8" id="f2p-4t-sBu"/>
                                         <constraint firstItem="CLq-1f-EpN" firstAttribute="leading" secondItem="Qgx-wo-z0A" secondAttribute="leading" constant="16" id="xXy-w7-SWN"/>
                                     </constraints>
+                                </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="sPa-au-3bd" userLabel="Footer View">
+                                    <rect key="frame" x="0.0" y="183" width="375" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ComentCellIdentifier" rowHeight="63" id="QgH-43-7Xz" customClass="CommentTableViewCell" customModule="Hacker_News_Zero" customModuleProvider="target">
