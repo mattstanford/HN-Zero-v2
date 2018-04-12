@@ -27,9 +27,9 @@ class CommentsViewController: UIViewController, ArticleViewable {
     @IBOutlet weak private var infoLabel: UILabel!
     @IBOutlet weak private var tableView: UITableView!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupHeader()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.layoutTableHeaderView()
     }
     
     //MARK: ArticleViewable protocol
@@ -45,6 +45,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
     func gotNewArticle(article: Article?)
     {
         viewModel.article = article
+        setupHeader()
         
         viewModel.clearData()
         tableView.reloadData()
@@ -75,8 +76,6 @@ class CommentsViewController: UIViewController, ArticleViewable {
         else {
             postTextLabel.isHidden = true
         }
-        
-        tableView.layoutTableHeaderView()
     }
     
     func linkClicked(url: URL) {
