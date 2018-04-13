@@ -366,17 +366,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPR-HK-ckD">
-                                                    <rect key="frame" x="0.0" y="33.5" width="343" height="14.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-de-Ofo" userLabel="Post Text View" customClass="AttributedLabel" customModule="Atributika">
+                                                    <rect key="frame" x="0.0" y="33.5" width="343" height="21.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14.5" id="PKd-t7-KRj"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="tT2-kT-YQS"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRp-WH-tO3">
-                                                    <rect key="frame" x="0.0" y="52" width="343" height="24"/>
+                                                    <rect key="frame" x="0.0" y="59" width="343" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="1BE-hX-y63"/>
                                                     </constraints>
@@ -459,7 +457,7 @@
                     </view>
                     <connections>
                         <outlet property="infoLabel" destination="fRp-WH-tO3" id="TWA-9o-e69"/>
-                        <outlet property="postTextLabel" destination="dPR-HK-ckD" id="7NL-ix-bv9"/>
+                        <outlet property="postTextView" destination="Hvc-de-Ofo" id="G7U-xD-1RF"/>
                         <outlet property="tableView" destination="VnM-KN-Ycj" id="UR7-6Z-zv3"/>
                         <outlet property="titleLabel" destination="uJK-Yg-1IS" id="8oH-bE-r3F"/>
                     </connections>

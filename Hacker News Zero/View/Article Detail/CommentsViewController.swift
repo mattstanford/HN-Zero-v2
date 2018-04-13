@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import SafariServices
+import Atributika
 
 let CommentCellIdentifier = "ComentCellIdentifier"
 
@@ -23,7 +24,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
     }()
     
     @IBOutlet weak private var titleLabel: UILabel!
-    @IBOutlet weak private var postTextLabel: UILabel!
+    @IBOutlet weak private var postTextView: AttributedLabel!
     @IBOutlet weak private var infoLabel: UILabel!
     @IBOutlet weak private var tableView: UITableView!
     
@@ -70,11 +71,12 @@ class CommentsViewController: UIViewController, ArticleViewable {
         
         if let postText = viewModel.article?.articlePostText,
             postText.count > 0 {
-            postTextLabel.isHidden = false
-            postTextLabel.attributedText = viewModel.article?.articlePostText?.htmlText().attributedString
+            postTextView.isHidden = false
+            postTextView.setHtmlText(text: postText, linkHandler: self.linkClicked)
+            
         }
         else {
-            postTextLabel.isHidden = true
+            postTextView.isHidden = true
         }
     }
     
@@ -82,6 +84,8 @@ class CommentsViewController: UIViewController, ArticleViewable {
         let svc = SFSafariViewController(url: url)
         self.present(svc, animated: true, completion: nil)
     }
+    
+    
 }
 
 extension CommentsViewController: UITableViewDataSource {
