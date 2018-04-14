@@ -67,23 +67,6 @@ class ArticleViewController: UIViewController {
             detailVC.selectedView = .comments
         }
     }
-  
-    
-    func configureArticle(cell: ArticleTableViewCell, for viewModel: ArticleViewModel)
-    {
-      
-            
-        cell.titleLabel.text = viewModel.article.title
-       // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
-        cell.detailLabel.text = viewModel.getTimeString()
-        
-        if let numComments = viewModel.article.numComments
-        {
-            cell.numCommentsLabel.text = String(describing:numComments)
-        }
-        
-        
-    }
 }
 
 //MARK: - UITableViewDataSource
@@ -102,9 +85,13 @@ extension ArticleViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCellIdentifier, for: indexPath) as! ArticleTableViewCell
         
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
-        configureArticle(cell: cell, for: articleViewModel)
+        cell.configure(for: articleViewModel)
         
         return cell
+    }
+    
+    @IBAction private func commentsTapped() {
+        
     }
     
 }

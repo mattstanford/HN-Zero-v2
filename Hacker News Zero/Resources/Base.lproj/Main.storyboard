@@ -81,6 +81,7 @@
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstItem="6Se-lY-Sci" firstAttribute="centerY" secondItem="tfb-WF-Xj3" secondAttribute="centerY" constant="14" id="41F-kn-6lD"/>
                                                         <constraint firstItem="6Se-lY-Sci" firstAttribute="centerX" secondItem="tfb-WF-Xj3" secondAttribute="centerX" constant="-1" id="7Hc-eu-a0S"/>
@@ -88,6 +89,9 @@
                                                         <constraint firstItem="Px1-fH-T0x" firstAttribute="centerY" secondItem="tfb-WF-Xj3" secondAttribute="centerY" constant="-6" id="KIQ-vF-DlB"/>
                                                         <constraint firstAttribute="width" constant="50" id="Z3C-o5-OvF"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="I8c-Zf-Ee4" appends="YES" id="C1t-xK-rho"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -141,6 +145,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tv4-Sc-Qga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I8c-Zf-Ee4"/>
             </objects>
             <point key="canvasLocation" x="1116" y="509.59520239880067"/>
         </scene>
