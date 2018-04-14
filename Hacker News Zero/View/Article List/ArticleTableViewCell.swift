@@ -18,6 +18,8 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var numCommentsLabel: UILabel!
     @IBOutlet weak var commentsView: UIView!
     
+    @IBOutlet weak var commentViewWidth: NSLayoutConstraint!
+    
     var commentHandler: CommentHandler?
     var viewModel: ArticleViewModel?
     
@@ -31,10 +33,12 @@ class ArticleTableViewCell: UITableViewCell {
         if let numComments = viewModel.article.numComments
         {
             commentsView.isHidden = false
+            commentViewWidth.constant = 50
             numCommentsLabel.text = String(describing:numComments)
         }
         else
         {
+            commentViewWidth.constant = 8
             commentsView.isHidden = true
         }
         
