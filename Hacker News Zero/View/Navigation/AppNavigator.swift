@@ -25,7 +25,7 @@ class AppNavigator {
         self.articleDetail = articleDetail
     }
     
-    func show(article: Article) {
+    func show(article: Article, selectedView: SelectedView) {
         
         print("showing article: " + article.title)
         currentArticle = article
@@ -35,7 +35,7 @@ class AppNavigator {
         }
         
         articleList.showDetailViewController(navController, sender: nil)
-        articleDetail.showNewArticle()
+        articleDetail.showArticle(in: selectedView)
     }
     
     func toggleMenu() {

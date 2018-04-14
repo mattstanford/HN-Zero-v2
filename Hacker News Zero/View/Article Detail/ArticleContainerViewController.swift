@@ -11,64 +11,28 @@ import UIKit
 class ArticleContainerViewController: UIViewController {
     
     var navigator: AppNavigator?
-    
-    enum SelectedView {
-        case comments
-        case web
-    }
-    
-    var selectedView: SelectedView = .comments
+    var currentSelectedView: SelectedView = .comments
     var currentVC: UIViewController?
 
     @IBOutlet weak var containerView: UIView!
+    
+    //MARK: - Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBarButtons()
         
-        switch selectedView {
+        switch currentSelectedView {
         case .comments:
-            add(asChildViewController: commentsVC)
+            add(viewController: commentsVC)
         case .web:
-            add(asChildViewController: webVC)
+            add(viewController: webVC)
         }
-    }
-    
-    private func setupBarButtons() {
-
-        let swapButton = UIBarButtonItem(
-            title: "Swap",
-            style: .plain,
-            target: self,
-            action: #selector(swapVieControllers(sender:))
-        )
-        self.navigationItem.rightBarButtonItem = swapButton;
-    }
-    
-    @objc func swapVieControllers(sender: UIBarButtonItem) {
-        
-        selectedView = selectedView == .comments ? .web : .comments
-        
-        switch selectedView {
-        case .comments:
-            swapToComments()
-        case .web:
-            swapToWeb()
-        }
-        
-    }
-    
-    private func swapToComments() {
-        cycle(from: webVC, to: commentsVC)
-    }
-    
-    private func swapToWeb() {
-        cycle(from: commentsVC, to: webVC)
     }
     
     private lazy var commentsVC: CommentsViewController = {
-
+        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as! CommentsViewController
         viewController.navigator = self.navigator
@@ -85,7 +49,46 @@ class ArticleContainerViewController: UIViewController {
         return viewController
     }()
     
-    private func add(asChildViewController viewController: UIViewController) {
+    private func setupBarButtons() {
+
+        let swapButton = UIBarButtonItem(
+            title: "Swap",
+            style: .plain,
+            target: self,
+            action: #selector(swapVieControllers(sender:))
+        )
+        self.navigationItem.rightBarButtonItem = swapButton;
+    }
+    
+    //MARK: - Public functions
+    
+    func showArticle(in selectedView: SelectedView) {
+       
+        if selectedView != self.currentSelectedView {
+            swapViewControllers(animated: false)
+        } else {
+            showArticleInView()
+        }
+    }
+    
+    @objc func swapVieControllers(sender: UIBarButtonItem) {
+        
+        swapViewControllers(animated: true)
+    }
+    
+    //MARK: - Internal helper functions
+    private func swapViewControllers(animated: Bool) {
+        currentSelectedView = currentSelectedView == .comments ? .web : .comments
+        
+        switch currentSelectedView {
+        case .comments:
+            animateCycle(from: webVC, to: commentsVC)
+        case .web:
+            animateCycle(from: commentsVC, to: webVC)
+        }
+    }
+    
+    private func add(viewController: UIViewController) {
         
         addChildViewController(viewController)
         view.addSubview(viewController.view)
@@ -95,10 +98,20 @@ class ArticleContainerViewController: UIViewController {
         
         viewController.didMove(toParentViewController: self)
         currentVC = viewController
-        showNewArticle()
+        showArticleInView()
     }
     
     private func cycle(from oldVC: UIViewController, to newVC: UIViewController) {
+        oldVC.willMove(toParentViewController: nil)
+        self.addChildViewController(newVC)
+        oldVC.removeFromParentViewController()
+        newVC.didMove(toParentViewController: self)
+        
+        self.currentVC = newVC
+        self.showArticleInView()
+    }
+    
+    private func animateCycle(from oldVC: UIViewController, to newVC: UIViewController) {
         
         oldVC.willMove(toParentViewController: nil)
         self.addChildViewController(newVC)
@@ -120,16 +133,16 @@ class ArticleContainerViewController: UIViewController {
             newVC.didMove(toParentViewController: self)
             
             self.currentVC = newVC
-            self.showNewArticle()
+            self.showArticleInView()
         }
     }
     
-    func showNewArticle() {
+    private func showArticleInView() {
         guard let articleVC = currentVC as? ArticleViewable else {
             return
         }
-        
         articleVC.show(article: navigator?.currentArticle)
     }
-
+    
+    
 }

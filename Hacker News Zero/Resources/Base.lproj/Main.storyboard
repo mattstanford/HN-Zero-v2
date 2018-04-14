@@ -28,7 +28,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleTableViewCellIdentifier" rowHeight="60" id="LC6-sF-yXz" customClass="ArticleTableViewCell" customModule="Hacker_News_Zero" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ArticleTableViewCellIdentifier" rowHeight="60" id="LC6-sF-yXz" customClass="ArticleTableViewCell" customModule="Hacker_News_Zero" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LC6-sF-yXz" id="MAk-kK-9Eb">
@@ -89,9 +89,6 @@
                                                         <constraint firstItem="Px1-fH-T0x" firstAttribute="centerY" secondItem="tfb-WF-Xj3" secondAttribute="centerY" constant="-6" id="KIQ-vF-DlB"/>
                                                         <constraint firstAttribute="width" constant="50" id="Z3C-o5-OvF"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="I8c-Zf-Ee4" appends="YES" id="C1t-xK-rho"/>
-                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -110,6 +107,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="commentsView" destination="tfb-WF-Xj3" id="mVc-kR-tsb"/>
                                             <outlet property="detailLabel" destination="Y71-Jd-zH1" id="1zo-Ng-TBn"/>
                                             <outlet property="iconImage" destination="BNi-Up-pJ4" id="nAH-x9-rrw"/>
                                             <outlet property="numCommentsLabel" destination="6Se-lY-Sci" id="TUZ-GI-qWW"/>
@@ -124,6 +122,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="j29-Y0-y4D" firstAttribute="top" secondItem="Xio-aY-Rj5" secondAttribute="top" id="9FT-NS-GTB"/>
                             <constraint firstItem="j29-Y0-y4D" firstAttribute="trailing" secondItem="Xio-aY-Rj5" secondAttribute="trailing" id="Ite-Bd-YhO"/>
@@ -145,7 +144,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tv4-Sc-Qga" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="I8c-Zf-Ee4"/>
             </objects>
             <point key="canvasLocation" x="1116" y="509.59520239880067"/>
         </scene>

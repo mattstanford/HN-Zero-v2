@@ -56,17 +56,6 @@ class ArticleViewController: UIViewController {
     @IBAction func tappedHamburger() {
         navigator?.toggleMenu()
     }
-
-
-    // MARK: - Segues
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toArticleDetail",
-            let detailVC = segue.destination as? ArticleContainerViewController {
-            
-            detailVC.selectedView = .comments
-        }
-    }
 }
 
 //MARK: - UITableViewDataSource
@@ -85,15 +74,14 @@ extension ArticleViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCellIdentifier, for: indexPath) as! ArticleTableViewCell
         
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
-        cell.configure(for: articleViewModel)
+        cell.configure(for: articleViewModel, commentHandler: commentsTapped)
         
         return cell
     }
     
-    @IBAction private func commentsTapped() {
-        
+    private func commentsTapped(for article: Article) {
+        navigator?.show(article: article, selectedView: .comments)
     }
-    
 }
 
 //MARK: - UITableViewDelegate
@@ -102,8 +90,7 @@ extension ArticleViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
-        navigator?.show(article: articleViewModel.article)
-        
+        navigator?.show(article: articleViewModel.article, selectedView: .web)
     }
 }
 
