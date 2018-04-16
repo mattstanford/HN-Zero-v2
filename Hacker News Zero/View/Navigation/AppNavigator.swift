@@ -34,8 +34,20 @@ class AppNavigator {
             return
         }
         
+        var view = selectedView
+        
+        //"Ask HN" type articles don't have a url
+        if article.url == nil {
+            view = .comments
+        }
+        
+        //Job types usually don't have comments
+        if article.numComments == nil {
+            view = .web
+        }
+        
         articleList.showDetailViewController(navController, sender: nil)
-        articleDetail.showArticle(in: selectedView)
+        articleDetail.showArticle(in: view)
     }
     
     func toggleMenu() {
