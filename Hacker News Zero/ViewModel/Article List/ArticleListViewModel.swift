@@ -13,12 +13,27 @@ class ArticleListViewModel
 {
     let pageSize = 25
     var articleViewModels = [ArticleViewModel]()
-    let repository : HackerNewsRepository
+    private let repository : HackerNewsRepository
     var articleType: ArticleType = .frontpage
+    
+    private var numLoadingTasks = 0
+    private var currentPageNum = 0
+    
+    var isLoading: Bool {
+        return numLoadingTasks > 0
+    }
     
     init(repository: HackerNewsRepository)
     {
         self.repository = repository
+    }
+    
+    func startedLoading() {
+        numLoadingTasks += 1
+    }
+    
+    func finishedLoading() {
+        numLoadingTasks -= 1
     }
     
     func clearArticles() {
@@ -27,8 +42,23 @@ class ArticleListViewModel
     
     func refreshArticles() -> Completable
     {
+        currentPageNum = 0
+        
         return repository.refreshArticleList(type: articleType)
+            .concat(Completable.create { completable in
+                
+                self.articleViewModels = [ArticleViewModel]()
+                
+                completable(.completed)
+                return Disposables.create {}
+            })
             .concat(getPageOfArticles(pageNum: 0))
+    }
+    
+    func getNextPageOfArticles() -> Completable
+    {
+        let nextPage = currentPageNum + 1
+        return getPageOfArticles(pageNum: nextPage)
     }
     
     func getPageOfArticles(pageNum: Int) -> Completable
@@ -36,8 +66,9 @@ class ArticleListViewModel
         return repository.getArticles(for: pageNum, pageSize: pageSize)
             .map { articles -> Bool in
                 
-                //TODO: Map this to a better data structure
-                self.articleViewModels = [ArticleViewModel]()
+                if articles.count > 0 {
+                    self.currentPageNum = pageNum
+                }
                 
                 for article in articles {
                     

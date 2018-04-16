@@ -46,9 +46,13 @@ class ArticleViewController: UIViewController {
         viewModel.clearArticles()
         tableView.reloadData()
         
+        viewModel.startedLoading()
+        
         viewModel.refreshArticles()
             .subscribe({ (event) in
                 self.tableView.reloadData()
+                
+                self.viewModel.finishedLoading()
             })
             .disposed(by: disposeBag)
     }
@@ -81,6 +85,24 @@ extension ArticleViewController: UITableViewDataSource {
     
     private func commentsTapped(for article: Article) {
         navigator?.show(article: article, selectedView: .comments)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let lastElement = viewModel.articleViewModels.count - 1
+        if !viewModel.isLoading && indexPath.row == lastElement {
+            
+            viewModel.startedLoading()
+            viewModel.getNextPageOfArticles()
+                .subscribe({ (event) in
+                    self.tableView.reloadData()
+                    
+                    self.viewModel.finishedLoading()
+                })
+                .disposed(by: disposeBag)
+            
+            
+        }
     }
 }
 
