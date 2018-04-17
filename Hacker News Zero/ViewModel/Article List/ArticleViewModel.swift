@@ -18,6 +18,24 @@ class ArticleViewModel
         self.article = article
     }
     
+    var domain: String? {
+        guard let urlString = article.url,
+            let url = URL(string: urlString) else {
+            return nil
+        }
+        
+        return url.host
+    }
+    
+    var iconUrl: URL? {
+        
+        guard let domain = domain else {
+            return nil
+        }
+        
+        return URL(string:"https://www.google.com/s2/favicons?domain=" + domain)
+    }
+    
     func getTimeString() -> String
     {
         var timeString = ""

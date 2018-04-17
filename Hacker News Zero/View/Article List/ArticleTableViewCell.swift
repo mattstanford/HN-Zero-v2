@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ArticleTableViewCell: UITableViewCell {
     
@@ -29,6 +30,10 @@ class ArticleTableViewCell: UITableViewCell {
         titleLabel.text = viewModel.article.title
         // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
         detailLabel.text = viewModel.getTimeString()
+        
+        if let iconUrl = viewModel.iconUrl {
+            iconImage.kf.setImage(with: iconUrl, placeholder: #imageLiteral(resourceName: "default_icon"))
+        }
         
         if let numComments = viewModel.article.numComments
         {
