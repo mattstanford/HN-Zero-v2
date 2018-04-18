@@ -23,9 +23,19 @@ class HackerNewsRepository {
     func refreshArticleList(type: ArticleType) -> Completable
     {
         return apiClient.getArticleIds(type: type)
+            .map { jsonData in
+                
+                guard let jsonObject = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments),
+                let arrayOfStoryIds = jsonObject as? [Int] else {
+                        throw NetworkError.jsonParsingError
+                }
+                
+                return arrayOfStoryIds
+            }
             .flatMap { articleIds in
                 return self.cache.saveArticleIds(articleIds: articleIds)
             }
+            
             .ignoreElements()
     }
     

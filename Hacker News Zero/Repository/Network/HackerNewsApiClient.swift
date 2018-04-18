@@ -24,20 +24,26 @@ class HackerNewsApiClient : ApiClient
 {
     var session = SessionManager()
     
-    func getArticleIds(type: ArticleType) -> Observable<[Int]>
-    {
+    func getArticleIds(type: ArticleType) -> Observable<Data> {
         let endpoint = baseUrl + type.endpointPath + jsonSuffix
-        return RxAlamofire.requestJSON(.get, endpoint)
-            .map({ (response, json) -> [Int] in
+        
+        return RxAlamofire.requestData(.get, endpoint)
+            .map({ (response, jsonData) -> Data in
                 
-                guard let arrayOfStoryIds = json as? [Int] else
-                {
-                    return []
-                }
-            
-                return arrayOfStoryIds
+                return jsonData
             })
+        
+//        return RxAlamofire.requestJSON(.get, endpoint)
+//            .map { (response, json) -> JSON in
+//                
+//                guard let jsonArray = json as? JSON else {
+//                    throw NetworkError.jsonParsingError
+//                }
+//                
+//                return jsonArray
+//        }
     }
+    
     
     func getArticleData(articleId : Int) -> Observable<Data>
     {
