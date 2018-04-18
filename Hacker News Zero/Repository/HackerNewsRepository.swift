@@ -41,6 +41,10 @@ class HackerNewsRepository {
                         
                         return self.apiClient.getArticleData(articleId: articleId)
                     }
+                    .map { jsonData in
+                        let article = try Article.decodeArticleFrom(jsonData: jsonData)
+                        return article
+                    }
                     .toArray()
                     .map { articleArray in
                         
@@ -60,6 +64,14 @@ class HackerNewsRepository {
             .flatMap { id in
                 return self.apiClient.getCommentData(itemId: id)
             }
+            .map { jsonData -> Comment in
+                guard let comment = Comment.decodeComment(from: jsonData) else {
+                    print("json parsing error, creating empty comment!")
+                    return Comment.createEmptyComment()
+                }
+                
+                return comment
+            }
             .flatMap { comment -> Observable<Comment> in
                 
                 return self.getComments(from: comment)
@@ -75,9 +87,7 @@ class HackerNewsRepository {
                 
                 return self.setItemsInProperOrder(idList: commentIds, itemList: comments)
         }
-        
     }
-    
 }
 
 

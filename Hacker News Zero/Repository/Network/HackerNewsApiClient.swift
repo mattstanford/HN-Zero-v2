@@ -39,30 +39,24 @@ class HackerNewsApiClient : ApiClient
             })
     }
     
-    func getArticleData(articleId : Int) -> Observable<Article>
+    func getArticleData(articleId : Int) -> Observable<Data>
     {
         let endpoint = self.getItemEndpoint(itemId: articleId)
         
         return RxAlamofire.requestData(.get, endpoint)
-            .map({ (response, jsonData) -> Article in
+            .map({ (response, jsonData) -> Data in
                 
-                let article = try Article.decodeArticleFrom(jsonData: jsonData)
-                return article
+                return jsonData
             })
     }
     
-    func getCommentData(itemId: Int) -> Observable<Comment> {
+    func getCommentData(itemId: Int) -> Observable<Data> {
         let endpoint = self.getItemEndpoint(itemId: itemId)
         
         return session.rx.responseData(.get, endpoint)
-            .map { (response, jsonData) -> Comment in
+            .map { (response, jsonData) -> Data in
                 
-                guard let comment = Comment.decodeComment(from: jsonData) else {
-                    print("json parsing error, creating empty comment!")
-                    return Comment.createEmptyComment()
-                }
-                
-                return comment
+                return jsonData
         }
     }
 }
