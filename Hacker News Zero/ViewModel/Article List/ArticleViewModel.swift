@@ -36,10 +36,10 @@ class ArticleViewModel
         return URL(string:"https://www.google.com/s2/favicons?domain=" + domain)
     }
     
-    func getTimeString() -> String
+    func getTimeString(referenceDate: Date = Date()) -> String
     {
         var timeString = ""
-        let now = Date()
+        let now = referenceDate
         let timePosted = article.timePosted
         
         var difference =  Int(now.timeIntervalSince(timePosted))
@@ -47,16 +47,15 @@ class ArticleViewModel
         //Is it minutes?
         if difference > 60
         {
-
             difference = difference / 60
             
             //Is it hours?
-            if difference > 60
+            if difference >= 60
             {
                 difference = difference / 60
                 
                 //Is it days?
-                if difference > 23
+                if difference >= 24
                 {
                     difference = difference / 24
                     timeString = "\(difference) day"
@@ -70,14 +69,16 @@ class ArticleViewModel
             {
                 timeString = "\(difference) minute"
             }
-            
-            //Should the time units be in plural?
-            if difference > 1
-            {
-                timeString += "s"
-            }
-            
-            return timeString
+        }
+        else
+        {
+            timeString = "\(difference) second"
+        }
+        
+        //Should the time units be in plural?
+        if difference > 1
+        {
+            timeString += "s"
         }
         
       
