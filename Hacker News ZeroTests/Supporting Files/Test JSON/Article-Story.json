@@ -1,0 +1,25 @@
+{
+    "by": "mfrw",
+    "descendants": 28,
+    "id": 16563210,
+    "kids": [
+        16563491,
+        16563329,
+        16563399,
+        16563442,
+        16563361,
+        16563582,
+        16563285,
+        16563302,
+        16563332,
+        16563365,
+        16563303,
+        16563555,
+        16563447
+    ],
+    "score": 113,
+    "time": 1520780267,
+    "title": "Vim Clutch – hardware pedal for improved text editing speed",
+    "type": "story",
+    "url": "https://github.com/alevchuk/vim-clutch"
+}
