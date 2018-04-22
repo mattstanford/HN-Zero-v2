@@ -32,10 +32,12 @@ class ArticleViewModel
     var detailLabelText: String {
         var text = ""
         
-        //Sore
-        text += String(describing: article.score) + " point"
-        if article.score != 1 { text += "s" }
-        text += " • "
+        //Sore (job stories don't have scores)
+        if article.articleType != "job" {
+            text += String(describing: article.score) + " point"
+            if article.score != 1 { text += "s" }
+            text += " • "
+        }
         
         //Time
         text += timeString
