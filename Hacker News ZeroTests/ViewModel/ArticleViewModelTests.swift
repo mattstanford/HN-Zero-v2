@@ -12,6 +12,7 @@ import XCTest
 class ArticleViewModelTests: XCTestCase {
     
     var viewModel: ArticleViewModel?
+    var mockDate = MockDate()
     
     override func setUp() {
         super.setUp()
@@ -22,17 +23,7 @@ class ArticleViewModelTests: XCTestCase {
                 return
         }
         
-        viewModel = ArticleViewModel(article: article)
-    }
-    
-    func testDomain() {
-        
-        guard let viewModel = viewModel else {
-            XCTFail("Data is nil")
-            return
-        }
-        
-        XCTAssertEqual(viewModel.domain, "github.com")
+        viewModel = ArticleViewModel(article: article, dateGenerator: mockDate.getTestDate)
     }
     
     func testIconUrl() {
@@ -46,41 +37,38 @@ class ArticleViewModelTests: XCTestCase {
     }
     
     func testDateString() {
+    
+        mockDate.currentDate = Date(timeIntervalSince1970: 1520780268)
+        XCTAssertEqual(viewModel?.timeString, "1 second")
         
+        mockDate.currentDate = Date(timeIntervalSince1970: 1520780270)
+        XCTAssertEqual(viewModel?.timeString, "3 seconds")
+        
+        mockDate.currentDate = Date(timeIntervalSince1970: 1520780328)
+        XCTAssertEqual(viewModel?.timeString, "1 minute")
+        
+        mockDate.currentDate = Date(timeIntervalSince1970: 1520780508)
+        XCTAssertEqual(viewModel?.timeString,"4 minutes")
+        
+        mockDate.currentDate = Date(timeIntervalSince1970: 1520783868)
+        XCTAssertEqual(viewModel?.timeString, "1 hour")
+        
+        mockDate.currentDate = Date(timeIntervalSince1970: 1520798268)
+        XCTAssertEqual(viewModel?.timeString,"5 hours")
+        
+        mockDate.currentDate = Date(timeIntervalSince1970: 1520866668)
+        XCTAssertEqual(viewModel?.timeString, "1 day")
+        
+        mockDate.currentDate = Date(timeIntervalSince1970: 1521298668)
+        XCTAssertEqual(viewModel?.timeString, "6 days")
+    }
+    
+    func testDetailString() {
         guard let viewModel = viewModel else {
             XCTFail("Data is nil")
             return
         }
-        
-        let referenceDateSecond = Date(timeIntervalSince1970: 1520780268)
-        XCTAssertEqual(viewModel.getTimeString(referenceDate: referenceDateSecond), "1 second")
-        
-        let referenceDateSeconds = Date(timeIntervalSince1970: 1520780270)
-        XCTAssertEqual(viewModel.getTimeString(referenceDate: referenceDateSeconds), "3 seconds")
-        
-        let referenceDateMinute = Date(timeIntervalSince1970: 1520780328)
-        XCTAssertEqual(viewModel.getTimeString(referenceDate: referenceDateMinute), "1 minute")
-        
-        let referenceDateMinutes = Date(timeIntervalSince1970: 1520780508)
-        XCTAssertEqual(viewModel.getTimeString(referenceDate: referenceDateMinutes), "4 minutes")
-        
-        let referenceDateHour = Date(timeIntervalSince1970: 1520783868)
-        XCTAssertEqual(viewModel.getTimeString(referenceDate: referenceDateHour), "1 hour")
-        
-        let referenceDateHours = Date(timeIntervalSince1970: 1520798268)
-        XCTAssertEqual(viewModel.getTimeString(referenceDate: referenceDateHours), "5 hours")
-        
-        let referenceDateDay = Date(timeIntervalSince1970: 1520866668)
-        XCTAssertEqual(viewModel.getTimeString(referenceDate: referenceDateDay), "1 day")
-        
-        let referenceDateDays = Date(timeIntervalSince1970: 1521298668)
-        XCTAssertEqual(viewModel.getTimeString(referenceDate: referenceDateDays), "6 days")
-        
-        
-        
-        
-        
-        
-        
+        mockDate.currentDate = Date(timeIntervalSince1970: 1521298668)
+        XCTAssertEqual(viewModel.detailLabelText, "113 points • 6 days")
     }
 }

@@ -47,4 +47,15 @@ struct Article : Codable, CommentContainable, HackerNewsItemType
 
         return article
     }
+    
+    var domain: String? {
+        guard let urlString = url,
+            let url = URL(string: urlString) else {
+                return nil
+        }
+        
+        return url.host
+    }
+    
+    
 }

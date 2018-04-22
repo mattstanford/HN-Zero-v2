@@ -23,6 +23,7 @@ class ArticleTests: XCTestCase {
         XCTAssertEqual(article.score, 113)
         XCTAssertEqual(article.articleType, "story")
         XCTAssertEqual(article.url, "https://github.com/alevchuk/vim-clutch")
+        XCTAssertEqual(article.domain, "github.com")
     }
     
 }

@@ -29,7 +29,7 @@ class ArticleTableViewCell: UITableViewCell {
         self.viewModel = viewModel
         titleLabel.text = viewModel.article.title
         // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
-        detailLabel.text = viewModel.getTimeString()
+        detailLabel.text = viewModel.detailLabelText
         
         if let iconUrl = viewModel.iconUrl {
             iconImage.kf.setImage(with: iconUrl, placeholder: #imageLiteral(resourceName: "default_icon"))

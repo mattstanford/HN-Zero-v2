@@ -12,34 +12,41 @@ import RxSwift
 class ArticleViewModel
 {
     let article : Article
+    private let dateGenerator: () -> Date
     
-    init(article: Article)
+    init(article: Article, dateGenerator: @escaping () -> Date = Date.init)
     {
         self.article = article
-    }
-    
-    var domain: String? {
-        guard let urlString = article.url,
-            let url = URL(string: urlString) else {
-            return nil
-        }
-        
-        return url.host
+        self.dateGenerator = dateGenerator
     }
     
     var iconUrl: URL? {
         
-        guard let domain = domain else {
+        guard let domain = article.domain else {
             return nil
         }
         
         return URL(string:"https://www.google.com/s2/favicons?domain=" + domain)
     }
     
-    func getTimeString(referenceDate: Date = Date()) -> String
+    var detailLabelText: String {
+        var text = ""
+        
+        //Sore
+        text += String(describing: article.score) + " point"
+        if article.score != 1 { text += "s" }
+        text += " • "
+        
+        //Time
+        text += timeString
+        
+        return text
+    }
+    
+    var timeString: String
     {
         var timeString = ""
-        let now = referenceDate
+        let now = dateGenerator()
         let timePosted = article.timePosted
         
         var difference =  Int(now.timeIntervalSince(timePosted))
@@ -81,8 +88,8 @@ class ArticleViewModel
             timeString += "s"
         }
         
-      
-        
         return timeString
     }
+    
+    
 }

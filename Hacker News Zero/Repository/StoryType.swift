@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum StoryType
+enum StoryType: String
 {
     case top
     case ask
