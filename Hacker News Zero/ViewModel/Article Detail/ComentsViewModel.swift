@@ -21,11 +21,7 @@ class CommentsViewModel {
         self.repository = repository
     }
     
-    func clearData() {
-        self.viewModels = [CommentItemViewModel]()
-    }
-    
-    func getInfoString() -> String {
+    var infoString: String {
         //num commments * user * domain * time since
         var infoString = ""
         
@@ -40,9 +36,13 @@ class CommentsViewModel {
         if let author = article?.author {
             infoString += author
         }
-
+        
         
         return infoString
+    }
+    
+    func clearData() {
+        self.viewModels = [CommentItemViewModel]()
     }
     
     func updateCommentData() -> Completable {

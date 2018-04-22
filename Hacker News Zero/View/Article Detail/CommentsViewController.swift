@@ -67,7 +67,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
     //MARK: Header view
     func setupHeader() {
         titleLabel.text = viewModel.article?.title
-        infoLabel.text = viewModel.getInfoString()
+        infoLabel.text = viewModel.infoString
         
         if let postText = viewModel.article?.articlePostText,
             postText.count > 0 {
