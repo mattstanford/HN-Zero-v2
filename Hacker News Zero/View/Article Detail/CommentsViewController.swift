@@ -15,7 +15,6 @@ let CommentCellIdentifier = "ComentCellIdentifier"
 
 class CommentsViewController: UIViewController, ArticleViewable {
 
-    var navigator: AppNavigator?
     let disposeBag = DisposeBag()
     
     lazy var viewModel: CommentsViewModel = {

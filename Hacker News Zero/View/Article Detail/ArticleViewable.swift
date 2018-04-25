@@ -8,9 +8,7 @@
 
 import Foundation
 
-protocol ArticleViewable: class {
-    var navigator: AppNavigator? { get set }
-    
+protocol ArticleViewable: class {    
     func show(article: Article?)
 }
 

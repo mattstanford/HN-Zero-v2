@@ -35,7 +35,7 @@ class ArticleContainerViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as! CommentsViewController
-        viewController.navigator = self.navigator
+   
         
         return viewController
     }()
@@ -44,7 +44,6 @@ class ArticleContainerViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
-        viewController.navigator = self.navigator
         
         return viewController
     }()
