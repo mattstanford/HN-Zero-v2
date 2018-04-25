@@ -20,6 +20,7 @@ class ArticleContainerViewController: UIViewController {
     var currentVC: UIViewController?
 
     @IBOutlet weak var containerView: UIView!
+    private var swapButton: UIBarButtonItem?
     
     //MARK: - Setup
     
@@ -55,7 +56,7 @@ class ArticleContainerViewController: UIViewController {
     
     private func setupBarButtons() {
 
-        let swapButton = UIBarButtonItem(
+        swapButton = UIBarButtonItem(
             title: "Swap",
             style: .plain,
             target: self,
@@ -66,8 +67,14 @@ class ArticleContainerViewController: UIViewController {
     
     //MARK: - Public functions
     
-    func showArticle(in selectedView: SelectedView) {
+    func showArticle(in selectedView: SelectedView, hideSwapButton: Bool) {
        
+        if hideSwapButton {
+            navigationItem.rightBarButtonItem = nil
+        } else {
+            navigationItem.rightBarButtonItem = swapButton
+        }
+        
         if selectedView != self.currentSelectedView {
             swapViewControllers(animated: false)
         } else {
