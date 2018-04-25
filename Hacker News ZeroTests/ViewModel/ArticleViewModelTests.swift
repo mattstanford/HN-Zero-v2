@@ -36,33 +36,6 @@ class ArticleViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.iconUrl?.absoluteString, "https://www.google.com/s2/favicons?domain=github.com")
     }
     
-    func testDateString() {
-    
-        mockDate.currentDate = Date(timeIntervalSince1970: 1520780268)
-        XCTAssertEqual(viewModel?.timeString, "1 second")
-        
-        mockDate.currentDate = Date(timeIntervalSince1970: 1520780270)
-        XCTAssertEqual(viewModel?.timeString, "3 seconds")
-        
-        mockDate.currentDate = Date(timeIntervalSince1970: 1520780328)
-        XCTAssertEqual(viewModel?.timeString, "1 minute")
-        
-        mockDate.currentDate = Date(timeIntervalSince1970: 1520780508)
-        XCTAssertEqual(viewModel?.timeString,"4 minutes")
-        
-        mockDate.currentDate = Date(timeIntervalSince1970: 1520783868)
-        XCTAssertEqual(viewModel?.timeString, "1 hour")
-        
-        mockDate.currentDate = Date(timeIntervalSince1970: 1520798268)
-        XCTAssertEqual(viewModel?.timeString,"5 hours")
-        
-        mockDate.currentDate = Date(timeIntervalSince1970: 1520866668)
-        XCTAssertEqual(viewModel?.timeString, "1 day")
-        
-        mockDate.currentDate = Date(timeIntervalSince1970: 1521298668)
-        XCTAssertEqual(viewModel?.timeString, "6 days")
-    }
-    
     func testDetailString() {
         guard let viewModel = viewModel else {
             XCTFail("Data is nil")

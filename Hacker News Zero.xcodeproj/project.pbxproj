@@ -56,6 +56,8 @@
 		C9E02015208974AF00E80516 /* ArticleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E02014208974AF00E80516 /* ArticleViewModelTests.swift */; };
 		C9E02019208C296200E80516 /* MockDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E02018208C296200E80516 /* MockDate.swift */; };
 		C9E0201B208ED25E00E80516 /* CommentItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E0201A208ED25E00E80516 /* CommentItemViewModelTests.swift */; };
+		C9E0201D2090181B00E80516 /* Date+DisplayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E0201C2090181B00E80516 /* Date+DisplayString.swift */; };
+		C9E020202090191600E80516 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E0201F2090191600E80516 /* DateExtensionTests.swift */; };
 		C9F3DA76207DA890009B4C2E /* HackerNewsItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DA75207DA890009B4C2E /* HackerNewsItemType.swift */; };
 		C9F3DA78208056F9009B4C2E /* AttributedLabel+htmlText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DA77208056F9009B4C2E /* AttributedLabel+htmlText.swift */; };
 		C9F3DA7A20819E32009B4C2E /* SelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DA7920819E32009B4C2E /* SelectedView.swift */; };
@@ -129,6 +131,8 @@
 		C9E02014208974AF00E80516 /* ArticleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModelTests.swift; sourceTree = "<group>"; };
 		C9E02018208C296200E80516 /* MockDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDate.swift; sourceTree = "<group>"; };
 		C9E0201A208ED25E00E80516 /* CommentItemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemViewModelTests.swift; sourceTree = "<group>"; };
+		C9E0201C2090181B00E80516 /* Date+DisplayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DisplayString.swift"; sourceTree = "<group>"; };
+		C9E0201F2090191600E80516 /* DateExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensionTests.swift; sourceTree = "<group>"; };
 		C9F3DA75207DA890009B4C2E /* HackerNewsItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsItemType.swift; sourceTree = "<group>"; };
 		C9F3DA77208056F9009B4C2E /* AttributedLabel+htmlText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedLabel+htmlText.swift"; sourceTree = "<group>"; };
 		C9F3DA7920819E32009B4C2E /* SelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedView.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 		C950C203201553EE00917A44 /* Hacker News ZeroTests */ = {
 			isa = PBXGroup;
 			children = (
+				C9E0201E209018FB00E80516 /* Extensions */,
 				C93708F62086C844008926D5 /* Mocks */,
 				C93708E72086C5EC008926D5 /* Model */,
 				C93708E62086C5E7008926D5 /* Repository */,
@@ -367,6 +372,7 @@
 				C9B06EA8204CF0DA0048952C /* String+Localized.swift */,
 				C9B06EBD206DCFD60048952C /* String+HTML.swift */,
 				C9F3DA77208056F9009B4C2E /* AttributedLabel+htmlText.swift */,
+				C9E0201C2090181B00E80516 /* Date+DisplayString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -444,6 +450,14 @@
 				C90BBFFB20280F190014E498 /* ArticleListViewModel.swift */,
 			);
 			path = "Article List";
+			sourceTree = "<group>";
+		};
+		C9E0201E209018FB00E80516 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C9E0201F2090191600E80516 /* DateExtensionTests.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C9F3DA74207DA825009B4C2E /* Protocols */ = {
@@ -685,6 +699,7 @@
 				C9B06EAE205390D50048952C /* Comment.swift in Sources */,
 				C950C1EB201553EE00917A44 /* AppDelegate.swift in Sources */,
 				C950C217201AE50E00917A44 /* Article.swift in Sources */,
+				C9E0201D2090181B00E80516 /* Date+DisplayString.swift in Sources */,
 				C90BC00A203299E60014E498 /* StoryType.swift in Sources */,
 				C908EADE20280A00007FC681 /* ApiClient.swift in Sources */,
 				C9B06EB320546BDD0048952C /* CommentItemViewModel.swift in Sources */,
@@ -725,6 +740,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E0201B208ED25E00E80516 /* CommentItemViewModelTests.swift in Sources */,
+				C9E020202090191600E80516 /* DateExtensionTests.swift in Sources */,
 				C9E02015208974AF00E80516 /* ArticleViewModelTests.swift in Sources */,
 				C9E02019208C296200E80516 /* MockDate.swift in Sources */,
 				C93708E92086C607008926D5 /* ArticleTests.swift in Sources */,
