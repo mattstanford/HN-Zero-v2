@@ -19,13 +19,13 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak private var contentLeadingMarigin: NSLayoutConstraint!
     
     func configure(with viewModel: CommentItemViewModel, linkHandler: @escaping (URL) -> Void) {
-        headerLabel.text = viewModel.getCommentHeaderText()
+        headerLabel.attributedText = viewModel.commentHeaderText
         
         if let text = viewModel.comment.text {
             contentLabel.setHtmlText(text: text, linkHandler: linkHandler)
         }
         
-        let indentAmount = CGFloat(viewModel.getDisplayedLevel() * commentPerLevel)
+        let indentAmount = CGFloat(viewModel.displayedLevel * commentPerLevel)
         headerLeadingMargin.constant = indentAmount
         contentLeadingMarigin.constant = indentAmount
     }

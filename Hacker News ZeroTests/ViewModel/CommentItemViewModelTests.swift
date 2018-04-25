@@ -24,16 +24,18 @@ class CommentItemViewModelTests: XCTestCase {
                 return
         }
         comment = tempComment
-        viewModel = CommentItemViewModel(with: tempComment, level: 0)
+        
+        viewModel = CommentItemViewModel(with: tempComment, level: 0, dateGenerator: mockDate.getTestDate)
     }
     
     func testHeaderText() {
-        let headerText = viewModel?.getCommentHeaderText()
-        XCTAssertEqual(headerText, "aUser")
+        mockDate.currentDate = Date(timeIntervalSince1970: 1522873162)
+        let headerText = viewModel?.commentHeaderText
+        XCTAssertEqual(headerText?.string, "aUser • 3 seconds")
     }
     
     func testContent() {
-        let content = viewModel?.getContent()
+        let content = viewModel?.content
         XCTAssertEqual(content, "Test comment text")
     }
     
@@ -44,10 +46,10 @@ class CommentItemViewModelTests: XCTestCase {
         }
         
         let topLevelViewModel = CommentItemViewModel(with: comment, level: 0)
-        XCTAssertEqual(topLevelViewModel.getDisplayedLevel(), 0)
+        XCTAssertEqual(topLevelViewModel.displayedLevel, 0)
         
         let nestedViewModel = CommentItemViewModel(with: comment, level: 10)
-        XCTAssertEqual(nestedViewModel.getDisplayedLevel(), 6)
+        XCTAssertEqual(nestedViewModel.displayedLevel, 6)
 
     }
 }

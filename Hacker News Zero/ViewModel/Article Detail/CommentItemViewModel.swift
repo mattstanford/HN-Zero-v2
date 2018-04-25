@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Atributika
 
 class CommentItemViewModel {
     
@@ -14,15 +15,20 @@ class CommentItemViewModel {
     
     let comment: Comment
     private let level: Int
+    private let dateGenerator: () -> Date
     
-    init(with comment: Comment, level: Int) {
+    init(with comment: Comment, level: Int, dateGenerator: @escaping () -> Date = Date.init) {
         self.comment = comment
         self.level = level
+        self.dateGenerator = dateGenerator
     }
     
-    func getCommentHeaderText() -> String {
-        let numIndentDots = max(self.level - maxLevel, 0)
+    var commentHeaderText: NSAttributedString {
         
+        let tagName = "grayFont"
+        let grayTextTag = Style(tagName).font(Font.systemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(UIColor.lightGray)
+        
+        let numIndentDots = max(self.level - maxLevel, 0)
         var headerText = ""
         
         for _ in 0..<numIndentDots {
@@ -30,16 +36,25 @@ class CommentItemViewModel {
         }
         
         headerText += self.comment.author ?? "<unknown>"
+        headerText += "<" + tagName + "> • " + timeString + "</" + tagName + ">"
         
-        return headerText
+        return headerText.style(tags: grayTextTag).attributedString
     }
     
-    func getContent() -> String {
+    var content: String {
         let content = self.comment.text ?? ""
         return content
     }
     
-    func getDisplayedLevel() -> Int {
+    var displayedLevel: Int {
         return min(self.level, maxLevel)
+    }
+    
+    private var timeString: String
+    {
+        let now = dateGenerator()
+        let timePosted = comment.time
+        
+        return now.getStringofTimePassedSinceDate(referenceDate: timePosted)
     }
 }
