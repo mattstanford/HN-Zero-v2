@@ -61,22 +61,10 @@ class ArticleContainerViewController: UIViewController {
     //MARK: - Public functions
     
     func showArticle(in selectedView: SelectedView) {
-       
-        guard let article = navigator?.currentArticle else {
-            return
-        }
-        
-        if article.numComments == nil || article.url == nil {
-            navigationItem.rightBarButtonItem = nil
-        } else {
-            navigationItem.rightBarButtonItem = swapButton
-        }
-        
         set(selectedView: selectedView, animated: false)
     }
     
     @objc func swapVieControllers(sender: UIBarButtonItem) {
-        
         swapViewControllers(animated: true)
     }
     
@@ -99,11 +87,25 @@ class ArticleContainerViewController: UIViewController {
             add(viewController: targetVC)
         }
         
+        setupSwapButton(selectedView: selectedView)
         currentSelectedView = selectedView
     }
     
-    private func swapViewControllers(animated: Bool) {
+    private func setupSwapButton(selectedView: SelectedView) {
+        guard let article = navigator?.currentArticle else {
+            return
+        }
         
+        if article.numComments == nil || article.url == nil {
+            navigationItem.rightBarButtonItem = nil
+        } else {
+            swapButton?.title = swapButtonTitle(selectedView: selectedView)
+            navigationItem.rightBarButtonItem = swapButton
+            
+        }
+    }
+    
+    private func swapViewControllers(animated: Bool) {
         let viewToSelect: SelectedView = currentSelectedView == .comments ? .web : .comments
         set(selectedView: viewToSelect, animated: true)
     }
@@ -114,6 +116,15 @@ class ArticleContainerViewController: UIViewController {
             return commentsVC
         case .web:
             return webVC
+        }
+    }
+    
+    private func swapButtonTitle(selectedView: SelectedView) -> String {
+        switch selectedView {
+        case .comments:
+            return "Go To Article"
+        case .web:
+            return "Go To Comments"
         }
     }
     
