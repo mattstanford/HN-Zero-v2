@@ -16,8 +16,8 @@ enum SelectedView {
 class ArticleContainerViewController: UIViewController {
     
     var navigator: AppNavigator?
-    var currentSelectedView: SelectedView = .comments
-    var currentVC: UIViewController?
+    private var currentSelectedView: SelectedView = .comments
+    private var currentVC: UIViewController?
 
     @IBOutlet weak var containerView: UIView!
     private var swapButton: UIBarButtonItem?
@@ -28,13 +28,6 @@ class ArticleContainerViewController: UIViewController {
         super.viewDidLoad()
         
         setupBarButtons()
-        
-        switch currentSelectedView {
-        case .comments:
-            add(viewController: commentsVC)
-        case .web:
-            add(viewController: webVC)
-        }
     }
     
     private lazy var commentsVC: CommentsViewController = {
@@ -67,19 +60,19 @@ class ArticleContainerViewController: UIViewController {
     
     //MARK: - Public functions
     
-    func showArticle(in selectedView: SelectedView, hideSwapButton: Bool) {
+    func showArticle(in selectedView: SelectedView) {
        
-        if hideSwapButton {
+        guard let article = navigator?.currentArticle else {
+            return
+        }
+        
+        if article.numComments == nil || article.url == nil {
             navigationItem.rightBarButtonItem = nil
         } else {
             navigationItem.rightBarButtonItem = swapButton
         }
         
-        if selectedView != self.currentSelectedView {
-            swapViewControllers(animated: false)
-        } else {
-            showArticleInView()
-        }
+        set(selectedView: selectedView, animated: false)
     }
     
     @objc func swapVieControllers(sender: UIBarButtonItem) {
@@ -88,14 +81,39 @@ class ArticleContainerViewController: UIViewController {
     }
     
     //MARK: - Internal helper functions
-    private func swapViewControllers(animated: Bool) {
-        currentSelectedView = currentSelectedView == .comments ? .web : .comments
+    private func set(selectedView: SelectedView, animated: Bool) {
         
-        switch currentSelectedView {
+        let targetVC = viewControllerFor(selectedView: selectedView)
+        
+        if let current = currentVC {
+            if currentSelectedView == selectedView {
+                showArticleInView()
+            } else {
+                if animated {
+                    animateCycle(from: current, to: targetVC)
+                } else {
+                    animateCycle(from: current, to: targetVC)
+                }
+            }
+        } else {
+            add(viewController: targetVC)
+        }
+        
+        currentSelectedView = selectedView
+    }
+    
+    private func swapViewControllers(animated: Bool) {
+        
+        let viewToSelect: SelectedView = currentSelectedView == .comments ? .web : .comments
+        set(selectedView: viewToSelect, animated: true)
+    }
+    
+    private func viewControllerFor(selectedView: SelectedView) -> UIViewController {
+        switch selectedView {
         case .comments:
-            animateCycle(from: webVC, to: commentsVC)
+            return commentsVC
         case .web:
-            animateCycle(from: commentsVC, to: webVC)
+            return webVC
         }
     }
     
@@ -117,7 +135,7 @@ class ArticleContainerViewController: UIViewController {
         self.addChildViewController(newVC)
         oldVC.removeFromParentViewController()
         newVC.didMove(toParentViewController: self)
-        
+
         self.currentVC = newVC
         self.showArticleInView()
     }

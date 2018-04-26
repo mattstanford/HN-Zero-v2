@@ -36,21 +36,18 @@ class AppNavigator {
         
         var view = selectedView
         
-        var swapButtonHidden = false
         //"Ask HN" type articles don't have a url
         if article.url == nil {
             view = .comments
-            swapButtonHidden = true
         }
         
         //Job types usually don't have comments
         if article.numComments == nil {
             view = .web
-            swapButtonHidden = true
         }
         
         articleList.showDetailViewController(navController, sender: nil)
-        articleDetail.showArticle(in: view, hideSwapButton: swapButtonHidden)
+        articleDetail.showArticle(in: view)
     }
     
     func toggleMenu() {
