@@ -22,26 +22,22 @@ let itemEndpoint = "item/"
 
 class HackerNewsApiClient : ApiClient
 {
-    var session = SessionManager()
+    let session: SessionManager
+    
+    init() {
+        let configuration = URLSessionConfiguration.default
+        configuration.httpMaximumConnectionsPerHost = 100
+        session = SessionManager(configuration: configuration)
+    }
     
     func getArticleIds(type: ArticleType) -> Observable<Data> {
         let endpoint = baseUrl + type.endpointPath + jsonSuffix
         
-        return RxAlamofire.requestData(.get, endpoint)
+        return session.rx.responseData(.get, endpoint)
             .map({ (response, jsonData) -> Data in
                 
                 return jsonData
             })
-        
-//        return RxAlamofire.requestJSON(.get, endpoint)
-//            .map { (response, json) -> JSON in
-//                
-//                guard let jsonArray = json as? JSON else {
-//                    throw NetworkError.jsonParsingError
-//                }
-//                
-//                return jsonArray
-//        }
     }
     
     
@@ -49,7 +45,7 @@ class HackerNewsApiClient : ApiClient
     {
         let endpoint = self.getItemEndpoint(itemId: articleId)
         
-        return RxAlamofire.requestData(.get, endpoint)
+        return session.rx.responseData(.get, endpoint)
             .map({ (response, jsonData) -> Data in
                 
                 return jsonData

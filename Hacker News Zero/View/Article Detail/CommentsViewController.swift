@@ -54,9 +54,17 @@ class CommentsViewController: UIViewController, ArticleViewable {
     }
     
     func loadCommentData() {
-        
+        let start = Date()
+
         viewModel.updateCommentData()
             .subscribe({ (event) in
+                
+                let end = Date()
+                
+                let duration = end.timeIntervalSince(start)
+                print("finished getting comment data: " + String(describing: duration) + " " + String(describing: event))
+                print("num view models: " + String(self.viewModel.viewModels.count))
+
             
                 self.tableView.reloadData()
             })
