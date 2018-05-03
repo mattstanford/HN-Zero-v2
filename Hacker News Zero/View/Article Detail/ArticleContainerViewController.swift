@@ -13,7 +13,11 @@ enum SelectedView {
     case web
 }
 
-class ArticleContainerViewController: UIViewController {
+protocol LinkDelegate: class {
+    func show(url: URL)
+}
+
+class ArticleContainerViewController: UIViewController, LinkDelegate {
     
     var navigator: AppNavigator?
     private var currentSelectedView: SelectedView = .comments
@@ -34,7 +38,7 @@ class ArticleContainerViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as! CommentsViewController
-   
+        viewController.linkDelegate = self
         
         return viewController
     }()
@@ -141,15 +145,15 @@ class ArticleContainerViewController: UIViewController {
         showArticleInView()
     }
     
-    private func cycle(from oldVC: UIViewController, to newVC: UIViewController) {
-        oldVC.willMove(toParentViewController: nil)
-        self.addChildViewController(newVC)
-        oldVC.removeFromParentViewController()
-        newVC.didMove(toParentViewController: self)
-
-        self.currentVC = newVC
-        self.showArticleInView()
-    }
+//    private func cycle(from oldVC: UIViewController, to newVC: UIViewController) {
+//        oldVC.willMove(toParentViewController: nil)
+//        self.addChildViewController(newVC)
+//        oldVC.removeFromParentViewController()
+//        newVC.didMove(toParentViewController: self)
+//
+//        self.currentVC = newVC
+//        self.showArticleInView()
+//    }
     
     private func animateCycle(from oldVC: UIViewController, to newVC: UIViewController) {
         
@@ -184,5 +188,9 @@ class ArticleContainerViewController: UIViewController {
         articleVC.show(article: navigator?.currentArticle)
     }
     
+    //MARK: LinkDelegate protocol
+    func show(url: URL) {
+        navigator?.showLink(url: url)
+    }
     
 }

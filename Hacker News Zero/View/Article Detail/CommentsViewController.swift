@@ -8,14 +8,14 @@
 
 import UIKit
 import RxSwift
-import SafariServices
 import Atributika
 
 let CommentCellIdentifier = "ComentCellIdentifier"
 
 class CommentsViewController: UIViewController, ArticleViewable {
-
+    
     let disposeBag = DisposeBag()
+    weak var linkDelegate: LinkDelegate?
     
     lazy var viewModel: CommentsViewModel = {
         let repository = HackerNewsRepository(client: HackerNewsApiClient(), cache: ApiCache())
@@ -88,8 +88,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
     }
     
     func linkClicked(url: URL) {
-        let svc = SFSafariViewController(url: url)
-        self.present(svc, animated: true, completion: nil)
+        linkDelegate?.show(url: url)
     }
     
     

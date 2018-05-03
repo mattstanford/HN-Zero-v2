@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ArticleViewable: class {    
+protocol ArticleViewable: class {
     func show(article: Article?)
 }
 

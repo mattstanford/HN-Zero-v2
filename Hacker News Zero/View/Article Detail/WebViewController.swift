@@ -10,7 +10,6 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, ArticleViewable {
-   
     @IBOutlet private weak var webView: WKWebView!
     
     var viewModel = WebViewModel()
@@ -39,8 +38,7 @@ class WebViewController: UIViewController, ArticleViewable {
     }
     
     func showCurrentArticle() {
-        guard let urlString = viewModel.article?.url,
-            let url = URL(string: urlString) else {
+        guard let url = viewModel.currentUrl else {
                 return
         }
         
@@ -55,6 +53,10 @@ class WebViewController: UIViewController, ArticleViewable {
     {
         viewModel.article = article
         showNewArticleIfNecessary()
+    }
+    
+    func set(url: URL) {
+        viewModel.currentUrl = url
     }
     
 }

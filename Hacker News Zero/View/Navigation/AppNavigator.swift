@@ -50,6 +50,18 @@ class AppNavigator {
         articleDetail.showArticle(in: view)
     }
     
+    func showLink(url: URL) {
+        guard let navController = articleDetail.navigationController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let webVC = storyboard.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
+        
+        webVC.set(url: url)
+        navController.pushViewController(webVC, animated: true)
+    }
+    
     func toggleMenu() {
         mainViewController.toggleMenu()
     }
