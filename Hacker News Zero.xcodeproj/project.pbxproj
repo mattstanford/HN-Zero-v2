@@ -58,6 +58,7 @@
 		C9E0201B208ED25E00E80516 /* CommentItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E0201A208ED25E00E80516 /* CommentItemViewModelTests.swift */; };
 		C9E0201D2090181B00E80516 /* Date+DisplayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E0201C2090181B00E80516 /* Date+DisplayString.swift */; };
 		C9E020202090191600E80516 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E0201F2090191600E80516 /* DateExtensionTests.swift */; };
+		C9E02024209AB32C00E80516 /* WebViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E02023209AB32C00E80516 /* WebViewModelTests.swift */; };
 		C9F3DA76207DA890009B4C2E /* HackerNewsItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DA75207DA890009B4C2E /* HackerNewsItemType.swift */; };
 		C9F3DA78208056F9009B4C2E /* AttributedLabel+htmlText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DA77208056F9009B4C2E /* AttributedLabel+htmlText.swift */; };
 		DA79B3CE3E2F3FDF192FFB12 /* Pods_Hacker_News_Zero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F898E5F09BCFD04EF9C4B8 /* Pods_Hacker_News_Zero.framework */; };
@@ -132,6 +133,7 @@
 		C9E0201A208ED25E00E80516 /* CommentItemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemViewModelTests.swift; sourceTree = "<group>"; };
 		C9E0201C2090181B00E80516 /* Date+DisplayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DisplayString.swift"; sourceTree = "<group>"; };
 		C9E0201F2090191600E80516 /* DateExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensionTests.swift; sourceTree = "<group>"; };
+		C9E02023209AB32C00E80516 /* WebViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModelTests.swift; sourceTree = "<group>"; };
 		C9F3DA75207DA890009B4C2E /* HackerNewsItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsItemType.swift; sourceTree = "<group>"; };
 		C9F3DA77208056F9009B4C2E /* AttributedLabel+htmlText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedLabel+htmlText.swift"; sourceTree = "<group>"; };
 		E0A17C38763BB35A824BD307 /* Pods-Hacker News ZeroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News ZeroTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News ZeroTests/Pods-Hacker News ZeroTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				C9E02014208974AF00E80516 /* ArticleViewModelTests.swift */,
 				C9E0201A208ED25E00E80516 /* CommentItemViewModelTests.swift */,
+				C9E02023209AB32C00E80516 /* WebViewModelTests.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				C9E0201B208ED25E00E80516 /* CommentItemViewModelTests.swift in Sources */,
 				C9E020202090191600E80516 /* DateExtensionTests.swift in Sources */,
 				C9E02015208974AF00E80516 /* ArticleViewModelTests.swift in Sources */,
+				C9E02024209AB32C00E80516 /* WebViewModelTests.swift in Sources */,
 				C9E02019208C296200E80516 /* MockDate.swift in Sources */,
 				C93708E92086C607008926D5 /* ArticleTests.swift in Sources */,
 				C9E02011208970C900E80516 /* CommentTests.swift in Sources */,
