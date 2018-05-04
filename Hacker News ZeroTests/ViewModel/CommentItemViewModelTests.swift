@@ -25,13 +25,21 @@ class CommentItemViewModelTests: XCTestCase {
         }
         comment = tempComment
         
-        viewModel = CommentItemViewModel(with: tempComment, level: 0, dateGenerator: mockDate.getTestDate)
+        viewModel = CommentItemViewModel(with: tempComment, isOp: false, level: 0, dateGenerator: mockDate.getTestDate)
     }
     
     func testHeaderText() {
+        guard let comment = comment else {
+            XCTFail("data is nil!")
+            return
+        }
+        
         mockDate.currentDate = Date(timeIntervalSince1970: 1522873162)
         let headerText = viewModel?.commentHeaderText
         XCTAssertEqual(headerText?.string, "aUser • 3 seconds")
+        
+        let opViewModel = CommentItemViewModel(with: comment, isOp: true, level: 0, dateGenerator: mockDate.getTestDate)
+        XCTAssertEqual(opViewModel.commentHeaderText.string, "aUser (OP) • 3 seconds")
     }
     
     func testContent() {
@@ -45,10 +53,10 @@ class CommentItemViewModelTests: XCTestCase {
             return
         }
         
-        let topLevelViewModel = CommentItemViewModel(with: comment, level: 0)
+        let topLevelViewModel = CommentItemViewModel(with: comment, isOp: false, level: 0)
         XCTAssertEqual(topLevelViewModel.displayedLevel, 0)
         
-        let nestedViewModel = CommentItemViewModel(with: comment, level: 10)
+        let nestedViewModel = CommentItemViewModel(with: comment, isOp: false, level: 10)
         XCTAssertEqual(nestedViewModel.displayedLevel, 6)
 
     }
