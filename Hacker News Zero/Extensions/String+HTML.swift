@@ -9,22 +9,6 @@
 import Foundation
 import Atributika
 
-// Mapping from XML/HTML character entity reference to character
-// From http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
-private let characterEntities : [ Substring : Character ] = [
-    // XML predefined entities:
-    "&quot;"    : "\"",
-    "&amp;"     : "&",
-    "&apos;"    : "'",
-    "&lt;"      : "<",
-    "&gt;"      : ">",
-    
-    // HTML character entity references:
-    "&nbsp;"    : "\u{00a0}",
-    // ...
-    "&diams;"   : "♦",
-]
-
 extension String{
     
     func htmlText(fontName: String = AppConstants.defaultFont,
@@ -80,8 +64,9 @@ extension String{
                 return decodeNumeric(entity.dropFirst(3).dropLast(), base: 16)
             } else if entity.hasPrefix("&#") {
                 return decodeNumeric(entity.dropFirst(2).dropLast(), base: 10)
-            } else {
-                return characterEntities[entity]
+            }
+            else {
+                return nil
             }
         }
         
