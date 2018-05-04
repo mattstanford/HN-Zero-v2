@@ -21,11 +21,7 @@ class ArticleViewModel
     }
     
     var iconUrl: URL? {
-        
-        guard let domain = article.domain else {
-            return nil
-        }
-        
+        let domain = article.domain ?? ""
         return URL(string:"https://www.google.com/s2/favicons?domain=" + domain)
     }
     
