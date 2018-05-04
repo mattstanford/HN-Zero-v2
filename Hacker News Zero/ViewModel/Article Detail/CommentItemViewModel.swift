@@ -14,19 +14,20 @@ class CommentItemViewModel {
     let maxLevel = 6
     
     let comment: Comment
+    let isOp: Bool
     private let level: Int
     private let dateGenerator: () -> Date
     
-    init(with comment: Comment, level: Int, dateGenerator: @escaping () -> Date = Date.init) {
+    
+    init(with comment: Comment, isOp: Bool, level: Int, dateGenerator: @escaping () -> Date = Date.init) {
         self.comment = comment
+        self.isOp = isOp
         self.level = level
         self.dateGenerator = dateGenerator
     }
     
     var commentHeaderText: NSAttributedString {
         
-        let tagName = "grayFont"
-        let grayTextTag = Style(tagName).font(Font.systemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(UIColor.lightGray)
         
         let numIndentDots = max(self.level - maxLevel, 0)
         var headerText = ""
@@ -35,10 +36,20 @@ class CommentItemViewModel {
             headerText +=  "• "
         }
         
-        headerText += self.comment.author ?? "<unknown>"
-        headerText += "<" + tagName + "> • " + timeString + "</" + tagName + ">"
+        headerText += self.comment.author ?? ""
         
-        return headerText.style(tags: grayTextTag).attributedString
+        //Set the "(OP)" text if necessary
+        let opTextTag = Style("OP").font(Font.boldSystemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(UIColor.blue)
+        if isOp {
+            headerText += "<OP> (OP)</OP>"
+        }
+        
+        // Time text is lighter in color
+        let grayTextTag = Style("grayFont").font(Font.systemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(UIColor.lightGray)
+        
+        headerText += "<grayFont> • " + timeString + "</grayFont>"
+        
+        return headerText.style(tags: grayTextTag, opTextTag).attributedString
     }
     
     var content: String {

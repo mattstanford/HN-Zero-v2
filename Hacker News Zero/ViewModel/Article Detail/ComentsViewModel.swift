@@ -64,7 +64,9 @@ class CommentsViewModel {
         var list = [CommentItemViewModel]()
         for comment in comments {
             
-            let viewModel = CommentItemViewModel(with: comment, level: level)
+            let isOp = article?.author == comment.author
+            
+            let viewModel = CommentItemViewModel(with: comment, isOp: isOp, level: level)
             list.append(viewModel)
             
             if let childComments = comment.childComments {
