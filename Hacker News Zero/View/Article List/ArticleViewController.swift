@@ -43,7 +43,7 @@ class ArticleViewController: UIViewController {
     
     func refreshData()
     {
-        viewModel.clearArticles()
+        viewModel.reset()
         tableView.reloadData()
         
         viewModel.startedLoading()
@@ -90,7 +90,7 @@ extension ArticleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         let lastElement = viewModel.articleViewModels.count - 1
-        if !viewModel.isLoading && indexPath.row == lastElement {
+        if viewModel.shouldTryToLoadMorePages && indexPath.row == lastElement {
             
             viewModel.startedLoading()
             viewModel.getNextPageOfArticles()
@@ -100,8 +100,6 @@ extension ArticleViewController: UITableViewDataSource {
                     self.viewModel.finishedLoading()
                 })
                 .disposed(by: disposeBag)
-            
-            
         }
     }
 }
@@ -123,7 +121,5 @@ extension ArticleViewController: OptionsDelegate {
         viewModel.articleType = type
         refreshData()
     }
-    
-    
 }
 

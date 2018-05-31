@@ -18,9 +18,10 @@ class ArticleListViewModel
     
     private var numLoadingTasks = 0
     private var currentPageNum = 0
+    private var reachedLastPage = false
     
-    var isLoading: Bool {
-        return numLoadingTasks > 0
+    var shouldTryToLoadMorePages: Bool {
+        return numLoadingTasks == 0 && !reachedLastPage
     }
     
     init(repository: HackerNewsRepository)
@@ -36,7 +37,8 @@ class ArticleListViewModel
         numLoadingTasks -= 1
     }
     
-    func clearArticles() {
+    func reset() {
+        reachedLastPage = false
         articleViewModels = [ArticleViewModel]()
     }
     
@@ -68,6 +70,8 @@ class ArticleListViewModel
                 
                 if articles.count > 0 {
                     self.currentPageNum = pageNum
+                } else {
+                    self.reachedLastPage = true
                 }
                 
                 for article in articles {
