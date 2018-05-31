@@ -15,11 +15,6 @@ class MainNavigationSplitViewDelegate : NSObject, UISplitViewControllerDelegate
                              collapseSecondary secondaryViewController:UIViewController,
                              onto primaryViewController:UIViewController) -> Bool
     {
-        //        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-        //        guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false
-        //
-        //        }
-        
         return true
     }
 }

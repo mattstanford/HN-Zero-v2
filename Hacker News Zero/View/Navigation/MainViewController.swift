@@ -45,6 +45,8 @@ class MainViewController: UIViewController {
             let detailViewController = rightNavController.topViewController as? ArticleContainerViewController
             else { fatalError() }
         
+        splitViewController.preferredDisplayMode = .allVisible
+        
         let navigator = AppNavigator(with: self,
                                          articleList: masterViewController,
                                          articleDetail: detailViewController)
