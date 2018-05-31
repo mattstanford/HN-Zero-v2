@@ -11,8 +11,6 @@ target 'Hacker News Zero' do
   pod 'AlamofireNetworkActivityLogger', '~> 2.2.0'
   pod 'Atributika', '~> 4.3.1'
   pod 'Kingfisher', '~> 4.6.2'
-  pod 'Firebase/Core', '~> 4.9.0'
-  pod 'Firebase/Database'
 
   target 'Hacker News ZeroTests' do
     inherit! :search_paths
