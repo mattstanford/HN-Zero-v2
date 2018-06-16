@@ -21,5 +21,6 @@ extension ColorChangeable where Self: UIViewController  {
     
     func setColorOfNavBar(to scheme: ColorScheme) {
         self.navigationController?.navigationBar.barTintColor = scheme.mainColor
+        self.navigationController?.navigationBar.isTranslucent = false
     }
 }

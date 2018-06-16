@@ -83,6 +83,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
         if let postText = viewModel.article?.articlePostText,
             postText.count > 0 {
             postTextView.isHidden = false
+            postTextView.backgroundColor = viewModel.repository.settingsCache.colorScheme.backgroundColor
             postTextView.setHtmlText(text: postText, linkHandler: self.linkClicked)
             
         }
