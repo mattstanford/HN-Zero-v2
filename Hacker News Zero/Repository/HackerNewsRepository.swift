@@ -11,13 +11,19 @@ import RxSwift
 
 class HackerNewsRepository {
     
+    static var shared = HackerNewsRepository(client: HackerNewsApiClient(),
+                                             cache: ApiCache(),
+                                             settingsCache: SettingsCache(userDefaults: UserDefaults.standard))
+    
     let apiClient: ApiClient
     let cache: ApiCache
+    let settingsCache: SettingsCache
     
-    init(client: ApiClient, cache: ApiCache)
+    init(client: ApiClient, cache: ApiCache, settingsCache: SettingsCache)
     {
         self.apiClient = client
         self.cache = cache
+        self.settingsCache = settingsCache
     }
     
     func refreshArticleList(type: ArticleType) -> Completable

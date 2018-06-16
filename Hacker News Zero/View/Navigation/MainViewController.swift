@@ -34,6 +34,8 @@ class MainViewController: UIViewController {
         
         hideMenu()
         setupNavigator()
+        
+        set(scheme: ColorScheme.standard)
     }
     
     private func setupNavigator() {
@@ -108,5 +110,12 @@ class MainViewController: UIViewController {
             self.screenEdgePan.isEnabled = true
             self.overlayView.isHidden = true
         })
+    }
+}
+
+extension MainViewController: ColorChangeable {
+    func set(scheme: ColorScheme) {
+        setColorOfNavBar(to: scheme)
+        self.view.backgroundColor = scheme.mainColor
     }
 }

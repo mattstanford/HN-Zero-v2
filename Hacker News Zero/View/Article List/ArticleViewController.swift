@@ -24,21 +24,20 @@ class ArticleViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         
-        let repository = HackerNewsRepository(client: HackerNewsApiClient(),cache: ApiCache())
-        self.viewModel = ArticleListViewModel(repository: repository)
-        
+        self.viewModel = ArticleListViewModel(repository: HackerNewsRepository.shared)
         super.init(coder: aDecoder)
         
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 60
         
         refreshData()
-        
     }
     
     func refreshData()
@@ -120,6 +119,14 @@ extension ArticleViewController: OptionsDelegate {
         
         viewModel.articleType = type
         refreshData()
+    }
+}
+
+//MARK: - ColorChangeable Protocol
+extension ArticleViewController: ColorChangeable {
+    func set(scheme: ColorScheme) {
+        setColorOfNavBar(to: scheme)
+        self.view.backgroundColor = scheme.backgroundColor
     }
 }
 

@@ -66,7 +66,7 @@ class CommentsViewModel {
             
             let isOp = article?.author == comment.author
             
-            let viewModel = CommentItemViewModel(with: comment, isOp: isOp, level: level)
+            let viewModel = CommentItemViewModel(with: comment, isOp: isOp, level: level, colorScheme: repository.settingsCache.colorScheme)
             list.append(viewModel)
             
             if let childComments = comment.childComments {

@@ -21,8 +21,11 @@ class CommentTableViewCell: UITableViewCell {
     func configure(with viewModel: CommentItemViewModel, linkHandler: @escaping (URL) -> Void) {
         headerLabel.attributedText = viewModel.commentHeaderText
         
+        contentView.backgroundColor = viewModel.colorScheme.backgroundColor
+        
         if let text = viewModel.comment.text {
             contentLabel.setHtmlText(text: text, linkHandler: linkHandler)
+            contentLabel.backgroundColor = viewModel.colorScheme.backgroundColor
         }
         
         let indentAmount = CGFloat(viewModel.displayedLevel * commentPerLevel)

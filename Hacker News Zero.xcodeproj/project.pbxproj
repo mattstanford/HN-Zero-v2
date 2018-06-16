@@ -61,6 +61,9 @@
 		C9E02024209AB32C00E80516 /* WebViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E02023209AB32C00E80516 /* WebViewModelTests.swift */; };
 		C9F3DA76207DA890009B4C2E /* HackerNewsItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DA75207DA890009B4C2E /* HackerNewsItemType.swift */; };
 		C9F3DA78208056F9009B4C2E /* AttributedLabel+htmlText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DA77208056F9009B4C2E /* AttributedLabel+htmlText.swift */; };
+		C9F7CE2920CF741F00E53723 /* ColorChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7CE2820CF741F00E53723 /* ColorChangeable.swift */; };
+		C9F7CE2B20CF765500E53723 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7CE2A20CF765500E53723 /* ColorScheme.swift */; };
+		C9F7CE2D20D4BF2000E53723 /* SettingsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7CE2C20D4BF2000E53723 /* SettingsCache.swift */; };
 		DA79B3CE3E2F3FDF192FFB12 /* Pods_Hacker_News_Zero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F898E5F09BCFD04EF9C4B8 /* Pods_Hacker_News_Zero.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +139,9 @@
 		C9E02023209AB32C00E80516 /* WebViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModelTests.swift; sourceTree = "<group>"; };
 		C9F3DA75207DA890009B4C2E /* HackerNewsItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsItemType.swift; sourceTree = "<group>"; };
 		C9F3DA77208056F9009B4C2E /* AttributedLabel+htmlText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedLabel+htmlText.swift"; sourceTree = "<group>"; };
+		C9F7CE2820CF741F00E53723 /* ColorChangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChangeable.swift; sourceTree = "<group>"; };
+		C9F7CE2A20CF765500E53723 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		C9F7CE2C20D4BF2000E53723 /* SettingsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCache.swift; sourceTree = "<group>"; };
 		E0A17C38763BB35A824BD307 /* Pods-Hacker News ZeroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News ZeroTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News ZeroTests/Pods-Hacker News ZeroTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB02736F9E465A68EA15B602 /* Pods-Hacker News Zero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News Zero.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News Zero/Pods-Hacker News Zero.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				C908EAE020280AF6007FC681 /* ApiCache.swift */,
+				C9F7CE2C20D4BF2000E53723 /* SettingsCache.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -324,6 +331,7 @@
 				C950C216201AE50E00917A44 /* Article.swift */,
 				C9B06EAD205390D50048952C /* Comment.swift */,
 				C9B06EBB206C93780048952C /* ArticleType.swift */,
+				C9F7CE2A20CF765500E53723 /* ColorScheme.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -465,6 +473,7 @@
 				C98AB98520465DA400FB8ECD /* ArticleViewable.swift */,
 				C9B06EB420577DFB0048952C /* CommentContainable.swift */,
 				C9F3DA75207DA890009B4C2E /* HackerNewsItemType.swift */,
+				C9F7CE2820CF741F00E53723 /* ColorChangeable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -671,12 +680,15 @@
 				C90BBFFC20280F190014E498 /* ArticleListViewModel.swift in Sources */,
 				C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */,
 				C9F3DA76207DA890009B4C2E /* HackerNewsItemType.swift in Sources */,
+				C9F7CE2B20CF765500E53723 /* ColorScheme.swift in Sources */,
 				C96135E52077102B00812AF3 /* MainViewController.swift in Sources */,
 				C9B06EC1206F160F0048952C /* FixedTextView.swift in Sources */,
 				C9B06EBE206DCFD70048952C /* String+HTML.swift in Sources */,
 				C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */,
 				C96135EA207C614C00812AF3 /* AppConstants.swift in Sources */,
 				C9B06EB520577DFB0048952C /* CommentContainable.swift in Sources */,
+				C9F7CE2920CF741F00E53723 /* ColorChangeable.swift in Sources */,
+				C9F7CE2D20D4BF2000E53723 /* SettingsCache.swift in Sources */,
 				C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */,
 				C9B06EB7206B2D350048952C /* CommentTableViewCell.swift in Sources */,
 				C908EAE120280AF6007FC681 /* ApiCache.swift in Sources */,

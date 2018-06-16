@@ -15,15 +15,17 @@ class CommentItemViewModel {
     
     let comment: Comment
     let isOp: Bool
+    let colorScheme: ColorScheme
     private let level: Int
     private let dateGenerator: () -> Date
     
     
-    init(with comment: Comment, isOp: Bool, level: Int, dateGenerator: @escaping () -> Date = Date.init) {
+    init(with comment: Comment, isOp: Bool, level: Int, colorScheme: ColorScheme, dateGenerator: @escaping () -> Date = Date.init) {
         self.comment = comment
         self.isOp = isOp
         self.level = level
         self.dateGenerator = dateGenerator
+        self.colorScheme = colorScheme
     }
     
     var commentHeaderText: NSAttributedString {

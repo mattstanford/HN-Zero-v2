@@ -18,14 +18,18 @@ class CommentsViewController: UIViewController, ArticleViewable {
     weak var linkDelegate: LinkDelegate?
     
     lazy var viewModel: CommentsViewModel = {
-        let repository = HackerNewsRepository(client: HackerNewsApiClient(), cache: ApiCache())
-        return CommentsViewModel(with: repository)
+        return CommentsViewModel(with: HackerNewsRepository.shared)
     }()
     
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var postTextView: AttributedLabel!
     @IBOutlet weak private var infoLabel: UILabel!
     @IBOutlet weak private var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        set(scheme: ColorScheme.standard)
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -115,5 +119,12 @@ extension CommentsViewController: UITableViewDataSource {
     
         
         return cell
+    }
+}
+
+extension CommentsViewController: ColorChangeable {
+    func set(scheme: ColorScheme) {
+        setColorOfNavBar(to: scheme)
+        tableView.backgroundColor = scheme.backgroundColor
     }
 }

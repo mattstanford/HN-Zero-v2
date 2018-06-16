@@ -27,6 +27,8 @@ class ArticleTableViewCell: UITableViewCell {
     func configure(for viewModel: ArticleViewModel, commentHandler: CommentHandler?)
     {
         self.viewModel = viewModel
+        self.contentView.backgroundColor = viewModel.colorScheme.backgroundColor
+        
         titleLabel.text = viewModel.article.title
         // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
         detailLabel.text = viewModel.detailLabelText

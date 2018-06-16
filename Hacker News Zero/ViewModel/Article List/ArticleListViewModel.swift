@@ -47,9 +47,9 @@ class ArticleListViewModel
         currentPageNum = 0
         
         return repository.refreshArticleList(type: articleType)
-            .concat(Completable.create { completable in
+            .concat(Completable.create { [weak self] completable in
                 
-                self.articleViewModels = [ArticleViewModel]()
+                self?.articleViewModels = [ArticleViewModel]()
                 
                 completable(.completed)
                 return Disposables.create {}
@@ -66,18 +66,22 @@ class ArticleListViewModel
     func getPageOfArticles(pageNum: Int) -> Completable
     {
         return repository.getArticles(for: pageNum, pageSize: pageSize)
-            .map { articles -> Bool in
+            .map { [weak self] articles -> Bool in
                 
                 if articles.count > 0 {
-                    self.currentPageNum = pageNum
+                    self?.currentPageNum = pageNum
                 } else {
-                    self.reachedLastPage = true
+                    self?.reachedLastPage = true
                 }
                 
                 for article in articles {
                     
-                    let viewModel = ArticleViewModel(article: article)
-                    self.articleViewModels.append(viewModel)
+                    guard let colorScheme = self?.repository.settingsCache.colorScheme else {
+                        continue
+                    }
+                    
+                    let viewModel = ArticleViewModel(article: article, colorScheme: colorScheme)
+                    self?.articleViewModels.append(viewModel)
                     
                 }
                 
