@@ -83,7 +83,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
         if let postText = viewModel.article?.articlePostText,
             postText.count > 0 {
             postTextView.isHidden = false
-            postTextView.backgroundColor = viewModel.repository.settingsCache.colorScheme.backgroundColor
+            postTextView.backgroundColor = viewModel.repository.settingsCache.colorScheme.contentBackgroundColor
             postTextView.setHtmlText(text: postText, linkHandler: self.linkClicked)
             
         }
@@ -126,6 +126,6 @@ extension CommentsViewController: UITableViewDataSource {
 extension CommentsViewController: ColorChangeable {
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
-        tableView.backgroundColor = scheme.backgroundColor
+        tableView.backgroundColor = scheme.contentBackgroundColor
     }
 }

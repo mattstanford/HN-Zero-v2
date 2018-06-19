@@ -16,11 +16,17 @@ extension ColorChangeable where Self: UIViewController  {
     
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
-        self.view.backgroundColor = scheme.backgroundColor
+        view.backgroundColor = scheme.contentBackgroundColor
     }
     
     func setColorOfNavBar(to scheme: ColorScheme) {
-        self.navigationController?.navigationBar.barTintColor = scheme.mainColor
-        self.navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = scheme.barColor
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: scheme.barTextColor
+        ]
+        navigationController?.navigationItem.backBarButtonItem?.tintColor = scheme.barTextColor
+        navigationController?.navigationItem.rightBarButtonItem?.tintColor = scheme.barTextColor
+
     }
 }

@@ -126,7 +126,7 @@ extension ArticleViewController: OptionsDelegate {
 extension ArticleViewController: ColorChangeable {
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
-        self.view.backgroundColor = scheme.backgroundColor
+        self.view.backgroundColor = scheme.contentBackgroundColor
     }
 }
 

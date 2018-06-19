@@ -9,17 +9,19 @@
 import UIKit
 
 struct ColorScheme {
-    let mainColor: UIColor
-    let backgroundColor: UIColor
-    let foregroundColor: UIColor
-    let linkColor: UIColor
+    let barColor: UIColor
+    let barTextColor: UIColor
+    let contentBackgroundColor: UIColor
+    let contentTextColor: UIColor
+    let contentLinkColor: UIColor
 }
 
 //MARK: - Defined scheme helper methods
 extension ColorScheme {
     
-    static let standard: ColorScheme = ColorScheme(mainColor: UIColor.orange,
-                                                   backgroundColor: UIColor.yellow,
-                                                   foregroundColor: UIColor.green,
-                                                   linkColor: UIColor.purple)
+    static let standard: ColorScheme = ColorScheme(barColor: UIColor.orange,
+                                                   barTextColor: UIColor.purple,
+                                                   contentBackgroundColor: UIColor.yellow,
+                                                   contentTextColor: UIColor.green,
+                                                   contentLinkColor: UIColor.purple)
 }
