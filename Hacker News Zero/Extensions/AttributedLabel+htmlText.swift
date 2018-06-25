@@ -12,6 +12,7 @@ import Atributika
 extension AttributedLabel {
     
     func setHtmlText(text: String,
+                     colorScheme: ColorScheme,
                      fontName: String = AppConstants.defaultFont,
                      fontSize: CGFloat = AppConstants.defaultFontSize,
                      linkHandler: @escaping (URL) -> Void)
@@ -20,7 +21,7 @@ extension AttributedLabel {
         if let labelFont =  Font(name: AppConstants.defaultFont, size: AppConstants.defaultFontSize) {
             font = labelFont
         }
-        attributedText = text.htmlText()
+        attributedText = text.htmlText(colorScheme: colorScheme)
         onClick = { label, detection in
             switch detection.type {
             case .tag(let tag):

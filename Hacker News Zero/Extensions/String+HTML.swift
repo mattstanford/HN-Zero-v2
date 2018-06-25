@@ -11,13 +11,16 @@ import Atributika
 
 extension String{
     
-    func htmlText(fontName: String = AppConstants.defaultFont,
+    func htmlText(colorScheme: ColorScheme,
+                  fontName: String = AppConstants.defaultFont,
                   fontSize: CGFloat = AppConstants.defaultFontSize) -> AttributedText {
+        
+        let baseStyle = Style.foregroundColor(colorScheme.contentTextColor)
         
         var styles = [Style]()
         styles.append(Style("b").font(.boldSystemFont(ofSize: fontSize)))
         styles.append(Style("i").font(.italicSystemFont(ofSize: fontSize)))
-        styles.append(Style("a").underlineStyle(.styleSingle).foregroundColor(.blue, .normal).foregroundColor(.brown, .highlighted) )
+        styles.append(Style("a").underlineStyle(.styleSingle).foregroundColor(colorScheme.contentLinkColor, .normal).foregroundColor(.brown, .highlighted) )
         
         if let courierFont = Font(name: "Courier", size: fontSize) {
             styles.append(Style("code").font(courierFont))
@@ -30,7 +33,7 @@ extension String{
         
         tempString = tempString.stringWithDecodedHTMLEntities
     
-        return tempString.style(tags: styles)
+        return tempString.style(tags: styles).styleAll(baseStyle)
     }
     
 

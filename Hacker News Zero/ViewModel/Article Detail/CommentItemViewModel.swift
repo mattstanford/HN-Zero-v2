@@ -34,24 +34,29 @@ class CommentItemViewModel {
         let numIndentDots = max(self.level - maxLevel, 0)
         var headerText = ""
         
+        let authorTag = Style("author").font(Font.boldSystemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(colorScheme.contentTextColor)
+        
+        headerText += "<author>"
+        
         for _ in 0..<numIndentDots {
             headerText +=  "• "
         }
         
         headerText += self.comment.author ?? ""
+        headerText += "</author>"
         
         //Set the "(OP)" text if necessary
-        let opTextTag = Style("OP").font(Font.boldSystemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(UIColor.blue)
+        let opTextTag = Style("OP").font(Font.boldSystemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(colorScheme.contentLinkColor)
         if isOp {
             headerText += "<OP> (OP)</OP>"
         }
         
         // Time text is lighter in color
-        let grayTextTag = Style("grayFont").font(Font.systemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(UIColor.lightGray)
+        let grayTextTag = Style("grayFont").font(Font.systemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(colorScheme.contentInfoTextColor)
         
         headerText += "<grayFont> • " + timeString + "</grayFont>"
         
-        return headerText.style(tags: grayTextTag, opTextTag).attributedString
+        return headerText.style(tags: authorTag, grayTextTag, opTextTag).attributedString
     }
     
     var content: String {

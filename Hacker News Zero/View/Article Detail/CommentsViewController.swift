@@ -18,7 +18,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
     weak var linkDelegate: LinkDelegate?
     
     lazy var viewModel: CommentsViewModel = {
-        return CommentsViewModel(with: HackerNewsRepository.shared)
+        return CommentsViewModel(with: HackerNewsRepository.shared, colorScheme: HackerNewsRepository.shared.settingsCache.colorScheme)
     }()
     
     @IBOutlet weak private var titleLabel: UILabel!
@@ -78,13 +78,15 @@ class CommentsViewController: UIViewController, ArticleViewable {
     //MARK: Header view
     func setupHeader() {
         titleLabel.text = viewModel.article?.title
+        titleLabel.textColor = viewModel.colorScheme.contentTextColor
         infoLabel.text = viewModel.infoString
+        infoLabel.textColor = viewModel.colorScheme.contentInfoTextColor
         
         if let postText = viewModel.article?.articlePostText,
             postText.count > 0 {
             postTextView.isHidden = false
             postTextView.backgroundColor = viewModel.repository.settingsCache.colorScheme.contentBackgroundColor
-            postTextView.setHtmlText(text: postText, linkHandler: self.linkClicked)
+            postTextView.setHtmlText(text: postText, colorScheme: viewModel.colorScheme, linkHandler: self.linkClicked)
             
         }
         else {

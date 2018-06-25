@@ -30,9 +30,11 @@ class ArticleTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = viewModel.colorScheme.contentBackgroundColor
         
         titleLabel.text = viewModel.article.title
+        titleLabel.textColor = viewModel.colorScheme.contentTextColor
         // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
         detailLabel.text = viewModel.detailLabelText
-        
+        detailLabel.textColor = viewModel.colorScheme.contentInfoTextColor
+
         if let iconUrl = viewModel.iconUrl {
             iconImage.kf.setImage(with: iconUrl, placeholder: #imageLiteral(resourceName: "default_icon"))
         }
@@ -42,6 +44,7 @@ class ArticleTableViewCell: UITableViewCell {
             commentsView.isHidden = false
             commentViewWidth.constant = 50
             numCommentsLabel.text = String(describing:numComments)
+            numCommentsLabel.textColor = viewModel.colorScheme.contentTextColor
         }
         else
         {

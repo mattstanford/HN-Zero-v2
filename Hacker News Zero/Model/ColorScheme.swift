@@ -13,6 +13,7 @@ struct ColorScheme {
     let barTextColor: UIColor
     let contentBackgroundColor: UIColor
     let contentTextColor: UIColor
+    let contentInfoTextColor: UIColor
     let contentLinkColor: UIColor
 }
 
@@ -23,5 +24,6 @@ extension ColorScheme {
                                                    barTextColor: UIColor.purple,
                                                    contentBackgroundColor: UIColor.yellow,
                                                    contentTextColor: UIColor.green,
-                                                   contentLinkColor: UIColor.purple)
+                                                   contentInfoTextColor: UIColor.blue,
+                                                   contentLinkColor: UIColor.orange)
 }

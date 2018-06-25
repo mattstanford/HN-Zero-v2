@@ -129,6 +129,7 @@ extension ArticleViewController: ColorChangeable {
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
         self.view.backgroundColor = scheme.contentBackgroundColor
+        self.tableView.backgroundColor = scheme.contentBackgroundColor
     }
 }
 
