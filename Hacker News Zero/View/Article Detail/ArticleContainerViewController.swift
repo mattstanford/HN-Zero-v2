@@ -30,7 +30,6 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupBarButtons()
     }
     
