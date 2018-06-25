@@ -28,7 +28,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        set(scheme: ColorScheme.standard)
+        set(scheme: viewModel.colorScheme)
     }
     
     override func viewDidLayoutSubviews() {

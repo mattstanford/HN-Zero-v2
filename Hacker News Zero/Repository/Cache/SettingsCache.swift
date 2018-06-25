@@ -15,7 +15,7 @@ class SettingsCache {
     
     init(userDefaults: UserDefaults) {
         self.userDefaults = userDefaults
-        self.colorScheme = ColorScheme.standard
+        self.colorScheme = ColorScheme.dark
     }
     
    

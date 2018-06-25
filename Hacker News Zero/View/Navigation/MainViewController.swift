@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         hideMenu()
         setupNavigator()
         
-        set(scheme: ColorScheme.standard)
+        set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
     }
     
     private func setupNavigator() {
