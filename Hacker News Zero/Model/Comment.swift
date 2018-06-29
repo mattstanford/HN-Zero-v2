@@ -34,6 +34,18 @@ struct Comment: Codable, CommentContainable, HackerNewsItemType
         case deleted
     }
     
+    var isDeleted: Bool {
+        return deleted ?? false
+    }
+    
+    var hasChildComments: Bool {
+        if let childIds = childCommentIds {
+            return childIds.count > 0
+        } else {
+            return false
+        }
+    }
+    
     static func decodeComment(from jsonData: Data) -> Comment?
     {
         let decoder = JSONDecoder()

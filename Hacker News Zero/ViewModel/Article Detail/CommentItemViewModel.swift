@@ -33,7 +33,7 @@ class CommentItemViewModel {
         
         let numIndentDots = max(self.level - maxLevel, 0)
         var headerText = ""
-        
+  
         let authorTag = Style("author").font(Font.boldSystemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(colorScheme.contentTextColor)
         
         headerText += "<author>"
@@ -60,8 +60,12 @@ class CommentItemViewModel {
     }
     
     var content: String {
-        let content = self.comment.text ?? ""
-        return content
+        
+        if comment.isDeleted {
+            return "[Deleted]"
+        } else {
+            return comment.text ?? ""
+        }
     }
     
     var displayedLevel: Int {
