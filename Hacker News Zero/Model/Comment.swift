@@ -17,6 +17,7 @@ struct Comment: Codable, CommentContainable, HackerNewsItemType
     let childCommentIds: [Int]?
     let isDead: Bool?
     let time: Date
+    let deleted: Bool?
     
     //Not part of the JSON
     var childComments: [Comment]? = nil
@@ -30,6 +31,7 @@ struct Comment: Codable, CommentContainable, HackerNewsItemType
         case isDead = "dead"
         case childComments
         case time
+        case deleted
     }
     
     static func decodeComment(from jsonData: Data) -> Comment?
@@ -38,6 +40,7 @@ struct Comment: Codable, CommentContainable, HackerNewsItemType
 
         decoder.dateDecodingStrategy = .secondsSince1970
         let comment = try? decoder.decode(Comment.self, from: jsonData)
+        
         return comment
     }
     
@@ -49,6 +52,7 @@ struct Comment: Codable, CommentContainable, HackerNewsItemType
                        childCommentIds: nil,
                        isDead: nil,
                        time: Date(),
+                       deleted: true,
                        childComments: nil)
     }
 }

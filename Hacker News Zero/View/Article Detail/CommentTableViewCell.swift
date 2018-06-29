@@ -23,10 +23,8 @@ class CommentTableViewCell: UITableViewCell {
         
         contentView.backgroundColor = viewModel.colorScheme.contentBackgroundColor
         
-        if let text = viewModel.comment.text {
-            contentLabel.setHtmlText(text: text, colorScheme: viewModel.colorScheme, linkHandler: linkHandler)
-            contentLabel.backgroundColor = viewModel.colorScheme.contentBackgroundColor
-        }
+        contentLabel.setHtmlText(text: viewModel.content, colorScheme: viewModel.colorScheme, linkHandler: linkHandler)
+        contentLabel.backgroundColor = viewModel.colorScheme.contentBackgroundColor
         
         let indentAmount = CGFloat(viewModel.displayedLevel * commentPerLevel)
         headerLeadingMargin.constant = indentAmount
