@@ -24,6 +24,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var postTextView: AttributedLabel!
     @IBOutlet weak private var infoLabel: UILabel!
+    @IBOutlet weak private var headerSeparatorView: UIView!
     @IBOutlet weak private var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -81,6 +82,7 @@ class CommentsViewController: UIViewController, ArticleViewable {
         titleLabel.textColor = viewModel.colorScheme.contentTextColor
         infoLabel.text = viewModel.infoString
         infoLabel.textColor = viewModel.colorScheme.contentInfoTextColor
+        headerSeparatorView.backgroundColor = viewModel.colorScheme.barColor
         
         if let postText = viewModel.article?.articlePostText,
             postText.count > 0 {
