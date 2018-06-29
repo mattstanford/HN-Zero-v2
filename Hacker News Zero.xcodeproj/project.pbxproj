@@ -48,6 +48,7 @@
 		C9B06EBC206C93780048952C /* ArticleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EBB206C93780048952C /* ArticleType.swift */; };
 		C9B06EBE206DCFD70048952C /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EBD206DCFD60048952C /* String+HTML.swift */; };
 		C9B06EC1206F160F0048952C /* FixedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EC0206F160F0048952C /* FixedTextView.swift */; };
+		C9B17C4F20E09DB1005E52A9 /* terminus.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B17C4E20E09DB0005E52A9 /* terminus.ttf */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
 		C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81E204235E8003D6ADF /* WebViewController.swift */; };
@@ -126,6 +127,7 @@
 		C9B06EBB206C93780048952C /* ArticleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleType.swift; sourceTree = "<group>"; };
 		C9B06EBD206DCFD60048952C /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		C9B06EC0206F160F0048952C /* FixedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedTextView.swift; sourceTree = "<group>"; };
+		C9B17C4E20E09DB0005E52A9 /* terminus.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = terminus.ttf; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		C9DAE81E204235E8003D6ADF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		C950C213201ADA7500917A44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9B17C4E20E09DB0005E52A9 /* terminus.ttf */,
 				C950C1FB201553EE00917A44 /* Info.plist */,
 				C950C1F8201553EE00917A44 /* LaunchScreen.storyboard */,
 				C950C1F3201553EE00917A44 /* Main.storyboard */,
@@ -531,7 +534,7 @@
 				TargetAttributes = {
 					C950C1E6201553EE00917A44 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					C950C1FF201553EE00917A44 = {
 						CreatedOnToolsVersion = 9.2;
@@ -567,6 +570,7 @@
 				C950C1FA201553EE00917A44 /* LaunchScreen.storyboard in Resources */,
 				C950C1F7201553EE00917A44 /* Assets.xcassets in Resources */,
 				C950C1F5201553EE00917A44 /* Main.storyboard in Resources */,
+				C9B17C4F20E09DB1005E52A9 /* terminus.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,12 +860,14 @@
 			baseConfigurationReference = 82470E07FF30D9D94022DEB6 /* Pods-Hacker News Zero.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 735H4JCR7N;
 				INFOPLIST_FILE = "Hacker News Zero/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.locacha.Hacker-News-Zero";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hnzero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6ecf3996-7ec0-4840-aa35-6805e2d8938d";
+				PROVISIONING_PROFILE_SPECIFIER = "HN Zero Development (2017)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -872,12 +878,15 @@
 			baseConfigurationReference = FB02736F9E465A68EA15B602 /* Pods-Hacker News Zero.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 735H4JCR7N;
 				INFOPLIST_FILE = "Hacker News Zero/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.locacha.Hacker-News-Zero";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hnzero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "dea7ffb2-85a3-4ba8-a1e2-15799e4cb919";
+				PROVISIONING_PROFILE_SPECIFIER = "HN Zero MacBook Pro";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
