@@ -189,14 +189,36 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OgW-jG-TZE">
                                 <rect key="frame" x="0.0" y="20" width="267" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="UgW-Dx-2ly">
+                                    <rect key="frame" x="0.0" y="0.0" width="267" height="100"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIK-Ca-HKP">
+                                            <rect key="frame" x="29" y="17" width="34" height="66"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="66" id="nUA-cG-IJN"/>
+                                                <constraint firstAttribute="width" constant="34" id="y62-wC-pbt"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="55"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="0.53665304329999997" blue="0.096448227639999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="sIK-Ca-HKP" secondAttribute="bottom" constant="17" id="PfF-Wc-ONo"/>
+                                        <constraint firstItem="sIK-Ca-HKP" firstAttribute="top" secondItem="UgW-Dx-2ly" secondAttribute="top" constant="17" id="UfS-Vy-fr9"/>
+                                        <constraint firstItem="sIK-Ca-HKP" firstAttribute="leading" secondItem="UgW-Dx-2ly" secondAttribute="leading" constant="29" id="VDn-Dx-5G1"/>
+                                    </constraints>
+                                </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Yqf-EU-fGj" userLabel="Empty Footer">
-                                    <rect key="frame" x="0.0" y="72" width="267" height="44"/>
+                                    <rect key="frame" x="0.0" y="172" width="267" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTypeCell" id="61y-LT-agf">
-                                        <rect key="frame" x="0.0" y="28" width="267" height="44"/>
+                                        <rect key="frame" x="0.0" y="128" width="267" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="61y-LT-agf" id="gBS-Rb-RJ2">
                                             <rect key="frame" x="0.0" y="0.0" width="267" height="43.5"/>
@@ -220,6 +242,8 @@
                         <viewLayoutGuide key="safeArea" id="TG3-Wg-I0y"/>
                     </view>
                     <connections>
+                        <outlet property="headerLabel" destination="sIK-Ca-HKP" id="eJE-e3-ej4"/>
+                        <outlet property="headerView" destination="UgW-Dx-2ly" id="HFs-lU-wqq"/>
                         <outlet property="tableView" destination="OgW-jG-TZE" id="mnM-Nc-EEA"/>
                     </connections>
                 </viewController>
