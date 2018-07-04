@@ -217,7 +217,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTypeCell" id="61y-LT-agf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTypeCell" id="61y-LT-agf">
                                         <rect key="frame" x="0.0" y="128" width="267" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="61y-LT-agf" id="gBS-Rb-RJ2">
@@ -538,10 +538,19 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bNR-Pp-qMN">
+                                <rect key="frame" x="0.0" y="20" width="375" height="3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="6Yk-xf-3TR"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bNR-Pp-qMN" firstAttribute="top" secondItem="Oae-nU-4Iy" secondAttribute="top" id="5rd-I1-Ubz"/>
                             <constraint firstItem="z2q-Bb-Y3K" firstAttribute="trailing" secondItem="Oae-nU-4Iy" secondAttribute="trailing" id="Vfo-uL-peN"/>
+                            <constraint firstItem="bNR-Pp-qMN" firstAttribute="leading" secondItem="vNp-vw-w9H" secondAttribute="leading" id="jYa-Sm-Zf2"/>
+                            <constraint firstAttribute="trailing" secondItem="bNR-Pp-qMN" secondAttribute="trailing" id="n0z-ic-zc2"/>
                             <constraint firstItem="z2q-Bb-Y3K" firstAttribute="top" secondItem="Oae-nU-4Iy" secondAttribute="top" id="nkt-Xh-3A8"/>
                             <constraint firstItem="z2q-Bb-Y3K" firstAttribute="leading" secondItem="Oae-nU-4Iy" secondAttribute="leading" id="qkJ-Qg-RzS"/>
                             <constraint firstItem="z2q-Bb-Y3K" firstAttribute="bottom" secondItem="vNp-vw-w9H" secondAttribute="bottom" id="tBs-vr-JRj"/>
@@ -549,6 +558,7 @@
                         <viewLayoutGuide key="safeArea" id="Oae-nU-4Iy"/>
                     </view>
                     <connections>
+                        <outlet property="progressView" destination="bNR-Pp-qMN" id="zwu-VP-TFc"/>
                         <outlet property="webView" destination="z2q-Bb-Y3K" id="CEo-xc-Jno"/>
                     </connections>
                 </viewController>
