@@ -29,6 +29,10 @@ class MainViewController: UIViewController {
         return overlayView.isHidden
     }
     
+    var isCollapsed: Bool {
+        return contentViewController?.isCollapsed ?? true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

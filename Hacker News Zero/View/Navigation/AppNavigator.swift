@@ -30,10 +30,6 @@ class AppNavigator {
         print("showing article: " + article.title)
         currentArticle = article
         
-        guard let navController = articleDetail.navigationController else {
-            return
-        }
-        
         var view = selectedView
         
         //"Ask HN" type articles don't have a url
@@ -46,7 +42,14 @@ class AppNavigator {
             view = .web
         }
         
-        articleList.showDetailViewController(navController, sender: nil)
+        //If we're on iPad, show the nav controller + detail view
+        if !mainViewController.isCollapsed, let navController = articleDetail.navigationController {
+            articleList.showDetailViewController(navController, sender: nil)
+        } else {
+            //On phone, we already have a nav controller, so only push the detail view
+            articleList.showDetailViewController(articleDetail, sender: nil)
+        }
+        
         articleDetail.showArticle(in: view)
     }
     
