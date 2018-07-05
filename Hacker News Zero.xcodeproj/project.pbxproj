@@ -33,6 +33,7 @@
 		C950C217201AE50E00917A44 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C216201AE50E00917A44 /* Article.swift */; };
 		C96135E52077102B00812AF3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96135E42077102B00812AF3 /* MainViewController.swift */; };
 		C96135EA207C614C00812AF3 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96135E9207C614C00812AF3 /* AppConstants.swift */; };
+		C975149F20ED749600E7C2F1 /* BottomBarHideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975149E20ED749600E7C2F1 /* BottomBarHideable.swift */; };
 		C98AB984204508F700FB8ECD /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB983204508F700FB8ECD /* AppNavigator.swift */; };
 		C98AB98620465DA400FB8ECD /* ArticleViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB98520465DA400FB8ECD /* ArticleViewable.swift */; };
 		C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */; };
@@ -112,6 +113,7 @@
 		C950C216201AE50E00917A44 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		C96135E42077102B00812AF3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C96135E9207C614C00812AF3 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		C975149E20ED749600E7C2F1 /* BottomBarHideable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarHideable.swift; sourceTree = "<group>"; };
 		C98AB983204508F700FB8ECD /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		C98AB98520465DA400FB8ECD /* ArticleViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewable.swift; sourceTree = "<group>"; };
 		C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+FlexibleHeader.swift"; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				C9B06EB420577DFB0048952C /* CommentContainable.swift */,
 				C9F3DA75207DA890009B4C2E /* HackerNewsItemType.swift */,
 				C9F7CE2820CF741F00E53723 /* ColorChangeable.swift */,
+				C975149E20ED749600E7C2F1 /* BottomBarHideable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				C9F3DA76207DA890009B4C2E /* HackerNewsItemType.swift in Sources */,
 				C9F7CE2B20CF765500E53723 /* ColorScheme.swift in Sources */,
 				C96135E52077102B00812AF3 /* MainViewController.swift in Sources */,
+				C975149F20ED749600E7C2F1 /* BottomBarHideable.swift in Sources */,
 				C9B06EC1206F160F0048952C /* FixedTextView.swift in Sources */,
 				C9B06EBE206DCFD70048952C /* String+HTML.swift in Sources */,
 				C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */,

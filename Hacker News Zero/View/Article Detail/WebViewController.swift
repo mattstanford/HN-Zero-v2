@@ -13,6 +13,11 @@ class WebViewController: UIViewController, ArticleViewable {
     @IBOutlet private weak var webView: WKWebView!
     @IBOutlet private weak var progressView: UIProgressView!
     
+    @IBOutlet internal weak var bottomBar: UIToolbar!
+    @IBOutlet internal weak var bottomBarBottomConstraint: NSLayoutConstraint!
+    
+    var lastScrollOffset: CGFloat = 0
+    
     var viewModel = WebViewModel()
     
     var progressObserver: NSKeyValueObservation?
@@ -21,6 +26,7 @@ class WebViewController: UIViewController, ArticleViewable {
         super.viewDidLoad()
         
         webView.navigationDelegate = self
+        webView.scrollView.delegate = self
         setupProgressBar()
     }
 
@@ -70,7 +76,7 @@ class WebViewController: UIViewController, ArticleViewable {
         webView.load(urlRequest)
     }
     
-    //MARK: ArticleViewable protocol
+    //MARK: - ArticleViewable protocol
     
     func show(article: Article?)
     {
@@ -81,7 +87,6 @@ class WebViewController: UIViewController, ArticleViewable {
     func set(url: URL) {
         viewModel.currentUrl = url
     }
-    
 }
 
 extension WebViewController: WKNavigationDelegate {
@@ -91,5 +96,28 @@ extension WebViewController: WKNavigationDelegate {
             viewModel.needsReset = false
             showCurrentArticle()
         }
+    }
+}
+
+//MARK: - ScrollView Delegate
+extension WebViewController: UIScrollViewDelegate, BottomBarHideable {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let offset = scrollView.contentOffset.y
+        let maxheight = scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom
+
+        
+        if offset > maxheight {
+            animateBar(show: false)
+        } else if offset <= 0 {
+            animateBar(show: true)
+        } else if offset > lastScrollOffset {
+            animateBar(show: false)
+        } else {
+            animateBar(show: true)
+        }
+        
+        lastScrollOffset = offset
     }
 }

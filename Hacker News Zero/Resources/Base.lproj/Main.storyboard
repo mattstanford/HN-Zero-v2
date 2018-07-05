@@ -217,7 +217,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTypeCell" id="61y-LT-agf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTypeCell" id="61y-LT-agf">
                                         <rect key="frame" x="0.0" y="128" width="267" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="61y-LT-agf" id="gBS-Rb-RJ2">
@@ -498,11 +498,24 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="mdL-hK-L4j" id="eO8-5p-qfa"/>
+                                    <outlet property="delegate" destination="mdL-hK-L4j" id="YW7-aR-Myg"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ww2-4o-e99">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="d9n-IK-Qdt"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Item" id="ELp-bG-p9v"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ww2-4o-e99" firstAttribute="bottom" secondItem="SKy-Ha-JiF" secondAttribute="bottom" id="CJd-lk-Snq"/>
+                            <constraint firstItem="Ww2-4o-e99" firstAttribute="trailing" secondItem="SKy-Ha-JiF" secondAttribute="trailing" id="I17-y9-F4b"/>
+                            <constraint firstItem="Ww2-4o-e99" firstAttribute="leading" secondItem="SKy-Ha-JiF" secondAttribute="leading" id="Rj1-Id-XAo"/>
                             <constraint firstItem="VnM-KN-Ycj" firstAttribute="top" secondItem="SKy-Ha-JiF" secondAttribute="top" id="WOR-kN-E1V"/>
                             <constraint firstItem="VnM-KN-Ycj" firstAttribute="leading" secondItem="SKy-Ha-JiF" secondAttribute="leading" id="oVv-FT-hVL"/>
                             <constraint firstItem="VnM-KN-Ycj" firstAttribute="trailing" secondItem="SKy-Ha-JiF" secondAttribute="trailing" id="xCA-L4-keP"/>
@@ -511,6 +524,8 @@
                         <viewLayoutGuide key="safeArea" id="SKy-Ha-JiF"/>
                     </view>
                     <connections>
+                        <outlet property="bottomBar" destination="Ww2-4o-e99" id="06N-p1-THe"/>
+                        <outlet property="bottomBarBottomConstraint" destination="CJd-lk-Snq" id="R20-qR-g1G"/>
                         <outlet property="headerSeparatorView" destination="6WA-Ju-wc2" id="IjS-a4-1up"/>
                         <outlet property="infoLabel" destination="fRp-WH-tO3" id="TWA-9o-e69"/>
                         <outlet property="postTextView" destination="Hvc-de-Ofo" id="G7U-xD-1RF"/>
@@ -544,20 +559,34 @@
                                     <constraint firstAttribute="height" constant="3" id="6Yk-xf-3TR"/>
                                 </constraints>
                             </progressView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKi-ya-1Yq">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ACV-Es-HYA"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Item" id="q8B-rf-PTs"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bNR-Pp-qMN" firstAttribute="top" secondItem="Oae-nU-4Iy" secondAttribute="top" id="5rd-I1-Ubz"/>
+                            <constraint firstItem="WKi-ya-1Yq" firstAttribute="trailing" secondItem="Oae-nU-4Iy" secondAttribute="trailing" id="N5b-g7-GgE"/>
                             <constraint firstItem="z2q-Bb-Y3K" firstAttribute="trailing" secondItem="Oae-nU-4Iy" secondAttribute="trailing" id="Vfo-uL-peN"/>
+                            <constraint firstItem="WKi-ya-1Yq" firstAttribute="bottom" secondItem="Oae-nU-4Iy" secondAttribute="bottom" id="ibb-2q-aCr"/>
                             <constraint firstItem="bNR-Pp-qMN" firstAttribute="leading" secondItem="vNp-vw-w9H" secondAttribute="leading" id="jYa-Sm-Zf2"/>
                             <constraint firstAttribute="trailing" secondItem="bNR-Pp-qMN" secondAttribute="trailing" id="n0z-ic-zc2"/>
                             <constraint firstItem="z2q-Bb-Y3K" firstAttribute="top" secondItem="Oae-nU-4Iy" secondAttribute="top" id="nkt-Xh-3A8"/>
                             <constraint firstItem="z2q-Bb-Y3K" firstAttribute="leading" secondItem="Oae-nU-4Iy" secondAttribute="leading" id="qkJ-Qg-RzS"/>
                             <constraint firstItem="z2q-Bb-Y3K" firstAttribute="bottom" secondItem="vNp-vw-w9H" secondAttribute="bottom" id="tBs-vr-JRj"/>
+                            <constraint firstItem="WKi-ya-1Yq" firstAttribute="leading" secondItem="Oae-nU-4Iy" secondAttribute="leading" id="vRc-0h-TmC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oae-nU-4Iy"/>
                     </view>
                     <connections>
+                        <outlet property="bottomBar" destination="WKi-ya-1Yq" id="Tce-Sv-4TB"/>
+                        <outlet property="bottomBarBottomConstraint" destination="ibb-2q-aCr" id="VhR-xn-AGu"/>
                         <outlet property="progressView" destination="bNR-Pp-qMN" id="zwu-VP-TFc"/>
                         <outlet property="webView" destination="z2q-Bb-Y3K" id="CEo-xc-Jno"/>
                     </connections>

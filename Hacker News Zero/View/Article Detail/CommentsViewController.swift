@@ -27,6 +27,9 @@ class CommentsViewController: UIViewController, ArticleViewable {
     @IBOutlet weak private var headerSeparatorView: UIView!
     @IBOutlet weak private var tableView: UITableView!
     
+    @IBOutlet internal weak var bottomBar: UIToolbar!
+    @IBOutlet internal weak var bottomBarBottomConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         set(scheme: viewModel.colorScheme)
@@ -131,5 +134,27 @@ extension CommentsViewController: ColorChangeable {
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
         tableView.backgroundColor = scheme.contentBackgroundColor
+    }
+}
+
+extension CommentsViewController: BottomBarHideable, UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let offset = scrollView.contentOffset.y
+        
+        if offset <= 0 {
+            //show bar
+            bottomBarBottomConstraint.constant = 0
+        } else {
+            //hide bar
+            bottomBarBottomConstraint.constant = view.safeAreaInsets.bottom + bottomBar.frame.height
+        }
+        
+        bottomBar.setNeedsUpdateConstraints()
+        
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }
