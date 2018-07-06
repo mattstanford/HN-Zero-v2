@@ -24,6 +24,9 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
     var viewModel = WebViewModel()
     
     var progressObserver: NSKeyValueObservation?
+    var navBackObserver: NSKeyValueObservation?
+    var navForwardObserver: NSKeyValueObservation?
+    var urlObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +78,33 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
                 self?.progressView.alpha = 1
             }
         }
+    }
+    
+    func setupNavigationButtons() {
+        guard let webView = webView else {
+            return
+        }
+        //Initially these should be disabled when first loading the web view
+        self.backButton.isEnabled = false
+        self.forwardButton.isEnabled = false
         
+        //Trying in vain to detect when WKWebView changes up its backForward list for history
+        let changeClosure: (WKWebView) -> Void = { [weak self] webView in
+            self?.backButton.isEnabled = webView.canGoBack
+            self?.forwardButton.isEnabled = webView.canGoForward
+        }
+        
+        self.navBackObserver = webView.observe(\.canGoBack) {(webView, _ ) in
+            changeClosure(webView)
+        }
+        
+        self.navForwardObserver = webView.observe(\.canGoForward) {(webView, _ ) in
+            changeClosure(webView)
+        }
+        
+        self.urlObserver = webView.observe(\.url) {(webView, _ ) in
+            changeClosure(webView)
+        }
     }
     
     func showNewArticleIfNecessary() {
@@ -101,6 +130,7 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
             view.bringSubview(toFront: bottomBar)
             webView.scrollView.delegate = self
             setupProgressBar()
+            setupNavigationButtons()
             
             showCurrentArticle()
         }
@@ -144,11 +174,11 @@ extension WebViewController: UIScrollViewDelegate, BottomBarHideable {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let offset = scrollView.contentOffset.y
-        let maxheight = scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom
+        let maxheight = abs(scrollView.contentSize.height - scrollView.bounds.height) + scrollView.contentInset.bottom
 
         if offset > maxheight {
             animateBar(show: false)
-        } else if offset <= 0 {
+        } else if offset <= 0.0 {
             animateBar(show: true)
         } else if offset > lastScrollOffset {
             animateBar(show: false)
