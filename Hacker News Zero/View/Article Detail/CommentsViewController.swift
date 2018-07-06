@@ -12,7 +12,7 @@ import Atributika
 
 let CommentCellIdentifier = "ComentCellIdentifier"
 
-class CommentsViewController: UIViewController, ArticleViewable {
+class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     
     let disposeBag = DisposeBag()
     weak var linkDelegate: LinkDelegate?
@@ -38,6 +38,12 @@ class CommentsViewController: UIViewController, ArticleViewable {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.layoutTableHeaderView()
+    }
+    
+    @IBAction private func shareButtonTapped() {
+        if let article = viewModel.article {
+            share(article: article)
+        }
     }
     
     //MARK: ArticleViewable protocol
@@ -134,6 +140,8 @@ extension CommentsViewController: ColorChangeable {
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
         tableView.backgroundColor = scheme.contentBackgroundColor
+        bottomBar.barTintColor = scheme.barColor
+        bottomBar.tintColor = scheme.barTextColor
     }
 }
 

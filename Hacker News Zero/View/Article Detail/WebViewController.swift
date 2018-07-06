@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController, ArticleViewable {
+class WebViewController: UIViewController, ArticleViewable, Shareable {
     @IBOutlet private weak var webView: WKWebView!
     @IBOutlet private weak var progressView: UIProgressView!
     
@@ -27,6 +27,7 @@ class WebViewController: UIViewController, ArticleViewable {
         
         webView.navigationDelegate = self
         webView.scrollView.delegate = self
+        set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
         setupProgressBar()
     }
 
@@ -34,6 +35,12 @@ class WebViewController: UIViewController, ArticleViewable {
         super.viewDidAppear(animated)
    
         showNewArticleIfNecessary()
+    }
+    
+    @IBAction private func shareButtonTapped() {
+        if let article = viewModel.article {
+            share(article: article)
+        }
     }
     
     func setupProgressBar() {
@@ -96,6 +103,14 @@ extension WebViewController: WKNavigationDelegate {
             viewModel.needsReset = false
             showCurrentArticle()
         }
+    }
+}
+
+//MARK: - Color changeable
+extension WebViewController: ColorChangeable {
+    func set(scheme: ColorScheme) {
+        bottomBar.barTintColor = scheme.barColor
+        bottomBar.tintColor = scheme.barTextColor
     }
 }
 

@@ -50,6 +50,7 @@
 		C9B06EBE206DCFD70048952C /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EBD206DCFD60048952C /* String+HTML.swift */; };
 		C9B06EC1206F160F0048952C /* FixedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EC0206F160F0048952C /* FixedTextView.swift */; };
 		C9B17C4F20E09DB1005E52A9 /* terminus.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B17C4E20E09DB0005E52A9 /* terminus.ttf */; };
+		C9D82C6620EEFEE5002EFBCF /* Shareable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D82C6520EEFEE5002EFBCF /* Shareable.swift */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
 		C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81E204235E8003D6ADF /* WebViewController.swift */; };
@@ -130,6 +131,7 @@
 		C9B06EBD206DCFD60048952C /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		C9B06EC0206F160F0048952C /* FixedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedTextView.swift; sourceTree = "<group>"; };
 		C9B17C4E20E09DB0005E52A9 /* terminus.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = terminus.ttf; sourceTree = "<group>"; };
+		C9D82C6520EEFEE5002EFBCF /* Shareable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shareable.swift; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		C9DAE81E204235E8003D6ADF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -476,10 +478,11 @@
 			isa = PBXGroup;
 			children = (
 				C98AB98520465DA400FB8ECD /* ArticleViewable.swift */,
+				C975149E20ED749600E7C2F1 /* BottomBarHideable.swift */,
+				C9F7CE2820CF741F00E53723 /* ColorChangeable.swift */,
 				C9B06EB420577DFB0048952C /* CommentContainable.swift */,
 				C9F3DA75207DA890009B4C2E /* HackerNewsItemType.swift */,
-				C9F7CE2820CF741F00E53723 /* ColorChangeable.swift */,
-				C975149E20ED749600E7C2F1 /* BottomBarHideable.swift */,
+				C9D82C6520EEFEE5002EFBCF /* Shareable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				C90BBFFC20280F190014E498 /* ArticleListViewModel.swift in Sources */,
 				C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */,
 				C9F3DA76207DA890009B4C2E /* HackerNewsItemType.swift in Sources */,
+				C9D82C6620EEFEE5002EFBCF /* Shareable.swift in Sources */,
 				C9F7CE2B20CF765500E53723 /* ColorScheme.swift in Sources */,
 				C96135E52077102B00812AF3 /* MainViewController.swift in Sources */,
 				C975149F20ED749600E7C2F1 /* BottomBarHideable.swift in Sources */,
