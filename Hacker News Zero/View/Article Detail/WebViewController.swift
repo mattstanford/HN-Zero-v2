@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, ArticleViewable, Shareable {
-    @IBOutlet private weak var webView: WKWebView!
+    private var webView: WKWebView?
     @IBOutlet private weak var progressView: UIProgressView!
     
     @IBOutlet internal weak var bottomBar: UIToolbar!
@@ -27,17 +27,7 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        webView.navigationDelegate = self
-        webView.scrollView.delegate = self
         set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
-        setupProgressBar()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-   
-        showNewArticleIfNecessary()
     }
     
     @IBAction private func shareButtonTapped() {
@@ -47,13 +37,13 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
     }
     
     @IBAction private func backButtonTapped() {
-        if webView.canGoBack {
+        if let webView = webView, webView.canGoBack {
             webView.goBack()
         }
     }
     
     @IBAction private func forwardButtonTapped() {
-        if webView.canGoForward {
+        if let webView = webView, webView.canGoForward {
             webView.goForward()
         }
     }
@@ -66,6 +56,10 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
         
     }
     func setupProgressBar() {
+        
+        guard let webView = webView else {
+            return
+        }
         
         self.progressObserver = webView.observe(\.estimatedProgress) { [weak self] (webView, _) in
             self?.progressView.setProgress(Float(webView.estimatedProgress), animated: true)
@@ -87,16 +81,34 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
     func showNewArticleIfNecessary() {
         
         if(viewModel.needsReset) {
-            let blankUrl = URL(string:"about:blank")
-            let blankRequest = URLRequest(url:blankUrl!)
-            webView.load(blankRequest)
-            //Once this is finished loading, will call showCurrentArticle()
-
+            reloadWebViewWithCurrentArticle()
+        }
+    }
+    
+    func reloadWebViewWithCurrentArticle() {
+        if webView != nil {
+            webView?.removeFromSuperview()
+        }
+        
+        webView = WKWebView()
+        
+        webView?.frame = view.bounds
+        webView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        if let webView = webView {
+            view.addSubview(webView)
+            view.bringSubview(toFront: progressView)
+            view.bringSubview(toFront: bottomBar)
+            webView.scrollView.delegate = self
+            setupProgressBar()
+            
+            showCurrentArticle()
         }
     }
     
     func showCurrentArticle() {
-        guard let url = viewModel.currentUrl else {
+        guard let url = viewModel.currentUrl,
+            let webView = webView else {
                 return
         }
         
@@ -118,16 +130,6 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
     }
 }
 
-extension WebViewController: WKNavigationDelegate {
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        
-        if viewModel.needsReset {
-            viewModel.needsReset = false
-            showCurrentArticle()
-        }
-    }
-}
-
 //MARK: - Color changeable
 extension WebViewController: ColorChangeable {
     func set(scheme: ColorScheme) {
@@ -144,7 +146,6 @@ extension WebViewController: UIScrollViewDelegate, BottomBarHideable {
         let offset = scrollView.contentOffset.y
         let maxheight = scrollView.contentSize.height - scrollView.bounds.height + scrollView.contentInset.bottom
 
-        
         if offset > maxheight {
             animateBar(show: false)
         } else if offset <= 0 {
