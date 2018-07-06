@@ -570,9 +570,17 @@
                                     <constraint firstAttribute="height" constant="44" id="ACV-Es-HYA"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" image="back_small" largeContentSizeImage="Forward" id="9MH-Ln-nXT"/>
+                                    <barButtonItem title="Item" image="back_small" largeContentSizeImage="Forward" id="9MH-Ln-nXT">
+                                        <connections>
+                                            <action selector="backButtonTapped" destination="pEC-Lo-BAC" id="kpf-ge-QaV"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="xWx-iS-qbo"/>
-                                    <barButtonItem title="Item" image="next_small" style="plain" id="Pkd-3w-ayV"/>
+                                    <barButtonItem title="Item" image="next_small" style="plain" id="Pkd-3w-ayV">
+                                        <connections>
+                                            <action selector="forwardButtonTapped" destination="pEC-Lo-BAC" id="2lz-xl-slK"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="TYK-NY-H1V"/>
                                     <barButtonItem title="Item" systemItem="action" id="hdW-5c-74f">
                                         <connections>
@@ -580,7 +588,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="qAx-Mj-sVi"/>
-                                    <barButtonItem systemItem="add" id="UIP-Ok-Efi"/>
+                                    <barButtonItem systemItem="add" id="UIP-Ok-Efi">
+                                        <connections>
+                                            <action selector="showInSafari" destination="pEC-Lo-BAC" id="xyZ-MX-hZt"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -600,8 +612,10 @@
                         <viewLayoutGuide key="safeArea" id="Oae-nU-4Iy"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="9MH-Ln-nXT" id="4np-IW-bdO"/>
                         <outlet property="bottomBar" destination="WKi-ya-1Yq" id="Tce-Sv-4TB"/>
                         <outlet property="bottomBarBottomConstraint" destination="ibb-2q-aCr" id="VhR-xn-AGu"/>
+                        <outlet property="forwardButton" destination="Pkd-3w-ayV" id="CyP-tN-pL5"/>
                         <outlet property="progressView" destination="bNR-Pp-qMN" id="zwu-VP-TFc"/>
                         <outlet property="webView" destination="z2q-Bb-Y3K" id="CEo-xc-Jno"/>
                     </connections>

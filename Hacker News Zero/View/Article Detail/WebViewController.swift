@@ -16,6 +16,9 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
     @IBOutlet internal weak var bottomBar: UIToolbar!
     @IBOutlet internal weak var bottomBarBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet private weak var backButton: UIBarButtonItem!
+    @IBOutlet private weak var forwardButton: UIBarButtonItem!
+    
     var lastScrollOffset: CGFloat = 0
     
     var viewModel = WebViewModel()
@@ -43,6 +46,25 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
         }
     }
     
+    @IBAction private func backButtonTapped() {
+        if webView.canGoBack {
+            webView.goBack()
+        }
+    }
+    
+    @IBAction private func forwardButtonTapped() {
+        if webView.canGoForward {
+            webView.goForward()
+        }
+    }
+    
+    @IBAction private func showInSafari() {
+        if let urlString = viewModel.article?.url,
+            let url = URL(string: urlString) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        
+    }
     func setupProgressBar() {
         
         self.progressObserver = webView.observe(\.estimatedProgress) { [weak self] (webView, _) in
