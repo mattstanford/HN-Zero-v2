@@ -20,7 +20,18 @@ class ArticleViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     @IBOutlet weak private var tableView: UITableView!
-
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.green
+        
+        refreshControl.addTarget(self, action:
+            #selector(handleRefresh(_:)),
+                                 for: UIControlEvents.valueChanged)
+        
+      
+        return refreshControl
+    }()
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -36,14 +47,21 @@ class ArticleViewController: UIViewController {
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 60
-        
+        self.tableView.addSubview(refreshControl)
+     
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         
         refreshData()
     }
     
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshData()
+    }
+    
     func refreshData()
     {
+        refreshControl.beginManualRefresh(for: tableView)
+        
         viewModel.reset()
         tableView.reloadData()
         
@@ -53,6 +71,7 @@ class ArticleViewController: UIViewController {
             .subscribe({ (event) in
                 self.tableView.reloadData()
                 
+                self.refreshControl.endRefreshing()
                 self.viewModel.finishedLoading()
             })
             .disposed(by: disposeBag)
@@ -137,6 +156,7 @@ extension ArticleViewController: ColorChangeable {
         setColorOfNavBar(to: scheme)
         self.view.backgroundColor = scheme.contentBackgroundColor
         self.tableView.backgroundColor = scheme.contentBackgroundColor
+        self.refreshControl.tintColor = scheme.contentTextColor
     }
 }
 

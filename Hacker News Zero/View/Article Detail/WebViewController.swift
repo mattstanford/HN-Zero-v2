@@ -183,7 +183,6 @@ extension WebViewController: UIScrollViewDelegate, BottomBarHideable {
         let maxheight = abs(scrollView.contentSize.height - scrollView.bounds.height) + scrollView.contentInset.bottom
 
         let offsetDiff = (lastScrollOffset - offset)
-        print("offset diff: \(lastScrollOffset - offset)")
         if offset > maxheight {
             //Always hide when at the bottom
             animateBar(show: false)

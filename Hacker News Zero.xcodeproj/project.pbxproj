@@ -34,6 +34,7 @@
 		C96135E52077102B00812AF3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96135E42077102B00812AF3 /* MainViewController.swift */; };
 		C96135EA207C614C00812AF3 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96135E9207C614C00812AF3 /* AppConstants.swift */; };
 		C975149F20ED749600E7C2F1 /* BottomBarHideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975149E20ED749600E7C2F1 /* BottomBarHideable.swift */; };
+		C97F1A5120F151E400899E45 /* UIRefreshControl+RefreshHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F1A5020F151E400899E45 /* UIRefreshControl+RefreshHack.swift */; };
 		C98AB984204508F700FB8ECD /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB983204508F700FB8ECD /* AppNavigator.swift */; };
 		C98AB98620465DA400FB8ECD /* ArticleViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB98520465DA400FB8ECD /* ArticleViewable.swift */; };
 		C9B06EA52048CB4B0048952C /* UITableView+FlexibleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */; };
@@ -115,6 +116,7 @@
 		C96135E42077102B00812AF3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C96135E9207C614C00812AF3 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		C975149E20ED749600E7C2F1 /* BottomBarHideable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarHideable.swift; sourceTree = "<group>"; };
+		C97F1A5020F151E400899E45 /* UIRefreshControl+RefreshHack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+RefreshHack.swift"; sourceTree = "<group>"; };
 		C98AB983204508F700FB8ECD /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		C98AB98520465DA400FB8ECD /* ArticleViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewable.swift; sourceTree = "<group>"; };
 		C9B06EA42048CB4B0048952C /* UITableView+FlexibleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+FlexibleHeader.swift"; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				C9B06EBD206DCFD60048952C /* String+HTML.swift */,
 				C9F3DA77208056F9009B4C2E /* AttributedLabel+htmlText.swift */,
 				C9E0201C2090181B00E80516 /* Date+DisplayString.swift */,
+				C97F1A5020F151E400899E45 /* UIRefreshControl+RefreshHack.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				C9F3DA76207DA890009B4C2E /* HackerNewsItemType.swift in Sources */,
 				C9D82C6620EEFEE5002EFBCF /* Shareable.swift in Sources */,
 				C9F7CE2B20CF765500E53723 /* ColorScheme.swift in Sources */,
+				C97F1A5120F151E400899E45 /* UIRefreshControl+RefreshHack.swift in Sources */,
 				C96135E52077102B00812AF3 /* MainViewController.swift in Sources */,
 				C975149F20ED749600E7C2F1 /* BottomBarHideable.swift in Sources */,
 				C9B06EC1206F160F0048952C /* FixedTextView.swift in Sources */,
