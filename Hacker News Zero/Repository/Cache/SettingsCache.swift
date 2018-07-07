@@ -12,13 +12,24 @@ class SettingsCache {
     
     let userDefaults: UserDefaults
     var colorScheme: ColorScheme
+    var selectedArticleType: ArticleType = .frontpage
     
-    init(userDefaults: UserDefaults) {
+    init(userDefaults: UserDefaults = UserDefaults.standard) {
         self.userDefaults = userDefaults
         self.colorScheme = ColorScheme.dark
     }
     
-   
-    
-    
+    var selectedTheme: ThemeSelection {
+        get {
+            if let savedThemeString = userDefaults.string(forKey: "selectedTheme"),
+                let theme = ThemeSelection(rawValue: savedThemeString) {
+                    return theme
+            } else {
+                return ThemeSelection.classic
+            }
+        }
+        set {
+            userDefaults.set(newValue.rawValue, forKey: "selectedTheme")
+        }
+    }
 }

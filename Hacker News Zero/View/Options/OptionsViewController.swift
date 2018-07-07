@@ -84,6 +84,7 @@ extension OptionsViewController: ColorChangeable {
         self.headerView.backgroundColor = scheme.barColor
         self.headerLabel.textColor = scheme.barTextColor
         self.tableView.backgroundColor = scheme.contentBackgroundColor
+        self.tableView.tintColor = scheme.contentTextColor
         self.view.backgroundColor = scheme.barColor
     }
 }
@@ -165,6 +166,12 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             cellText = "New"
         }
         
+        if HackerNewsRepository.shared.settingsCache.selectedArticleType == articleType {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
         cell.textLabel?.text = cellText
     
         return cell
@@ -175,6 +182,12 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         
         let themeSelection = themeSelections[indexPath.row]
         cell.textLabel?.text = themeSelection.rawValue
+        
+        if HackerNewsRepository.shared.settingsCache.selectedTheme == themeSelection {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         
         return cell
     }
@@ -192,9 +205,42 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard indexPath.section < sections.count else {
+            return
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let section = sections[indexPath.section]
+        switch section {
+        case .main:
+            selectedArticleCell(indexPath: indexPath)
+        case .themes:
+            selectedThemeCell(indexPath: indexPath)
+        case .socialmedia:
+            selectedSocialMediaCell(indexPath: indexPath)
+        }
+    }
+    
+    private func selectedArticleCell(indexPath: IndexPath) {
         let articleType = articleTypeSelections[indexPath.row]
+        HackerNewsRepository.shared.settingsCache.selectedArticleType = articleType
+        tableView.reloadData()
         delegate?.refreshArticles(type: articleType)
         navigator?.toggleMenu()
     }
     
+    private func selectedThemeCell(indexPath: IndexPath) {
+        let theme = themeSelections[indexPath.row]
+        HackerNewsRepository.shared.settingsCache.selectedTheme = theme
+        tableView.reloadData()
+        print("selected theme!")
+    }
+    
+    private func selectedSocialMediaCell(indexPath: IndexPath) {
+        let socialMedia = socialMediaSelections[indexPath.row]
+        
+        if let url = URL(string: socialMedia.associatedUrl) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
 }
