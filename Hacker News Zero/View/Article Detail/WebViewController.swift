@@ -33,6 +33,11 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
         set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showNewArticleIfNecessary()
+    }
+    
     @IBAction private func shareButtonTapped() {
         if let article = viewModel.article {
             share(article: article)
@@ -110,6 +115,7 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
     func showNewArticleIfNecessary() {
         
         if(viewModel.needsReset) {
+            viewModel.needsReset = false
             reloadWebViewWithCurrentArticle()
         }
     }
