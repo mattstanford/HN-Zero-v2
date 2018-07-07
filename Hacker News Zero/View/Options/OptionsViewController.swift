@@ -84,7 +84,7 @@ extension OptionsViewController: ColorChangeable {
         self.headerView.backgroundColor = scheme.barColor
         self.headerLabel.textColor = scheme.barTextColor
         self.tableView.backgroundColor = scheme.contentBackgroundColor
-        self.view.backgroundColor = scheme.contentBackgroundColor
+        self.view.backgroundColor = scheme.barColor
     }
 }
 
@@ -103,6 +103,13 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         return section.title
     }
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.backgroundView?.backgroundColor = HackerNewsRepository.shared.settingsCache.colorScheme.barColor
+            headerView.textLabel?.textColor = HackerNewsRepository.shared.settingsCache.colorScheme.barTextColor
+        }
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         guard section < sections.count else {
