@@ -182,15 +182,22 @@ extension WebViewController: UIScrollViewDelegate, BottomBarHideable {
         let offset = scrollView.contentOffset.y
         let maxheight = abs(scrollView.contentSize.height - scrollView.bounds.height) + scrollView.contentInset.bottom
 
+        let offsetDiff = (lastScrollOffset - offset)
+        print("offset diff: \(lastScrollOffset - offset)")
         if offset > maxheight {
+            //Always hide when at the bottom
             animateBar(show: false)
         } else if offset <= 0.0 {
+            //Always show when reaching the top
             animateBar(show: true)
         } else if offset > lastScrollOffset {
+            //Scrolling down, should always trigger a hide
             animateBar(show: false)
-        } else {
+        } else if offsetDiff > 10 {
+            //Scrolling up, but diff needs to be enough to trigger
             animateBar(show: true)
         }
+        
         
         lastScrollOffset = offset
     }
