@@ -23,13 +23,8 @@ class ArticleViewController: UIViewController {
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = UIColor.green
+        refreshControl.addTarget(self, action:#selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
         
-        refreshControl.addTarget(self, action:
-            #selector(handleRefresh(_:)),
-                                 for: UIControlEvents.valueChanged)
-        
-      
         return refreshControl
     }()
     

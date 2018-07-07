@@ -23,6 +23,10 @@ class CommentsViewModel {
         self.colorScheme = colorScheme
     }
     
+    func reset() {
+        viewModels = []
+    }
+    
     var infoString: String {
         //num commments * user * domain * time since
         var infoString = ""

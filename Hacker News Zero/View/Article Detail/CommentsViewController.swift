@@ -30,9 +30,17 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     @IBOutlet internal weak var bottomBar: UIToolbar!
     @IBOutlet internal weak var bottomBarBottomConstraint: NSLayoutConstraint!
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:#selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+    
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         set(scheme: viewModel.colorScheme)
+        tableView.addSubview(refreshControl)
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,6 +52,10 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
         if let article = viewModel.article {
             share(article: article)
         }
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshData()
     }
     
     //MARK: ArticleViewable protocol
@@ -64,22 +76,19 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
         viewModel.clearData()
         tableView.reloadData()
         
-        loadCommentData()
+        refreshData()
     }
     
-    func loadCommentData() {
-        let start = Date()
+    func refreshData() {
+        
+        refreshControl.beginManualRefresh(for: tableView)
+        
+        viewModel.reset()
+        tableView.reloadData()
 
         viewModel.updateCommentData()
             .subscribe({ (event) in
-                
-                let end = Date()
-                
-                let duration = end.timeIntervalSince(start)
-                print("finished getting comment data: " + String(describing: duration) + " " + String(describing: event))
-                print("num view models: " + String(self.viewModel.viewModels.count))
-
-            
+                self.refreshControl.endRefreshing()
                 self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
@@ -130,7 +139,6 @@ extension CommentsViewController: UITableViewDataSource {
         let cellViewModel = self.viewModel.viewModels[indexPath.row]
         
         cell.configure(with: cellViewModel, linkHandler: self.linkClicked)
-    
         
         return cell
     }
@@ -142,6 +150,7 @@ extension CommentsViewController: ColorChangeable {
         tableView.backgroundColor = scheme.contentBackgroundColor
         bottomBar.barTintColor = scheme.barColor
         bottomBar.tintColor = scheme.barTextColor
+        refreshControl.tintColor = scheme.contentTextColor
     }
 }
 
