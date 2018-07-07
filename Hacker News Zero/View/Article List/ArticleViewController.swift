@@ -119,6 +119,13 @@ extension ArticleViewController: UITableViewDelegate {
 extension ArticleViewController: OptionsDelegate {
     func refreshArticles(type: ArticleType) {
         
+        switch type {
+        case .frontpage:
+            self.title = "Hacker News Zero"
+        default:
+            self.title = type.titleText
+        }
+        
         viewModel.articleType = type
         refreshData()
     }

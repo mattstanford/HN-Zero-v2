@@ -29,4 +29,19 @@ enum ArticleType {
             return newEndpoint
         }
     }
+    
+    var titleText: String {
+        switch self {
+        case .frontpage:
+            return "Front Page"
+        case .askhn:
+            return "Ask HN"
+        case .showhn:
+            return "Show HN"
+        case .jobs:
+            return "Jobs"
+        case .new:
+            return "New"
+        }
+    }
 }

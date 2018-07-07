@@ -152,19 +152,7 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
 
         let articleType = articleTypeSelections[indexPath.row]
         
-        let cellText: String
-        switch articleType {
-        case .frontpage:
-            cellText = "Front Page"
-        case .askhn:
-            cellText = "Ask HN"
-        case .showhn:
-            cellText = "Show HN"
-        case .jobs:
-            cellText = "Jobs"
-        case .new:
-            cellText = "New"
-        }
+        let cellText = articleType.titleText
         
         if HackerNewsRepository.shared.settingsCache.selectedArticleType == articleType {
             cell.accessoryType = .checkmark
