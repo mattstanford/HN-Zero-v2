@@ -173,6 +173,7 @@ extension WebViewController: ColorChangeable {
     }
     
     func set(scheme: ColorScheme) {
+        setColorOfNavBar(to: scheme)
         bottomBar.barTintColor = scheme.barColor
         bottomBar.tintColor = scheme.barTextColor
         progressView.tintColor = scheme.accentColor

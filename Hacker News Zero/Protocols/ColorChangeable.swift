@@ -29,8 +29,5 @@ extension ColorChangeable where Self: UIViewController  {
         navigationController?.navigationItem.backBarButtonItem?.tintColor = scheme.barTextColor
         navigationController?.navigationItem.rightBarButtonItem?.tintColor = scheme.barTextColor
         navigationController?.navigationBar.tintColor = scheme.barTextColor
-        
-
-
     }
 }

@@ -70,8 +70,21 @@ class AppNavigator {
         
         mainViewController.switchScheme(to: scheme)
         articleList.switchScheme(to: scheme)
-        articleDetail.commentsVC.switchScheme(to: scheme)
-        articleDetail.webVC.switchScheme(to: scheme)
+        
+        if articleDetail.commentsVC.isViewLoaded {
+            articleDetail.commentsVC.switchScheme(to: scheme)
+        }
+        
+        if articleDetail.webVC.isViewLoaded {
+            articleDetail.webVC.switchScheme(to: scheme)
+        }
+        
+        //If we're on iPad, we need to switch the color of the separate nav bar
+        if !mainViewController.isCollapsed, let navController = articleDetail.navigationController {
+            navController.navigationItem.backBarButtonItem?.tintColor = scheme.barTextColor
+            navController.navigationItem.rightBarButtonItem?.tintColor = scheme.barTextColor
+            navController.navigationBar.tintColor = scheme.barTextColor
+        }
     }
     
     func toggleMenu() {
