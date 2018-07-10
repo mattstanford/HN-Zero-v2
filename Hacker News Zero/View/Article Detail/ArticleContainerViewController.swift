@@ -33,7 +33,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
         setupBarButtons()
     }
     
-    private lazy var commentsVC: CommentsViewController = {
+    lazy var commentsVC: CommentsViewController = {
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as! CommentsViewController
@@ -42,7 +42,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
         return viewController
     }()
     
-    private lazy var webVC: WebViewController = {
+    lazy var webVC: WebViewController = {
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "WebVC") as! WebViewController

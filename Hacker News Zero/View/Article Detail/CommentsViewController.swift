@@ -80,9 +80,7 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     }
     
     func refreshData() {
-        
-        refreshControl.beginManualRefresh(for: tableView)
-        
+                
         viewModel.reset()
         tableView.reloadData()
 
@@ -147,7 +145,7 @@ extension CommentsViewController: UITableViewDataSource {
 extension CommentsViewController: ColorChangeable {
     func switchScheme(to scheme: ColorScheme) {
         set(scheme: scheme)
-        tableView.layoutTableHeaderView()
+        setupHeader()
         refreshData()
     }
     

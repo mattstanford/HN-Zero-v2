@@ -70,10 +70,8 @@ class AppNavigator {
         
         mainViewController.switchScheme(to: scheme)
         articleList.switchScheme(to: scheme)
-        
-        if let currentDetailVC = articleDetail.currentVC as? ColorChangeable {
-            currentDetailVC.switchScheme(to: scheme)
-        }
+        articleDetail.commentsVC.switchScheme(to: scheme)
+        articleDetail.webVC.switchScheme(to: scheme)
     }
     
     func toggleMenu() {
