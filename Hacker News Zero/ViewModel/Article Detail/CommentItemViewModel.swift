@@ -46,7 +46,7 @@ class CommentItemViewModel {
         headerText += "</author>"
         
         //Set the "(OP)" text if necessary
-        let opTextTag = Style("OP").font(Font.boldSystemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(colorScheme.contentLinkColor)
+        let opTextTag = Style("OP").font(Font.boldSystemFont(ofSize: AppConstants.defaultFontSize)).foregroundColor(colorScheme.accentColor)
         if isOp {
             headerText += "<OP> (OP)</OP>"
         }

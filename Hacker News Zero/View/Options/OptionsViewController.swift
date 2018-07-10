@@ -29,20 +29,6 @@ enum OptionSection {
     }
 }
 
-enum ThemeSelection: String {
-    case classic = "HN Zero Classic"
-    case dark = "Dark Mode"
-    
-    var associatedTheme: ColorScheme {
-        switch self {
-        case .classic:
-            return ColorScheme.standard
-        case .dark:
-            return ColorScheme.dark
-        }
-    }
-}
-
 enum SocialMediaSelection: String {
     case facebook = "Facebook"
     case twitter = "Twitter"
@@ -70,7 +56,7 @@ class OptionsViewController: UIViewController {
     
     var sections: [OptionSection] = [.main, .themes, .socialmedia]
     var articleTypeSelections: [ArticleType] = [.frontpage, .askhn, .showhn, .jobs, .new]
-    var themeSelections: [ThemeSelection] = [.classic, .dark]
+    var themeSelections: [ColorScheme] = [.standard, .dark]
     var socialMediaSelections: [SocialMediaSelection] = [.facebook, .twitter]
     
     override func viewDidLoad() {
@@ -80,11 +66,17 @@ class OptionsViewController: UIViewController {
 }
 
 extension OptionsViewController: ColorChangeable {
+    func switchScheme(to scheme: ColorScheme) {
+        set(scheme: colorScheme)
+        tableView.reloadData()
+    }
+    
     func set(scheme: ColorScheme) {
+        colorScheme = scheme
         self.headerView.backgroundColor = scheme.barColor
         self.headerLabel.textColor = scheme.barTextColor
         self.tableView.backgroundColor = scheme.contentBackgroundColor
-        self.tableView.tintColor = scheme.contentTextColor
+        self.tableView.tintColor = scheme.accentColor
         self.view.backgroundColor = scheme.barColor
     }
 }
@@ -106,8 +98,8 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.backgroundView?.backgroundColor = HackerNewsRepository.shared.settingsCache.colorScheme.barColor
-            headerView.textLabel?.textColor = HackerNewsRepository.shared.settingsCache.colorScheme.barTextColor
+            headerView.backgroundView?.backgroundColor = colorScheme.barColor
+            headerView.textLabel?.textColor = colorScheme.barTextColor
         }
     }
 
@@ -169,9 +161,9 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTypeCell", for: indexPath)
         
         let themeSelection = themeSelections[indexPath.row]
-        cell.textLabel?.text = themeSelection.rawValue
+        cell.textLabel?.text = themeSelection.displayTitle
         
-        if HackerNewsRepository.shared.settingsCache.selectedTheme == themeSelection {
+        if HackerNewsRepository.shared.settingsCache.colorScheme == themeSelection {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -218,10 +210,13 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func selectedThemeCell(indexPath: IndexPath) {
-        let theme = themeSelections[indexPath.row]
-        HackerNewsRepository.shared.settingsCache.selectedTheme = theme
+        let scheme = themeSelections[indexPath.row]
+        HackerNewsRepository.shared.settingsCache.colorScheme = scheme
+        
+        set(scheme: scheme)
         tableView.reloadData()
-        print("selected theme!")
+        
+        navigator?.switchColorScheme(to: scheme)
     }
     
     private func selectedSocialMediaCell(indexPath: IndexPath) {

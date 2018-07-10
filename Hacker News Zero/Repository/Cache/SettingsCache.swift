@@ -11,21 +11,19 @@ import Foundation
 class SettingsCache {
     
     let userDefaults: UserDefaults
-    var colorScheme: ColorScheme
     var selectedArticleType: ArticleType = .frontpage
     
     init(userDefaults: UserDefaults = UserDefaults.standard) {
         self.userDefaults = userDefaults
-        self.colorScheme = ColorScheme.dark
     }
     
-    var selectedTheme: ThemeSelection {
+    var colorScheme: ColorScheme {
         get {
             if let savedThemeString = userDefaults.string(forKey: "selectedTheme"),
-                let theme = ThemeSelection(rawValue: savedThemeString) {
+                let theme = ColorScheme(rawValue: savedThemeString) {
                     return theme
             } else {
-                return ThemeSelection.classic
+                return ColorScheme.standard
             }
         }
         set {

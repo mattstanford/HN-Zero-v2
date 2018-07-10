@@ -21,7 +21,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     
     var navigator: AppNavigator?
     private var currentSelectedView: SelectedView = .comments
-    private var currentVC: UIViewController?
+    var currentVC: UIViewController?
 
     @IBOutlet weak var containerView: UIView!
     private var swapButton: UIBarButtonItem?

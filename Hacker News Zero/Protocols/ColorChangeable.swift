@@ -10,6 +10,7 @@ import UIKit
 
 protocol ColorChangeable {
     func set(scheme: ColorScheme)
+    func switchScheme(to scheme: ColorScheme)
 }
 
 extension ColorChangeable where Self: UIViewController  {

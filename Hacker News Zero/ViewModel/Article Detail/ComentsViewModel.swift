@@ -14,7 +14,7 @@ class CommentsViewModel {
     let repository: HackerNewsRepository
     var article: Article?
     var viewModels = [CommentItemViewModel]()
-    let colorScheme: ColorScheme
+    var colorScheme: ColorScheme
     
     private let infoSeparator: String = "•"
     

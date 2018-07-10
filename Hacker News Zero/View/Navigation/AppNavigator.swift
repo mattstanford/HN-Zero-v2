@@ -65,6 +65,17 @@ class AppNavigator {
         navController.pushViewController(webVC, animated: true)
     }
     
+    func switchColorScheme(to scheme: ColorScheme) {
+        HackerNewsRepository.shared.settingsCache.colorScheme = scheme
+        
+        mainViewController.switchScheme(to: scheme)
+        articleList.switchScheme(to: scheme)
+        
+        if let currentDetailVC = articleDetail.currentVC as? ColorChangeable {
+            currentDetailVC.switchScheme(to: scheme)
+        }
+    }
+    
     func toggleMenu() {
         mainViewController.toggleMenu()
     }

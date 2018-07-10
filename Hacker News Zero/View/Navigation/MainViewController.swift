@@ -118,6 +118,10 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: ColorChangeable {
+    func switchScheme(to scheme: ColorScheme) {
+        set(scheme: scheme)
+    }
+    
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
         self.view.backgroundColor = scheme.barColor

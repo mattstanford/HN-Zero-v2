@@ -145,8 +145,15 @@ extension CommentsViewController: UITableViewDataSource {
 }
 
 extension CommentsViewController: ColorChangeable {
+    func switchScheme(to scheme: ColorScheme) {
+        set(scheme: scheme)
+        tableView.layoutTableHeaderView()
+        refreshData()
+    }
+    
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
+        viewModel.colorScheme = scheme
         tableView.backgroundColor = scheme.contentBackgroundColor
         bottomBar.barTintColor = scheme.barColor
         bottomBar.tintColor = scheme.barTextColor

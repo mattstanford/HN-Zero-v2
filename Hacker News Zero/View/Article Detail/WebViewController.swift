@@ -168,6 +168,10 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
 
 //MARK: - Color changeable
 extension WebViewController: ColorChangeable {
+    func switchScheme(to scheme: ColorScheme) {
+        set(scheme: scheme)
+    }
+    
     func set(scheme: ColorScheme) {
         bottomBar.barTintColor = scheme.barColor
         bottomBar.tintColor = scheme.barTextColor

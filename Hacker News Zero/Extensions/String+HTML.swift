@@ -20,7 +20,7 @@ extension String{
         var styles = [Style]()
         styles.append(Style("b").font(.boldSystemFont(ofSize: fontSize)))
         styles.append(Style("i").font(.italicSystemFont(ofSize: fontSize)))
-        styles.append(Style("a").underlineStyle(.styleSingle).foregroundColor(colorScheme.contentLinkColor, .normal).foregroundColor(.brown, .highlighted) )
+        styles.append(Style("a").underlineStyle(.styleSingle).foregroundColor(colorScheme.accentColor, .normal).foregroundColor(.brown, .highlighted) )
         
         if let courierFont = Font(name: "Courier", size: fontSize) {
             styles.append(Style("code").font(courierFont))

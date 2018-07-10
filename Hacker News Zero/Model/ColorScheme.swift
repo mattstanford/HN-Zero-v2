@@ -8,36 +8,71 @@
 
 import UIKit
 
-struct ColorScheme {
-    let barColor: UIColor
-    let barTextColor: UIColor
-    let contentBackgroundColor: UIColor
-    let contentTextColor: UIColor
-    let contentInfoTextColor: UIColor
-    let contentLinkColor: UIColor
-}
-
-//MARK: - Defined scheme helper methods
-extension ColorScheme {
+enum ColorScheme: String {
+    case standard
+    case dark
     
-    static let standard: ColorScheme = ColorScheme(barColor: UIColor.orange,
-                                               barTextColor: UIColor.white,
-                                               contentBackgroundColor: UIColor.white,
-                                               contentTextColor: UIColor.black,
-                                               contentInfoTextColor: UIColor.lightGray,
-                                               contentLinkColor: UIColor.blue)
+    var barColor: UIColor {
+        switch self {
+        case .standard:
+            return .orange
+        case .dark:
+            return .black
+        }
+    }
     
-    static let dark: ColorScheme = ColorScheme(barColor: UIColor.black,
-                                                   barTextColor: UIColor.white,
-                                                   contentBackgroundColor: #colorLiteral(red: 0.1803921569, green: 0.1803921569, blue: 0.1803921569, alpha: 1),
-                                                   contentTextColor: #colorLiteral(red: 0.9215686275, green: 0.9607843137, blue: 0.9725490196, alpha: 1),
-                                                   contentInfoTextColor: UIColor.gray,
-                                                   contentLinkColor: #colorLiteral(red: 0.1294117647, green: 0.7843137255, blue: 0.9803921569, alpha: 1))
+    var barTextColor: UIColor {
+        switch self {
+        case .standard:
+            return UIColor.white
+        case .dark:
+            return UIColor.white
+        }
+    }
     
-    static let test: ColorScheme = ColorScheme(barColor: UIColor.orange,
-                                                   barTextColor: UIColor.purple,
-                                                   contentBackgroundColor: UIColor.yellow,
-                                                   contentTextColor: UIColor.green,
-                                                   contentInfoTextColor: UIColor.blue,
-                                                   contentLinkColor: UIColor.orange)
+    var contentBackgroundColor: UIColor {
+        switch self {
+        case .standard:
+            return UIColor.white
+        case .dark:
+            return #colorLiteral(red: 0.1803921569, green: 0.1803921569, blue: 0.1803921569, alpha: 1)
+        }
+    }
+    
+    var contentTextColor: UIColor {
+        switch self {
+        case .standard:
+            return UIColor.black
+        case .dark:
+            return #colorLiteral(red: 0.9215686275, green: 0.9607843137, blue: 0.9725490196, alpha: 1)
+        }
+    }
+    
+    var contentInfoTextColor: UIColor {
+        switch self {
+        case .standard:
+            return UIColor.lightGray
+        case .dark:
+            return UIColor.gray
+        }
+    }
+    
+    //Color of checkmark in options, link color, "(OP)" color
+    var accentColor: UIColor {
+        switch self {
+        case .standard:
+            return UIColor.blue
+        case .dark:
+            return #colorLiteral(red: 0.1294117647, green: 0.7843137255, blue: 0.9803921569, alpha: 1)
+        }
+    }
+    
+    var displayTitle: String {
+        switch self {
+        case .standard:
+            return "HN Zero Classic"
+        case .dark:
+            return "Dark Mode"
+        }
+    }
 }

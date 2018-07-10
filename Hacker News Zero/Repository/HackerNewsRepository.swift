@@ -26,6 +26,10 @@ class HackerNewsRepository {
         self.settingsCache = settingsCache
     }
     
+    var currentColorScheme: ColorScheme {
+        return settingsCache.colorScheme
+    }
+    
     func refreshArticleList(type: ArticleType) -> Completable
     {
         return apiClient.getArticleIds(type: type)
