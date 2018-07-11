@@ -30,6 +30,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
         setupBarButtons()
     }
     
@@ -53,7 +54,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     private func setupBarButtons() {
 
         swapButton = UIBarButtonItem(
-            title: "Swap",
+            title: "",
             style: .plain,
             target: self,
             action: #selector(swapVieControllers(sender:))
@@ -191,5 +192,15 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     func show(url: URL) {
         navigator?.showLink(url: url)
     }
+}
+
+extension ArticleContainerViewController: ColorChangeable {
+    func set(scheme: ColorScheme) {
+        setColorOfNavBar(to: scheme)
+        view.backgroundColor = scheme.contentBackgroundColor
+    }
     
+    func switchScheme(to scheme: ColorScheme) {
+        set(scheme: scheme)
+    }
 }

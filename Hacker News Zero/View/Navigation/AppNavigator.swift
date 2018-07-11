@@ -71,6 +71,10 @@ class AppNavigator {
         mainViewController.switchScheme(to: scheme)
         articleList.switchScheme(to: scheme)
         
+        if articleDetail.isViewLoaded {
+            articleDetail.switchScheme(to: scheme)
+        }
+        
         if articleDetail.commentsVC.isViewLoaded {
             articleDetail.commentsVC.switchScheme(to: scheme)
         }
@@ -80,7 +84,7 @@ class AppNavigator {
         }
         
         //If we're on iPad, we need to switch the color of the separate nav bar
-        if !mainViewController.isCollapsed, let navController = articleDetail.navigationController {
+        if let navController = articleDetail.navigationController {
             navController.navigationItem.backBarButtonItem?.tintColor = scheme.barTextColor
             navController.navigationItem.rightBarButtonItem?.tintColor = scheme.barTextColor
             navController.navigationBar.tintColor = scheme.barTextColor
