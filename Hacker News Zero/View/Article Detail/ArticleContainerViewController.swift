@@ -91,8 +91,42 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
             add(viewController: targetVC)
         }
         
+        setupFullScreenButton()
         setupSwapButton(selectedView: selectedView)
         currentSelectedView = selectedView
+    }
+    
+    private func setupFullScreenButton() {
+        if UIDevice.isRunningOnIpad {
+            
+            let buttonTitle: String
+            
+            if splitViewController?.displayMode == .primaryHidden {
+                buttonTitle = "Show Article List"
+            } else {
+                buttonTitle = "Full Screen"
+            }
+            
+            let leftBarButton = UIBarButtonItem(
+                title: buttonTitle,
+                style: .plain,
+                target: self,
+                action: #selector(switchiPadScreenMode)
+            )
+            
+            navigationItem.leftBarButtonItem = leftBarButton
+            
+        }
+    }
+    
+    @objc private func switchiPadScreenMode() {
+        if splitViewController?.displayMode == .allVisible {
+            splitViewController?.preferredDisplayMode = .primaryHidden
+        } else {
+            splitViewController?.preferredDisplayMode = .allVisible
+        }
+        
+        setupFullScreenButton()
     }
     
     private func setupSwapButton(selectedView: SelectedView) {
