@@ -286,6 +286,10 @@
                                     <segue destination="voN-FW-pr9" kind="embed" id="QUG-Gq-DSr"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjB-Xf-IHl">
+                                <rect key="frame" x="-267" y="20" width="267" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -293,6 +297,7 @@
                             <constraint firstItem="5jy-Fa-fwI" firstAttribute="leading" secondItem="L5T-Qy-3DZ" secondAttribute="leading" id="CAq-S4-AyS"/>
                             <constraint firstItem="RRT-7g-WfR" firstAttribute="leading" secondItem="L5T-Qy-3DZ" secondAttribute="leading" id="Fx1-1H-gdE"/>
                             <constraint firstItem="5jy-Fa-fwI" firstAttribute="top" secondItem="L5T-Qy-3DZ" secondAttribute="top" id="MpP-eJ-YU4"/>
+                            <constraint firstItem="VjB-Xf-IHl" firstAttribute="top" secondItem="L5T-Qy-3DZ" secondAttribute="top" id="PSp-sZ-KxK"/>
                             <constraint firstItem="clM-eW-mDZ" firstAttribute="leading" secondItem="L5T-Qy-3DZ" secondAttribute="leading" id="QVm-14-ZeA"/>
                             <constraint firstItem="5jy-Fa-fwI" firstAttribute="bottom" secondItem="7qX-JI-AQQ" secondAttribute="bottom" id="RNV-l8-uhw"/>
                             <constraint firstItem="RRT-7g-WfR" firstAttribute="top" secondItem="L5T-Qy-3DZ" secondAttribute="top" id="Y22-6r-oqZ"/>
@@ -303,6 +308,9 @@
                             <constraint firstItem="clM-eW-mDZ" firstAttribute="trailing" secondItem="L5T-Qy-3DZ" secondAttribute="trailing" id="mZ0-97-v5O"/>
                             <constraint firstItem="clM-eW-mDZ" firstAttribute="bottom" secondItem="7qX-JI-AQQ" secondAttribute="bottom" id="oIv-y3-xdV"/>
                             <constraint firstItem="RRT-7g-WfR" firstAttribute="trailing" secondItem="L5T-Qy-3DZ" secondAttribute="trailing" id="pZW-OL-oKp"/>
+                            <constraint firstItem="RRT-7g-WfR" firstAttribute="leading" secondItem="VjB-Xf-IHl" secondAttribute="trailing" id="rPA-Kz-mSu"/>
+                            <constraint firstItem="VjB-Xf-IHl" firstAttribute="leading" secondItem="7qX-JI-AQQ" secondAttribute="leading" constant="-267" id="scl-AW-IHN"/>
+                            <constraint firstItem="VjB-Xf-IHl" firstAttribute="bottom" secondItem="L5T-Qy-3DZ" secondAttribute="bottom" id="wK5-oe-9GZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L5T-Qy-3DZ"/>
                         <connections>
@@ -310,6 +318,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="iPhoneXHidingView" destination="VjB-Xf-IHl" id="Nvr-Rp-iHr"/>
                         <outlet property="menuLeadingConstraint" destination="CAq-S4-AyS" id="fwM-vV-wwL"/>
                         <outlet property="menuWidthConstraint" destination="RIr-0A-hUk" id="BJ0-RF-9v0"/>
                         <outlet property="overlayView" destination="clM-eW-mDZ" id="PLG-v4-LHQ"/>

@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var menuLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var overlayView: UIView!
     @IBOutlet weak private var screenEdgePan: UIGestureRecognizer!
+    @IBOutlet weak private var iPhoneXHidingView: UIView!
     
     var navigator: AppNavigator?
     
@@ -125,5 +126,6 @@ extension MainViewController: ColorChangeable {
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
         self.view.backgroundColor = scheme.barColor
+        self.iPhoneXHidingView.backgroundColor = scheme.barColor
     }
 }
