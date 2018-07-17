@@ -47,7 +47,6 @@ class OptionsViewController: UIViewController {
     
     @IBOutlet weak private var tableView: UITableView!
     @IBOutlet weak private var headerView: UIView!
-    @IBOutlet weak private var headerLabel: UILabel!
     
     weak var delegate: OptionsDelegate?
     weak var navigator: AppNavigator?
@@ -74,7 +73,6 @@ extension OptionsViewController: ColorChangeable {
     func set(scheme: ColorScheme) {
         colorScheme = scheme
         self.headerView.backgroundColor = scheme.barColor
-        self.headerLabel.textColor = scheme.barTextColor
         self.tableView.backgroundColor = scheme.contentBackgroundColor
         self.tableView.tintColor = scheme.accentColor
         self.view.backgroundColor = scheme.barColor

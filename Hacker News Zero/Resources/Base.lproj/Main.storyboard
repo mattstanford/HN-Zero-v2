@@ -193,22 +193,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="267" height="100"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIK-Ca-HKP">
-                                            <rect key="frame" x="29" y="17" width="34" height="66"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zero5" translatesAutoresizingMaskIntoConstraints="NO" id="zeT-KG-btM">
+                                            <rect key="frame" x="29" y="23" width="32" height="54"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="66" id="nUA-cG-IJN"/>
-                                                <constraint firstAttribute="width" constant="34" id="y62-wC-pbt"/>
+                                                <constraint firstAttribute="width" constant="32" id="kWg-5K-1ar"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="55"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="0.53665304329999997" blue="0.096448227639999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="sIK-Ca-HKP" secondAttribute="bottom" constant="17" id="PfF-Wc-ONo"/>
-                                        <constraint firstItem="sIK-Ca-HKP" firstAttribute="top" secondItem="UgW-Dx-2ly" secondAttribute="top" constant="17" id="UfS-Vy-fr9"/>
-                                        <constraint firstItem="sIK-Ca-HKP" firstAttribute="leading" secondItem="UgW-Dx-2ly" secondAttribute="leading" constant="29" id="VDn-Dx-5G1"/>
+                                        <constraint firstItem="zeT-KG-btM" firstAttribute="top" secondItem="UgW-Dx-2ly" secondAttribute="top" constant="23" id="3H7-lJ-GHf"/>
+                                        <constraint firstAttribute="bottom" secondItem="zeT-KG-btM" secondAttribute="bottom" constant="23" id="KhV-Vn-Lcv"/>
+                                        <constraint firstItem="zeT-KG-btM" firstAttribute="leading" secondItem="UgW-Dx-2ly" secondAttribute="leading" constant="29" id="si0-g8-xEg"/>
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Yqf-EU-fGj" userLabel="Empty Footer">
@@ -242,14 +238,13 @@
                         <viewLayoutGuide key="safeArea" id="TG3-Wg-I0y"/>
                     </view>
                     <connections>
-                        <outlet property="headerLabel" destination="sIK-Ca-HKP" id="eJE-e3-ej4"/>
                         <outlet property="headerView" destination="UgW-Dx-2ly" id="HFs-lU-wqq"/>
                         <outlet property="tableView" destination="OgW-jG-TZE" id="mnM-Nc-EEA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQg-ly-gNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="-149"/>
+            <point key="canvasLocation" x="237.59999999999999" y="-149.77511244377811"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="cOD-au-ueT">
@@ -625,5 +620,6 @@
         <image name="default_icon" width="16" height="16"/>
         <image name="hamburger" width="50" height="50"/>
         <image name="next_small" width="39" height="39"/>
+        <image name="zero5" width="33" height="42"/>
     </resources>
 </document>

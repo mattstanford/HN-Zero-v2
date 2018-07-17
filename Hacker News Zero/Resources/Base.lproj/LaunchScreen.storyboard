@@ -18,19 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zero5" translatesAutoresizingMaskIntoConstraints="NO" id="CzC-St-4XE">
-                                <rect key="frame" x="147" y="278" width="81" height="110"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zero5" translatesAutoresizingMaskIntoConstraints="NO" id="CzC-St-4XE">
+                                <rect key="frame" x="165" y="299" width="45" height="69"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="5UD-YT-6Ab"/>
-                                    <constraint firstAttribute="width" constant="81" id="8Nc-SE-9di"/>
+                                    <constraint firstAttribute="width" constant="45" id="XHd-4e-20E"/>
+                                    <constraint firstAttribute="height" constant="69" id="iJK-y0-SB0"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.53665304329999997" blue="0.096448227639999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="CzC-St-4XE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JQC-7g-TdW"/>
-                            <constraint firstItem="CzC-St-4XE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="yxj-yn-TBo"/>
+                            <constraint firstItem="CzC-St-4XE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QQ3-n4-MPM"/>
+                            <constraint firstItem="CzC-St-4XE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="btM-5Z-3VK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
