@@ -152,6 +152,7 @@ extension CommentsViewController: ColorChangeable {
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
         viewModel.colorScheme = scheme
+        view.backgroundColor = scheme.contentBackgroundColor
         tableView.backgroundColor = scheme.contentBackgroundColor
         bottomBar.barTintColor = scheme.barColor
         bottomBar.tintColor = scheme.barTextColor

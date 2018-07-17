@@ -20,7 +20,8 @@ class CommentTableViewCell: UITableViewCell {
     
     func configure(with viewModel: CommentItemViewModel, linkHandler: @escaping (URL) -> Void) {
         headerLabel.attributedText = viewModel.commentHeaderText
-        
+    
+        backgroundColor = viewModel.colorScheme.contentBackgroundColor
         contentView.backgroundColor = viewModel.colorScheme.contentBackgroundColor
         
         contentLabel.setHtmlText(text: viewModel.content, colorScheme: viewModel.colorScheme, linkHandler: linkHandler)
