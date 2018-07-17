@@ -58,16 +58,11 @@ class HackerNewsRepository {
             .flatMap { articleIds in
                 return Observable.from(articleIds)
                     .flatMap { articleId in
-                        
                         return self.apiClient.getArticleData(articleId: articleId)
                     }
-                    .map { jsonData in
-                        let article = try Article.decodeArticleFrom(jsonData: jsonData)
-                        return article
-                    }
                     .toArray()
-                    .map { articleArray in
-                        
+                    .map { jsonArray in
+                        let articleArray = jsonArray.compactMap { try? Article.decodeArticleFrom(jsonData: $0) }
                         return self.setItemsInProperOrder(idList: articleIds, itemList: articleArray)
                 }
             }
