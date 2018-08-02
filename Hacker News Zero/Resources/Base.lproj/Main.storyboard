@@ -213,7 +213,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTypeCell" id="61y-LT-agf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTypeCell" id="61y-LT-agf">
                                         <rect key="frame" x="0.0" y="128" width="267" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="61y-LT-agf" id="gBS-Rb-RJ2">
@@ -563,13 +563,13 @@
                                     <constraint firstAttribute="height" constant="44" id="ACV-Es-HYA"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" image="back_small" largeContentSizeImage="Forward" id="9MH-Ln-nXT">
+                                    <barButtonItem title="Item" image="back3" largeContentSizeImage="Forward" id="9MH-Ln-nXT">
                                         <connections>
                                             <action selector="backButtonTapped" destination="pEC-Lo-BAC" id="kpf-ge-QaV"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="xWx-iS-qbo"/>
-                                    <barButtonItem title="Item" image="next_small" style="plain" id="Pkd-3w-ayV">
+                                    <barButtonItem title="Item" image="forward3" style="plain" id="Pkd-3w-ayV">
                                         <connections>
                                             <action selector="forwardButtonTapped" destination="pEC-Lo-BAC" id="2lz-xl-slK"/>
                                         </connections>
@@ -578,12 +578,6 @@
                                     <barButtonItem title="Item" systemItem="action" id="hdW-5c-74f">
                                         <connections>
                                             <action selector="shareButtonTapped" destination="pEC-Lo-BAC" id="dvI-bl-fNh"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="qAx-Mj-sVi"/>
-                                    <barButtonItem systemItem="add" id="UIP-Ok-Efi">
-                                        <connections>
-                                            <action selector="showInSafari" destination="pEC-Lo-BAC" id="xyZ-MX-hZt"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -615,11 +609,11 @@
     </scenes>
     <resources>
         <image name="Forward" width="16" height="16"/>
-        <image name="back_small" width="39" height="39"/>
+        <image name="back3" width="50" height="50"/>
         <image name="chat" width="24" height="22"/>
         <image name="default_icon" width="16" height="16"/>
+        <image name="forward3" width="50" height="50"/>
         <image name="hamburger" width="50" height="50"/>
-        <image name="next_small" width="39" height="39"/>
         <image name="zero5" width="33" height="42"/>
     </resources>
 </document>
