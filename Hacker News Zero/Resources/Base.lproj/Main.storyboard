@@ -133,8 +133,8 @@
                         <viewLayoutGuide key="safeArea" id="Xio-aY-Rj5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Hacker News Zero" id="hqd-Ym-cSj">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="hlN-IX-o4s">
-                            <color key="tintColor" red="1" green="0.53665304329999997" blue="0.096448227639999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="leftBarButtonItem" image="hamburger6" id="hlN-IX-o4s">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tappedHamburger" destination="Wc5-dm-ae1" id="eLb-bV-Oho"/>
                             </connections>
@@ -613,7 +613,7 @@
         <image name="chat" width="24" height="22"/>
         <image name="default_icon" width="16" height="16"/>
         <image name="forward3" width="50" height="50"/>
-        <image name="hamburger" width="50" height="50"/>
+        <image name="hamburger6" width="45" height="57"/>
         <image name="zero5" width="33" height="42"/>
     </resources>
 </document>
