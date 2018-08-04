@@ -3,7 +3,55 @@ PODS:
   - AlamofireNetworkActivityLogger (2.2.0):
     - Alamofire (~> 4.0)
   - Atributika (4.3.1)
+  - Crashlytics (3.10.5):
+    - Fabric (~> 1.7.9)
+  - Fabric (1.7.9)
+  - Firebase/Core (5.5.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.1.0)
+  - Firebase/CoreOnly (5.5.0):
+    - FirebaseCore (= 5.1.0)
+  - FirebaseAnalytics (5.1.0):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.2)
+    - GoogleAppMeasurement (~> 5.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
+    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.1.0):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseInstanceID (3.2.0):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.2)
+  - GoogleAppMeasurement (5.1.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
+    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (5.2.1):
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.2.1)
+  - GoogleUtilities/Logger (5.2.1):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.2.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.2.1):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.2.1)"
+  - GoogleUtilities/Reachability (5.2.1):
+    - GoogleUtilities/Logger
   - Kingfisher (4.6.2)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - RxAlamofire (4.0.0):
     - RxAlamofire/Core (= 4.0.0)
   - RxAlamofire/Core (4.0.0):
@@ -15,6 +63,9 @@ DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AlamofireNetworkActivityLogger (~> 2.2.0)
   - Atributika (~> 4.3.1)
+  - Crashlytics (~> 3.10.5)
+  - Fabric (~> 1.7.9)
+  - Firebase/Core
   - Kingfisher (~> 4.6.2)
   - RxAlamofire (~> 4.0.0)
 
@@ -23,7 +74,16 @@ SPEC REPOS:
     - Alamofire
     - AlamofireNetworkActivityLogger
     - Atributika
+    - Crashlytics
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - GoogleAppMeasurement
+    - GoogleUtilities
     - Kingfisher
+    - nanopb
     - RxAlamofire
     - RxSwift
 
@@ -31,10 +91,19 @@ SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireNetworkActivityLogger: a7ae1842988b3f6248a49213268375bd27b515f0
   Atributika: 87c2d3c0a9ccbab343b43d65ccf1f164f7a9570c
+  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
+  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
+  Firebase: 8c957f9cb3852b519180fb378801b7eeeba4d288
+  FirebaseAnalytics: d4a260c114aec0d765ab5b9c404ac63de1d29381
+  FirebaseCore: ee4b35cf8c8e781da296cc7c15125e4608bb954d
+  FirebaseInstanceID: 8cd2c6cfe7b9ab65ce7e248f6da7f26f6775b9be
+  GoogleAppMeasurement: e785bdb86d3d280abc778156cec323a975f11d1d
+  GoogleUtilities: 8d9fa00248c475b606fd20b562242060a20117a2
   Kingfisher: 55b9c395bf8d3949676ad3861111923990ab68cf
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   RxAlamofire: 6ea579ac53bf14cb4bc7049a3866e5a769989b1d
   RxSwift: 4219941c1244c88002901bd87a69d3aea9ae71f0
 
-PODFILE CHECKSUM: 355f825f940a78a9da9aa64a5ed33f4d1051521f
+PODFILE CHECKSUM: 1982f3b96dbff6ee628d5e221ef9efa62601be60
 
 COCOAPODS: 1.5.2
