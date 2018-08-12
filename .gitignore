@@ -6,6 +6,9 @@
 .AppleDouble
 .LSOverride
 
+# Firebase info
+GoogleService-Info.plist
+
 # Icon must end with two \r
 Icon
 
@@ -104,5 +107,5 @@ fastlane/test_output
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
-
 # End of https://www.gitignore.io/api/macos,swift,xcode
+
