@@ -31,7 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupFirebase() {
+        
         FirebaseApp.configure()
+        
+        #if DEBUG
+        AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(false)
+        #endif
+        
     }
 }
 
