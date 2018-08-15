@@ -14,6 +14,7 @@ class CommentsViewModel {
     let repository: HackerNewsRepository
     var article: Article?
     var viewModels = [CommentItemViewModel]()
+    var shouldShowLoadingSpinner = true
     var colorScheme: ColorScheme
     
     private let infoSeparator: String = "•"

@@ -11,6 +11,7 @@ import RxSwift
 import Atributika
 
 let CommentCellIdentifier = "ComentCellIdentifier"
+let LoadingCellIdentifier = "LoadingCell"
 
 class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     
@@ -80,13 +81,19 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     }
     
     func refreshData() {
-                
+        
+        print("refreshing: " + refreshControl.isRefreshing.description)
+        
         viewModel.reset()
+        viewModel.shouldShowLoadingSpinner = !refreshControl.isRefreshing
+        
         tableView.reloadData()
 
         viewModel.updateCommentData()
             .subscribe({ (event) in
                 self.refreshControl.endRefreshing()
+                self.viewModel.shouldShowLoadingSpinner = false
+                
                 self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
@@ -127,16 +134,43 @@ extension CommentsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.viewModel.viewModels.count
+        if viewModel.shouldShowLoadingSpinner {
+            return 1
+        } else {
+            return self.viewModel.viewModels.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if viewModel.shouldShowLoadingSpinner {
+            return getLoadingCell(tableView, cellForRowAt: indexPath)
+        } else {
+            return getCommentCell(tableView, cellForRowAt: indexPath)
+        }
+    }
+    
+    private func getCommentCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentCellIdentifier, for: indexPath) as? CommentTableViewCell else {
             return UITableViewCell()
         }
         let cellViewModel = self.viewModel.viewModels[indexPath.row]
-        
         cell.configure(with: cellViewModel, linkHandler: self.linkClicked)
+        
+        tableView.separatorStyle = .singleLine
+        
+        return cell
+    }
+    
+    private func getLoadingCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LoadingCellIdentifier, for: indexPath) as? LoadingSpinnerCell else {
+            return UITableViewCell()
+        }
+        
+        cell.configure()
+        
+        tableView.separatorStyle = .none
+
         
         return cell
     }

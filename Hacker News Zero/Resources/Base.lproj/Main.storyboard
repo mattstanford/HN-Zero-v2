@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SBR-5Z-KYl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SBR-5Z-KYl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -213,7 +213,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTypeCell" id="61y-LT-agf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleTypeCell" id="61y-LT-agf">
                                         <rect key="frame" x="0.0" y="128" width="267" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="61y-LT-agf" id="gBS-Rb-RJ2">
@@ -452,7 +452,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="sPa-au-3bd" userLabel="Footer View">
-                                    <rect key="frame" x="0.0" y="187" width="375" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="250" width="375" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
@@ -495,6 +495,30 @@
                                             <outlet property="contentLeadingMarigin" destination="vg9-W2-sa6" id="FTF-EF-xkK"/>
                                             <outlet property="headerLabel" destination="mPB-ln-mfk" id="2E4-Ie-Y8r"/>
                                             <outlet property="headerLeadingMargin" destination="iVV-qG-Oan" id="NtL-oF-a9b"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoadingCell" rowHeight="63" id="Hy2-Zf-R7P" customClass="LoadingSpinnerCell" customModule="Hacker_News_Zero" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="187" width="375" height="63"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hy2-Zf-R7P" id="sYy-DD-aqh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fUm-OV-i8k">
+                                                    <rect key="frame" x="177" y="21" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="6BX-bh-uAu"/>
+                                                        <constraint firstAttribute="height" constant="20" id="ibr-9O-ODJ"/>
+                                                    </constraints>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fUm-OV-i8k" firstAttribute="centerX" secondItem="sYy-DD-aqh" secondAttribute="centerX" id="pG0-Gg-KUa"/>
+                                                <constraint firstItem="fUm-OV-i8k" firstAttribute="centerY" secondItem="sYy-DD-aqh" secondAttribute="centerY" id="rFY-iA-K23"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="loadingSpinner" destination="fUm-OV-i8k" id="Vyb-TU-bk7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
