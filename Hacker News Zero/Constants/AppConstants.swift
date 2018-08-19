@@ -10,7 +10,7 @@ import UIKit
 
 class AppConstants {
     
-    static let defaultFont = UIFont.preferredFont(forTextStyle: .body).fontName
-    static let defaultFontSize: CGFloat = UIFont.preferredFont(forTextStyle: .body).pointSize
+    static let defaultFont = UIFont.preferredFont(forTextStyle: .subheadline).fontName
+    static let defaultFontSize: CGFloat = UIFont.preferredFont(forTextStyle: .subheadline).pointSize
     
 }
