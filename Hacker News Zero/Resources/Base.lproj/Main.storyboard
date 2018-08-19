@@ -41,7 +41,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="kXj-BX-Zws"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -56,11 +56,11 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Se-lY-Sci" userLabel="numComments">
-                                                            <rect key="frame" x="8" y="34" width="32" height="20.5"/>
+                                                            <rect key="frame" x="8" y="37" width="32" height="14.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="uMc-9b-iEE"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -86,22 +86,22 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_icon" translatesAutoresizingMaskIntoConstraints="NO" id="BNi-Up-pJ4">
                                                     <rect key="frame" x="16" y="10" width="16" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="16" id="9yR-Fk-jHZ"/>
-                                                        <constraint firstAttribute="height" constant="16" id="CFt-Q0-8Pd"/>
+                                                        <constraint firstAttribute="width" constant="16" id="st0-r4-hVj"/>
+                                                        <constraint firstAttribute="height" constant="16" id="vig-Uc-5Au"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="GEv-Sf-xLf" firstAttribute="leading" secondItem="BNi-Up-pJ4" secondAttribute="trailing" constant="8" id="393-kn-7G1"/>
                                                 <constraint firstAttribute="trailing" secondItem="tfb-WF-Xj3" secondAttribute="trailing" id="4GV-CL-TP1"/>
                                                 <constraint firstItem="tfb-WF-Xj3" firstAttribute="leading" secondItem="Y71-Jd-zH1" secondAttribute="trailing" id="5jM-Qy-GGx"/>
                                                 <constraint firstItem="tfb-WF-Xj3" firstAttribute="top" secondItem="MAk-kK-9Eb" secondAttribute="top" id="DNc-Dw-rAa"/>
+                                                <constraint firstItem="GEv-Sf-xLf" firstAttribute="leading" secondItem="BNi-Up-pJ4" secondAttribute="trailing" constant="8" id="Gbn-bg-Wnu"/>
                                                 <constraint firstItem="GEv-Sf-xLf" firstAttribute="top" secondItem="MAk-kK-9Eb" secondAttribute="top" constant="8" id="IVm-gj-OGa"/>
                                                 <constraint firstItem="Y71-Jd-zH1" firstAttribute="top" secondItem="GEv-Sf-xLf" secondAttribute="bottom" constant="3" id="TfZ-kZ-pwl"/>
-                                                <constraint firstItem="BNi-Up-pJ4" firstAttribute="leading" secondItem="MAk-kK-9Eb" secondAttribute="leading" constant="16" id="Z9e-P0-tpd"/>
                                                 <constraint firstItem="Y71-Jd-zH1" firstAttribute="leading" secondItem="MAk-kK-9Eb" secondAttribute="leadingMargin" constant="25" id="ZER-8D-nOG"/>
+                                                <constraint firstItem="BNi-Up-pJ4" firstAttribute="leading" secondItem="MAk-kK-9Eb" secondAttribute="leading" constant="16" id="aV3-x7-wFn"/>
+                                                <constraint firstItem="GEv-Sf-xLf" firstAttribute="top" secondItem="BNi-Up-pJ4" secondAttribute="top" constant="-2" id="dGc-tc-BPl"/>
                                                 <constraint firstItem="Y71-Jd-zH1" firstAttribute="bottom" secondItem="MAk-kK-9Eb" secondAttribute="bottomMargin" id="jLR-4G-lxl"/>
-                                                <constraint firstItem="BNi-Up-pJ4" firstAttribute="top" secondItem="MAk-kK-9Eb" secondAttribute="top" constant="10" id="mGV-jn-gbY"/>
                                                 <constraint firstItem="tfb-WF-Xj3" firstAttribute="leading" secondItem="GEv-Sf-xLf" secondAttribute="trailing" id="tXS-89-fwV"/>
                                                 <constraint firstAttribute="bottom" secondItem="tfb-WF-Xj3" secondAttribute="bottom" id="zPM-Ov-DxR"/>
                                             </constraints>
