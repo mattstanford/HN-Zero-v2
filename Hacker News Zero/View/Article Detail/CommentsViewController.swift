@@ -166,8 +166,7 @@ extension CommentsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LoadingCellIdentifier, for: indexPath) as? LoadingSpinnerCell else {
             return UITableViewCell()
         }
-        
-        cell.configure()
+        cell.configure(colorScheme: viewModel.colorScheme)
         
         tableView.separatorStyle = .none
 
