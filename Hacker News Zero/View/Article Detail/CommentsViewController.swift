@@ -82,8 +82,6 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     
     func refreshData() {
         
-        print("refreshing: " + refreshControl.isRefreshing.description)
-        
         viewModel.reset()
         viewModel.shouldShowLoadingSpinner = !refreshControl.isRefreshing
         
@@ -103,6 +101,7 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     func setupHeader() {
         titleLabel.text = viewModel.article?.title
         titleLabel.textColor = viewModel.colorScheme.contentTextColor
+        titleLabel.font = UIFont.systemFont(ofSize: AppConstants.defaultHeaderFontSize, weight: .semibold)
         infoLabel.text = viewModel.infoString
         infoLabel.textColor = viewModel.colorScheme.contentInfoTextColor
         headerSeparatorView.backgroundColor = viewModel.colorScheme.barColor
