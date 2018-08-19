@@ -197,20 +197,24 @@ extension CommentsViewController: BottomBarHideable, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let offset = scrollView.contentOffset.y
+        let recommendedHeight: CGFloat
         
         if offset <= 0 {
             //show bar
-            bottomBarBottomConstraint.constant = 0
+            recommendedHeight = 0
         } else {
             //hide bar
-            bottomBarBottomConstraint.constant = view.safeAreaInsets.bottom + bottomBar.frame.height
+            recommendedHeight = view.safeAreaInsets.bottom + bottomBar.frame.height
         }
         
-        bottomBar.setNeedsUpdateConstraints()
-        
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
+        if recommendedHeight != bottomBarBottomConstraint.constant {
+            bottomBarBottomConstraint.constant = recommendedHeight
+            
+            bottomBar.setNeedsUpdateConstraints()
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
     }
 }
