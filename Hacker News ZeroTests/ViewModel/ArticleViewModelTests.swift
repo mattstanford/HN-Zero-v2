@@ -42,7 +42,7 @@ class ArticleViewModelTests: XCTestCase {
             return
         }
         mockDate.currentDate = Date(timeIntervalSince1970: 1521298668)
-        XCTAssertEqual(viewModel.detailLabelText, "113 points • 6 days")
+        XCTAssertEqual(viewModel.detailLabelText, "113 points • 6 days • github.com")
         
         guard let jobStoryData = DataHelper.jsonDataFromFile(named: "Article-Job"),
             let article = try? Article.decodeArticleFrom(jsonData: jobStoryData) else {
