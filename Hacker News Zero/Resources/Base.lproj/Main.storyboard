@@ -598,6 +598,12 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="TYK-NY-H1V"/>
+                                    <barButtonItem image="safari3" id="mH1-7c-OPd">
+                                        <connections>
+                                            <action selector="showInSafari" destination="pEC-Lo-BAC" id="J0Q-F9-iup"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="n88-HX-3We"/>
                                     <barButtonItem title="Item" systemItem="action" id="hdW-5c-74f">
                                         <connections>
                                             <action selector="shareButtonTapped" destination="pEC-Lo-BAC" id="dvI-bl-fNh"/>
@@ -637,6 +643,7 @@
         <image name="default_icon" width="16" height="16"/>
         <image name="forward3" width="50" height="50"/>
         <image name="hamburger6" width="45" height="57"/>
+        <image name="safari3" width="20" height="20"/>
         <image name="zero5" width="33" height="42"/>
     </resources>
 </document>
