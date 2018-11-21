@@ -49,7 +49,7 @@ public protocol AttributedTextProtocol {
 
 extension AttributedTextProtocol {
     
-    private func makeAttributedString(getAttributes: (Style)-> [NSAttributedStringKey: Any]) -> NSAttributedString {
+    private func makeAttributedString(getAttributes: (Style)-> [AttributedStringKey: Any]) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string, attributes: getAttributes(baseStyle))
         
         for d in detections {
@@ -128,8 +128,17 @@ extension AttributedTextProtocol {
     
     public func styleLinks(_ style: Style) -> AttributedText {
         let ranges = string.detect(textCheckingTypes: [.link])
+        
+        #if swift(>=4.1)
+        let ds = ranges.compactMap { range in
+            URL(string: String(string[range])).map { Detection(type: .link($0), style: style, range: range) }
+        }
+        #else
         let ds = ranges.flatMap { range in
-            URL(string: String(string[range])).map { Detection(type: .link($0), style: style, range: range) } }
+            URL(string: String(string[range])).map { Detection(type: .link($0), style: style, range: range) }
+        }
+        #endif
+        
         return AttributedText(string: string, detections: detections + ds, baseStyle: baseStyle)
     }
     
@@ -153,15 +162,15 @@ extension String: AttributedTextProtocol {
         return Style()
     }
     
-    public func style(tags: [Style], transformers: [TagTransformer] = [TagTransformer.brTransformer]) -> AttributedText {
+    public func style(tags: [Style], transformers: [TagTransformer] = [TagTransformer.brTransformer], tuner: (Style, Tag) -> Style = { s, _ in return  s}) -> AttributedText {
         let (string, tagsInfo) = detectTags(transformers: transformers)
         
         var ds: [Detection] = []
         
         tagsInfo.forEach { t in
             
-            if let style = (tags.first { style in style.name == t.tag.name }) {
-                ds.append(Detection(type: .tag(t.tag), style: style, range: t.range))
+            if let style = (tags.first { style in style.name.lowercased() == t.tag.name.lowercased() }) {
+                ds.append(Detection(type: .tag(t.tag), style: tuner(style, t.tag), range: t.range))
             } else {
                 ds.append(Detection(type: .tag(t.tag), style: Style(), range: t.range))
             }
@@ -170,8 +179,8 @@ extension String: AttributedTextProtocol {
         return AttributedText(string: string, detections: ds, baseStyle: baseStyle)
     }
     
-    public func style(tags: Style..., transformers: [TagTransformer] = [TagTransformer.brTransformer]) -> AttributedText {
-        return style(tags: tags, transformers: transformers)
+    public func style(tags: Style..., transformers: [TagTransformer] = [TagTransformer.brTransformer], tuner: (Style, Tag) -> Style = { s, _ in return  s}) -> AttributedText {
+        return style(tags: tags, transformers: transformers, tuner: tuner)
     }
 }
 

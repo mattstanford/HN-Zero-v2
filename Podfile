@@ -6,11 +6,11 @@ target 'Hacker News Zero' do
   use_frameworks!
 
   # Pods for Hacker News Zero
-  pod 'Alamofire', '~> 4.5'
-  pod 'RxAlamofire', '~> 4.0.0'
-  pod 'AlamofireNetworkActivityLogger', '~> 2.2.0'
-  pod 'Atributika', '~> 4.3.1'
-  pod 'Kingfisher', '~> 4.6.2'
+  pod 'Alamofire', '~> 4.7.3'
+  pod 'RxAlamofire', '~> 4.3.0'
+  pod 'AlamofireNetworkActivityLogger', '~> 2.3.0'
+  pod 'Atributika', '~> 4.6.7'
+  pod 'Kingfisher', '~> 4.10.1'
   pod 'Firebase/Core'
   pod 'Fabric', '~> 1.7.9'
   pod 'Crashlytics', '~> 3.10.5'

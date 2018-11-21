@@ -741,7 +741,59 @@ extension Reactive where Base: SessionManager {
 
 extension ObservableType where E == DataRequest {
     public func responseJSON() -> Observable<DataResponse<Any>> {
-        return self.flatMap { $0.rx.responseJSON() }
+        return flatMap { $0.rx.responseJSON() }
+    }
+    
+    public func json(options: JSONSerialization.ReadingOptions = .allowFragments) -> Observable<Any> {
+        return flatMap { $0.rx.json(options: options) }
+    }
+    
+    public func responseString(encoding: String.Encoding? = nil) -> Observable<(HTTPURLResponse, String)> {
+        return flatMap { $0.rx.responseString(encoding: encoding) }
+    }
+    
+    public func string(encoding: String.Encoding? = nil) -> Observable<String> {
+        return flatMap { $0.rx.string(encoding: encoding) }
+    }
+    
+    public func responseData() -> Observable<(HTTPURLResponse, Data)> {
+        return flatMap { $0.rx.responseData() }
+    }
+    
+    public func data() -> Observable<Data> {
+        return flatMap { $0.rx.data() }
+    }
+    
+    public func responsePropertyList(options: PropertyListSerialization.ReadOptions = PropertyListSerialization.ReadOptions()) -> Observable<(HTTPURLResponse, Any)> {
+        return flatMap { $0.rx.responsePropertyList(options: options) }
+    }
+    
+    public func propertyList(options: PropertyListSerialization.ReadOptions = PropertyListSerialization.ReadOptions()) -> Observable<Any> {
+        return flatMap { $0.rx.propertyList(options: options) }
+    }
+    
+    public func progress() -> Observable<RxProgress> {
+        return flatMap { $0.rx.progress() }
+    }
+}
+
+// MARK: Request - Validation
+
+extension ObservableType where E == DataRequest {
+    public func validate<S: Sequence>(statusCode: S) -> Observable<E> where S.Element == Int {
+        return map { $0.validate(statusCode: statusCode) }
+    }
+    
+    public func validate() -> Observable<E> {
+        return map { $0.validate() }
+    }
+    
+    public func validate<S: Sequence>(contentType acceptableContentTypes: S) -> Observable<E> where S.Iterator.Element == String {
+        return map { $0.validate(contentType: acceptableContentTypes) }
+    }
+    
+    public func validate(_ validation: @escaping DataRequest.Validation) -> Observable<E> {
+        return map { $0.validate(validation) }
     }
 }
 
@@ -909,7 +961,9 @@ extension Reactive where Base: DataRequest {
     public func propertyList(options: PropertyListSerialization.ReadOptions = PropertyListSerialization.ReadOptions()) -> Observable<Any> {
         return result(responseSerializer: Base.propertyListResponseSerializer(options: options))
     }
+}
 
+extension Reactive where Base: Request {
     // MARK: Request - Upload and download progress
 
     /**
@@ -924,46 +978,32 @@ extension Reactive where Base: DataRequest {
     */
     public func progress() -> Observable<RxProgress> {
         return Observable.create { observer in
-            self.base.downloadProgress { progress in
+            let handler: Request.ProgressHandler = { progress in
                 let rxProgress = RxProgress(bytesWritten: progress.completedUnitCount,
                                             totalBytes: progress.totalUnitCount)
                 observer.on(.next(rxProgress))
+
                 if rxProgress.bytesWritten >= rxProgress.totalBytes {
                     observer.on(.completed)
                 }
             }
+
+            // Try in following order:
+            //  - UploadRequest (Inherits from DataRequest, so we test the discrete case first)
+            //  - DownloadRequest
+            //  - DataRequest
+            if let uploadReq = self.base as? UploadRequest {
+                uploadReq.uploadProgress(closure: handler)
+            } else if let downloadReq = self.base as? DownloadRequest {
+                downloadReq.downloadProgress(closure: handler)
+            } else if let dataReq = self.base as? DataRequest {
+                dataReq.downloadProgress(closure: handler)
+            }
+
             return Disposables.create()
-            }
-            // warm up a bit :)
-            .startWith(RxProgress(bytesWritten: 0, totalBytes: 0))
-    }
-}
-
-extension Reactive where Base: DownloadRequest {
-    /**
-     Returns an `Observable` for the current progress status.
-
-     Parameters on observed tuple:
-
-     1. bytes written so far.
-     1. total bytes to write.
-
-     - returns: An instance of `Observable<RxProgress>`
-     */
-    public func progress() -> Observable<RxProgress> {
-        return Observable.create { observer in
-            self.base.downloadProgress { progress in
-                let rxProgress = RxProgress(bytesWritten: progress.completedUnitCount,
-                                            totalBytes: progress.totalUnitCount)
-                observer.on(.next(rxProgress))
-                if rxProgress.bytesWritten >= rxProgress.totalBytes {
-                    observer.on(.completed)
-                }
-            }
-            return Disposables.create()
-            }
-            // warm up a bit :)
-            .startWith(RxProgress(bytesWritten: 0, totalBytes: 0))
+        }
+        // warm up a bit :)
+        .startWith(RxProgress(bytesWritten: 0, totalBytes: 0))
     }
 }
 
