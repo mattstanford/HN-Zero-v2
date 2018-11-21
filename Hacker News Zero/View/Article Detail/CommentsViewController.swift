@@ -33,7 +33,7 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action:#selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action:#selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
     
         return refreshControl
     }()

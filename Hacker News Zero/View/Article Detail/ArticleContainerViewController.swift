@@ -168,13 +168,13 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     
     private func add(viewController: UIViewController) {
         
-        addChildViewController(viewController)
+        addChild(viewController)
         view.addSubview(viewController.view)
         
         viewController.view.frame = view.bounds
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
         currentVC = viewController
         showArticleInView()
     }
@@ -191,8 +191,8 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     
     private func animateCycle(from oldVC: UIViewController, to newVC: UIViewController) {
         
-        oldVC.willMove(toParentViewController: nil)
-        self.addChildViewController(newVC)
+        oldVC.willMove(toParent: nil)
+        self.addChild(newVC)
         
         transition(from: oldVC,
                    to: newVC,
@@ -207,8 +207,8 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
             
         }) { _ in
             
-            oldVC.removeFromParentViewController()
-            newVC.didMove(toParentViewController: self)
+            oldVC.removeFromParent()
+            newVC.didMove(toParent: self)
             
             self.currentVC = newVC
             self.showArticleInView()

@@ -23,7 +23,7 @@ class ArticleViewController: UIViewController {
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action:#selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action:#selector(handleRefresh(_:)), for: UIControl.Event.valueChanged)
         
         return refreshControl
     }()
@@ -40,7 +40,7 @@ class ArticleViewController: UIViewController {
 
         set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 60
         self.tableView.addSubview(refreshControl)
      

@@ -19,11 +19,11 @@ class MainViewController: UIViewController {
     var navigator: AppNavigator?
     
     private var menuViewController: OptionsViewController? {
-        return childViewControllers.last as? OptionsViewController
+        return children.last as? OptionsViewController
     }
     
     private var contentViewController: UISplitViewController? {
-        return childViewControllers.first as? UISplitViewController
+        return children.first as? UISplitViewController
     }
     
     private var menuIsHidden: Bool {

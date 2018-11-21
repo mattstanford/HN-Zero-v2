@@ -59,7 +59,7 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
     @IBAction private func showInSafari() {
         if let urlString = viewModel.article?.url,
             let url = URL(string: urlString) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
         
     }
@@ -74,7 +74,7 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
             
             if webView.estimatedProgress >= 1 {
                 
-                UIView.animate(withDuration: 0.3, delay: 0.3, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.3, delay: 0.3, options: UIView.AnimationOptions.curveEaseOut, animations: {
                     self?.progressView.alpha = 0
                 }, completion: { _ in
                     self?.progressView.setProgress(0, animated: false)
@@ -132,8 +132,8 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
         
         if let webView = webView {
             view.addSubview(webView)
-            view.bringSubview(toFront: progressView)
-            view.bringSubview(toFront: bottomBar)
+            view.bringSubviewToFront(progressView)
+            view.bringSubviewToFront(bottomBar)
             webView.scrollView.delegate = self
             setupProgressBar()
             setupNavigationButtons()
@@ -206,4 +206,9 @@ extension WebViewController: UIScrollViewDelegate, BottomBarHideable {
         
         lastScrollOffset = offset
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

@@ -24,7 +24,7 @@ extension ColorChangeable where Self: UIViewController  {
         navigationController?.navigationBar.barTintColor = scheme.barColor
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor: scheme.barTextColor
+            NSAttributedString.Key.foregroundColor: scheme.barTextColor
         ]
         navigationController?.navigationItem.backBarButtonItem?.tintColor = scheme.barTextColor
         navigationController?.navigationItem.rightBarButtonItem?.tintColor = scheme.barTextColor
