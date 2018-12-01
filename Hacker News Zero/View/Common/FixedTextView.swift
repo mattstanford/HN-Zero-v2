@@ -18,12 +18,12 @@ import UIKit
         textContainerInset = UIEdgeInsets.zero
         textContainer.lineFragmentPadding = 0
 
-        var b = bounds
-        let h = sizeThatFits(CGSize(
+        var boundsCopy = bounds
+        let fitHeight = sizeThatFits(CGSize(
             width: bounds.size.width,
             height: CGFloat.greatestFiniteMagnitude)
             ).height
-        b.size.height = h
-        bounds = b
+        boundsCopy.size.height = fitHeight
+        bounds = boundsCopy
     }
 }

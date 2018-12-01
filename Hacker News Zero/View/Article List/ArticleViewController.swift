@@ -10,7 +10,7 @@ import CoreData
 import RxSwift
 import UIKit
 
-let ArticleTableViewCellIdentifier = "ArticleTableViewCellIdentifier"
+let articleTableViewCellIdentifier = "ArticleTableViewCellIdentifier"
 
 class ArticleViewController: UIViewController {
 
@@ -88,7 +88,9 @@ extension ArticleViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCellIdentifier, for: indexPath) as! ArticleTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: articleTableViewCellIdentifier, for: indexPath) as? ArticleTableViewCell else {
+            return UITableViewCell()
+        }
 
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
         cell.configure(for: articleViewModel, commentHandler: commentsTapped)

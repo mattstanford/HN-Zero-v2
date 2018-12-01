@@ -59,7 +59,9 @@ class AppNavigator {
         }
 
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let webVC = storyboard.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
+        guard let webVC = storyboard.instantiateViewController(withIdentifier: "WebVC") as? WebViewController else {
+            return
+        }
 
         webVC.set(url: url)
         navController.pushViewController(webVC, animated: true)

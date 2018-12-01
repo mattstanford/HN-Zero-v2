@@ -37,7 +37,9 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     lazy var commentsVC: CommentsViewController = {
 
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as! CommentsViewController
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as? CommentsViewController else {
+            return CommentsViewController()
+        }
         viewController.linkDelegate = self
 
         return viewController
@@ -46,7 +48,9 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     lazy var webVC: WebViewController = {
 
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "WebVC") as? WebViewController else {
+            return WebViewController()
+        }
 
         return viewController
     }()

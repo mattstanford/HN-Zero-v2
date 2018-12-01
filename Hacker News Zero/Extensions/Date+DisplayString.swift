@@ -17,15 +17,15 @@ extension Date {
 
         //Is it minutes?
         if difference > 60 {
-            difference = difference / 60
+            difference /= 60
 
             //Is it hours?
             if difference >= 60 {
-                difference = difference / 60
+                difference /= 60
 
                 //Is it days?
                 if difference >= 24 {
-                    difference = difference / 24
+                    difference /= 24
                     timeString = "\(difference) day"
                 } else {
                     timeString = "\(difference) hour"

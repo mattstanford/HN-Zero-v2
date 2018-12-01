@@ -10,8 +10,8 @@ import Atributika
 import RxSwift
 import UIKit
 
-let CommentCellIdentifier = "ComentCellIdentifier"
-let LoadingCellIdentifier = "LoadingCell"
+let commentCellIdentifier = "ComentCellIdentifier"
+let loadingCellIdentifier = "LoadingCell"
 
 class CommentsViewController: UIViewController, ArticleViewable, Shareable {
 
@@ -146,7 +146,7 @@ extension CommentsViewController: UITableViewDataSource {
 
     private func getCommentCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentCellIdentifier, for: indexPath) as? CommentTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: commentCellIdentifier, for: indexPath) as? CommentTableViewCell else {
             return UITableViewCell()
         }
         let cellViewModel = self.viewModel.viewModels[indexPath.row]
@@ -158,7 +158,7 @@ extension CommentsViewController: UITableViewDataSource {
     }
 
     private func getLoadingCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LoadingCellIdentifier, for: indexPath) as? LoadingSpinnerCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: loadingCellIdentifier, for: indexPath) as? LoadingSpinnerCell else {
             return UITableViewCell()
         }
         cell.configure(colorScheme: viewModel.colorScheme)

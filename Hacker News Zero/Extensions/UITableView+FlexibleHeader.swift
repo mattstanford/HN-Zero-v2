@@ -12,7 +12,9 @@ extension UITableView {
 
     func layoutTableHeaderView() {
 
-        guard let headerView = self.tableHeaderView else { return }
+        guard let headerView = self.tableHeaderView else {
+            return
+        }
         headerView.translatesAutoresizingMaskIntoConstraints = false
 
         let headerWidth = headerView.bounds.size.width
