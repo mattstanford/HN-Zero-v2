@@ -10,7 +10,7 @@ fileprivate final class AsSingleSink<O: ObserverType> : Sink<O>, ObserverType {
     typealias ElementType = O.E
     typealias E = ElementType
 
-    private var _element: Event<E>?
+    private var _element: Event<E>? = nil
 
     func on(_ event: Event<E>) {
         switch event {
@@ -28,7 +28,8 @@ fileprivate final class AsSingleSink<O: ObserverType> : Sink<O>, ObserverType {
             if let element = _element {
                 forwardOn(element)
                 forwardOn(.completed)
-            } else {
+            }
+            else {
                 forwardOn(.error(RxError.noElements))
             }
             dispose()
@@ -43,7 +44,7 @@ final class AsSingle<Element>: Producer<Element> {
         _source = source
     }
 
-    override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
+    override func run<O : ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
         let sink = AsSingleSink(observer: observer, cancel: cancel)
         let subscription = _source.subscribe(sink)
         return (sink: sink, subscription: subscription)

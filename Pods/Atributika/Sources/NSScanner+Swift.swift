@@ -6,9 +6,9 @@
 import Foundation
 
 extension Scanner {
-
+    
     // MARK: Strings
-
+    
     /// Returns a string, scanned as long as characters from a given character set are encountered, or `nil` if none are found.
     func scanCharacters(from set: CharacterSet) -> String? {
         var value: NSString? = ""
@@ -17,7 +17,7 @@ extension Scanner {
         }
         return nil
     }
-
+    
     /// Returns a string, scanned until a character from a given character set are encountered, or the remainder of the scanner's string. Returns `nil` if the scanner is already `atEnd`.
     func scanUpToCharacters(from set: CharacterSet) -> String? {
         var value: NSString? = ""
@@ -26,7 +26,7 @@ extension Scanner {
         }
         return nil
     }
-
+    
     /// Returns the given string if scanned, or `nil` if not found.
     @discardableResult func scanString(_ str: String) -> String? {
         var value: NSString? = ""
@@ -35,7 +35,7 @@ extension Scanner {
         }
         return nil
     }
-
+    
     /// Returns a string, scanned until the given string is found, or the remainder of the scanner's string. Returns `nil` if the scanner is already `atEnd`.
     func scanUpTo(_ str: String) -> String? {
         var value: NSString? = ""

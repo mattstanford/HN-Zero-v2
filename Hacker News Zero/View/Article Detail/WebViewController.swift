@@ -114,7 +114,7 @@ class WebViewController: UIViewController, ArticleViewable, Shareable {
 
     func showNewArticleIfNecessary() {
 
-        if(viewModel.needsReset) {
+        if viewModel.needsReset {
             viewModel.needsReset = false
             reloadWebViewWithCurrentArticle()
         }

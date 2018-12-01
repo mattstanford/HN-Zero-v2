@@ -32,14 +32,11 @@ extension AttributedLabel {
     }
 
     private func parseLinkClicked(tag: Tag, linkHandler: (URL) -> Void) {
-        for attribute in tag.attributes {
-
-            if attribute.key == "href" {
-                if let url = URL(string: attribute.value) {
-                    linkHandler(url)
-                }
-                break
+        for attribute in tag.attributes where attribute.key == "href" {
+            if let url = URL(string: attribute.value) {
+                linkHandler(url)
             }
+            break
         }
     }
 

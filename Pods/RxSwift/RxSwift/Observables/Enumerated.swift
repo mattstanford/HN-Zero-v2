@@ -21,10 +21,10 @@ extension ObservableType {
     }
 }
 
-final private class EnumeratedSink<Element, O: ObserverType>: Sink<O>, ObserverType where O.E == (index: Int, element: Element) {
+final fileprivate class EnumeratedSink<Element, O : ObserverType>: Sink<O>, ObserverType where O.E == (index: Int, element: Element) {
     typealias E = Element
     var index = 0
-
+    
     func on(_ event: Event<Element>) {
         switch event {
         case .next(let value):
@@ -32,7 +32,8 @@ final private class EnumeratedSink<Element, O: ObserverType>: Sink<O>, ObserverT
                 let nextIndex = try incrementChecked(&index)
                 let next = (index: nextIndex, element: value)
                 forwardOn(.next(next))
-            } catch let e {
+            }
+            catch let e {
                 forwardOn(.error(e))
                 dispose()
             }
@@ -46,7 +47,7 @@ final private class EnumeratedSink<Element, O: ObserverType>: Sink<O>, ObserverT
     }
 }
 
-final private class Enumerated<Element> : Producer<(index: Int, element: Element)> {
+final fileprivate class Enumerated<Element> : Producer<(index: Int, element: Element)> {
     private let _source: Observable<Element>
 
     init(source: Observable<Element>) {

@@ -1,6 +1,8 @@
 disabled_rules: # rule identifiers to exclude from running
     - line_length
     - fallthrough
+    - private_outlet
+    - private_action
 opt_in_rules: # some rules are only opt-in
     - closure_end_indentation
     - closure_spacing

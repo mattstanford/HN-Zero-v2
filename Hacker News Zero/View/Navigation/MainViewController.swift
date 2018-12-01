@@ -50,13 +50,13 @@ class MainViewController: UIViewController {
             let masterViewController = leftNavController.topViewController as? ArticleViewController,
             let rightNavController = splitViewController.viewControllers.last as? UINavigationController,
             let detailViewController = rightNavController.topViewController as? ArticleContainerViewController
-            else { fatalError() }
+            else { fatalError("Error setting up navigator!") }
 
         splitViewController.preferredDisplayMode = .allVisible
 
         let navigator = AppNavigator(with: self,
-                                         articleList: masterViewController,
-                                         articleDetail: detailViewController)
+                                     articleList: masterViewController,
+                                     articleDetail: detailViewController)
 
         menuViewController?.delegate = masterViewController
         menuViewController?.navigator = navigator

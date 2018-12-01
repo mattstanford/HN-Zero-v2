@@ -603,7 +603,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="n88-HX-3We"/>
-                                    <barButtonItem title="Item" systemItem="action" id="hdW-5c-74f">
+                                    <barButtonItem systemItem="action" id="hdW-5c-74f">
                                         <connections>
                                             <action selector="shareButtonTapped" destination="pEC-Lo-BAC" id="dvI-bl-fNh"/>
                                         </connections>

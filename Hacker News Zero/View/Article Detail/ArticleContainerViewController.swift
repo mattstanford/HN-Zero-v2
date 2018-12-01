@@ -209,14 +209,14 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
                                          height: oldVC.view.bounds.height)
                     newVC.view.frame = newRect
 
-        }) { _ in
+        }, completion: { _ in
 
             oldVC.removeFromParent()
             newVC.didMove(toParent: self)
 
             self.currentVC = newVC
             self.showArticleInView()
-        }
+        })
     }
 
     private func showArticleInView() {

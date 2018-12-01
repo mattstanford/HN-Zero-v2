@@ -7,6 +7,8 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
+
+
 // 2
 
 extension ObservableType {
@@ -114,6 +116,8 @@ final class Zip2<E1, E2, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
+
+
 
 // 3
 
@@ -230,6 +234,8 @@ final class Zip3<E1, E2, E3, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
+
+
 
 // 4
 
@@ -354,6 +360,8 @@ final class Zip4<E1, E2, E3, E4, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
+
+
 
 // 5
 
@@ -486,6 +494,8 @@ final class Zip5<E1, E2, E3, E4, E5, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
+
+
 
 // 6
 
@@ -626,6 +636,8 @@ final class Zip6<E1, E2, E3, E4, E5, E6, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
+
+
 
 // 7
 
@@ -774,6 +786,8 @@ final class Zip7<E1, E2, E3, E4, E5, E6, E7, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
+
+
 
 // 8
 
@@ -930,3 +944,5 @@ final class Zip8<E1, E2, E3, E4, E5, E6, E7, E8, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
+
+
