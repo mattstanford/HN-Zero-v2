@@ -17,7 +17,7 @@ import UIKit
     func setup() {
         textContainerInset = UIEdgeInsets.zero
         textContainer.lineFragmentPadding = 0
-        
+
         var b = bounds
         let h = sizeThatFits(CGSize(
             width: bounds.size.width,

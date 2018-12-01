@@ -14,26 +14,26 @@ class WebViewModel {
             needsReset = true
         }
     }
-    
+
     var article: Article? {
         willSet(newArticle) {
-            
+
             guard let newArticle = newArticle else {
                 return
             }
-            
+
             if let oldArticle = article,
                 oldArticle.id == newArticle.id {
-                
+
                 //Trying to load the same article, don't do anything
                 needsReset = false
             } else {
-           
+
                 guard let urlString = newArticle.url,
                     let url = URL(string: urlString) else {
                         return
                 }
-                
+
                 //New article, need to reset
                 currentUrl = url
                 needsReset = true
@@ -41,6 +41,5 @@ class WebViewModel {
         }
     }
     var needsReset: Bool = true
-    
-    
+
 }

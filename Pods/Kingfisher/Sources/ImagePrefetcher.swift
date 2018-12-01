@@ -24,13 +24,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-
 #if os(macOS)
     import AppKit
 #else
     import UIKit
 #endif
-
 
 /// Progress update block of prefetcher. 
 ///
@@ -49,35 +47,35 @@ public typealias PrefetcherCompletionHandler = ((_ skippedResources: [Resource],
 /// `ImagePrefetcher` represents a downloading manager for requesting many images via URLs, then caching them.
 /// This is useful when you know a list of image resources and want to download them before showing.
 public class ImagePrefetcher {
-    
+
     /// The maximum concurrent downloads to use when prefetching images. Default is 5.
     public var maxConcurrentDownloads = 5
-    
+
     /// The dispatch queue to use for handling resource process so downloading does not occur on the main thread
     /// This prevents stuttering when preloading images in a collection view or table view
     private var prefetchQueue: DispatchQueue
-    
+
     private let prefetchResources: [Resource]
     private let optionsInfo: KingfisherOptionsInfo
     private var progressBlock: PrefetcherProgressBlock?
     private var completionHandler: PrefetcherCompletionHandler?
-    
+
     private var tasks = [URL: RetrieveImageDownloadTask]()
-    
+
     private var pendingResources: ArraySlice<Resource>
     private var skippedResources = [Resource]()
     private var completedResources = [Resource]()
     private var failedResources = [Resource]()
-    
+
     private var stopped = false
-    
+
     // The created manager used for prefetch. We will use the helper method in manager.
     private let manager: KingfisherManager
-    
+
     private var finished: Bool {
         return failedResources.count + skippedResources.count + completedResources.count == prefetchResources.count && self.tasks.isEmpty
     }
-    
+
     /**
      Init an image prefetcher with an array of URLs.
      
@@ -97,12 +95,11 @@ public class ImagePrefetcher {
     public convenience init(urls: [URL],
                          options: KingfisherOptionsInfo? = nil,
                    progressBlock: PrefetcherProgressBlock? = nil,
-               completionHandler: PrefetcherCompletionHandler? = nil)
-    {
+               completionHandler: PrefetcherCompletionHandler? = nil) {
         let resources: [Resource] = urls.map { $0 }
         self.init(resources: resources, options: options, progressBlock: progressBlock, completionHandler: completionHandler)
     }
-    
+
     /**
      Init an image prefetcher with an array of resources.
      
@@ -122,58 +119,56 @@ public class ImagePrefetcher {
     public init(resources: [Resource],
                   options: KingfisherOptionsInfo? = nil,
             progressBlock: PrefetcherProgressBlock? = nil,
-        completionHandler: PrefetcherCompletionHandler? = nil)
-    {
+        completionHandler: PrefetcherCompletionHandler? = nil) {
         prefetchResources = resources
         pendingResources = ArraySlice(resources)
-        
+
         // Set up the dispatch queue that all our work should occur on.
         let prefetchQueueName = "com.onevcat.Kingfisher.PrefetchQueue"
         prefetchQueue = DispatchQueue(label: prefetchQueueName)
-        
+
         // We want all callbacks from our prefetch queue, so we should ignore the call back queue in options
         var optionsInfoWithoutQueue = options?.removeAllMatchesIgnoringAssociatedValue(.callbackDispatchQueue(nil)) ?? KingfisherEmptyOptionsInfo
-        
+
         // Add our own callback dispatch queue to make sure all callbacks are coming back in our expected queue
         optionsInfoWithoutQueue.append(.callbackDispatchQueue(prefetchQueue))
-        
+
         self.optionsInfo = optionsInfoWithoutQueue
-        
+
         let cache = self.optionsInfo.targetCache ?? .default
         let downloader = self.optionsInfo.downloader ?? .default
         manager = KingfisherManager(downloader: downloader, cache: cache)
-        
+
         self.progressBlock = progressBlock
         self.completionHandler = completionHandler
     }
-    
+
     /**
      Start to download the resources and cache them. This can be useful for background downloading
      of assets that are required for later use in an app. This code will not try and update any UI
      with the results of the process.
      */
-    public func start()
-    {
+    public func start() {
         // Since we want to handle the resources cancellation in the prefetch queue only.
         prefetchQueue.async {
-            
+
             guard !self.stopped else {
                 assertionFailure("You can not restart the same prefetcher. Try to create a new prefetcher.")
                 self.handleComplete()
                 return
             }
-            
+
             guard self.maxConcurrentDownloads > 0 else {
                 assertionFailure("There should be concurrent downloads value should be at least 1.")
                 self.handleComplete()
                 return
             }
-            
+
             guard self.prefetchResources.count > 0 else {
                 self.handleComplete()
                 return
             }
-            
+
             let initialConcurentDownloads = min(self.prefetchResources.count, self.maxConcurrentDownloads)
             for _ in 0 ..< initialConcurentDownloads {
                 if let resource = self.pendingResources.popFirst() {
@@ -183,7 +178,6 @@ public class ImagePrefetcher {
         }
     }
 
-   
     /**
      Stop current downloading progress, and cancel any future prefetching activity that might be occuring.
      */
@@ -194,7 +188,7 @@ public class ImagePrefetcher {
             self.tasks.values.forEach { $0.cancel() }
         }
     }
-    
+
     func downloadAndCache(_ resource: Resource) {
 
         let downloadTaskCompletionHandler: CompletionHandler = { (image, error, _, _) -> Void in
@@ -204,7 +198,7 @@ public class ImagePrefetcher {
             } else {
                 self.completedResources.append(resource)
             }
-            
+
             self.reportProgress()
             if self.stopped {
                 if self.tasks.isEmpty {
@@ -215,7 +209,7 @@ public class ImagePrefetcher {
                 self.reportCompletionOrStartNext()
             }
         }
-        
+
         let downloadTask = manager.downloadAndCacheImage(
             with: resource.downloadURL,
             forKey: resource.cacheKey,
@@ -223,21 +217,20 @@ public class ImagePrefetcher {
             progressBlock: nil,
             completionHandler: downloadTaskCompletionHandler,
             options: optionsInfo)
-        
+
         if let downloadTask = downloadTask {
             tasks[resource.downloadURL] = downloadTask
         }
     }
-    
+
     func append(cached resource: Resource) {
         skippedResources.append(resource)
- 
+
         reportProgress()
         reportCompletionOrStartNext()
     }
-    
-    func startPrefetching(_ resource: Resource)
-    {
+
+    func startPrefetching(_ resource: Resource) {
         if optionsInfo.forceRefresh {
             downloadAndCache(resource)
         } else {
@@ -250,11 +243,11 @@ public class ImagePrefetcher {
             }
         }
     }
-    
+
     func reportProgress() {
         progressBlock?(skippedResources, failedResources, completedResources)
     }
-    
+
     func reportCompletionOrStartNext() {
         prefetchQueue.async {
             if let resource = self.pendingResources.popFirst() {
@@ -265,7 +258,7 @@ public class ImagePrefetcher {
             }
         }
     }
-    
+
     func handleComplete() {
         // The completion handler should be called on the main thread
         DispatchQueue.main.safeAsync {

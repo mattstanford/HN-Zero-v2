@@ -9,39 +9,39 @@
 import UIKit
 
 class AppNavigator {
-    
+
     private var mainViewController: MainViewController
     private var articleList: ArticleViewController!
     private var articleDetail: ArticleContainerViewController!
-    
+
     var currentArticle: Article?
-    
+
     init(with mainView: MainViewController,
          articleList: ArticleViewController,
          articleDetail: ArticleContainerViewController) {
-        
+
         self.mainViewController = mainView
         self.articleList = articleList
         self.articleDetail = articleDetail
     }
-    
+
     func show(article: Article, selectedView: SelectedView) {
-        
+
         print("showing article: " + article.title)
         currentArticle = article
-        
+
         var view = selectedView
-        
+
         //"Ask HN" type articles don't have a url
         if article.url == nil {
             view = .comments
         }
-        
+
         //Job types usually don't have comments
         if article.numComments == nil {
             view = .web
         }
-        
+
         //If we're on iPad, show the nav controller + detail view
         if !mainViewController.isCollapsed, let navController = articleDetail.navigationController {
             articleList.showDetailViewController(navController, sender: nil)
@@ -49,40 +49,40 @@ class AppNavigator {
             //On phone, we already have a nav controller, so only push the detail view
             articleList.showDetailViewController(articleDetail, sender: nil)
         }
-        
+
         articleDetail.showArticle(in: view)
     }
-    
+
     func showLink(url: URL) {
         guard let navController = articleDetail.navigationController else {
             return
         }
-        
+
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let webVC = storyboard.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
-        
+
         webVC.set(url: url)
         navController.pushViewController(webVC, animated: true)
     }
-    
+
     func switchColorScheme(to scheme: ColorScheme) {
         HackerNewsRepository.shared.settingsCache.colorScheme = scheme
-        
+
         mainViewController.switchScheme(to: scheme)
         articleList.switchScheme(to: scheme)
-        
+
         if articleDetail.isViewLoaded {
             articleDetail.switchScheme(to: scheme)
         }
-        
+
         if articleDetail.commentsVC.isViewLoaded {
             articleDetail.commentsVC.switchScheme(to: scheme)
         }
-        
+
         if articleDetail.webVC.isViewLoaded {
             articleDetail.webVC.switchScheme(to: scheme)
         }
-        
+
         //If we're on iPad, we need to switch the color of the separate nav bar
         if let navController = articleDetail.navigationController {
             navController.navigationItem.backBarButtonItem?.tintColor = scheme.barTextColor
@@ -90,7 +90,7 @@ class AppNavigator {
             navController.navigationBar.tintColor = scheme.barTextColor
         }
     }
-    
+
     func toggleMenu() {
         mainViewController.toggleMenu()
     }

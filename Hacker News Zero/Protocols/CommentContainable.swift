@@ -10,5 +10,5 @@ import Foundation
 
 protocol CommentContainable {
     var childCommentIds: [Int]? { get }
-    var childComments : [Comment]? { get set }
+    var childComments: [Comment]? { get set }
 }

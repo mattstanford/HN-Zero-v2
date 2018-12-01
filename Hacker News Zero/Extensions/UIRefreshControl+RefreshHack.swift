@@ -9,9 +9,9 @@
 import UIKit
 
 extension UIRefreshControl {
-    
+
     func beginManualRefresh(for tableView: UITableView) {
-        tableView.contentOffset = CGPoint(x:0, y:-self.frame.size.height)
+        tableView.contentOffset = CGPoint(x: 0, y: -self.frame.size.height)
         beginRefreshing()
     }
 }

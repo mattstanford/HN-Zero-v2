@@ -17,7 +17,7 @@ extension NetworkError: LocalizedError {
     var title: String {
         return "Error"
     }
-    
+
     var localizedDescription: String {
         switch self {
         case .jsonParsingError:

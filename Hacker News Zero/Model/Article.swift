@@ -8,23 +8,21 @@
 
 import Foundation
 
-struct Article : Codable, CommentContainable, HackerNewsItemType
-{    
-    let id : Int
-    let title : String
-    let url : String?
-    let score : Int
-    let author : String
-    let timePosted : Date
-    let articleType : String
-    let articlePostText : String?
+struct Article: Codable, CommentContainable, HackerNewsItemType {
+    let id: Int
+    let title: String
+    let url: String?
+    let score: Int
+    let author: String
+    let timePosted: Date
+    let articleType: String
+    let articlePostText: String?
     let numComments: Int?
     let childCommentIds: [Int]?
-    
-    var childComments: [Comment]?
-    
 
-    enum CodingKeys : String, CodingKey {
+    var childComments: [Comment]?
+
+    enum CodingKeys: String, CodingKey {
         case id
         case title
         case url
@@ -35,27 +33,25 @@ struct Article : Codable, CommentContainable, HackerNewsItemType
         case articlePostText = "text"
         case numComments = "descendants"
         case childCommentIds = "kids"
-        
+
         case childComments
     }
-    
-    static func decodeArticleFrom(jsonData: Data) throws -> Article
-    {
+
+    static func decodeArticleFrom(jsonData: Data) throws -> Article {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
         let article = try decoder.decode(Article.self, from: jsonData)
 
         return article
     }
-    
+
     var domain: String? {
         guard let urlString = url,
             let url = URL(string: urlString) else {
                 return nil
         }
-        
+
         return url.host
     }
-    
-    
+
 }

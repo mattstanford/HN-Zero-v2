@@ -6,19 +6,18 @@
 //  Copyright © 2018 locacha. All rights reserved.
 //
 
-import Foundation
 import Atributika
+import Foundation
 
 extension AttributedLabel {
-    
+
     func setHtmlText(text: String,
                      colorScheme: ColorScheme,
                      fontName: String = AppConstants.defaultFont,
                      fontSize: CGFloat = AppConstants.defaultFontSize,
-                     linkHandler: @escaping (URL) -> Void)
-    {
+                     linkHandler: @escaping (URL) -> Void) {
         numberOfLines = 0
-        if let labelFont =  Font(name: AppConstants.defaultFont, size: AppConstants.defaultFontSize) {
+        if let labelFont = Font(name: AppConstants.defaultFont, size: AppConstants.defaultFontSize) {
             font = labelFont
         }
         attributedText = text.htmlText(colorScheme: colorScheme)
@@ -31,10 +30,10 @@ extension AttributedLabel {
             }
         }
     }
-    
+
     private func parseLinkClicked(tag: Tag, linkHandler: (URL) -> Void) {
         for attribute in tag.attributes {
-            
+
             if attribute.key == "href" {
                 if let url = URL(string: attribute.value) {
                     linkHandler(url)
@@ -43,5 +42,5 @@ extension AttributedLabel {
             }
         }
     }
-    
+
 }

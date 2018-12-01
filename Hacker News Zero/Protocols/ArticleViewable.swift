@@ -11,4 +11,3 @@ import Foundation
 protocol ArticleViewable: class {
     func show(article: Article?)
 }
-

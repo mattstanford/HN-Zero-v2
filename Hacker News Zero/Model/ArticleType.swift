@@ -14,7 +14,7 @@ enum ArticleType {
     case showhn
     case jobs
     case new
-    
+
     var endpointPath: String {
         switch self {
         case .frontpage:
@@ -29,7 +29,7 @@ enum ArticleType {
             return newEndpoint
         }
     }
-    
+
     var titleText: String {
         switch self {
         case .frontpage:

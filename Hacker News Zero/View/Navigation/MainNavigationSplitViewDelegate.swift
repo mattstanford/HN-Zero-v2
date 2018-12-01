@@ -9,12 +9,10 @@
 import Foundation
 import UIKit
 
-class MainNavigationSplitViewDelegate : NSObject, UISplitViewControllerDelegate
-{
+class MainNavigationSplitViewDelegate: NSObject, UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController,
-                             collapseSecondary secondaryViewController:UIViewController,
-                             onto primaryViewController:UIViewController) -> Bool
-    {
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
         return true
     }
 }

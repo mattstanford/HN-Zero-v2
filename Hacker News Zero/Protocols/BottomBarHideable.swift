@@ -13,18 +13,18 @@ protocol BottomBarHideable {
     var bottomBarBottomConstraint: NSLayoutConstraint! { get set }
 }
 
-extension BottomBarHideable where Self: UIViewController{
-    
+extension BottomBarHideable where Self: UIViewController {
+
     func animateBar(show: Bool) {
-        
+
         if show {
              bottomBarBottomConstraint.constant = 0
         } else {
             bottomBarBottomConstraint.constant = view.safeAreaInsets.bottom + bottomBar.frame.height
         }
-        
+
         bottomBar.setNeedsUpdateConstraints()
-        
+
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })

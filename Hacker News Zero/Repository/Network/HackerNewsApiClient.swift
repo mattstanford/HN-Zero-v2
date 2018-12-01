@@ -6,8 +6,8 @@
 //  Copyright © 2018 locacha. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import RxAlamofire
 import RxSwift
 
@@ -20,54 +20,50 @@ let jobsEndpoint = "jobstories"
 let newEndpoint = "newstories"
 let itemEndpoint = "item/"
 
-class HackerNewsApiClient : ApiClient
-{
+class HackerNewsApiClient: ApiClient {
     let session: SessionManager
-    
+
     init() {
         let configuration = URLSessionConfiguration.default
         configuration.httpMaximumConnectionsPerHost = 100
         session = SessionManager(configuration: configuration)
     }
-    
+
     func getArticleIds(type: ArticleType) -> Observable<Data> {
         let endpoint = baseUrl + type.endpointPath + jsonSuffix
-        
+
         return session.rx.responseData(.get, endpoint)
-            .map({ (response, jsonData) -> Data in
-                
+            .map({ _, jsonData -> Data in
+
                 return jsonData
             })
     }
-    
-    
-    func getArticleData(articleId : Int) -> Observable<Data>
-    {
+
+    func getArticleData(articleId: Int) -> Observable<Data> {
         let endpoint = self.getItemEndpoint(itemId: articleId)
-        
+
         return session.rx.responseData(.get, endpoint)
-            .map({ (response, jsonData) -> Data in
-                
+            .map({ _, jsonData -> Data in
+
                 return jsonData
             })
     }
-    
+
     func getCommentData(itemId: Int) -> Observable<Data> {
         let endpoint = self.getItemEndpoint(itemId: itemId)
-        
+
         return session.rx.responseData(.get, endpoint)
-            .map { (response, jsonData) -> Data in
-                
+            .map { _, jsonData -> Data in
+
                 return jsonData
-        }
+            }
     }
 }
 
-//MARK: Private helper functions
+// MARK: Private helper functions
 extension HackerNewsApiClient {
-    
-    func getItemEndpoint(itemId: Int) -> String
-    {
+
+    func getItemEndpoint(itemId: Int) -> String {
         return baseUrl + itemEndpoint + String(itemId) + jsonSuffix
     }
 }

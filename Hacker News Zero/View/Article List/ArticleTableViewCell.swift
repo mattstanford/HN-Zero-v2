@@ -6,29 +6,28 @@
 //  Copyright © 2018 locacha. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
-    
+
     typealias CommentHandler = (Article) -> Void
-    
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var numCommentsLabel: UILabel!
     @IBOutlet weak var commentsView: UIView!
-    
+
     @IBOutlet weak var commentViewWidth: NSLayoutConstraint!
-    
+
     var commentHandler: CommentHandler?
     var viewModel: ArticleViewModel?
-    
-    func configure(for viewModel: ArticleViewModel, commentHandler: CommentHandler?)
-    {
+
+    func configure(for viewModel: ArticleViewModel, commentHandler: CommentHandler?) {
         self.viewModel = viewModel
         self.contentView.backgroundColor = viewModel.colorScheme.contentBackgroundColor
-        
+
         titleLabel.text = viewModel.article.title
         titleLabel.textColor = viewModel.colorScheme.contentTextColor
         // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
@@ -38,28 +37,24 @@ class ArticleTableViewCell: UITableViewCell {
         if let iconUrl = viewModel.iconUrl {
             iconImage.kf.setImage(with: iconUrl, placeholder: #imageLiteral(resourceName: "default_icon"))
         }
-        
-        if let numComments = viewModel.article.numComments
-        {
+
+        if let numComments = viewModel.article.numComments {
             commentsView.isHidden = false
             commentViewWidth.constant = 50
-            numCommentsLabel.text = String(describing:numComments)
+            numCommentsLabel.text = String(describing: numComments)
             numCommentsLabel.textColor = viewModel.colorScheme.contentTextColor
-        }
-        else
-        {
+        } else {
             commentViewWidth.constant = 8
             commentsView.isHidden = true
         }
-        
+
         if let commentHandler = commentHandler {
             self.commentHandler = commentHandler
             let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(clickedComments(_:)))
             commentsView.addGestureRecognizer(gestureRecognizer)
         }
     }
-    
-    
+
     @objc func clickedComments(_ sender: UITapGestureRecognizer? = nil) {
         if let article = viewModel?.article {
             commentHandler?(article)

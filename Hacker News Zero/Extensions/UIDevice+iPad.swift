@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIDevice {
-    
+
     static var isRunningOnIpad: Bool {
         return current.userInterfaceIdiom == .pad
     }

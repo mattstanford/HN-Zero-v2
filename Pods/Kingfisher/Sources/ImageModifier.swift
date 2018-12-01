@@ -52,7 +52,7 @@ extension ImageModifier {
 
 typealias ModifierImp = ((Image) -> Image)
 
-fileprivate struct GeneralModifier: ImageModifier {
+private struct GeneralModifier: ImageModifier {
     let identifier: String
     let m: ModifierImp
     func modify(_ image: Image) -> Image {

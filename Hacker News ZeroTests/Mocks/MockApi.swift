@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import RxSwift
 @testable import Hacker_News_Zero
+import RxSwift
 
 class MockApi: ApiClient {
     func getArticleIds(type: ArticleType) -> Observable<Data> {
@@ -17,26 +17,24 @@ class MockApi: ApiClient {
         }
         return Observable.just(articleData)
     }
-    
+
     func getArticleData(articleId: Int) -> Observable<Data> {
         guard let articleData = DataHelper.jsonDataFromFile(named: "Article-Story") else {
             return Observable.just(Data())
         }
         return Observable.just(articleData)
     }
-    
+
     func getCommentData(itemId: Int) -> Observable<Data> {
         guard let commentData = DataHelper.jsonDataFromFile(named: "Comment") else {
             return Observable.just(Data())
         }
         return Observable.just(commentData)
     }
-    
-    
+
 }
 
 // MARK: Utility functions
 extension MockApi {
-    
-   
+
 }

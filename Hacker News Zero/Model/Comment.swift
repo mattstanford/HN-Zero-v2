@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct Comment: Codable, CommentContainable, HackerNewsItemType
-{
+struct Comment: Codable, CommentContainable, HackerNewsItemType {
     let id: Int
     let parentId: Int
     let author: String?
@@ -18,11 +17,11 @@ struct Comment: Codable, CommentContainable, HackerNewsItemType
     let isDead: Bool?
     let time: Date
     let deleted: Bool?
-    
+
     //Not part of the JSON
-    var childComments: [Comment]? = nil
-    
-    private enum CodingKeys : String, CodingKey {
+    var childComments: [Comment]?
+
+    private enum CodingKeys: String, CodingKey {
         case id
         case parentId = "parent"
         case author = "by"
@@ -33,11 +32,11 @@ struct Comment: Codable, CommentContainable, HackerNewsItemType
         case time
         case deleted
     }
-    
+
     var isDeleted: Bool {
         return deleted ?? false
     }
-    
+
     var hasChildComments: Bool {
         if let childIds = childCommentIds {
             return childIds.count > 0
@@ -45,17 +44,16 @@ struct Comment: Codable, CommentContainable, HackerNewsItemType
             return false
         }
     }
-    
-    static func decodeComment(from jsonData: Data) -> Comment?
-    {
+
+    static func decodeComment(from jsonData: Data) -> Comment? {
         let decoder = JSONDecoder()
 
         decoder.dateDecodingStrategy = .secondsSince1970
         let comment = try? decoder.decode(Comment.self, from: jsonData)
-        
+
         return comment
     }
-    
+
     static func createEmptyComment() -> Comment {
         return Comment(id: 0,
                        parentId: 0,

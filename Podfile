@@ -14,6 +14,7 @@ target 'Hacker News Zero' do
   pod 'Firebase/Core'
   pod 'Fabric', '~> 1.7.9'
   pod 'Crashlytics', '~> 3.10.5'
+  pod 'SwiftLint'
 
   target 'Hacker News ZeroTests' do
     inherit! :search_paths

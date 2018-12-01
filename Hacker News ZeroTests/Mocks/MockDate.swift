@@ -10,7 +10,7 @@ import Foundation
 
 class MockDate {
     var currentDate = Date()
-    
+
     func getTestDate() -> Date {
         return currentDate
     }

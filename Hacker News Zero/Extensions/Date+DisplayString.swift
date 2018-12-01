@@ -9,50 +9,40 @@
 import Foundation
 
 extension Date {
-    
+
     func getStringofTimePassedSinceDate(referenceDate: Date) -> String {
-        
+
         var timeString = ""
         var difference = Int(self.timeIntervalSince(referenceDate))
-        
+
         //Is it minutes?
-        if difference > 60
-        {
+        if difference > 60 {
             difference = difference / 60
-            
+
             //Is it hours?
-            if difference >= 60
-            {
+            if difference >= 60 {
                 difference = difference / 60
-                
+
                 //Is it days?
-                if difference >= 24
-                {
+                if difference >= 24 {
                     difference = difference / 24
                     timeString = "\(difference) day"
-                }
-                else
-                {
+                } else {
                     timeString = "\(difference) hour"
                 }
-            }
-            else
-            {
+            } else {
                 timeString = "\(difference) minute"
             }
-        }
-        else
-        {
+        } else {
             timeString = "\(difference) second"
         }
-        
+
         //Should the time units be in plural?
-        if difference > 1
-        {
+        if difference > 1 {
             timeString += "s"
         }
-        
+
         return timeString
     }
-    
+
 }

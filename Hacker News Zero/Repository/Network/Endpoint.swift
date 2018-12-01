@@ -8,9 +8,8 @@
 
 import Foundation
 
-enum Endpoint
-{
+enum Endpoint {
     case storylist(storyType: StoryType)
     case item(itemId: Int)
-    
+
 }

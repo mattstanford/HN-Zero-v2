@@ -17,6 +17,7 @@
 		C90BC004202D563A0014E498 /* MainNavigationSplitViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BC003202D563A0014E498 /* MainNavigationSplitViewDelegate.swift */; };
 		C90BC00A203299E60014E498 /* StoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BC009203299E60014E498 /* StoryType.swift */; };
 		C90BC00C20329F700014E498 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BC00B20329F700014E498 /* Endpoint.swift */; };
+		C92C70F021B2463C00A4219E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C92C70EF21B2463C00A4219E /* .swiftlint.yml */; };
 		C93708E92086C607008926D5 /* ArticleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93708E82086C607008926D5 /* ArticleTests.swift */; };
 		C93708F22086C796008926D5 /* Article-Ask.json in Resources */ = {isa = PBXBuildFile; fileRef = C93708EE2086C795008926D5 /* Article-Ask.json */; };
 		C93708F32086C796008926D5 /* Comment.json in Resources */ = {isa = PBXBuildFile; fileRef = C93708EF2086C795008926D5 /* Comment.json */; };
@@ -33,6 +34,7 @@
 		C950C217201AE50E00917A44 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C216201AE50E00917A44 /* Article.swift */; };
 		C96135E52077102B00812AF3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96135E42077102B00812AF3 /* MainViewController.swift */; };
 		C96135EA207C614C00812AF3 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96135E9207C614C00812AF3 /* AppConstants.swift */; };
+		C963F47621AE25FA0078D697 /* ArticleListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963F47521AE25FA0078D697 /* ArticleListTests.swift */; };
 		C969BEAB20F592B600DDD0D0 /* UIDevice+iPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969BEAA20F592B600DDD0D0 /* UIDevice+iPad.swift */; };
 		C975149F20ED749600E7C2F1 /* BottomBarHideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C975149E20ED749600E7C2F1 /* BottomBarHideable.swift */; };
 		C97F1A5120F151E400899E45 /* UIRefreshControl+RefreshHack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97F1A5020F151E400899E45 /* UIRefreshControl+RefreshHack.swift */; };
@@ -98,6 +100,7 @@
 		C90BC003202D563A0014E498 /* MainNavigationSplitViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSplitViewDelegate.swift; sourceTree = "<group>"; };
 		C90BC009203299E60014E498 /* StoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryType.swift; sourceTree = "<group>"; };
 		C90BC00B20329F700014E498 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		C92C70EF21B2463C00A4219E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		C93708E82086C607008926D5 /* ArticleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTests.swift; sourceTree = "<group>"; };
 		C93708EE2086C795008926D5 /* Article-Ask.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Article-Ask.json"; sourceTree = "<group>"; };
 		C93708EF2086C795008926D5 /* Comment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Comment.json; sourceTree = "<group>"; };
@@ -118,6 +121,7 @@
 		C950C216201AE50E00917A44 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		C96135E42077102B00812AF3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C96135E9207C614C00812AF3 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		C963F47521AE25FA0078D697 /* ArticleListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListTests.swift; sourceTree = "<group>"; };
 		C969BEAA20F592B600DDD0D0 /* UIDevice+iPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+iPad.swift"; sourceTree = "<group>"; };
 		C975149E20ED749600E7C2F1 /* BottomBarHideable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarHideable.swift; sourceTree = "<group>"; };
 		C97F1A5020F151E400899E45 /* UIRefreshControl+RefreshHack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+RefreshHack.swift"; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 				C93708E72086C5EC008926D5 /* Model */,
 				C93708E62086C5E7008926D5 /* Repository */,
 				C93708EA2086C623008926D5 /* Supporting Files */,
+				C963F47421AE25DF0078D697 /* View Controller */,
 				C93708E52086C5DC008926D5 /* ViewModel */,
 			);
 			path = "Hacker News ZeroTests";
@@ -330,9 +335,9 @@
 		C950C20F201AD9FA00917A44 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C9B06EBF206F15FC0048952C /* Common */,
 				C9DAE82120426835003D6ADF /* Article Detail */,
 				C9DAE8202042682B003D6ADF /* Article List */,
+				C9B06EBF206F15FC0048952C /* Common */,
 				C9DAE8222042683F003D6ADF /* Navigation */,
 				C9B06EB8206C91B90048952C /* Options */,
 			);
@@ -372,6 +377,7 @@
 		C950C213201ADA7500917A44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C92C70EF21B2463C00A4219E /* .swiftlint.yml */,
 				C9E468042120D8D700F4E1C0 /* GoogleService-Info.plist */,
 				C9B17C4E20E09DB0005E52A9 /* terminus.ttf */,
 				C950C1FB201553EE00917A44 /* Info.plist */,
@@ -388,6 +394,14 @@
 				C96135E9207C614C00812AF3 /* AppConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		C963F47421AE25DF0078D697 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C963F47521AE25FA0078D697 /* ArticleListTests.swift */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		C9B06EA32048CB330048952C /* Extensions */ = {
@@ -511,6 +525,7 @@
 				C950C1E4201553EE00917A44 /* Frameworks */,
 				C950C1E5201553EE00917A44 /* Resources */,
 				F795D6C88658B000B7B3DD79 /* [CP] Embed Pods Frameworks */,
+				C92C70EC21B242D900A4219E /* Swiftlint Run Script */,
 				C97AC434211659960075B37E /* Crashlytics Run Script */,
 			);
 			buildRules = (
@@ -588,6 +603,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92C70F021B2463C00A4219E /* .swiftlint.yml in Resources */,
 				C950C1FA201553EE00917A44 /* LaunchScreen.storyboard in Resources */,
 				C950C1F7201553EE00917A44 /* Assets.xcassets in Resources */,
 				C9E468052120D8D700F4E1C0 /* GoogleService-Info.plist in Resources */,
@@ -628,6 +644,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C92C70EC21B242D900A4219E /* Swiftlint Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swiftlint Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect\n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
 		};
 		C97AC434211659960075B37E /* Crashlytics Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -751,6 +785,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C963F47621AE25FA0078D697 /* ArticleListTests.swift in Sources */,
 				C9E0201B208ED25E00E80516 /* CommentItemViewModelTests.swift in Sources */,
 				C9E020202090191600E80516 /* DateExtensionTests.swift in Sources */,
 				C9E02015208974AF00E80516 /* ArticleViewModelTests.swift in Sources */,

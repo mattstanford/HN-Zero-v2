@@ -6,11 +6,11 @@
 //  Copyright © 2018 locacha. All rights reserved.
 //
 
-import XCTest
 @testable import Hacker_News_Zero
+import XCTest
 
 class ArticleTests: XCTestCase {
-    
+
     func testInit() {
 
         guard let articleData = DataHelper.jsonDataFromFile(named: "Article-Story"),
@@ -18,12 +18,12 @@ class ArticleTests: XCTestCase {
             XCTFail("Data is nil")
             return
         }
-        
+
         XCTAssertEqual(article.title, "Vim Clutch – hardware pedal for improved text editing speed")
         XCTAssertEqual(article.score, 113)
         XCTAssertEqual(article.articleType, "story")
         XCTAssertEqual(article.url, "https://github.com/alevchuk/vim-clutch")
         XCTAssertEqual(article.domain, "github.com")
     }
-    
+
 }

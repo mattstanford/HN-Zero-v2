@@ -8,8 +8,7 @@
 
 import Foundation
 
-enum StoryType: String
-{
+enum StoryType: String {
     case top
     case ask
     case show

@@ -13,13 +13,13 @@ protocol ColorChangeable {
     func switchScheme(to scheme: ColorScheme)
 }
 
-extension ColorChangeable where Self: UIViewController  {
-    
+extension ColorChangeable where Self: UIViewController {
+
     func set(scheme: ColorScheme) {
         setColorOfNavBar(to: scheme)
         view.backgroundColor = scheme.contentBackgroundColor
     }
-    
+
     func setColorOfNavBar(to scheme: ColorScheme) {
         navigationController?.navigationBar.barTintColor = scheme.barColor
         navigationController?.navigationBar.isTranslucent = false

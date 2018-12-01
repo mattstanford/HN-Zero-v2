@@ -243,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQg-ly-gNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="237.59999999999999" y="-149.77511244377811"/>
+            <point key="canvasLocation" x="-874" y="87"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="cOD-au-ueT">
@@ -337,7 +337,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-431.19999999999999" y="-148.87556221889056"/>
+            <point key="canvasLocation" x="-1647" y="801"/>
         </scene>
         <!--Article List Navigation Controller-->
         <scene sceneID="szv-CQ-Dc8">
@@ -638,7 +638,7 @@
     <resources>
         <image name="Forward" width="16" height="16"/>
         <image name="back3" width="50" height="50"/>
-        <image name="chat" width="24" height="22"/>
+        <image name="chat" width="10.601226806640625" height="9.9386501312255859"/>
         <image name="default_icon" width="16" height="16"/>
         <image name="forward3" width="50" height="50"/>
         <image name="hamburger6" width="45" height="57"/>

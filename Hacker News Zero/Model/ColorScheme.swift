@@ -11,7 +11,7 @@ import UIKit
 enum ColorScheme: String {
     case standard
     case dark
-    
+
     var barColor: UIColor {
         switch self {
         case .standard:
@@ -20,7 +20,7 @@ enum ColorScheme: String {
             return .black
         }
     }
-    
+
     var barTextColor: UIColor {
         switch self {
         case .standard:
@@ -29,7 +29,7 @@ enum ColorScheme: String {
             return UIColor.white
         }
     }
-    
+
     var contentBackgroundColor: UIColor {
         switch self {
         case .standard:
@@ -38,7 +38,7 @@ enum ColorScheme: String {
             return #colorLiteral(red: 0.1803921569, green: 0.1803921569, blue: 0.1803921569, alpha: 1)
         }
     }
-    
+
     var contentTextColor: UIColor {
         switch self {
         case .standard:
@@ -47,7 +47,7 @@ enum ColorScheme: String {
             return #colorLiteral(red: 0.9215686275, green: 0.9607843137, blue: 0.9725490196, alpha: 1)
         }
     }
-    
+
     var contentInfoTextColor: UIColor {
         switch self {
         case .standard:
@@ -56,7 +56,7 @@ enum ColorScheme: String {
             return UIColor.gray
         }
     }
-    
+
     //Color of checkmark in options, link color, "(OP)" color
     var accentColor: UIColor {
         switch self {
@@ -66,7 +66,7 @@ enum ColorScheme: String {
             return #colorLiteral(red: 0.1294117647, green: 0.7843137255, blue: 0.9803921569, alpha: 1)
         }
     }
-    
+
     var displayTitle: String {
         switch self {
         case .standard:

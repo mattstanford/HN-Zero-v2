@@ -6,38 +6,36 @@
 //  Copyright © 2018 locacha. All rights reserved.
 //
 
-import UIKit
-import CoreData
 import AlamofireNetworkActivityLogger
+import CoreData
 import Firebase
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
-    {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupNetworkLogging()
         setupFirebase()
         return false
     }
-    
+
     func setupNetworkLogging() {
         #if DEBUG
         NetworkActivityLogger.shared.level = .debug
         NetworkActivityLogger.shared.startLogging()
         #endif
     }
-    
+
     func setupFirebase() {
-        
+
         FirebaseApp.configure()
-        
+
         #if DEBUG
         AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(false)
         #endif
-        
+
     }
 }
-

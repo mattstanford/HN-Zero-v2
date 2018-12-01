@@ -9,14 +9,14 @@
 import Foundation
 
 class SettingsCache {
-    
+
     let userDefaults: UserDefaults
     var selectedArticleType: ArticleType = .frontpage
-    
+
     init(userDefaults: UserDefaults = UserDefaults.standard) {
         self.userDefaults = userDefaults
     }
-    
+
     var colorScheme: ColorScheme {
         get {
             if let savedThemeString = userDefaults.string(forKey: "selectedTheme"),

@@ -58,6 +58,7 @@ PODS:
     - Alamofire (~> 4.5)
     - RxSwift (~> 4)
   - RxSwift (4.3.1)
+  - SwiftLint (0.28.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7.3)
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Kingfisher (~> 4.10.1)
   - RxAlamofire (~> 4.3.0)
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -86,6 +88,7 @@ SPEC REPOS:
     - nanopb
     - RxAlamofire
     - RxSwift
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -103,7 +106,8 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  SwiftLint: 7f5f7de0da74a649b16616cb5246ae323489656e
 
-PODFILE CHECKSUM: 67e983c7efd32e666230371e2b15cc66aed7baa8
+PODFILE CHECKSUM: 7c0be6e6178b1121eff9bef15e3298976d0270ce
 
 COCOAPODS: 1.5.3
