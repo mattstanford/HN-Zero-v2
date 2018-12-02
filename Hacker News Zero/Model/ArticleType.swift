@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ArticleType {
+enum ArticleType: Equatable, Hashable {
     case frontpage
     case askhn
     case showhn

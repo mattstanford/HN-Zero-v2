@@ -30,9 +30,9 @@ class HackerNewsApiClient: ApiClient {
     }
 
     func getArticleIds(type: ArticleType) -> Observable<Data> {
-        let endpoint = baseUrl + type.endpointPath + jsonSuffix
+        let path = Endpoint.storylist(articleType: type).path
 
-        return session.rx.responseData(.get, endpoint)
+        return session.rx.responseData(.get, path)
             .map({ _, jsonData -> Data in
 
                 return jsonData
@@ -40,9 +40,9 @@ class HackerNewsApiClient: ApiClient {
     }
 
     func getArticleData(articleId: Int) -> Observable<Data> {
-        let endpoint = self.getItemEndpoint(itemId: articleId)
+        let path = Endpoint.item(itemId: articleId).path
 
-        return session.rx.responseData(.get, endpoint)
+        return session.rx.responseData(.get, path)
             .map({ _, jsonData -> Data in
 
                 return jsonData
@@ -50,9 +50,9 @@ class HackerNewsApiClient: ApiClient {
     }
 
     func getCommentData(itemId: Int) -> Observable<Data> {
-        let endpoint = self.getItemEndpoint(itemId: itemId)
+         let path = Endpoint.item(itemId: itemId).path
 
-        return session.rx.responseData(.get, endpoint)
+        return session.rx.responseData(.get, path)
             .map { _, jsonData -> Data in
 
                 return jsonData

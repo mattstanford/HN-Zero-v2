@@ -9,10 +9,10 @@
 import Foundation
 
 class DataHelper {
-    static func jsonDataFromFile(named name: String) -> Data? {
+    static func jsonDataFromFile(named name: String, fileExtension: String = "json") -> Data? {
 
         let testBundle = Bundle(for: DataHelper.self)
-        guard let url = testBundle.url(forResource: name, withExtension: "json") else {
+        guard let url = testBundle.url(forResource: name, withExtension: fileExtension) else {
             return nil
         }
 
