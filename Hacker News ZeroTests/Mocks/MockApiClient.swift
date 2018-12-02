@@ -12,26 +12,31 @@ import RxSwift
 @testable import Hacker_News_Zero
 
 class MockApiClient: ApiClient {
-    var customEndpointResponses: [Endpoint: String] = [:]
+    var customEndpointResponses: [String: String] = [:]
 
     func getArticleIds(type: ArticleType) -> Observable<Data> {
-        let endpoint = Endpoint.storylist(articleType: type)
-
-        return getJsonDataFrom(fileName: "ArticleList")
+        return getTestJsonDataFor(endpoint: Endpoint.storylist(articleType: type))
     }
 
     func getArticleData(articleId: Int) -> Observable<Data> {
-        return getJsonDataFrom(fileName: "Article-Story")
+        return getTestJsonDataFor(endpoint: Endpoint.item(itemId: articleId))
     }
 
     func getCommentData(itemId: Int) -> Observable<Data> {
-        return getJsonDataFrom(fileName: "Comment")
+        return getTestJsonDataFor(endpoint: Endpoint.item(itemId: itemId))
     }
 
-    private func getJsonDataFrom(fileName: String) -> Observable<Data> {
+    private func getTestJsonDataFor(endpoint: Endpoint) -> Observable<Data> {
         return Observable.create { observer in
 
-            guard let jsonData = DataHelper.jsonDataFromFile(named: fileName) else {
+            let jsonFileToUse: String
+            if let customFileName = self.customEndpointResponses[endpoint.path] {
+                jsonFileToUse = customFileName
+            } else {
+                jsonFileToUse = endpoint.defaultTestFileName
+            }
+
+            guard let jsonData = DataHelper.jsonDataFromFile(named: jsonFileToUse) else {
                 observer.onError(NetworkError.jsonTestFileNotFound)
                 return Disposables.create()
                 }

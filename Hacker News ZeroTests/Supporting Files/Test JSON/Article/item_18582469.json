@@ -1,0 +1,28 @@
+{
+    "by": "kbumsik",
+    "descendants": 52,
+    "id": 18582469,
+    "kids": [
+        18583375,
+        18582578,
+        18582987,
+        18584823,
+        18583304,
+        18582602,
+        18583888,
+        18582813,
+        18583369,
+        18582601,
+        18583007,
+        18582727,
+        18582636,
+        18582783,
+        18582581,
+        18584294
+    ],
+    "score": 271,
+    "time": 1543761617,
+    "title": "How Google Code Search Worked: Regex Matching with a Trigram Index (2012)",
+    "type": "story",
+    "url": "https://swtch.com/~rsc/regexp/regexp4.html"
+}

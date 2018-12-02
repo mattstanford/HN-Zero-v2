@@ -19,7 +19,7 @@ class ArticleViewController: UIViewController {
     var viewModel: ArticleListViewModel
     let disposeBag = DisposeBag()
 
-    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()

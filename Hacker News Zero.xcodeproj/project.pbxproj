@@ -22,7 +22,6 @@
 		C93708F32086C796008926D5 /* Comment.json in Resources */ = {isa = PBXBuildFile; fileRef = C93708EF2086C795008926D5 /* Comment.json */; };
 		C93708F42086C796008926D5 /* Article-Job.json in Resources */ = {isa = PBXBuildFile; fileRef = C93708F02086C795008926D5 /* Article-Job.json */; };
 		C93708F52086C796008926D5 /* Article-Story.json in Resources */ = {isa = PBXBuildFile; fileRef = C93708F12086C795008926D5 /* Article-Story.json */; };
-		C93708F82086C870008926D5 /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93708F72086C870008926D5 /* MockApi.swift */; };
 		C93708FA2086E826008926D5 /* ArticleList.json in Resources */ = {isa = PBXBuildFile; fileRef = C93708F92086E826008926D5 /* ArticleList.json */; };
 		C950C1EB201553EE00917A44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EA201553EE00917A44 /* AppDelegate.swift */; };
 		C950C1F0201553EE00917A44 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950C1EF201553EE00917A44 /* ArticleViewController.swift */; };
@@ -58,6 +57,10 @@
 		C9B06EBE206DCFD70048952C /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EBD206DCFD60048952C /* String+HTML.swift */; };
 		C9B06EC1206F160F0048952C /* FixedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B06EC0206F160F0048952C /* FixedTextView.swift */; };
 		C9B17C4F20E09DB1005E52A9 /* terminus.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B17C4E20E09DB0005E52A9 /* terminus.ttf */; };
+		C9B83A3F21B48E60005BF0B7 /* stories_top.json in Resources */ = {isa = PBXBuildFile; fileRef = C9B83A3E21B48E60005BF0B7 /* stories_top.json */; };
+		C9B83A4421B48EE7005BF0B7 /* item_18583722.json in Resources */ = {isa = PBXBuildFile; fileRef = C9B83A4321B48EE7005BF0B7 /* item_18583722.json */; };
+		C9B83A4621B48F12005BF0B7 /* item_18582469.json in Resources */ = {isa = PBXBuildFile; fileRef = C9B83A4521B48F12005BF0B7 /* item_18582469.json */; };
+		C9B83A4821B48F3E005BF0B7 /* item_18583915.json in Resources */ = {isa = PBXBuildFile; fileRef = C9B83A4721B48F3E005BF0B7 /* item_18583915.json */; };
 		C9D82C6620EEFEE5002EFBCF /* Shareable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D82C6520EEFEE5002EFBCF /* Shareable.swift */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
@@ -108,7 +111,6 @@
 		C93708EF2086C795008926D5 /* Comment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Comment.json; sourceTree = "<group>"; };
 		C93708F02086C795008926D5 /* Article-Job.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Article-Job.json"; sourceTree = "<group>"; };
 		C93708F12086C795008926D5 /* Article-Story.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Article-Story.json"; sourceTree = "<group>"; };
-		C93708F72086C870008926D5 /* MockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApi.swift; sourceTree = "<group>"; };
 		C93708F92086E826008926D5 /* ArticleList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ArticleList.json; sourceTree = "<group>"; };
 		C950C1E7201553EE00917A44 /* Hacker News Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hacker News Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C950C1EA201553EE00917A44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,10 @@
 		C9B06EBD206DCFD60048952C /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		C9B06EC0206F160F0048952C /* FixedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedTextView.swift; sourceTree = "<group>"; };
 		C9B17C4E20E09DB0005E52A9 /* terminus.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = terminus.ttf; sourceTree = "<group>"; };
+		C9B83A3E21B48E60005BF0B7 /* stories_top.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stories_top.json; sourceTree = "<group>"; };
+		C9B83A4321B48EE7005BF0B7 /* item_18583722.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = item_18583722.json; sourceTree = "<group>"; };
+		C9B83A4521B48F12005BF0B7 /* item_18582469.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = item_18582469.json; sourceTree = "<group>"; };
+		C9B83A4721B48F3E005BF0B7 /* item_18583915.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = item_18583915.json; sourceTree = "<group>"; };
 		C9D82C6520EEFEE5002EFBCF /* Shareable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shareable.swift; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +267,6 @@
 				C950C206201553EE00917A44 /* Info.plist */,
 				C93708EB2086C630008926D5 /* Test JSON */,
 				C9E0200E2086F20800E80516 /* DataHelper.swift */,
-				C9AEF04F21B30C84004796BD /* MockApiClient.swift */,
 				C9AEF05321B3A7B9004796BD /* Endpoint+Test.swift */,
 			);
 			path = "Supporting Files";
@@ -270,6 +275,8 @@
 		C93708EB2086C630008926D5 /* Test JSON */ = {
 			isa = PBXGroup;
 			children = (
+				C9B83A4221B48E9E005BF0B7 /* Article */,
+				C9B83A3D21B48E3C005BF0B7 /* Story List */,
 				C93708EE2086C795008926D5 /* Article-Ask.json */,
 				C93708F02086C795008926D5 /* Article-Job.json */,
 				C93708F12086C795008926D5 /* Article-Story.json */,
@@ -282,7 +289,7 @@
 		C93708F62086C844008926D5 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				C93708F72086C870008926D5 /* MockApi.swift */,
+				C9AEF04F21B30C84004796BD /* MockApiClient.swift */,
 				C9E02018208C296200E80516 /* MockDate.swift */,
 			);
 			path = Mocks;
@@ -461,6 +468,24 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		C9B83A3D21B48E3C005BF0B7 /* Story List */ = {
+			isa = PBXGroup;
+			children = (
+				C9B83A3E21B48E60005BF0B7 /* stories_top.json */,
+			);
+			path = "Story List";
+			sourceTree = "<group>";
+		};
+		C9B83A4221B48E9E005BF0B7 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				C9B83A4321B48EE7005BF0B7 /* item_18583722.json */,
+				C9B83A4521B48F12005BF0B7 /* item_18582469.json */,
+				C9B83A4721B48F3E005BF0B7 /* item_18583915.json */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
 		C9DAE8202042682B003D6ADF /* Article List */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,8 +655,12 @@
 				C93708F52086C796008926D5 /* Article-Story.json in Resources */,
 				C93708F42086C796008926D5 /* Article-Job.json in Resources */,
 				C93708F22086C796008926D5 /* Article-Ask.json in Resources */,
+				C9B83A4621B48F12005BF0B7 /* item_18582469.json in Resources */,
 				C93708FA2086E826008926D5 /* ArticleList.json in Resources */,
 				C93708F32086C796008926D5 /* Comment.json in Resources */,
+				C9B83A3F21B48E60005BF0B7 /* stories_top.json in Resources */,
+				C9B83A4421B48EE7005BF0B7 /* item_18583722.json in Resources */,
+				C9B83A4821B48F3E005BF0B7 /* item_18583915.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,7 +835,6 @@
 				C93708E92086C607008926D5 /* ArticleTests.swift in Sources */,
 				C9E02011208970C900E80516 /* CommentTests.swift in Sources */,
 				C9E0200F2086F20800E80516 /* DataHelper.swift in Sources */,
-				C93708F82086C870008926D5 /* MockApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
