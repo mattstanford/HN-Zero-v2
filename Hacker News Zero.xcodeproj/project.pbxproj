@@ -61,6 +61,7 @@
 		C9B83A4421B48EE7005BF0B7 /* item_18583722.json in Resources */ = {isa = PBXBuildFile; fileRef = C9B83A4321B48EE7005BF0B7 /* item_18583722.json */; };
 		C9B83A4621B48F12005BF0B7 /* item_18582469.json in Resources */ = {isa = PBXBuildFile; fileRef = C9B83A4521B48F12005BF0B7 /* item_18582469.json */; };
 		C9B83A4821B48F3E005BF0B7 /* item_18583915.json in Resources */ = {isa = PBXBuildFile; fileRef = C9B83A4721B48F3E005BF0B7 /* item_18583915.json */; };
+		C9B83A4F21BA3621005BF0B7 /* CommentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B83A4E21BA3621005BF0B7 /* CommentsTests.swift */; };
 		C9D82C6620EEFEE5002EFBCF /* Shareable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D82C6520EEFEE5002EFBCF /* Shareable.swift */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
@@ -154,6 +155,7 @@
 		C9B83A4321B48EE7005BF0B7 /* item_18583722.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = item_18583722.json; sourceTree = "<group>"; };
 		C9B83A4521B48F12005BF0B7 /* item_18582469.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = item_18582469.json; sourceTree = "<group>"; };
 		C9B83A4721B48F3E005BF0B7 /* item_18583915.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = item_18583915.json; sourceTree = "<group>"; };
+		C9B83A4E21BA3621005BF0B7 /* CommentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTests.swift; sourceTree = "<group>"; };
 		C9D82C6520EEFEE5002EFBCF /* Shareable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shareable.swift; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				C963F47521AE25FA0078D697 /* ArticleListTests.swift */,
+				C9B83A4E21BA3621005BF0B7 /* CommentsTests.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				C9E02015208974AF00E80516 /* ArticleViewModelTests.swift in Sources */,
 				C9E02024209AB32C00E80516 /* WebViewModelTests.swift in Sources */,
 				C9E02019208C296200E80516 /* MockDate.swift in Sources */,
+				C9B83A4F21BA3621005BF0B7 /* CommentsTests.swift in Sources */,
 				C9AEF05021B30C84004796BD /* MockApiClient.swift in Sources */,
 				C93708E92086C607008926D5 /* ArticleTests.swift in Sources */,
 				C9E02011208970C900E80516 /* CommentTests.swift in Sources */,

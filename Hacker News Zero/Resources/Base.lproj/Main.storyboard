@@ -394,7 +394,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VnM-KN-Ycj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VnM-KN-Ycj">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -451,55 +451,92 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="sPa-au-3bd" userLabel="Footer View">
-                                    <rect key="frame" x="0.0" y="262" width="375" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="270" width="375" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ComentCellIdentifier" rowHeight="75" id="QgH-43-7Xz" customClass="CommentTableViewCell" customModule="Hacker_News_Zero" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="124" width="375" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ComentCellIdentifier" rowHeight="83" id="QgH-43-7Xz" customClass="CommentTableViewCell" customModule="Hacker_News_Zero" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="124" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QgH-43-7Xz" id="CKY-6u-o2f">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author - 1 day" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPB-ln-mfk">
-                                                    <rect key="frame" x="15" y="11" width="345" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="o6l-KP-rUm"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7D-MU-OyB" customClass="AttributedLabel" customModule="Atributika">
-                                                    <rect key="frame" x="15" y="32" width="345" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="tP2-Ib-GGq"/>
-                                                    </constraints>
-                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WKF-mT-GUA" userLabel="Parent Stack View">
+                                                    <rect key="frame" x="0.0" y="8" width="375" height="67"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ANf-ob-59A" userLabel="Content Container View">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="M5l-8Y-EYd" userLabel="Content Stack View">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="367" height="50.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author - 1 day" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPB-ln-mfk">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="367" height="21"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="o6l-KP-rUm"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7D-MU-OyB" customClass="AttributedLabel" customModule="Atributika">
+                                                                            <rect key="frame" x="0.0" y="21" width="367" height="29.5"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="tP2-Ib-GGq"/>
+                                                                            </constraints>
+                                                                        </view>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="M5l-8Y-EYd" firstAttribute="top" secondItem="ANf-ob-59A" secondAttribute="top" id="0dS-Ns-QiT"/>
+                                                                <constraint firstItem="M5l-8Y-EYd" firstAttribute="leading" secondItem="ANf-ob-59A" secondAttribute="leading" id="DDe-Ac-c45"/>
+                                                                <constraint firstAttribute="trailing" secondItem="M5l-8Y-EYd" secondAttribute="trailing" constant="8" id="OBb-eN-eJf"/>
+                                                                <constraint firstAttribute="bottom" secondItem="M5l-8Y-EYd" secondAttribute="bottom" id="QWW-DF-rEs"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfz-Dh-2nf" userLabel="Separator Container View">
+                                                            <rect key="frame" x="0.0" y="50.5" width="375" height="16.5"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rej-T3-l40" userLabel="Separator">
+                                                                    <rect key="frame" x="0.0" y="16" width="375" height="0.5"/>
+                                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="0.5" id="dYt-NM-tTu"/>
+                                                                    </constraints>
+                                                                </view>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="rej-T3-l40" secondAttribute="bottom" id="B1u-j0-fwv"/>
+                                                                <constraint firstItem="rej-T3-l40" firstAttribute="leading" secondItem="kfz-Dh-2nf" secondAttribute="leading" id="St0-0t-V0l"/>
+                                                                <constraint firstItem="rej-T3-l40" firstAttribute="top" secondItem="kfz-Dh-2nf" secondAttribute="top" constant="16" id="baR-gU-JIs"/>
+                                                                <constraint firstAttribute="trailing" secondItem="rej-T3-l40" secondAttribute="trailing" id="y69-wA-YST"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="X7D-MU-OyB" firstAttribute="trailing" secondItem="CKY-6u-o2f" secondAttribute="trailingMargin" id="2sc-ck-wrh"/>
-                                                <constraint firstItem="mPB-ln-mfk" firstAttribute="top" secondItem="CKY-6u-o2f" secondAttribute="topMargin" id="8tE-pc-s1i"/>
-                                                <constraint firstItem="X7D-MU-OyB" firstAttribute="bottom" secondItem="CKY-6u-o2f" secondAttribute="bottomMargin" id="NWr-We-Pl2"/>
-                                                <constraint firstItem="mPB-ln-mfk" firstAttribute="leading" secondItem="CKY-6u-o2f" secondAttribute="leadingMargin" id="iVV-qG-Oan"/>
-                                                <constraint firstItem="mPB-ln-mfk" firstAttribute="trailing" secondItem="CKY-6u-o2f" secondAttribute="trailingMargin" id="tjR-4W-hZa"/>
-                                                <constraint firstItem="X7D-MU-OyB" firstAttribute="leading" secondItem="CKY-6u-o2f" secondAttribute="leadingMargin" id="vg9-W2-sa6"/>
-                                                <constraint firstItem="X7D-MU-OyB" firstAttribute="top" secondItem="mPB-ln-mfk" secondAttribute="bottom" id="wYM-zP-LcA"/>
+                                                <constraint firstAttribute="bottom" secondItem="WKF-mT-GUA" secondAttribute="bottom" constant="8" id="2wf-bh-auz"/>
+                                                <constraint firstAttribute="trailing" secondItem="WKF-mT-GUA" secondAttribute="trailing" id="f0z-sq-fnn"/>
+                                                <constraint firstItem="WKF-mT-GUA" firstAttribute="top" secondItem="CKY-6u-o2f" secondAttribute="top" constant="8" id="lbt-2h-caP"/>
+                                                <constraint firstItem="WKF-mT-GUA" firstAttribute="leading" secondItem="CKY-6u-o2f" secondAttribute="leading" id="uVA-Hb-YiX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentLabel" destination="X7D-MU-OyB" id="tws-Sf-48t"/>
-                                            <outlet property="contentLeadingMarigin" destination="vg9-W2-sa6" id="FTF-EF-xkK"/>
+                                            <outlet property="contentLeadingMargin" destination="DDe-Ac-c45" id="PZf-Id-7uZ"/>
                                             <outlet property="headerLabel" destination="mPB-ln-mfk" id="2E4-Ie-Y8r"/>
-                                            <outlet property="headerLeadingMargin" destination="iVV-qG-Oan" id="NtL-oF-a9b"/>
+                                            <outlet property="separator" destination="rej-T3-l40" id="F4V-hr-DGT"/>
+                                            <outlet property="separatorleadingMargin" destination="St0-0t-V0l" id="d3M-Hg-JKZ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoadingCell" rowHeight="63" id="Hy2-Zf-R7P" customClass="LoadingSpinnerCell" customModule="Hacker_News_Zero" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="199" width="375" height="63"/>
+                                        <rect key="frame" x="0.0" y="207" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hy2-Zf-R7P" id="sYy-DD-aqh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fUm-OV-i8k">

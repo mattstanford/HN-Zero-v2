@@ -26,7 +26,7 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     @IBOutlet weak private var postTextView: AttributedLabel!
     @IBOutlet weak private var infoLabel: UILabel!
     @IBOutlet weak private var headerSeparatorView: UIView!
-    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet internal weak var bottomBar: UIToolbar!
     @IBOutlet internal weak var bottomBarBottomConstraint: NSLayoutConstraint!
@@ -150,9 +150,10 @@ extension CommentsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let cellViewModel = self.viewModel.viewModels[indexPath.row]
-        cell.configure(with: cellViewModel, linkHandler: self.linkClicked)
+        let nextCommentLevel = viewModel.levelOfNextComment(index: indexPath.row)
+        cell.configure(with: cellViewModel, nextCommentLevel: nextCommentLevel, linkHandler: self.linkClicked)
 
-        tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .none
 
         return cell
     }

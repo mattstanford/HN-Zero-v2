@@ -86,4 +86,18 @@ class CommentsViewModel {
         return list
     }
 
+    func levelOfNextComment(index: Int) -> Int {
+        guard viewModels.count > index else {
+            return 0
+        }
+
+        //Is it the VERY last comment?
+        if index == viewModels.count - 1 {
+            return 0
+        } else {
+            let nextComment = viewModels[index + 1]
+            return nextComment.displayedLevel
+        }
+    }
+
 }

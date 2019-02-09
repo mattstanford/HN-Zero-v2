@@ -13,12 +13,14 @@ let commentPerLevel = 20
 
 class CommentTableViewCell: UITableViewCell {
 
-    @IBOutlet weak private var headerLabel: UILabel!
-    @IBOutlet weak private var contentLabel: AttributedLabel!
-    @IBOutlet weak private var headerLeadingMargin: NSLayoutConstraint!
-    @IBOutlet weak private var contentLeadingMarigin: NSLayoutConstraint!
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var contentLabel: AttributedLabel!
+    @IBOutlet weak var separator: UIView!
 
-    func configure(with viewModel: CommentItemViewModel, linkHandler: @escaping (URL) -> Void) {
+    @IBOutlet weak var contentLeadingMargin: NSLayoutConstraint!
+    @IBOutlet weak var separatorleadingMargin: NSLayoutConstraint!
+
+    func configure(with viewModel: CommentItemViewModel, nextCommentLevel: Int, linkHandler: @escaping (URL) -> Void) {
         headerLabel.attributedText = viewModel.commentHeaderText
 
         backgroundColor = viewModel.colorScheme.contentBackgroundColor
@@ -26,10 +28,22 @@ class CommentTableViewCell: UITableViewCell {
 
         contentLabel.setHtmlText(text: viewModel.content, colorScheme: viewModel.colorScheme, linkHandler: linkHandler)
         contentLabel.backgroundColor = viewModel.colorScheme.contentBackgroundColor
+        contentLeadingMargin.constant = getIndentAmount(for: viewModel.displayedLevel)
 
-        let indentAmount = CGFloat(viewModel.displayedLevel * commentPerLevel)
-        headerLeadingMargin.constant = indentAmount
-        contentLeadingMarigin.constant = indentAmount
+        let separatorIndent: CGFloat
+        if nextCommentLevel < viewModel.displayedLevel {
+            separatorIndent = getIndentAmount(for: nextCommentLevel) - 4
+        } else {
+            separatorIndent = getIndentAmount(for: viewModel.displayedLevel) - 4
+        }
+        separatorleadingMargin.constant = separatorIndent
+
+        separator.backgroundColor = viewModel.colorScheme.contentInfoTextColor
+
+    }
+
+    func getIndentAmount(for displayedLevel: Int) -> CGFloat {
+        return CGFloat(displayedLevel * commentPerLevel) + 16
     }
 
 }
