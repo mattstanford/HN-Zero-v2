@@ -32,6 +32,7 @@ enum OptionSection {
 enum SocialMediaSelection: String {
     case facebook = "Facebook"
     case twitter = "Twitter"
+    case sourceCode = "Source Code"
 
     var associatedUrl: String {
         switch self {
@@ -39,6 +40,8 @@ enum SocialMediaSelection: String {
             return "https://www.facebook.com/1080017705457038"
         case .twitter:
             return "https://twitter.com/hackernewszero"
+        case .sourceCode:
+            return "https://github.com/mds6058/HN-Zero-v2"
         }
     }
 }
@@ -56,7 +59,7 @@ class OptionsViewController: UIViewController {
     var sections: [OptionSection] = [.main, .themes, .socialmedia]
     var articleTypeSelections: [ArticleType] = [.frontpage, .askhn, .showhn, .jobs, .new]
     var themeSelections: [ColorScheme] = [.standard, .dark]
-    var socialMediaSelections: [SocialMediaSelection] = [.facebook, .twitter]
+    var socialMediaSelections: [SocialMediaSelection] = [.facebook, .twitter, .sourceCode]
 
     override func viewDidLoad() {
         super.viewDidLoad()
