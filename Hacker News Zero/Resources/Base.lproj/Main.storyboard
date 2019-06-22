@@ -323,7 +323,7 @@
                 <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="yTg-U8-TLU">
                     <rectEdge key="edges" left="YES"/>
                     <connections>
-                        <action selector="didPanScreenEdge" destination="SBR-5Z-KYl" id="T6g-MX-5JK"/>
+                        <action selector="didPanScreenEdge:" destination="SBR-5Z-KYl" id="vAw-nE-pcM"/>
                     </connections>
                 </screenEdgePanGestureRecognizer>
                 <tapGestureRecognizer id="9ZC-7D-9Fr">

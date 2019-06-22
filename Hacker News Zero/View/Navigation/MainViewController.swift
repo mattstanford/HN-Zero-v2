@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
     var navigator: AppNavigator?
 
     private let baseMenuAnimationDuration: Double = 0.3
+    private let maxOverlayAlpha: CGFloat = 0.33
 
     private var menuViewController: OptionsViewController? {
         return children.last as? OptionsViewController
@@ -76,8 +77,23 @@ extension MainViewController {
         hideMenu()
     }
 
-    @IBAction private func didPanScreenEdge() {
-        showMenu()
+    @IBAction private func didPanScreenEdge(_ gestureRecognizer: UIPanGestureRecognizer) {
+        let translation = gestureRecognizer.translation(in: self.view)
+
+        if gestureRecognizer.state == .changed {
+            if translation.x > 0 {
+                let newTranslation = translation.x - menuWidthConstraint.constant
+                let newPosition = min(0, newTranslation)
+                menuLeadingConstraint.constant = newPosition
+
+                //Partially start showing overlay
+                overlayView.isHidden = false
+                let overlayPercentShowing = (menuWidthConstraint.constant + newPosition) / menuWidthConstraint.constant
+                overlayView.alpha = CGFloat(maxOverlayAlpha) * overlayPercentShowing
+            }
+        } else if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
+           snapToClosestEdge(translationPoint: translation)
+        }
     }
 
     @IBAction private func didPanOnOverlay(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -85,19 +101,22 @@ extension MainViewController {
 
         if gestureRecognizer.state == .changed {
             if translation.x < 0 {
-                let newTranslation = translation.x
-                let newPosition = max((menuWidthConstraint.constant * -1), newTranslation)
+                let newPosition = max((menuWidthConstraint.constant * -1), translation.x)
                 menuLeadingConstraint.constant = newPosition
             }
         } else if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
-            let dismissThreshold = (menuWidthConstraint.constant / 2) * -1
-            let alreadyShowingPercent = (menuWidthConstraint.constant + translation.x) / menuWidthConstraint.constant
-            let alreadyShowingDouble = Double(alreadyShowingPercent)
-            if translation.x < dismissThreshold {
-                hideMenu(alreadyShowingPercent: alreadyShowingDouble)
-            } else {
-                showMenu(alreadyShowingPercent: alreadyShowingDouble)
-            }
+            snapToClosestEdge(translationPoint: translation)
+        }
+    }
+
+    private func snapToClosestEdge(translationPoint: CGPoint) {
+        let dismissThreshold = (menuWidthConstraint.constant / 2) * -1
+        let alreadyShowingPercent = (menuWidthConstraint.constant + translationPoint.x) / menuWidthConstraint.constant
+        let alreadyShowingDouble = Double(alreadyShowingPercent)
+        if translationPoint.x < dismissThreshold {
+            hideMenu(alreadyShowingPercent: alreadyShowingDouble)
+        } else {
+            showMenu(alreadyShowingPercent: alreadyShowingDouble)
         }
     }
 
@@ -117,7 +136,7 @@ extension MainViewController {
 
         UIView.animate(withDuration: adjustedDuration, animations: {
             self.view.layoutIfNeeded()
-            self.overlayView.alpha = 0.33
+            self.overlayView.alpha = self.maxOverlayAlpha
         }, completion: { _ in
 
             self.screenEdgePan.isEnabled = false
@@ -140,7 +159,7 @@ extension MainViewController {
     }
 }
 
-//MARK: - Colors
+// MARK: - Colors
 extension MainViewController: ColorChangeable {
     func switchScheme(to scheme: ColorScheme) {
         set(scheme: scheme)
