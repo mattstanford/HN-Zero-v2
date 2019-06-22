@@ -68,6 +68,10 @@ class MainViewController: UIViewController {
 
     }
 
+}
+
+// MARK: Pan gesture handling
+extension MainViewController {
     @IBAction private func overlayTapped() {
         hideMenu()
     }
@@ -136,6 +140,7 @@ class MainViewController: UIViewController {
     }
 }
 
+//MARK: - Colors
 extension MainViewController: ColorChangeable {
     func switchScheme(to scheme: ColorScheme) {
         set(scheme: scheme)
