@@ -44,25 +44,29 @@ class ArticleListViewModel {
         currentPageNum = 0
 
         return repository.refreshArticleList(type: articleType)
-            .concat(Completable.create { [weak self] completable in
-
-                self?.articleViewModels = [ArticleViewModel]()
-
-                completable(.completed)
-                return Disposables.create {}
+            .andThen(self.getPageOfArticles(pageNum: 0))
+            .map({ [weak self] articleViewModels in
+                self?.articleViewModels = articleViewModels
             })
-            .concat(getPageOfArticles(pageNum: 0))
+            .asObservable()
+            .ignoreElements()
     }
 
     func getNextPageOfArticles() -> Completable {
         let nextPage = currentPageNum + 1
         return getPageOfArticles(pageNum: nextPage)
+            .asObservable()
+            .map({ [weak self] articleViewModels in
+                self?.articleViewModels.append(contentsOf: articleViewModels)
+            })
+            .ignoreElements()
     }
 
-    func getPageOfArticles(pageNum: Int) -> Completable {
+    func getPageOfArticles(pageNum: Int) -> Single<[ArticleViewModel]> {
         return repository.getArticles(for: pageNum, pageSize: pageSize)
-            .map { [weak self] articles -> Bool in
+            .map { [weak self] articles -> [ArticleViewModel] in
 
+                var viewModels: [ArticleViewModel] = []
                 if articles.count > 0 {
                     self?.currentPageNum = pageNum
                 } else {
@@ -76,13 +80,11 @@ class ArticleListViewModel {
                     }
 
                     let viewModel = ArticleViewModel(article: article, colorScheme: colorScheme)
-                    self?.articleViewModels.append(viewModel)
+                    viewModels.append(viewModel)
 
                 }
 
-                return true
+                return viewModels
             }
-            .asObservable()
-            .ignoreElements()
     }
 }

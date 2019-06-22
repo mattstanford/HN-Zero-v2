@@ -19,7 +19,7 @@ class ArticleViewController: UIViewController {
     var viewModel: ArticleListViewModel
     let disposeBag = DisposeBag()
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -56,17 +56,16 @@ class ArticleViewController: UIViewController {
     func refreshData() {
         refreshControl.beginManualRefresh(for: tableView)
 
-        viewModel.reset()
         tableView.reloadData()
 
         viewModel.startedLoading()
 
         viewModel.refreshArticles()
             .subscribe({ _ in
-                self.tableView.reloadData()
-
                 self.refreshControl.endRefreshing()
                 self.viewModel.finishedLoading()
+
+                self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
     }
@@ -88,7 +87,8 @@ extension ArticleViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: articleTableViewCellIdentifier, for: indexPath) as? ArticleTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: articleTableViewCellIdentifier, for: indexPath) as? ArticleTableViewCell,
+             viewModel.articleViewModels.count > indexPath.row else {
             return UITableViewCell()
         }
 
@@ -123,7 +123,9 @@ extension ArticleViewController: UITableViewDataSource {
 extension ArticleViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        guard  viewModel.articleViewModels.count > indexPath.row else {
+            return
+        }
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
         navigator?.show(article: articleViewModel.article, selectedView: .web)
     }
