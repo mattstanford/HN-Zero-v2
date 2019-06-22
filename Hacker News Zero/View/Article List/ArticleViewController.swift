@@ -62,10 +62,13 @@ class ArticleViewController: UIViewController {
 
         viewModel.refreshArticles()
             .subscribe({ _ in
-                self.refreshControl.endRefreshing()
-                self.viewModel.finishedLoading()
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.refreshControl.endRefreshing()
+                    self.viewModel.finishedLoading()
 
-                self.tableView.reloadData()
+                    self.tableView.reloadData()
+                })
+
             })
             .disposed(by: disposeBag)
     }
