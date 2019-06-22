@@ -46,17 +46,20 @@ class ArticleViewController: UIViewController {
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
 
-        refreshData()
+        refreshData(clearCurrentEntries: true)
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshData()
+        refreshData(clearCurrentEntries: false)
     }
 
-    func refreshData() {
+    func refreshData(clearCurrentEntries: Bool) {
         refreshControl.beginManualRefresh(for: tableView)
 
-        tableView.reloadData()
+        if clearCurrentEntries {
+            viewModel.reset()
+            tableView.reloadData()
+        }
 
         viewModel.startedLoading()
 
@@ -145,8 +148,9 @@ extension ArticleViewController: OptionsDelegate {
             self.title = type.titleText
         }
 
+        let isDifferentArticleType = viewModel.articleType != type
         viewModel.articleType = type
-        refreshData()
+        refreshData(clearCurrentEntries: isDifferentArticleType)
     }
 }
 
@@ -154,7 +158,7 @@ extension ArticleViewController: OptionsDelegate {
 extension ArticleViewController: ColorChangeable {
     func switchScheme(to scheme: ColorScheme) {
         set(scheme: scheme)
-        refreshData()
+        refreshData(clearCurrentEntries: false)
     }
 
     func set(scheme: ColorScheme) {
