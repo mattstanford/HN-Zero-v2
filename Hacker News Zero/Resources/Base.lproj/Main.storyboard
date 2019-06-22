@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SBR-5Z-KYl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SBR-5Z-KYl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -268,7 +268,6 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="9ZC-7D-9Fr" appends="YES" id="96V-zX-HdF"/>
-                                    <outletCollection property="gestureRecognizers" destination="g8M-rY-EBF" appends="YES" id="kpw-eG-sPm"/>
                                 </connections>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jy-Fa-fwI" userLabel="Menu Container View">
@@ -277,6 +276,7 @@
                                     <constraint firstAttribute="width" constant="267" id="RIr-0A-hUk"/>
                                 </constraints>
                                 <connections>
+                                    <outletCollection property="gestureRecognizers" destination="g8M-rY-EBF" appends="YES" id="pR6-dy-q9k"/>
                                     <segue destination="voN-FW-pr9" kind="embed" id="QUG-Gq-DSr"/>
                                 </connections>
                             </containerView>
@@ -323,7 +323,7 @@
                 <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="yTg-U8-TLU">
                     <rectEdge key="edges" left="YES"/>
                     <connections>
-                        <action selector="swipedFromLeft" destination="SBR-5Z-KYl" id="e3O-9p-KIi"/>
+                        <action selector="didPanScreenEdge" destination="SBR-5Z-KYl" id="T6g-MX-5JK"/>
                     </connections>
                 </screenEdgePanGestureRecognizer>
                 <tapGestureRecognizer id="9ZC-7D-9Fr">
@@ -333,7 +333,7 @@
                 </tapGestureRecognizer>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="g8M-rY-EBF">
                     <connections>
-                        <action selector="swipedFromRight" destination="SBR-5Z-KYl" id="MPS-Ib-jBI"/>
+                        <action selector="didPanOnOverlay:" destination="SBR-5Z-KYl" id="jhK-cM-ET1"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
@@ -675,7 +675,7 @@
     <resources>
         <image name="Forward" width="16" height="16"/>
         <image name="back3" width="50" height="50"/>
-        <image name="chat" width="10.601226806640625" height="9.9386501312255859"/>
+        <image name="chat" width="24" height="22.5"/>
         <image name="default_icon" width="16" height="16"/>
         <image name="forward3" width="50" height="50"/>
         <image name="hamburger6" width="45" height="57"/>

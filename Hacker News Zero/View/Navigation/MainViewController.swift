@@ -18,6 +18,8 @@ class MainViewController: UIViewController {
 
     var navigator: AppNavigator?
 
+    private let baseMenuAnimationDuration: Double = 0.3
+
     private var menuViewController: OptionsViewController? {
         return children.last as? OptionsViewController
     }
@@ -70,12 +72,29 @@ class MainViewController: UIViewController {
         hideMenu()
     }
 
-    @IBAction private func swipedFromLeft() {
+    @IBAction private func didPanScreenEdge() {
         showMenu()
     }
 
-    @IBAction private func swipedFromRight() {
-        hideMenu()
+    @IBAction private func didPanOnOverlay(_ gestureRecognizer: UIPanGestureRecognizer) {
+        let translation = gestureRecognizer.translation(in: self.view)
+
+        if gestureRecognizer.state == .changed {
+            if translation.x < 0 {
+                let newTranslation = translation.x
+                let newPosition = max((menuWidthConstraint.constant * -1), newTranslation)
+                menuLeadingConstraint.constant = newPosition
+            }
+        } else if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
+            let dismissThreshold = (menuWidthConstraint.constant / 2) * -1
+            let alreadyShowingPercent = (menuWidthConstraint.constant + translation.x) / menuWidthConstraint.constant
+            let alreadyShowingDouble = Double(alreadyShowingPercent)
+            if translation.x < dismissThreshold {
+                hideMenu(alreadyShowingPercent: alreadyShowingDouble)
+            } else {
+                showMenu(alreadyShowingPercent: alreadyShowingDouble)
+            }
+        }
     }
 
     func toggleMenu() {
@@ -86,11 +105,13 @@ class MainViewController: UIViewController {
         }
     }
 
-    private func showMenu() {
+    private func showMenu(alreadyShowingPercent: Double = 0) {
         menuLeadingConstraint.constant = 0
         overlayView.isHidden = false
 
-        UIView.animate(withDuration: 0.3, animations: {
+        let adjustedDuration = baseMenuAnimationDuration * (1 - alreadyShowingPercent)
+
+        UIView.animate(withDuration: adjustedDuration, animations: {
             self.view.layoutIfNeeded()
             self.overlayView.alpha = 0.33
         }, completion: { _ in
@@ -99,11 +120,12 @@ class MainViewController: UIViewController {
         })
     }
 
-    private func hideMenu() {
+    private func hideMenu(alreadyShowingPercent: Double = 1.0) {
 
+        let adjustedDuration = baseMenuAnimationDuration * alreadyShowingPercent
         menuLeadingConstraint.constant = -menuWidthConstraint.constant
 
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: adjustedDuration, animations: {
             self.view.layoutIfNeeded()
             self.overlayView.alpha = 0
         }, completion: { _ in
