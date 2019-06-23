@@ -88,7 +88,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
                 if animated {
                     animateCycle(from: current, to: targetVC)
                 } else {
-                    animateCycle(from: current, to: targetVC)
+                    cycle(from: current, to: targetVC)
                 }
             }
         } else {
@@ -183,15 +183,23 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
         showArticleInView()
     }
 
-//    private func cycle(from oldVC: UIViewController, to newVC: UIViewController) {
-//        oldVC.willMove(toParentViewController: nil)
-//        self.addChildViewController(newVC)
-//        oldVC.removeFromParentViewController()
-//        newVC.didMove(toParentViewController: self)
-//
-//        self.currentVC = newVC
-//        self.showArticleInView()
-//    }
+    private func cycle(from oldVC: UIViewController, to newVC: UIViewController) {
+
+        oldVC.willMove(toParent: nil)
+        oldVC.view.removeFromSuperview()
+        oldVC.removeFromParent()
+
+        self.addChild(newVC)
+        let newRect = CGRect(x: 0, y: 0,
+                             width: oldVC.view.bounds.size.width,
+                             height: oldVC.view.bounds.height)
+        newVC.view.frame = newRect
+        self.view.addSubview(newVC.view)
+        newVC.didMove(toParent: self)
+
+        self.currentVC = newVC
+        self.showArticleInView()
+    }
 
     private func animateCycle(from oldVC: UIViewController, to newVC: UIViewController) {
 
