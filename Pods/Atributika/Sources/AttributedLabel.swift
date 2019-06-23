@@ -5,13 +5,13 @@
 import Foundation
 
 #if os(iOS)
-    
+
 import UIKit
 
 open class AttributedLabel: UIView {
     
     //MARK: - private properties
-    private let label = UILabel()
+    private let textView = UITextView()
     private var detectionAreaButtons = [DetectionAreaButton]()
     
     //MARK: - public properties
@@ -29,56 +29,58 @@ open class AttributedLabel: UIView {
     
     open var attributedText: AttributedText? {
         set {
-            state.attributedTextAndString = newValue.map { ($0, $0.attributedString) }
+            state = State(attributedText: newValue, isEnabled: state.isEnabled, detection: nil)
             setNeedsLayout()
         }
         get {
-            return state.attributedTextAndString?.0
+            return state.attributedText
         }
     }
     
-    //MARK: - public properties redirected to underlying UILabel
-    private func changeLabel(handler: (UILabel)->Void) {
-        let attributedText = label.attributedText
-        label.attributedText = nil
-        handler(label)
-        label.attributedText = attributedText
-        setNeedsLayout()
-    }
-    
-    open var font: UIFont {
-        set { changeLabel {  $0.font = newValue } }
-        get { return label.font }
-    }
-    
     open var numberOfLines: Int {
-        set { changeLabel {  $0.numberOfLines = newValue } }
-        get { return label.numberOfLines }
-    }
-    
-    open var textAlignment: NSTextAlignment {
-        set { changeLabel {  $0.textAlignment = newValue } }
-        get { return label.textAlignment }
+        set { textView.textContainer.maximumNumberOfLines = newValue }
+        get { return textView.textContainer.maximumNumberOfLines }
     }
     
     open var lineBreakMode: NSLineBreakMode {
-        set { changeLabel {  $0.lineBreakMode = newValue } }
-        get { return label.lineBreakMode }
+        set { textView.textContainer.lineBreakMode = newValue }
+        get { return textView.textContainer.lineBreakMode }
     }
     
-    open var textColor: UIColor {
-        set { changeLabel {  $0.textColor = newValue } }
-        get { return label.textColor }
+    open var font: UIFont = .preferredFont(forTextStyle: .body) {
+        didSet {
+            updateText()
+        }
+    }
+    
+    open var textAlignment: NSTextAlignment = .natural {
+        didSet {
+            updateText()
+        }
+    }
+    
+    open var textColor: UIColor = .black {
+        didSet {
+            updateText()
+        }
     }
     
     open var shadowColor: UIColor? {
-        set { changeLabel {  $0.shadowColor = newValue } }
-        get { return label.shadowColor }
+        didSet {
+            updateText()
+        }
     }
     
-    open var shadowOffset: CGSize {
-        set { changeLabel {  $0.shadowOffset = newValue } }
-        get { return label.shadowOffset }
+    open var shadowOffset = CGSize(width: 0, height: -1) {
+        didSet {
+            updateText()
+        }
+    }
+    
+    open var shadowBlurRadius: CGFloat = 0 {
+        didSet {
+            updateText()
+        }
     }
     
     //MARK: - init
@@ -93,11 +95,24 @@ open class AttributedLabel: UIView {
     }
     
     private func commonInit() {
-        addSubview(label)
+        addSubview(textView)
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]|", options: [], metrics: nil, views: ["label": label]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label]|", options: [], metrics: nil, views: ["label": label]))
+        lineBreakMode = .byTruncatingTail
+        numberOfLines = 1
+
+        textView.isUserInteractionEnabled = false
+        textView.textContainer.lineFragmentPadding = 0;
+        textView.textContainerInset = .zero;
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        textView.isSelectable = false
+        textView.backgroundColor = nil
+        
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        textView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        textView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        textView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
     
     //MARK: - overrides
@@ -110,47 +125,29 @@ open class AttributedLabel: UIView {
         
         detectionAreaButtons.removeAll()
         
-        if let (text, string) = state.attributedTextAndString {
+        if let attributedText = state.attributedText {
             
-            let inheritedString = string.withInherited(font: font, textAlignment: textAlignment)
+            let highlightableDetections = attributedText.detections.filter { $0.style.typedAttributes[.highlighted] != nil }
             
-            let textContainer = NSTextContainer(size: bounds.size)
-            textContainer.lineBreakMode = lineBreakMode
-            textContainer.maximumNumberOfLines = numberOfLines
-            textContainer.lineFragmentPadding = 0
-            
-            let textStorage = NSTextStorage(attributedString: inheritedString)
-            
-            let layoutManager = NSLayoutManager()
-            layoutManager.addTextContainer(textContainer)
-            
-            textStorage.addLayoutManager(layoutManager)
-            
-            let highlightableDetections = text.detections.filter { $0.style.typedAttributes[.highlighted] != nil }
-            
-            let usedRect = layoutManager.usedRect(for: textContainer)
-            let dy = max(0, (bounds.height - usedRect.height)/2)
             highlightableDetections.forEach { detection in
-                let nsrange = NSRange(detection.range, in: inheritedString.string)
-                layoutManager.enumerateEnclosingRects(forGlyphRange: nsrange, withinSelectedGlyphRange: NSRange(location: NSNotFound, length: 0), in: textContainer, using: { (rect, stop) in
-                    var finalRect = rect
-                    finalRect.origin.y += dy
-                    self.addDetectionAreaButton(frame: finalRect, detection: detection, text: String(inheritedString.string[detection.range]))
+                let nsrange = NSRange(detection.range, in: attributedText.string)
+                textView.layoutManager.enumerateEnclosingRects(forGlyphRange: nsrange, withinSelectedGlyphRange: NSRange(location: NSNotFound, length: 0), in: textView.textContainer, using: { (rect, stop) in
+                    self.addDetectionAreaButton(frame: rect, detection: detection, text: String(attributedText.string[detection.range]))
                 })
             }
         }
     }
     
     open override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return label.sizeThatFits(size)
+        return textView.sizeThatFits(size)
     }
     
     open override var intrinsicContentSize: CGSize {
-        return label.intrinsicContentSize
+        return textView.intrinsicContentSize
     }
-
+    
     //MARK: - DetectionAreaButton
-    private class DetectionAreaButton: UIControl {
+    private class DetectionAreaButton: UIButton {
         
         var onHighlightChanged: ((DetectionAreaButton)->Void)?
         
@@ -203,54 +200,64 @@ open class AttributedLabel: UIView {
     //MARK: - state
     
     private struct State {
-        var attributedTextAndString: (AttributedText, NSAttributedString)?
+        var attributedText: AttributedText?
         var isEnabled: Bool
         var detection: Detection?
     }
     
-    private var state: State = State(attributedTextAndString: nil, isEnabled: true, detection: nil) {
+    private var state: State = State(attributedText: nil, isEnabled: true, detection: nil) {
         didSet {
-            updateLabel()
+            updateText()
         }
     }
     
-    private func updateLabel() {
-        if let (text, string) = state.attributedTextAndString {
-            
-            if let detection = state.detection {
-                let higlightedAttributedString = NSMutableAttributedString(attributedString: string)
-                higlightedAttributedString.addAttributes(detection.style.highlightedAttributes, range: NSRange(detection.range, in: string.string))
-                label.attributedText = higlightedAttributedString
-            } else {
-                if state.isEnabled {
-                    label.attributedText = string
-                } else {
-                    label.attributedText = text.disabledAttributedString
-                }
-            }
-        } else {
-            label.attributedText = nil
-        }
-    }
-}
-
-extension NSAttributedString {
-    
-    fileprivate func withInherited(font: UIFont, textAlignment: NSTextAlignment) -> NSAttributedString {
+    private func updateAttributedTextInTextView(_ string: NSAttributedString) {
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = textAlignment
         
-        let inheritedAttributes = [AttributedStringKey.font: font as Any, AttributedStringKey.paragraphStyle: paragraphStyle as Any]
-        let result = NSMutableAttributedString(string: string, attributes: inheritedAttributes)
+        var inheritedAttributes = [AttributedStringKey.font: font as Any,
+                                   AttributedStringKey.paragraphStyle: paragraphStyle as Any,
+                                   AttributedStringKey.foregroundColor: textColor]
+        
+        if let shadowColor = shadowColor {
+            let shadow = NSShadow()
+            shadow.shadowColor = shadowColor
+            shadow.shadowOffset = shadowOffset
+            shadow.shadowBlurRadius = shadowBlurRadius
+            inheritedAttributes[AttributedStringKey.shadow] = shadow
+        }
+        
+        let length = string.length
+        let result = NSMutableAttributedString(string: string.string, attributes: inheritedAttributes)
         
         result.beginEditing()
-        enumerateAttributes(in: NSMakeRange(0, length), options: .longestEffectiveRangeNotRequired, using: { (attributes, range, _) in
+        
+        string.enumerateAttributes(in: NSMakeRange(0, length), options: .longestEffectiveRangeNotRequired, using: { (attributes, range, _) in
             result.addAttributes(attributes, range: range)
         })
         result.endEditing()
         
-        return result
+        textView.attributedText = result
+    }
+    
+    private func updateText() {
+        if let attributedText = state.attributedText {
+            
+            if let detection = state.detection {
+                let higlightedAttributedString = NSMutableAttributedString(attributedString: attributedText.attributedString)
+                higlightedAttributedString.addAttributes(detection.style.highlightedAttributes, range: NSRange(detection.range, in: attributedText.string))
+                updateAttributedTextInTextView(higlightedAttributedString)
+            } else {
+                if state.isEnabled {
+                    updateAttributedTextInTextView(attributedText.attributedString)
+                } else {
+                    updateAttributedTextInTextView(attributedText.disabledAttributedString)
+                }
+            }
+        } else {
+            textView.attributedText = nil
+        }
     }
 }
 
