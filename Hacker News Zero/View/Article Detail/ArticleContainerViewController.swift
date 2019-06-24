@@ -89,6 +89,13 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
         setupFullScreenButton()
         setupSwapButton(selectedView: selectedView)
         currentSelectedView = selectedView
+
+        //Make sure current view is assigned to the appropriate member variable
+        if let commentsVC = targetVC as? CommentsViewController {
+            currentCommentsVC = commentsVC
+        } else if let webVC = targetVC as? WebViewController {
+            currentWebVC = webVC
+        }
     }
 
     private func setupFullScreenButton() {
@@ -266,9 +273,5 @@ extension ArticleContainerViewController: ColorChangeable {
 
     func switchScheme(to scheme: ColorScheme) {
         set(scheme: scheme)
-
-        //Unset these so they're forced to be reloaded
-        currentWebVC = nil
-        currentCommentsVC = nil
     }
 }
