@@ -158,7 +158,7 @@ extension ArticleViewController: OptionsDelegate {
 extension ArticleViewController: ColorChangeable {
     func switchScheme(to scheme: ColorScheme) {
         set(scheme: scheme)
-        refreshData(clearCurrentEntries: false)
+        refreshData(clearCurrentEntries: true)
     }
 
     func set(scheme: ColorScheme) {
