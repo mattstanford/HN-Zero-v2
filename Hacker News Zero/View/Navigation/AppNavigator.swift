@@ -51,6 +51,8 @@ class AppNavigator {
         }
 
         articleDetail.showArticle(in: view)
+        //Unset the "other" view so we don't quickly see the previously loaded view's content when swapping on this one
+        articleDetail.unsetOtherView(currentView: selectedView)
     }
 
     func showLink(url: URL) {
@@ -77,12 +79,14 @@ class AppNavigator {
             articleDetail.switchScheme(to: scheme)
         }
 
-        if articleDetail.commentsVC.isViewLoaded {
-            articleDetail.commentsVC.switchScheme(to: scheme)
+        if let commentsVC = articleDetail.currentCommentsVC,
+            commentsVC.isViewLoaded {
+            commentsVC.switchScheme(to: scheme)
         }
 
-        if articleDetail.webVC.isViewLoaded {
-            articleDetail.webVC.switchScheme(to: scheme)
+        if let webVC = articleDetail.currentWebVC,
+            webVC.isViewLoaded {
+            webVC.switchScheme(to: scheme)
         }
 
         //If we're on iPad, we need to switch the color of the separate nav bar

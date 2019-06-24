@@ -34,26 +34,8 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
         setupBarButtons()
     }
 
-    lazy var commentsVC: CommentsViewController = {
-
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as? CommentsViewController else {
-            return CommentsViewController()
-        }
-        viewController.linkDelegate = self
-
-        return viewController
-    }()
-
-    lazy var webVC: WebViewController = {
-
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "WebVC") as? WebViewController else {
-            return WebViewController()
-        }
-
-        return viewController
-    }()
+    var currentCommentsVC: CommentsViewController?
+    var currentWebVC: WebViewController?
 
     private func setupBarButtons() {
 
@@ -74,6 +56,15 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
 
     @objc func swapVieControllers(sender: UIBarButtonItem) {
         swapViewControllers(animated: true)
+    }
+
+    func unsetOtherView(currentView: SelectedView) {
+        switch currentView {
+        case .comments:
+            currentWebVC = nil
+        case .web:
+            currentCommentsVC = nil
+        }
     }
 
     // MARK: - Internal helper functions
@@ -155,10 +146,37 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     private func viewControllerFor(selectedView: SelectedView) -> UIViewController {
         switch selectedView {
         case .comments:
-            return commentsVC
+            if let currentCommentsVC = currentCommentsVC {
+                return currentCommentsVC
+            } else {
+                return  generateNewCommentsVC()
+            }
         case .web:
-            return webVC
+            if let currentWebVC = currentWebVC {
+                return currentWebVC
+            } else {
+                return generateNewWebVC()
+            }
         }
+    }
+
+    func generateNewCommentsVC() -> CommentsViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as? CommentsViewController else {
+            return CommentsViewController()
+        }
+        viewController.linkDelegate = self
+
+        return viewController
+    }
+
+    func generateNewWebVC() -> WebViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "WebVC") as? WebViewController else {
+            return WebViewController()
+        }
+
+        return viewController
     }
 
     private func swapButtonTitle(selectedView: SelectedView) -> String {
@@ -248,5 +266,9 @@ extension ArticleContainerViewController: ColorChangeable {
 
     func switchScheme(to scheme: ColorScheme) {
         set(scheme: scheme)
+
+        //Unset these so they're forced to be reloaded
+        currentWebVC = nil
+        currentCommentsVC = nil
     }
 }
