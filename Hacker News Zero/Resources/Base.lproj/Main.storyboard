@@ -268,6 +268,7 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="9ZC-7D-9Fr" appends="YES" id="96V-zX-HdF"/>
+                                    <outletCollection property="gestureRecognizers" destination="oWe-I8-6O7" appends="YES" id="vzY-7W-Pp9"/>
                                 </connections>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jy-Fa-fwI" userLabel="Menu Container View">
@@ -286,6 +287,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="RRT-7g-WfR" firstAttribute="bottom" secondItem="7qX-JI-AQQ" secondAttribute="bottom" id="28R-ed-cos"/>
                             <constraint firstItem="5jy-Fa-fwI" firstAttribute="leading" secondItem="L5T-Qy-3DZ" secondAttribute="leading" id="CAq-S4-AyS"/>
@@ -334,6 +336,11 @@
                 <panGestureRecognizer minimumNumberOfTouches="1" id="g8M-rY-EBF">
                     <connections>
                         <action selector="didPanOnOverlay:" destination="SBR-5Z-KYl" id="jhK-cM-ET1"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="oWe-I8-6O7">
+                    <connections>
+                        <action selector="didPanOnOverlay:" destination="SBR-5Z-KYl" id="onC-hE-Uxu"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
