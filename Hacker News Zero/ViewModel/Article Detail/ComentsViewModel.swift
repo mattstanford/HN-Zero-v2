@@ -14,14 +14,28 @@ class CommentsViewModel {
     let repository: HackerNewsRepository
     var article: Article?
     var viewModels = [CommentItemViewModel]()
-    var shouldShowLoadingSpinner = true
     var colorScheme: ColorScheme
+    var sections: [CommentSection] = [.header, .comments]
 
     private let infoSeparator: String = "•"
 
     init(with repository: HackerNewsRepository, colorScheme: ColorScheme) {
         self.repository = repository
         self.colorScheme = colorScheme
+    }
+
+    var numSections: Int {
+        return sections.count
+    }
+
+    func numRows(sectionIndex: Int) -> Int {
+        let section = sections[sectionIndex]
+        switch section {
+        case .comments:
+            return viewModels.count
+        default:
+            return 1
+        }
     }
 
     func reset() {
@@ -49,6 +63,7 @@ class CommentsViewModel {
 
     func clearData() {
         self.viewModels = [CommentItemViewModel]()
+        sections = [.header, .refresh]
     }
 
     func updateCommentData() -> Completable {
@@ -60,6 +75,7 @@ class CommentsViewModel {
         return repository.getComments(from: currentArticle)
             .map { comments in
                 self.viewModels = self.flattenToViewModels(comments: comments, level: 0)
+                self.sections = [.header, .comments]
             }
             .ignoreElements()
 
