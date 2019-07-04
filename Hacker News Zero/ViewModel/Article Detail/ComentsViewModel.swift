@@ -14,8 +14,8 @@ class CommentsViewModel {
     let repository: HackerNewsRepository
     var article: Article?
     var viewModels = [CommentItemViewModel]()
-    var colorScheme: ColorScheme
     var sections: [CommentSection] = [.header, .comments]
+    var colorScheme: ColorScheme
 
     private let infoSeparator: String = "•"
 
@@ -113,6 +113,13 @@ class CommentsViewModel {
         } else {
             let nextComment = viewModels[index + 1]
             return nextComment.displayedLevel
+        }
+    }
+
+    func switchColor(scheme: ColorScheme) {
+        self.colorScheme = scheme
+        for itemViewModel in viewModels {
+            itemViewModel.colorScheme = scheme
         }
     }
 

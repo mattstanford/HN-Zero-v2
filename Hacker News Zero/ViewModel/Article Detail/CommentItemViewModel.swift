@@ -15,7 +15,7 @@ class CommentItemViewModel {
 
     let comment: Comment
     let isOp: Bool
-    let colorScheme: ColorScheme
+    var colorScheme: ColorScheme
     private let level: Int
     private let dateGenerator: () -> Date
 
