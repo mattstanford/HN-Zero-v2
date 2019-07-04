@@ -14,7 +14,7 @@ let articleTableViewCellIdentifier = "ArticleTableViewCellIdentifier"
 
 class ArticleViewController: UIViewController {
 
-    var navigator: AppNavigator?
+    var navigator: AppNavigator = AppNavigator.shared
     var selectedArticleView: SelectedView?
     var selectedArticle: Article?
 
@@ -40,6 +40,7 @@ class ArticleViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigator.articleList = self
 
         set(scheme: repository.settingsCache.colorScheme)
 
@@ -83,7 +84,7 @@ class ArticleViewController: UIViewController {
 // MARK: - Tap actions
 extension ArticleViewController {
     @IBAction func tappedHamburger() {
-        navigator?.toggleMenu()
+        navigator.toggleMenu()
     }
 
     func tappedWeb(viewModel: ArticleViewModel) {

@@ -19,7 +19,7 @@ protocol LinkDelegate: class {
 
 class ArticleContainerViewController: UIViewController, LinkDelegate {
 
-    var navigator: AppNavigator?
+    var navigator: AppNavigator = AppNavigator.shared
     var currentArticle: Article?
     private var currentSelectedView: SelectedView = .comments
     var currentVC: UIViewController?
@@ -31,6 +31,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigator.articleDetail = self
         set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
         setupBarButtons()
     }
@@ -262,7 +263,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
 
     // MARK: LinkDelegate protocol
     func show(url: URL) {
-        navigator?.showLink(url: url)
+        navigator.showLink(url: url)
     }
 }
 

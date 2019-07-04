@@ -9,37 +9,15 @@
 import UIKit
 
 class AppNavigator {
+    static var shared = AppNavigator()
 
-    private var mainViewController: MainViewController
-    private var articleList: ArticleViewController!
+    weak var mainViewController: MainViewController?
+    weak var articleList: ArticleViewController?
+    weak var articleDetail: ArticleContainerViewController?
+    weak var optionsVC: OptionsViewController?
 
     var currentArticle: Article?
-
-    init(with mainView: MainViewController,
-         articleList: ArticleViewController) {
-
-        self.mainViewController = mainView
-        self.articleList = articleList
-    }
-
-    lazy var articleDetailNavVC: UINavigationController? = {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let navVC = storyboard.instantiateViewController(withIdentifier: "DetailNavVC") as? UINavigationController else {
-            return nil
-        }
-
-        return navVC
-    }()
-
-    lazy var articleDetail: ArticleContainerViewController? = {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier: "ArticleContainerViewController") as? ArticleContainerViewController else {
-            return nil
-        }
-        viewController.navigator = self
-
-        return viewController
-    }()
+    var repository = HackerNewsRepository.shared
 
     func showLink(url: URL) {
         guard let navController = articleDetail?.navigationController else {
@@ -56,13 +34,13 @@ class AppNavigator {
     }
 
     func switchColorScheme(to scheme: ColorScheme) {
-        HackerNewsRepository.shared.settingsCache.colorScheme = scheme
+        repository.settingsCache.colorScheme = scheme
 
-        mainViewController.switchScheme(to: scheme)
-        articleList.switchScheme(to: scheme)
+        mainViewController?.switchScheme(to: scheme)
+        articleList?.switchScheme(to: scheme)
 
-        if let loaded = articleDetail?.isViewLoaded, loaded {
-            articleDetail?.switchScheme(to: scheme)
+        if let articleDetail = articleDetail {
+            articleDetail.switchScheme(to: scheme)
         }
 
         if let commentsVC = articleDetail?.currentCommentsVC,
@@ -75,6 +53,10 @@ class AppNavigator {
             webVC.switchScheme(to: scheme)
         }
 
+        if let optionsVC = optionsVC {
+            optionsVC.switchScheme(to: scheme)
+        }
+
         //If we're on iPad, we need to switch the color of the separate nav bar
         if let navController = articleDetail?.navigationController {
             navController.navigationItem.backBarButtonItem?.tintColor = scheme.barTextColor
@@ -84,6 +66,6 @@ class AppNavigator {
     }
 
     func toggleMenu() {
-        mainViewController.toggleMenu()
+        mainViewController?.toggleMenu()
     }
 }

@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var screenEdgePan: UIGestureRecognizer!
     @IBOutlet weak private var iPhoneXHidingView: UIView!
 
-    var navigator: AppNavigator?
+    var navigator = AppNavigator.shared
 
     private let baseMenuAnimationDuration: Double = 0.3
     private let maxOverlayAlpha: CGFloat = 0.33
@@ -39,33 +39,24 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigator.mainViewController = self
 
         hideMenu()
-        setupNavigator()
+        setupUI()
 
         set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
     }
 
-    private func setupNavigator() {
+    private func setupUI() {
 
         guard let splitViewController = contentViewController,
             let leftNavController = splitViewController.viewControllers.first as? UINavigationController,
-            let masterViewController = leftNavController.topViewController as? ArticleViewController,
-            let rightNavController = splitViewController.viewControllers.last as? UINavigationController,
-            let detailViewController = rightNavController.topViewController as? ArticleContainerViewController
-            else { fatalError("Error setting up navigator!") }
+            let masterViewController = leftNavController.topViewController as? ArticleViewController else {
+                fatalError("Error setting up navigator!")
+            }
 
         splitViewController.preferredDisplayMode = .allVisible
-
-        let navigator = AppNavigator(with: self,
-                                     articleList: masterViewController)
-
         menuViewController?.delegate = masterViewController
-        menuViewController?.navigator = navigator
-
-        masterViewController.navigator = navigator
-        detailViewController.navigator = navigator
-
     }
 
 }

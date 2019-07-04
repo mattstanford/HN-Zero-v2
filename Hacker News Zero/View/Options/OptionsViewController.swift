@@ -52,7 +52,7 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak private var headerView: UIView!
 
     weak var delegate: OptionsDelegate?
-    weak var navigator: AppNavigator?
+    var navigator: AppNavigator = AppNavigator.shared
 
     var colorScheme: ColorScheme = HackerNewsRepository.shared.settingsCache.colorScheme
 
@@ -63,13 +63,14 @@ class OptionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigator.optionsVC = self
         set(scheme: colorScheme)
     }
 }
 
 extension OptionsViewController: ColorChangeable {
     func switchScheme(to scheme: ColorScheme) {
-        set(scheme: colorScheme)
+        set(scheme: scheme)
         tableView.reloadData()
     }
 
@@ -79,6 +80,7 @@ extension OptionsViewController: ColorChangeable {
         self.tableView.backgroundColor = scheme.contentBackgroundColor
         self.tableView.tintColor = scheme.accentColor
         self.view.backgroundColor = scheme.barColor
+        tableView.reloadData()
     }
 }
 
@@ -206,17 +208,12 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         HackerNewsRepository.shared.settingsCache.selectedArticleType = articleType
         tableView.reloadData()
         delegate?.refreshArticles(type: articleType)
-        navigator?.toggleMenu()
+        navigator.toggleMenu()
     }
 
     private func selectedThemeCell(indexPath: IndexPath) {
         let scheme = themeSelections[indexPath.row]
-        HackerNewsRepository.shared.settingsCache.colorScheme = scheme
-
-        set(scheme: scheme)
-        tableView.reloadData()
-
-        navigator?.switchColorScheme(to: scheme)
+        navigator.switchColorScheme(to: scheme)
     }
 
     private func selectedSocialMediaCell(indexPath: IndexPath) {
