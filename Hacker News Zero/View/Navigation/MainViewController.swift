@@ -58,8 +58,7 @@ class MainViewController: UIViewController {
         splitViewController.preferredDisplayMode = .allVisible
 
         let navigator = AppNavigator(with: self,
-                                     articleList: masterViewController,
-                                     articleDetail: detailViewController)
+                                     articleList: masterViewController)
 
         menuViewController?.delegate = masterViewController
         menuViewController?.navigator = navigator

@@ -20,6 +20,7 @@ protocol LinkDelegate: class {
 class ArticleContainerViewController: UIViewController, LinkDelegate {
 
     var navigator: AppNavigator?
+    var currentArticle: Article?
     private var currentSelectedView: SelectedView = .comments
     var currentVC: UIViewController?
 
@@ -132,7 +133,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
     }
 
     private func setupSwapButton(selectedView: SelectedView) {
-        guard let article = navigator?.currentArticle else {
+        guard let article = currentArticle else {
             return
         }
 
@@ -256,7 +257,7 @@ class ArticleContainerViewController: UIViewController, LinkDelegate {
         guard let articleVC = currentVC as? ArticleViewable else {
             return
         }
-        articleVC.show(article: navigator?.currentArticle)
+        articleVC.show(article: currentArticle)
     }
 
     // MARK: LinkDelegate protocol

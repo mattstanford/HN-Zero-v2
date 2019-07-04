@@ -12,51 +12,37 @@ class AppNavigator {
 
     private var mainViewController: MainViewController
     private var articleList: ArticleViewController!
-    private var articleDetail: ArticleContainerViewController!
 
     var currentArticle: Article?
 
     init(with mainView: MainViewController,
-         articleList: ArticleViewController,
-         articleDetail: ArticleContainerViewController) {
+         articleList: ArticleViewController) {
 
         self.mainViewController = mainView
         self.articleList = articleList
-        self.articleDetail = articleDetail
     }
 
-    func show(article: Article, selectedView: SelectedView) {
-
-        print("showing article: " + article.title)
-        currentArticle = article
-
-        var view = selectedView
-
-        //"Ask HN" type articles don't have a url
-        if article.url == nil {
-            view = .comments
+    lazy var articleDetailNavVC: UINavigationController? = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let navVC = storyboard.instantiateViewController(withIdentifier: "DetailNavVC") as? UINavigationController else {
+            return nil
         }
 
-        //Job types usually don't have comments
-        if article.numComments == nil {
-            view = .web
-        }
+        return navVC
+    }()
 
-        //If we're on iPad, show the nav controller + detail view
-        if !mainViewController.isCollapsed, let navController = articleDetail.navigationController {
-            articleList.showDetailViewController(navController, sender: nil)
-        } else {
-            //On phone, we already have a nav controller, so only push the detail view
-            articleList.showDetailViewController(articleDetail, sender: nil)
+    lazy var articleDetail: ArticleContainerViewController? = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "ArticleContainerViewController") as? ArticleContainerViewController else {
+            return nil
         }
+        viewController.navigator = self
 
-        articleDetail.showArticle(in: view)
-        //Unset the "other" view so we don't quickly see the previously loaded view's content when swapping on this one
-        articleDetail.unsetOtherView(currentView: selectedView)
-    }
+        return viewController
+    }()
 
     func showLink(url: URL) {
-        guard let navController = articleDetail.navigationController else {
+        guard let navController = articleDetail?.navigationController else {
             return
         }
 
@@ -75,22 +61,22 @@ class AppNavigator {
         mainViewController.switchScheme(to: scheme)
         articleList.switchScheme(to: scheme)
 
-        if articleDetail.isViewLoaded {
-            articleDetail.switchScheme(to: scheme)
+        if let loaded = articleDetail?.isViewLoaded, loaded {
+            articleDetail?.switchScheme(to: scheme)
         }
 
-        if let commentsVC = articleDetail.currentCommentsVC,
+        if let commentsVC = articleDetail?.currentCommentsVC,
             commentsVC.isViewLoaded {
             commentsVC.switchScheme(to: scheme)
         }
 
-        if let webVC = articleDetail.currentWebVC,
+        if let webVC = articleDetail?.currentWebVC,
             webVC.isViewLoaded {
             webVC.switchScheme(to: scheme)
         }
 
         //If we're on iPad, we need to switch the color of the separate nav bar
-        if let navController = articleDetail.navigationController {
+        if let navController = articleDetail?.navigationController {
             navController.navigationItem.backBarButtonItem?.tintColor = scheme.barTextColor
             navController.navigationItem.rightBarButtonItem?.tintColor = scheme.barTextColor
             navController.navigationBar.tintColor = scheme.barTextColor

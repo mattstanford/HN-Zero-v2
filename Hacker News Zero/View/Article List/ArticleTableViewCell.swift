@@ -11,7 +11,7 @@ import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
 
-    typealias CommentHandler = (Article) -> Void
+    typealias CommentHandler = (ArticleViewModel) -> Void
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
@@ -56,8 +56,9 @@ class ArticleTableViewCell: UITableViewCell {
     }
 
     @objc func clickedComments(_ sender: UITapGestureRecognizer? = nil) {
-        if let article = viewModel?.article {
-            commentHandler?(article)
+        guard let viewModel = viewModel else {
+            return
         }
+        commentHandler?(viewModel)
     }
 }

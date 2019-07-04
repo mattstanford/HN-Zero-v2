@@ -15,6 +15,8 @@ let articleTableViewCellIdentifier = "ArticleTableViewCellIdentifier"
 class ArticleViewController: UIViewController {
 
     var navigator: AppNavigator?
+    var selectedArticleView: SelectedView?
+    var selectedArticle: Article?
 
     var viewModel: ArticleListViewModel
     let disposeBag = DisposeBag()
@@ -75,9 +77,43 @@ class ArticleViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+}
 
+// MARK: - Tap actions
+extension ArticleViewController {
     @IBAction func tappedHamburger() {
         navigator?.toggleMenu()
+    }
+
+    func tappedWeb(viewModel: ArticleViewModel) {
+        selectedArticle = viewModel.article
+        perform(action: viewModel.tappedWebAction)
+    }
+
+    func tappedComments(viewModel: ArticleViewModel) {
+        self.selectedArticle = viewModel.article
+        self.perform(action: viewModel.tappedCommentsAction)
+    }
+
+    func perform(action: ArticleViewAction) {
+        switch action {
+        case .viewWeb:
+            self.selectedArticleView = .web
+        case .viewComments:
+            self.selectedArticleView = .comments
+        }
+        performSegue(withIdentifier: "showArticleDetail", sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navVC = segue.destination as? UINavigationController,
+            let detailVC = navVC.topViewController as? ArticleContainerViewController {
+            detailVC.navigator = navigator
+            detailVC.currentArticle = selectedArticle
+            if let selectedView = selectedArticleView {
+                detailVC.showArticle(in: selectedView)
+            }
+        }
     }
 }
 
@@ -99,13 +135,9 @@ extension ArticleViewController: UITableViewDataSource {
         }
 
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
-        cell.configure(for: articleViewModel, commentHandler: commentsTapped)
+        cell.configure(for: articleViewModel, commentHandler: tappedComments)
 
         return cell
-    }
-
-    private func commentsTapped(for article: Article) {
-        navigator?.show(article: article, selectedView: .comments)
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -133,7 +165,7 @@ extension ArticleViewController: UITableViewDelegate {
             return
         }
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
-        navigator?.show(article: articleViewModel.article, selectedView: .web)
+        tappedWeb(viewModel: articleViewModel)
     }
 }
 

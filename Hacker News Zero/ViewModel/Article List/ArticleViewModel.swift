@@ -25,6 +25,23 @@ class ArticleViewModel {
         return URL(string: "https://www.google.com/s2/favicons?domain=" + domain)
     }
 
+    var tappedWebAction: ArticleViewAction {
+        if article.url != nil {
+            return .viewWeb
+        } else {
+            //"Ask HN" type articles don't have a url
+            return .viewComments
+        }
+    }
+
+    var tappedCommentsAction: ArticleViewAction {
+        if article.numComments != nil {
+            return .viewComments
+        } else {
+            return .viewWeb
+        }
+    }
+
     var detailLabelText: String {
         var text = ""
 
