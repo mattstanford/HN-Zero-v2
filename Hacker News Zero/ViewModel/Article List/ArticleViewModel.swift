@@ -11,13 +11,11 @@ import RxSwift
 
 class ArticleViewModel {
     let article: Article
-    let colorScheme: ColorScheme
     private let dateGenerator: () -> Date
 
-    init(article: Article, colorScheme: ColorScheme, dateGenerator: @escaping () -> Date = Date.init) {
+    init(article: Article, dateGenerator: @escaping () -> Date = Date.init) {
         self.article = article
         self.dateGenerator = dateGenerator
-        self.colorScheme = colorScheme
     }
 
     var iconUrl: URL? {

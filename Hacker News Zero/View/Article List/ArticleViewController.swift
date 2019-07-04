@@ -19,6 +19,7 @@ class ArticleViewController: UIViewController {
     var selectedArticle: Article?
 
     var viewModel: ArticleListViewModel
+    var repository = HackerNewsRepository.shared
     let disposeBag = DisposeBag()
 
     @IBOutlet var tableView: UITableView!
@@ -32,7 +33,7 @@ class ArticleViewController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
 
-        self.viewModel = ArticleListViewModel(repository: HackerNewsRepository.shared)
+        self.viewModel = ArticleListViewModel(repository: repository)
         super.init(coder: aDecoder)
 
     }
@@ -40,7 +41,7 @@ class ArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        set(scheme: HackerNewsRepository.shared.settingsCache.colorScheme)
+        set(scheme: repository.settingsCache.colorScheme)
 
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 60
@@ -135,7 +136,7 @@ extension ArticleViewController: UITableViewDataSource {
         }
 
         let articleViewModel = self.viewModel.articleViewModels[indexPath.row]
-        cell.configure(for: articleViewModel, commentHandler: tappedComments)
+        cell.configure(for: articleViewModel, commentHandler: tappedComments, colorScheme: repository.currentColorScheme)
 
         return cell
     }
@@ -190,7 +191,7 @@ extension ArticleViewController: OptionsDelegate {
 extension ArticleViewController: ColorChangeable {
     func switchScheme(to scheme: ColorScheme) {
         set(scheme: scheme)
-        refreshData(clearCurrentEntries: true)
+        tableView.reloadData()
     }
 
     func set(scheme: ColorScheme) {

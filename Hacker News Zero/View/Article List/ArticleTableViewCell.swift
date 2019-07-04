@@ -24,15 +24,15 @@ class ArticleTableViewCell: UITableViewCell {
     var commentHandler: CommentHandler?
     var viewModel: ArticleViewModel?
 
-    func configure(for viewModel: ArticleViewModel, commentHandler: CommentHandler?) {
+    func configure(for viewModel: ArticleViewModel, commentHandler: CommentHandler?, colorScheme: ColorScheme) {
         self.viewModel = viewModel
-        self.contentView.backgroundColor = viewModel.colorScheme.contentBackgroundColor
+        self.contentView.backgroundColor = colorScheme.contentBackgroundColor
 
         titleLabel.text = viewModel.article.title
-        titleLabel.textColor = viewModel.colorScheme.contentTextColor
+        titleLabel.textColor = colorScheme.contentTextColor
         // cell.detailLabel.text = "44 points * 14 hours * nytimes.com * 14 hours"
         detailLabel.text = viewModel.detailLabelText
-        detailLabel.textColor = viewModel.colorScheme.contentInfoTextColor
+        detailLabel.textColor = colorScheme.contentInfoTextColor
 
         if let iconUrl = viewModel.iconUrl {
             iconImage.kf.setImage(with: iconUrl, placeholder: #imageLiteral(resourceName: "default_icon"))
@@ -42,7 +42,7 @@ class ArticleTableViewCell: UITableViewCell {
             commentsView.isHidden = false
             commentViewWidth.constant = 50
             numCommentsLabel.text = String(describing: numComments)
-            numCommentsLabel.textColor = viewModel.colorScheme.contentTextColor
+            numCommentsLabel.textColor = colorScheme.contentTextColor
         } else {
             commentViewWidth.constant = 8
             commentsView.isHidden = true

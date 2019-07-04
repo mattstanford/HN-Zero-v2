@@ -74,12 +74,7 @@ class ArticleListViewModel {
                 }
 
                 for article in articles {
-
-                    guard let colorScheme = self?.repository.settingsCache.colorScheme else {
-                        continue
-                    }
-
-                    let viewModel = ArticleViewModel(article: article, colorScheme: colorScheme)
+                    let viewModel = ArticleViewModel(article: article)
                     viewModels.append(viewModel)
 
                 }

@@ -23,6 +23,7 @@ class CommentHeaderTableViewCell: UITableViewCell {
         infoLabel.text = viewModel.infoString
         infoLabel.textColor = viewModel.colorScheme.contentInfoTextColor
         headerSeparatorView.backgroundColor = viewModel.colorScheme.barColor
+        contentView.backgroundColor = viewModel.colorScheme.contentBackgroundColor
 
         if let postText = viewModel.article?.articlePostText,
             postText.count > 0 {
