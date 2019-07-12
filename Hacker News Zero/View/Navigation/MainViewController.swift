@@ -82,7 +82,10 @@ extension MainViewController {
                 overlayView.alpha = CGFloat(maxOverlayAlpha) * overlayPercentShowing
             }
         } else if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
-           snapToClosestEdge(translationPoint: translation)
+            let alreadyShowingPercent = getAlreadyShowingPercent(translationPoint: translation)
+            if alreadyShowingPercent > 0.0 {
+                showMenu(alreadyShowingPercent: alreadyShowingPercent)
+            }
         }
     }
 
@@ -95,8 +98,16 @@ extension MainViewController {
                 menuLeadingConstraint.constant = newPosition
             }
         } else if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
-            snapToClosestEdge(translationPoint: translation)
+            let alreadyShowingPercent = getAlreadyShowingPercent(translationPoint: translation)
+            if alreadyShowingPercent < 1.0 {
+                hideMenu(alreadyShowingPercent: alreadyShowingPercent)
+            }
         }
+    }
+
+    func getAlreadyShowingPercent(translationPoint: CGPoint) -> Double {
+        let alreadyShowingPercent = (menuWidthConstraint.constant + translationPoint.x) / menuWidthConstraint.constant
+        return Double(alreadyShowingPercent)
     }
 
     private func snapToClosestEdge(translationPoint: CGPoint) {
