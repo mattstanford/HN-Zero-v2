@@ -75,7 +75,11 @@ class CommentsViewModel {
         return repository.getComments(from: currentArticle)
             .map { comments in
                 self.viewModels = self.flattenToViewModels(comments: comments, level: 0)
-                self.sections = [.header, .comments]
+                if self.viewModels.count > 0 {
+                    self.sections = [.header, .comments]
+                } else {
+                    self.sections = [.header, .emptyComments]
+                }
             }
             .ignoreElements()
 

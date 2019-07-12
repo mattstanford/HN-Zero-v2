@@ -22,6 +22,7 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     let commentCellIdentifier = "ComentCellIdentifier"
     let loadingCellIdentifier = "LoadingCell"
     let commentHeaderCellIdentifier = "commentHeaderCellIdentifier"
+    let emptyCommentsCellIdentifier = "emptyCommentsCellIdentifier"
 
     @IBOutlet var tableView: UITableView!
 
@@ -44,6 +45,7 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
 
     private func registerCellIdentifiers() {
          tableView.register(UINib(nibName: "CommentHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: commentHeaderCellIdentifier)
+        tableView.register(UINib(nibName: "EmptyCommentsTableViewCell", bundle: nil), forCellReuseIdentifier: emptyCommentsCellIdentifier)
     }
 
     @IBAction private func shareButtonTapped() {
@@ -108,6 +110,8 @@ extension CommentsViewController: UITableViewDataSource {
             return getCommentCell(tableView, cellForRowAt: indexPath)
         case .refresh:
             return getLoadingCell(tableView, cellForRowAt: indexPath)
+        case .emptyComments:
+            return getEmptyCommentsCell(tableView, cellForRowAt: indexPath)
         }
     }
 
@@ -138,6 +142,17 @@ extension CommentsViewController: UITableViewDataSource {
 
     private func getLoadingCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: loadingCellIdentifier, for: indexPath) as? LoadingSpinnerCell else {
+            return UITableViewCell()
+        }
+        cell.configure(colorScheme: viewModel.colorScheme)
+
+        tableView.separatorStyle = .none
+
+        return cell
+    }
+
+    private func getEmptyCommentsCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: emptyCommentsCellIdentifier, for: indexPath) as? EmptyCommentsTableViewCell else {
             return UITableViewCell()
         }
         cell.configure(colorScheme: viewModel.colorScheme)

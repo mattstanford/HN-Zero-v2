@@ -12,4 +12,5 @@ enum CommentSection {
     case header
     case comments
     case refresh
+    case emptyComments
 }
