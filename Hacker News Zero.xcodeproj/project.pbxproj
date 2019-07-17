@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2745A270B5F6ECDC4C84C045 /* Pods_Hacker_News_ZeroTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E696CCF0BA1424271967A1 /* Pods_Hacker_News_ZeroTests.framework */; };
 		C908EADC20280890007FC681 /* HackerNewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908EADB20280890007FC681 /* HackerNewsRepository.swift */; };
 		C908EADE20280A00007FC681 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908EADD20280A00007FC681 /* ApiClient.swift */; };
 		C908EAE120280AF6007FC681 /* ApiCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908EAE020280AF6007FC681 /* ApiCache.swift */; };
@@ -16,7 +15,27 @@
 		C90BC002202964740014E498 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BC001202964740014E498 /* ArticleTableViewCell.swift */; };
 		C90BC004202D563A0014E498 /* MainNavigationSplitViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BC003202D563A0014E498 /* MainNavigationSplitViewDelegate.swift */; };
 		C90BC00C20329F700014E498 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90BC00B20329F700014E498 /* Endpoint.swift */; };
+		C92BCEB722DC090600835345 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEB622DC090600835345 /* Alamofire.framework */; };
+		C92BCEDD22DC0CB100835345 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEDC22DC0CB100835345 /* libsqlite3.0.tbd */; };
+		C92BCEDF22DC0CC000835345 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEDE22DC0CBF00835345 /* libc++.tbd */; };
+		C92BCEE122DC0D0500835345 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE022DC0D0500835345 /* StoreKit.framework */; };
+		C92BCEE322DC100300835345 /* AlamofireNetworkActivityLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE222DC100300835345 /* AlamofireNetworkActivityLogger.framework */; };
+		C92BCEEC22DC105100835345 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE422DC105000835345 /* FirebaseCore.framework */; };
+		C92BCEED22DC105100835345 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE522DC105100835345 /* FirebaseCoreDiagnostics.framework */; };
+		C92BCEEE22DC105100835345 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE622DC105100835345 /* GoogleUtilities.framework */; };
+		C92BCEEF22DC105100835345 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE722DC105100835345 /* FirebaseInstanceID.framework */; };
+		C92BCEF022DC105100835345 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE822DC105100835345 /* GoogleAppMeasurement.framework */; };
+		C92BCEF222DC105100835345 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEEA22DC105100835345 /* FirebaseAnalytics.framework */; };
+		C92BCEF322DC105100835345 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEEB22DC105100835345 /* FIRAnalyticsConnector.framework */; };
+		C92BCEF522DC105E00835345 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEF422DC105E00835345 /* nanopb.framework */; };
+		C92BCEF722DC15B600835345 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEF622DC15B600835345 /* Crashlytics.framework */; };
+		C92BCEF922DC15BE00835345 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEF822DC15BE00835345 /* Fabric.framework */; };
 		C92C70F021B2463C00A4219E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C92C70EF21B2463C00A4219E /* .swiftlint.yml */; };
+		C92E18B922DBD55900C57E9D /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92E18AA22DBD55800C57E9D /* RxAlamofire.framework */; };
+		C92E18BA22DBD55900C57E9D /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92E18AB22DBD55800C57E9D /* RxSwift.framework */; };
+		C92E18C022DBD55900C57E9D /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92E18B122DBD55900C57E9D /* RxCocoa.framework */; };
+		C92E18C322DBD55900C57E9D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92E18B422DBD55900C57E9D /* Kingfisher.framework */; };
+		C92E18C522DBD55900C57E9D /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92E18B622DBD55900C57E9D /* RxRelay.framework */; };
 		C93708E92086C607008926D5 /* ArticleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93708E82086C607008926D5 /* ArticleTests.swift */; };
 		C93708F22086C796008926D5 /* Article-Ask.json in Resources */ = {isa = PBXBuildFile; fileRef = C93708EE2086C795008926D5 /* Article-Ask.json */; };
 		C93708F32086C796008926D5 /* Comment.json in Resources */ = {isa = PBXBuildFile; fileRef = C93708EF2086C795008926D5 /* Comment.json */; };
@@ -63,6 +82,7 @@
 		C9B83A4821B48F3E005BF0B7 /* item_18583915.json in Resources */ = {isa = PBXBuildFile; fileRef = C9B83A4721B48F3E005BF0B7 /* item_18583915.json */; };
 		C9B83A4F21BA3621005BF0B7 /* CommentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B83A4E21BA3621005BF0B7 /* CommentsTests.swift */; };
 		C9D82C6620EEFEE5002EFBCF /* Shareable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D82C6520EEFEE5002EFBCF /* Shareable.swift */; };
+		C9D9ADD422DBE958002655E4 /* Atributika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D9ADD322DBE958002655E4 /* Atributika.framework */; };
 		C9DAE81B204234FD003D6ADF /* ArticleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */; };
 		C9DAE81D204235DD003D6ADF /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */; };
 		C9DAE81F204235E8003D6ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAE81E204235E8003D6ADF /* WebViewController.swift */; };
@@ -86,7 +106,6 @@
 		C9FD288122CE8E7000CA0F58 /* ArticleViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD288022CE8E7000CA0F58 /* ArticleViewAction.swift */; };
 		C9FD288422D835D800CA0F58 /* EmptyCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD288222D835D800CA0F58 /* EmptyCommentsTableViewCell.swift */; };
 		C9FD288522D835D800CA0F58 /* EmptyCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9FD288322D835D800CA0F58 /* EmptyCommentsTableViewCell.xib */; };
-		DA79B3CE3E2F3FDF192FFB12 /* Pods_Hacker_News_Zero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F898E5F09BCFD04EF9C4B8 /* Pods_Hacker_News_Zero.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,10 +119,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F22B757ECBD7C8AC2DFBA64 /* Pods-Hacker News ZeroTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News ZeroTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News ZeroTests/Pods-Hacker News ZeroTests.debug.xcconfig"; sourceTree = "<group>"; };
-		66F898E5F09BCFD04EF9C4B8 /* Pods_Hacker_News_Zero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hacker_News_Zero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		81E696CCF0BA1424271967A1 /* Pods_Hacker_News_ZeroTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hacker_News_ZeroTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		82470E07FF30D9D94022DEB6 /* Pods-Hacker News Zero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News Zero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News Zero/Pods-Hacker News Zero.debug.xcconfig"; sourceTree = "<group>"; };
 		C908EADB20280890007FC681 /* HackerNewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsRepository.swift; sourceTree = "<group>"; };
 		C908EADD20280A00007FC681 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		C908EAE020280AF6007FC681 /* ApiCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCache.swift; sourceTree = "<group>"; };
@@ -112,7 +127,36 @@
 		C90BC001202964740014E498 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		C90BC003202D563A0014E498 /* MainNavigationSplitViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSplitViewDelegate.swift; sourceTree = "<group>"; };
 		C90BC00B20329F700014E498 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		C92BCEB622DC090600835345 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		C92BCEDC22DC0CB100835345 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		C92BCEDE22DC0CBF00835345 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		C92BCEE022DC0D0500835345 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		C92BCEE222DC100300835345 /* AlamofireNetworkActivityLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityLogger.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityLogger.framework; sourceTree = "<group>"; };
+		C92BCEE422DC105000835345 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
+		C92BCEE522DC105100835345 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Carthage/Build/iOS/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		C92BCEE622DC105100835345 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = "<group>"; };
+		C92BCEE722DC105100835345 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		C92BCEE822DC105100835345 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		C92BCEE922DC105100835345 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
+		C92BCEEA22DC105100835345 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		C92BCEEB22DC105100835345 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Carthage/Build/iOS/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
+		C92BCEF422DC105E00835345 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
+		C92BCEF622DC15B600835345 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Carthage/Build/iOS/Crashlytics.framework; sourceTree = "<group>"; };
+		C92BCEF822DC15BE00835345 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Carthage/Build/iOS/Fabric.framework; sourceTree = "<group>"; };
+		C92BCEFB22DC166500835345 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
+		C92BCEFC22DC167A00835345 /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = SOURCE_ROOT; };
+		C92BCEFD22DC168700835345 /* Crashlytics.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Crashlytics.json; sourceTree = SOURCE_ROOT; };
+		C92BCEFE22DC169400835345 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		C92C70EF21B2463C00A4219E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+		C92E18AA22DBD55800C57E9D /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
+		C92E18AB22DBD55800C57E9D /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		C92E18AC22DBD55800C57E9D /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		C92E18AD22DBD55800C57E9D /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		C92E18B122DBD55900C57E9D /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		C92E18B422DBD55900C57E9D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		C92E18B622DBD55900C57E9D /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		C92E18CA22DBD5D600C57E9D /* input.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = SOURCE_ROOT; };
+		C92E18CB22DBD5D600C57E9D /* output.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = SOURCE_ROOT; };
 		C93708E82086C607008926D5 /* ArticleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTests.swift; sourceTree = "<group>"; };
 		C93708EE2086C795008926D5 /* Article-Ask.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Article-Ask.json"; sourceTree = "<group>"; };
 		C93708EF2086C795008926D5 /* Comment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Comment.json; sourceTree = "<group>"; };
@@ -163,6 +207,8 @@
 		C9B83A4721B48F3E005BF0B7 /* item_18583915.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = item_18583915.json; sourceTree = "<group>"; };
 		C9B83A4E21BA3621005BF0B7 /* CommentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTests.swift; sourceTree = "<group>"; };
 		C9D82C6520EEFEE5002EFBCF /* Shareable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shareable.swift; sourceTree = "<group>"; };
+		C9D9ADD322DBE958002655E4 /* Atributika.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Atributika.framework; path = Carthage/Build/iOS/Atributika.framework; sourceTree = "<group>"; };
+		C9D9ADD522DBE95C002655E4 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework; sourceTree = "<group>"; };
 		C9DAE81A204234FD003D6ADF /* ArticleContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContainerViewController.swift; sourceTree = "<group>"; };
 		C9DAE81C204235DD003D6ADF /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		C9DAE81E204235E8003D6ADF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -186,8 +232,6 @@
 		C9FD288022CE8E7000CA0F58 /* ArticleViewAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewAction.swift; sourceTree = "<group>"; };
 		C9FD288222D835D800CA0F58 /* EmptyCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCommentsTableViewCell.swift; sourceTree = "<group>"; };
 		C9FD288322D835D800CA0F58 /* EmptyCommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCommentsTableViewCell.xib; sourceTree = "<group>"; };
-		E0A17C38763BB35A824BD307 /* Pods-Hacker News ZeroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News ZeroTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News ZeroTests/Pods-Hacker News ZeroTests.release.xcconfig"; sourceTree = "<group>"; };
-		FB02736F9E465A68EA15B602 /* Pods-Hacker News Zero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News Zero.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News Zero/Pods-Hacker News Zero.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +239,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA79B3CE3E2F3FDF192FFB12 /* Pods_Hacker_News_Zero.framework in Frameworks */,
+				C92BCEE122DC0D0500835345 /* StoreKit.framework in Frameworks */,
+				C92BCEDF22DC0CC000835345 /* libc++.tbd in Frameworks */,
+				C92BCEDD22DC0CB100835345 /* libsqlite3.0.tbd in Frameworks */,
+				C92E18B922DBD55900C57E9D /* RxAlamofire.framework in Frameworks */,
+				C92BCEE322DC100300835345 /* AlamofireNetworkActivityLogger.framework in Frameworks */,
+				C92E18BA22DBD55900C57E9D /* RxSwift.framework in Frameworks */,
+				C92BCEB722DC090600835345 /* Alamofire.framework in Frameworks */,
+				C92BCEEC22DC105100835345 /* FirebaseCore.framework in Frameworks */,
+				C92BCEF722DC15B600835345 /* Crashlytics.framework in Frameworks */,
+				C92BCEF522DC105E00835345 /* nanopb.framework in Frameworks */,
+				C92BCEED22DC105100835345 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				C92BCEF922DC15BE00835345 /* Fabric.framework in Frameworks */,
+				C92BCEEE22DC105100835345 /* GoogleUtilities.framework in Frameworks */,
+				C92BCEEF22DC105100835345 /* FirebaseInstanceID.framework in Frameworks */,
+				C92BCEF022DC105100835345 /* GoogleAppMeasurement.framework in Frameworks */,
+				C92BCEF222DC105100835345 /* FirebaseAnalytics.framework in Frameworks */,
+				C92BCEF322DC105100835345 /* FIRAnalyticsConnector.framework in Frameworks */,
+				C9D9ADD422DBE958002655E4 /* Atributika.framework in Frameworks */,
+				C92E18C022DBD55900C57E9D /* RxCocoa.framework in Frameworks */,
+				C92E18C322DBD55900C57E9D /* Kingfisher.framework in Frameworks */,
+				C92E18C522DBD55900C57E9D /* RxRelay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,29 +267,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2745A270B5F6ECDC4C84C045 /* Pods_Hacker_News_ZeroTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		20A49A0335E244BF629DFC0F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				82470E07FF30D9D94022DEB6 /* Pods-Hacker News Zero.debug.xcconfig */,
-				FB02736F9E465A68EA15B602 /* Pods-Hacker News Zero.release.xcconfig */,
-				4F22B757ECBD7C8AC2DFBA64 /* Pods-Hacker News ZeroTests.debug.xcconfig */,
-				E0A17C38763BB35A824BD307 /* Pods-Hacker News ZeroTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		4486499DE5867D85C52332D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				66F898E5F09BCFD04EF9C4B8 /* Pods_Hacker_News_Zero.framework */,
-				81E696CCF0BA1424271967A1 /* Pods_Hacker_News_ZeroTests.framework */,
+				C92BCEF822DC15BE00835345 /* Fabric.framework */,
+				C92BCEF622DC15B600835345 /* Crashlytics.framework */,
+				C92BCEF422DC105E00835345 /* nanopb.framework */,
+				C92BCEEB22DC105100835345 /* FIRAnalyticsConnector.framework */,
+				C92BCEE922DC105100835345 /* Firebase.framework */,
+				C92BCEEA22DC105100835345 /* FirebaseAnalytics.framework */,
+				C92BCEE422DC105000835345 /* FirebaseCore.framework */,
+				C92BCEE522DC105100835345 /* FirebaseCoreDiagnostics.framework */,
+				C92BCEE722DC105100835345 /* FirebaseInstanceID.framework */,
+				C92BCEE822DC105100835345 /* GoogleAppMeasurement.framework */,
+				C92BCEE622DC105100835345 /* GoogleUtilities.framework */,
+				C92BCEE222DC100300835345 /* AlamofireNetworkActivityLogger.framework */,
+				C92BCEE022DC0D0500835345 /* StoreKit.framework */,
+				C92BCEDE22DC0CBF00835345 /* libc++.tbd */,
+				C92BCEDC22DC0CB100835345 /* libsqlite3.0.tbd */,
+				C92BCEB622DC090600835345 /* Alamofire.framework */,
+				C9D9ADD522DBE95C002655E4 /* AlamofireNetworkActivityIndicator.framework */,
+				C9D9ADD322DBE958002655E4 /* Atributika.framework */,
+				C92E18B422DBD55900C57E9D /* Kingfisher.framework */,
+				C92E18AA22DBD55800C57E9D /* RxAlamofire.framework */,
+				C92E18AC22DBD55800C57E9D /* RxBlocking.framework */,
+				C92E18B122DBD55900C57E9D /* RxCocoa.framework */,
+				C92E18B622DBD55900C57E9D /* RxRelay.framework */,
+				C92E18AB22DBD55800C57E9D /* RxSwift.framework */,
+				C92E18AD22DBD55800C57E9D /* RxTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -247,6 +322,18 @@
 				C9F7CE2C20D4BF2000E53723 /* SettingsCache.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		C92E18C922DBD5BD00C57E9D /* Carthage */ = {
+			isa = PBXGroup;
+			children = (
+				C92BCEFD22DC168700835345 /* Crashlytics.json */,
+				C92BCEFB22DC166500835345 /* Cartfile */,
+				C92BCEFC22DC167A00835345 /* Cartfile.resolved */,
+				C92E18CA22DBD5D600C57E9D /* input.xcfilelist */,
+				C92E18CB22DBD5D600C57E9D /* output.xcfilelist */,
+			);
+			path = Carthage;
 			sourceTree = "<group>";
 		};
 		C93708E52086C5DC008926D5 /* ViewModel */ = {
@@ -312,11 +399,10 @@
 		C950C1DE201553EE00917A44 = {
 			isa = PBXGroup;
 			children = (
+				4486499DE5867D85C52332D4 /* Frameworks */,
 				C950C1E9201553EE00917A44 /* Hacker News Zero */,
 				C950C203201553EE00917A44 /* Hacker News ZeroTests */,
 				C950C1E8201553EE00917A44 /* Products */,
-				20A49A0335E244BF629DFC0F /* Pods */,
-				4486499DE5867D85C52332D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -405,6 +491,8 @@
 		C950C213201ADA7500917A44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C92BCEFE22DC169400835345 /* .gitignore */,
+				C92E18C922DBD5BD00C57E9D /* Carthage */,
 				C9AEF04D21B30A44004796BD /* README.md */,
 				C9AEF04B21B309C4004796BD /* LICENSE */,
 				C92C70EF21B2463C00A4219E /* .swiftlint.yml */,
@@ -583,13 +671,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C950C209201553EE00917A44 /* Build configuration list for PBXNativeTarget "Hacker News Zero" */;
 			buildPhases = (
-				4031D11FD084320265BD3366 /* [CP] Check Pods Manifest.lock */,
+				C92BCEFF22DEBD1D00835345 /* Swiftlint Run Script */,
 				C950C1E3201553EE00917A44 /* Sources */,
 				C950C1E4201553EE00917A44 /* Frameworks */,
 				C950C1E5201553EE00917A44 /* Resources */,
-				F795D6C88658B000B7B3DD79 /* [CP] Embed Pods Frameworks */,
-				C92C70EC21B242D900A4219E /* Swiftlint Run Script */,
-				C97AC434211659960075B37E /* Crashlytics Run Script */,
+				C92E18C822DBD57100C57E9D /* Carthage Copy Frameworks Script */,
+				C92BCEFA22DC15D100835345 /* Crashlytics Run Script */,
 			);
 			buildRules = (
 			);
@@ -698,25 +785,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4031D11FD084320265BD3366 /* [CP] Check Pods Manifest.lock */ = {
+		C92BCEFA22DC15D100835345 /* Crashlytics Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+			inputFileListPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Crashlytics Run Script";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Hacker News Zero-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PROJECT_DIR}/Carthage/Build/iOS/Fabric.framework/run\"\n";
 		};
-		C92C70EC21B242D900A4219E /* Swiftlint Run Script */ = {
+		C92BCEFF22DEBD1D00835345 /* Swiftlint Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -732,53 +820,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect\n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect\n    swiftlint\nelse\n    echo \"warning: Swiftlint not installed!\"\nfi\n";
 		};
-		C97AC434211659960075B37E /* Crashlytics Run Script */ = {
+		C92E18C822DBD57100C57E9D /* Carthage Copy Frameworks Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+				"$(SRCROOT)/input.xcfilelist",
+			);
 			inputPaths = (
 			);
-			name = "Crashlytics Run Script";
+			name = "Carthage Copy Frameworks Script";
+			outputFileListPaths = (
+				"$(SRCROOT)/output.xcfilelist",
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
-		};
-		F795D6C88658B000B7B3DD79 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hacker News Zero/Pods-Hacker News Zero-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
-				"${BUILT_PRODUCTS_DIR}/Atributika/Atributika.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Atributika.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hacker News Zero/Pods-Hacker News Zero-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		FA3FB06E0C6569C109610056 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1010,22 +1072,43 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		C950C20A201553EE00917A44 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82470E07FF30D9D94022DEB6 /* Pods-Hacker News Zero.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 735H4JCR7N;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Hacker News Zero/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hnzero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d72ca6d6-c810-4c29-8f5c-9da6c4c17344";
@@ -1037,14 +1120,34 @@
 		};
 		C950C20B201553EE00917A44 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB02736F9E465A68EA15B602 /* Pods-Hacker News Zero.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 735H4JCR7N;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)/Hacker\\ News\\ Zero",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Hacker News Zero/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hnzero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "dea7ffb2-85a3-4ba8-a1e2-15799e4cb919";
@@ -1056,14 +1159,17 @@
 		};
 		C950C20D201553EE00917A44 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F22B757ECBD7C8AC2DFBA64 /* Pods-Hacker News ZeroTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 735H4JCR7N;
 				INFOPLIST_FILE = "Hacker News ZeroTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.locacha.Hacker-News-ZeroTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1074,14 +1180,17 @@
 		};
 		C950C20E201553EE00917A44 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0A17C38763BB35A824BD307 /* Pods-Hacker News ZeroTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 735H4JCR7N;
 				INFOPLIST_FILE = "Hacker News ZeroTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.locacha.Hacker-News-ZeroTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

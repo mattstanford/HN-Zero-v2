@@ -98,7 +98,7 @@ class HackerNewsRepository {
             .map { comments in
 
                 return self.setItemsInProperOrder(idList: commentIds, itemList: comments)
-            }
+            }.asObservable()
     }
 }
 
