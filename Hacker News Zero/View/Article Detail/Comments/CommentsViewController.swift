@@ -15,9 +15,8 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     let disposeBag = DisposeBag()
     weak var linkDelegate: LinkDelegate?
 
-    lazy var viewModel: CommentsViewModel = {
-        return CommentsViewModel(with: HackerNewsRepository.shared, colorScheme: HackerNewsRepository.shared.settingsCache.colorScheme)
-    }()
+    var viewModel: CommentsViewModel = CommentsViewModel()
+    var repository = HackerNewsRepository.shared
 
     let commentCellIdentifier = "ComentCellIdentifier"
     let loadingCellIdentifier = "LoadingCell"
@@ -39,7 +38,9 @@ class CommentsViewController: UIViewController, ArticleViewable, Shareable {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCellIdentifiers()
-        set(scheme: viewModel.colorScheme)
+        viewModel.repository = repository
+
+        set(scheme: repository.settingsCache.colorScheme)
         tableView.addSubview(refreshControl)
     }
 
@@ -144,7 +145,7 @@ extension CommentsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: loadingCellIdentifier, for: indexPath) as? LoadingSpinnerCell else {
             return UITableViewCell()
         }
-        cell.configure(colorScheme: viewModel.colorScheme)
+        cell.configure()
 
         tableView.separatorStyle = .none
 
@@ -155,7 +156,7 @@ extension CommentsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: emptyCommentsCellIdentifier, for: indexPath) as? EmptyCommentsTableViewCell else {
             return UITableViewCell()
         }
-        cell.configure(colorScheme: viewModel.colorScheme)
+        cell.configure()
 
         tableView.separatorStyle = .none
 
@@ -176,7 +177,6 @@ extension CommentsViewController: ColorChangeable {
         bottomBar.tintColor = scheme.barTextColor
         refreshControl.tintColor = scheme.contentTextColor
 
-        viewModel.switchColor(scheme: scheme)
         tableView.reloadData()
     }
 }

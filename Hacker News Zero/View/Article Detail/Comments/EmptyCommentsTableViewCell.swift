@@ -10,12 +10,14 @@ import UIKit
 
 class EmptyCommentsTableViewCell: UITableViewCell {
 
+    var repository = HackerNewsRepository.shared
+
     @IBOutlet var titleLabel: UILabel!
 
-    func configure(colorScheme: ColorScheme) {
-        backgroundColor = colorScheme.contentBackgroundColor
-        contentView.backgroundColor = colorScheme.contentBackgroundColor
-        titleLabel.textColor = colorScheme.contentInfoTextColor
+    func configure() {
+        backgroundColor = repository.currentColorScheme.contentBackgroundColor
+        contentView.backgroundColor = repository.currentColorScheme.contentBackgroundColor
+        titleLabel.textColor = repository.currentColorScheme.contentInfoTextColor
     }
 
 }

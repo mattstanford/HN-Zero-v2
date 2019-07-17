@@ -11,10 +11,12 @@ import UIKit
 class LoadingSpinnerCell: UITableViewCell {
     @IBOutlet weak private var loadingSpinner: UIActivityIndicatorView!
 
-    func configure(colorScheme: ColorScheme) {
+    var repository = HackerNewsRepository.shared
 
-        loadingSpinner.color = colorScheme.contentTextColor
-        backgroundColor = colorScheme.contentBackgroundColor
+    func configure() {
+
+        loadingSpinner.color = repository.currentColorScheme.contentTextColor
+        backgroundColor = repository.currentColorScheme.contentBackgroundColor
 
         loadingSpinner.startAnimating()
     }

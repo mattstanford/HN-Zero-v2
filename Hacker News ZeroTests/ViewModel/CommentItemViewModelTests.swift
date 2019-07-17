@@ -14,6 +14,7 @@ class CommentItemViewModelTests: XCTestCase {
     var viewModel: CommentItemViewModel?
     var comment: Comment?
     var mockDate = MockDate()
+    var testRepository = RepositoryHelper.getTestRepository()
 
     override func setUp() {
         super.setUp()
@@ -25,7 +26,7 @@ class CommentItemViewModelTests: XCTestCase {
         }
         comment = tempComment
 
-        viewModel = CommentItemViewModel(with: tempComment, isOp: false, level: 0, colorScheme: .standard, dateGenerator: mockDate.getTestDate)
+        viewModel = CommentItemViewModel(with: tempComment, isOp: false, level: 0, repository: testRepository, dateGenerator: mockDate.getTestDate)
     }
 
     func testHeaderText() {
@@ -38,7 +39,7 @@ class CommentItemViewModelTests: XCTestCase {
         let headerText = viewModel?.commentHeaderText
         XCTAssertEqual(headerText?.string, "aUser • 3 seconds")
 
-        let opViewModel = CommentItemViewModel(with: comment, isOp: true, level: 0, colorScheme: .standard, dateGenerator: mockDate.getTestDate)
+        let opViewModel = CommentItemViewModel(with: comment, isOp: true, level: 0, repository: testRepository, dateGenerator: mockDate.getTestDate)
         XCTAssertEqual(opViewModel.commentHeaderText.string, "aUser (OP) • 3 seconds")
     }
 
@@ -53,10 +54,10 @@ class CommentItemViewModelTests: XCTestCase {
             return
         }
 
-        let topLevelViewModel = CommentItemViewModel(with: comment, isOp: false, level: 0, colorScheme: .standard)
+        let topLevelViewModel = CommentItemViewModel(with: comment, isOp: false, level: 0, repository: testRepository)
         XCTAssertEqual(topLevelViewModel.displayedLevel, 0)
 
-        let nestedViewModel = CommentItemViewModel(with: comment, isOp: false, level: 10, colorScheme: .standard)
+        let nestedViewModel = CommentItemViewModel(with: comment, isOp: false, level: 10, repository: testRepository)
         XCTAssertEqual(nestedViewModel.displayedLevel, 6)
 
     }

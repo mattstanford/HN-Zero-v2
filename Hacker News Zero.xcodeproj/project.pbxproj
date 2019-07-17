@@ -30,6 +30,7 @@
 		C92BCEF522DC105E00835345 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEF422DC105E00835345 /* nanopb.framework */; };
 		C92BCEF722DC15B600835345 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEF622DC15B600835345 /* Crashlytics.framework */; };
 		C92BCEF922DC15BE00835345 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEF822DC15BE00835345 /* Fabric.framework */; };
+		C92BCF0F22DECCB300835345 /* RepositoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92BCF0E22DECCB300835345 /* RepositoryHelper.swift */; };
 		C92C70F021B2463C00A4219E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C92C70EF21B2463C00A4219E /* .swiftlint.yml */; };
 		C92E18B922DBD55900C57E9D /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92E18AA22DBD55800C57E9D /* RxAlamofire.framework */; };
 		C92E18BA22DBD55900C57E9D /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92E18AB22DBD55800C57E9D /* RxSwift.framework */; };
@@ -147,6 +148,7 @@
 		C92BCEFC22DC167A00835345 /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = SOURCE_ROOT; };
 		C92BCEFD22DC168700835345 /* Crashlytics.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Crashlytics.json; sourceTree = SOURCE_ROOT; };
 		C92BCEFE22DC169400835345 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		C92BCF0E22DECCB300835345 /* RepositoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryHelper.swift; sourceTree = "<group>"; };
 		C92C70EF21B2463C00A4219E /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		C92E18AA22DBD55800C57E9D /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
 		C92E18AB22DBD55800C57E9D /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				C93708EB2086C630008926D5 /* Test JSON */,
 				C9E0200E2086F20800E80516 /* DataHelper.swift */,
 				C9AEF05321B3A7B9004796BD /* Endpoint+Test.swift */,
+				C92BCF0E22DECCB300835345 /* RepositoryHelper.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -908,6 +911,7 @@
 				C9E020202090191600E80516 /* DateExtensionTests.swift in Sources */,
 				C9E02015208974AF00E80516 /* ArticleViewModelTests.swift in Sources */,
 				C9E02024209AB32C00E80516 /* WebViewModelTests.swift in Sources */,
+				C92BCF0F22DECCB300835345 /* RepositoryHelper.swift in Sources */,
 				C9E02019208C296200E80516 /* MockDate.swift in Sources */,
 				C9B83A4F21BA3621005BF0B7 /* CommentsTests.swift in Sources */,
 				C9AEF05021B30C84004796BD /* MockApiClient.swift in Sources */,

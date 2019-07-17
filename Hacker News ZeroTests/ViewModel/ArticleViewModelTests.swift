@@ -23,7 +23,7 @@ class ArticleViewModelTests: XCTestCase {
                 return
         }
 
-        viewModel = ArticleViewModel(article: article, colorScheme: ColorScheme.standard, dateGenerator: mockDate.getTestDate)
+        viewModel = ArticleViewModel(article: article, dateGenerator: mockDate.getTestDate)
     }
 
     func testIconUrl() {
@@ -50,7 +50,6 @@ class ArticleViewModelTests: XCTestCase {
                 return
         }
         let jobViewModel = ArticleViewModel(article: article,
-                                            colorScheme: ColorScheme.standard,
                                             dateGenerator: mockDate.getTestDate)
         XCTAssertEqual(jobViewModel.detailLabelText, "3591 days")
     }

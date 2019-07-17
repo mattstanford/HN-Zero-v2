@@ -11,18 +11,12 @@ import RxSwift
 
 class CommentsViewModel {
 
-    let repository: HackerNewsRepository
+    var repository: HackerNewsRepository?
     var article: Article?
     var viewModels = [CommentItemViewModel]()
     var sections: [CommentSection] = [.header, .comments]
-    var colorScheme: ColorScheme
 
     private let infoSeparator: String = "•"
-
-    init(with repository: HackerNewsRepository, colorScheme: ColorScheme) {
-        self.repository = repository
-        self.colorScheme = colorScheme
-    }
 
     var numSections: Int {
         return sections.count
@@ -68,13 +62,14 @@ class CommentsViewModel {
 
     func updateCommentData() -> Completable {
 
-        guard let currentArticle = article else {
+        guard let repository = repository,
+            let currentArticle = article else {
             return Completable.empty()
         }
 
         return repository.getComments(from: currentArticle)
             .map { comments in
-                self.viewModels = self.flattenToViewModels(comments: comments, level: 0)
+                self.viewModels = self.flattenToViewModels(comments: comments, level: 0, repository: repository)
                 if self.viewModels.count > 0 {
                     self.sections = [.header, .comments]
                 } else {
@@ -85,7 +80,7 @@ class CommentsViewModel {
 
     }
 
-    func flattenToViewModels(comments: [Comment], level: Int) -> [CommentItemViewModel] {
+    func flattenToViewModels(comments: [Comment], level: Int, repository: HackerNewsRepository) -> [CommentItemViewModel] {
         var list = [CommentItemViewModel]()
         for comment in comments {
 
@@ -95,11 +90,11 @@ class CommentsViewModel {
 
             let isOp = article?.author == comment.author
 
-            let viewModel = CommentItemViewModel(with: comment, isOp: isOp, level: level, colorScheme: repository.settingsCache.colorScheme)
+            let viewModel = CommentItemViewModel(with: comment, isOp: isOp, level: level, repository: repository)
             list.append(viewModel)
 
             if let childComments = comment.childComments {
-                list.append(contentsOf: flattenToViewModels(comments: childComments, level: level + 1))
+                list.append(contentsOf: flattenToViewModels(comments: childComments, level: level + 1, repository: repository))
             }
         }
 
@@ -119,12 +114,4 @@ class CommentsViewModel {
             return nextComment.displayedLevel
         }
     }
-
-    func switchColor(scheme: ColorScheme) {
-        self.colorScheme = scheme
-        for itemViewModel in viewModels {
-            itemViewModel.colorScheme = scheme
-        }
-    }
-
 }

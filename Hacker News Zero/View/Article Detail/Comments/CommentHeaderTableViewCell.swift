@@ -11,6 +11,8 @@ import UIKit
 
 class CommentHeaderTableViewCell: UITableViewCell {
 
+    var repository = HackerNewsRepository.shared
+
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var postTextView: AttributedLabel!
     @IBOutlet var infoLabel: UILabel!
@@ -18,18 +20,18 @@ class CommentHeaderTableViewCell: UITableViewCell {
 
     func configure(viewModel: CommentsViewModel, linkClickedClosure: @escaping (URL) -> Void) {
         titleLabel.text = viewModel.article?.title
-        titleLabel.textColor = viewModel.colorScheme.contentTextColor
+        titleLabel.textColor = repository.currentColorScheme.contentTextColor
         titleLabel.font = UIFont.systemFont(ofSize: AppConstants.defaultHeaderFontSize, weight: .semibold)
         infoLabel.text = viewModel.infoString
-        infoLabel.textColor = viewModel.colorScheme.contentInfoTextColor
-        headerSeparatorView.backgroundColor = viewModel.colorScheme.barColor
-        contentView.backgroundColor = viewModel.colorScheme.contentBackgroundColor
+        infoLabel.textColor = repository.currentColorScheme.contentInfoTextColor
+        headerSeparatorView.backgroundColor = repository.currentColorScheme.barColor
+        contentView.backgroundColor = repository.currentColorScheme.contentBackgroundColor
 
         if let postText = viewModel.article?.articlePostText,
             postText.count > 0 {
             postTextView.isHidden = false
-            postTextView.backgroundColor = viewModel.repository.settingsCache.colorScheme.contentBackgroundColor
-            postTextView.setHtmlText(text: postText, colorScheme: viewModel.colorScheme, linkHandler: linkClickedClosure)
+            postTextView.backgroundColor = repository.currentColorScheme.contentBackgroundColor
+            postTextView.setHtmlText(text: postText, colorScheme: repository.currentColorScheme, linkHandler: linkClickedClosure)
 
         } else {
             postTextView.isHidden = true

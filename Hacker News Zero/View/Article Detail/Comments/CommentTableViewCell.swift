@@ -13,6 +13,8 @@ let commentPerLevel = 20
 
 class CommentTableViewCell: UITableViewCell {
 
+    var repository = HackerNewsRepository.shared
+
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var contentLabel: AttributedLabel!
     @IBOutlet weak var separator: UIView!
@@ -23,11 +25,11 @@ class CommentTableViewCell: UITableViewCell {
     func configure(with viewModel: CommentItemViewModel, nextCommentLevel: Int, linkHandler: @escaping (URL) -> Void) {
         headerLabel.attributedText = viewModel.commentHeaderText
 
-        backgroundColor = viewModel.colorScheme.contentBackgroundColor
-        contentView.backgroundColor = viewModel.colorScheme.contentBackgroundColor
+        backgroundColor = repository.currentColorScheme.contentBackgroundColor
+        contentView.backgroundColor = repository.currentColorScheme.contentBackgroundColor
 
-        contentLabel.setHtmlText(text: viewModel.content, colorScheme: viewModel.colorScheme, linkHandler: linkHandler)
-        contentLabel.backgroundColor = viewModel.colorScheme.contentBackgroundColor
+        contentLabel.setHtmlText(text: viewModel.content, colorScheme: repository.currentColorScheme, linkHandler: linkHandler)
+        contentLabel.backgroundColor = repository.currentColorScheme.contentBackgroundColor
         contentLeadingMargin.constant = getIndentAmount(for: viewModel.displayedLevel)
 
         let separatorIndent: CGFloat
@@ -38,7 +40,7 @@ class CommentTableViewCell: UITableViewCell {
         }
         separatorleadingMargin.constant = separatorIndent
 
-        separator.backgroundColor = viewModel.colorScheme.contentInfoTextColor
+        separator.backgroundColor = repository.currentColorScheme.contentInfoTextColor
 
     }
 

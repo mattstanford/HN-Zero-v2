@@ -15,19 +15,20 @@ class CommentItemViewModel {
 
     let comment: Comment
     let isOp: Bool
-    var colorScheme: ColorScheme
     private let level: Int
     private let dateGenerator: () -> Date
+    var repository: HackerNewsRepository
 
-    init(with comment: Comment, isOp: Bool, level: Int, colorScheme: ColorScheme, dateGenerator: @escaping () -> Date = Date.init) {
+    init(with comment: Comment, isOp: Bool, level: Int, repository: HackerNewsRepository, dateGenerator: @escaping () -> Date = Date.init) {
         self.comment = comment
         self.isOp = isOp
         self.level = level
         self.dateGenerator = dateGenerator
-        self.colorScheme = colorScheme
+        self.repository = repository
     }
 
     var commentHeaderText: NSAttributedString {
+        let colorScheme = repository.settingsCache.colorScheme
 
         let numIndentDots = max(self.level - maxLevel, 0)
         var headerText = ""
