@@ -14,7 +14,7 @@ class CommentsViewModel {
     var repository: HackerNewsRepository?
     var article: Article?
     var viewModels = [CommentItemViewModel]()
-    var sections: [CommentSection] = [.header, .comments]
+    var sections: [CommentSection] = []
 
     private let infoSeparator: String = "•"
 
