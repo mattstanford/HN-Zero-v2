@@ -1,8 +1,8 @@
-github "Alamofire/Alamofire" >= 4.8.2
-github "RxSwiftCommunity/RxAlamofire" ~> 5.0.0
-github "konkab/AlamofireNetworkActivityLogger" ~> 2.4
-github "onevcat/Kingfisher" ~> 5.6.0
-github "psharanda/Atributika" ~> 4.8.2
+github "Alamofire/Alamofire"
+github "RxSwiftCommunity/RxAlamofire"
+github "konkab/AlamofireNetworkActivityLogger"
+github "onevcat/Kingfisher"
+github "psharanda/Atributika"
 binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
 binary "Crashlytics.json"
 

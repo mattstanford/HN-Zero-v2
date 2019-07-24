@@ -21,7 +21,6 @@
 		C92BCEE122DC0D0500835345 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE022DC0D0500835345 /* StoreKit.framework */; };
 		C92BCEE322DC100300835345 /* AlamofireNetworkActivityLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE222DC100300835345 /* AlamofireNetworkActivityLogger.framework */; };
 		C92BCEEC22DC105100835345 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE422DC105000835345 /* FirebaseCore.framework */; };
-		C92BCEED22DC105100835345 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE522DC105100835345 /* FirebaseCoreDiagnostics.framework */; };
 		C92BCEEE22DC105100835345 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE622DC105100835345 /* GoogleUtilities.framework */; };
 		C92BCEEF22DC105100835345 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE722DC105100835345 /* FirebaseInstanceID.framework */; };
 		C92BCEF022DC105100835345 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92BCEE822DC105100835345 /* GoogleAppMeasurement.framework */; };
@@ -256,7 +255,6 @@
 				C92BCEEC22DC105100835345 /* FirebaseCore.framework in Frameworks */,
 				C92BCEF722DC15B600835345 /* Crashlytics.framework in Frameworks */,
 				C92BCEF522DC105E00835345 /* nanopb.framework in Frameworks */,
-				C92BCEED22DC105100835345 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				C92BCEF922DC15BE00835345 /* Fabric.framework in Frameworks */,
 				C92BCEEE22DC105100835345 /* GoogleUtilities.framework in Frameworks */,
 				C92BCEEF22DC105100835345 /* FirebaseInstanceID.framework in Frameworks */,

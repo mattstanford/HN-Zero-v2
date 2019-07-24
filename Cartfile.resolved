@@ -1,5 +1,5 @@
 binary "Crashlytics.json" "3.12.0"
-binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json" "6.4.0"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json" "6.5.0"
 github "Alamofire/Alamofire" "4.8.2"
 github "ReactiveX/RxSwift" "5.0.1"
 github "RxSwiftCommunity/RxAlamofire" "5.0.0"
